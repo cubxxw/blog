@@ -24,8 +24,38 @@ export function zoomMap(view, factor, point) {
   return boundMap({ x: anchor.x - rx * width, y: anchor.y - ry * width / 2, width });
 }
 export function panMap(view, dx, dy) { return boundMap({ ...view, x: view.x + dx, y: view.y + dy }); }
+// Return routes carry canonical identifiers only, never names, GPS or URLs.
+export const PHOTO_CONTEXT_PREFIX = 'photo-context:';
+const REGION_ID = /^[a-z0-9][a-z0-9-]{0,63}$/;
+const PUBLIC_PHOTO_ID = /^immich:[a-z0-9][a-z0-9-]{0,63}:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const validPhotoID = id => typeof id === 'string' && id.length <= 160 && (/^[A-Za-z0-9][A-Za-z0-9_.-]{0,159}$/.test(id) || PUBLIC_PHOTO_ID.test(id));
+export function parsePhotoContext(payload) {
+  if (typeof payload !== 'string' || payload.length > 600 || !payload.startsWith(PHOTO_CONTEXT_PREFIX)) return null;
+  const parts = payload.slice(PHOTO_CONTEXT_PREFIX.length).split(':');
+  if (parts.length !== 2) return null;
+  try {
+    const selectedID = decodeURIComponent(parts[0]), region = parts[1];
+    if (!validPhotoID(selectedID) || encodeURIComponent(selectedID) !== parts[0] || !REGION_ID.test(region)) return null;
+    return { selectedID, region };
+  } catch { return null; }
+}
+export function photoContextPayload(photos, state = {}) {
+  const photo = photos.find(item => item.id === state.selectedID);
+  if (!photo || !validPhotoID(photo.id) || !REGION_ID.test(photo.region || '') || photo.region === 'all' || typeof state.region !== 'string' || !REGION_ID.test(state.region)) return '';
+  if (state.region !== 'all' && state.region !== photo.region) return '';
+  const payload = `${PHOTO_CONTEXT_PREFIX}${encodeURIComponent(photo.id)}:${state.region}`;
+  return payload.length <= 600 ? payload : '';
+}
 export function photoState(photos = [], payload = '', previous = {}) {
   const value = typeof payload === 'string' ? payload : '';
+  if (value.startsWith(PHOTO_CONTEXT_PREFIX)) {
+    const context = parsePhotoContext(value);
+    if (!context) return { region: 'all', selectedID: null, contextUnavailable: true };
+    const selected = photos.find(photo => photo.id === context.selectedID);
+    if (selected && (context.region === 'all' || selected.region === context.region)) return context;
+    if (selected) return { region: 'all', selectedID: null, contextUnavailable: true };
+    return { region: context.region, selectedID: PUBLIC_PHOTO_ID.test(context.selectedID) ? context.selectedID : null, contextUnavailable: true };
+  }
   const region = value.startsWith('region:') ? value.slice(7) : previous.region || 'all';
   const id = value.startsWith('photo:') ? value.slice(6) : value;
   const remoteID = /^immich:[a-z0-9][a-z0-9-]{0,63}:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);

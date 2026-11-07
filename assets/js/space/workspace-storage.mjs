@@ -1,0 +1,122 @@
+import { createWorkspace } from './state.mjs';
+import { MAX_WORKSPACE_BYTES, normalizeWorkspaceData, validateWorkspaceData } from './workspace-transfer.mjs';
+import { normalizeExcerpts } from './excerpts.mjs';
+
+const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const copy = value => JSON.parse(JSON.stringify(value));
+
+function mergeItems(base = [], local = [], remote = [], key = item => item) {
+  const b = new Map(base.map(item => [key(item), item]));
+  const l = new Map(local.map(item => [key(item), item]));
+  const r = new Map(remote.map(item => [key(item), item]));
+  const result = [];
+  // Delete wins over an unchanged copy. Independent additions retain their order.
+  for (const id of new Set([...r.keys(), ...l.keys()])) {
+    if (b.has(id) && (!l.has(id) || !r.has(id))) continue;
+    const item = l.has(id) && !equal(l.get(id), b.get(id)) ? l.get(id) : r.get(id) ?? l.get(id);
+    if (item !== undefined) result.push(copy(item));
+  }
+  return result;
+}
+
+function recoveryId(value) {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i++) hash = Math.imul(hash ^ value.charCodeAt(i), 16777619);
+  return `${(hash >>> 0).toString(36)}-${value.length}`;
+}
+
+export function mergeWorkspaceChanges({ base, local, remote }) {
+  const state = copy(remote), conflicts = [];
+  for (const key of ['windows', 'active', 'theme', 'wallpaper', 'initialized', 'note', 'draft']) {
+    if (!equal(local[key], base[key])) state[key] = copy(local[key]);
+    if (['note', 'draft'].includes(key) && !equal(local[key], base[key]) && !equal(remote[key], base[key]) && !equal(local[key], remote[key])) conflicts.push(key);
+  }
+  const favorites = mergeItems(base.favorites, local.favorites, remote.favorites);
+  // Excerpts are immutable selected text. Imported ids can collide between
+  // tabs; source+text identity preserves both independent additions.
+  const excerpts = mergeItems(base.excerpts, local.excerpts, remote.excerpts, item => `${item.url}\u0000${item.text}`);
+  // Capacity has no safe automatic winner. Keep this tab's values in memory and
+  // let the store refuse the write, preserving the other tab's values on disk.
+  if (favorites.length > 200) conflicts.push('favorites-limit');
+  if (excerpts.length > 80) conflicts.push('excerpts-limit');
+  state.favorites = favorites.length > 200 ? copy(local.favorites) : favorites;
+  state.excerpts = excerpts.length > 80 ? copy(local.excerpts) : normalizeExcerpts(excerpts);
+  state.recoveries = mergeItems(base.recoveries, local.recoveries, remote.recoveries, item => item.id);
+  if (conflicts.some(field => field === 'note' || field === 'draft')) {
+    const at = new Date().toISOString();
+    for (const [side, source] of [['local', local], ['remote', remote]]) {
+      const note = source.note || '', draft = source.draft || '', reason = `conflict-${side}`;
+      if (state.recoveries.some(r => r.note === note && r.draft === draft && r.reason === reason)) continue;
+      const initialId = `recovery-${recoveryId(JSON.stringify([note, draft, reason]))}`;
+      let id = initialId, suffix = 1;
+      while (state.recoveries.some(r => r.id === id)) id = `${initialId}-${suffix++}`;
+      state.recoveries.push({ id, note, draft, at, reason });
+    }
+  }
+  if (state.recoveries.length > 3) conflicts.push('recoveries-limit');
+  const visible = state.windows || [];
+  if (!visible.some(w => w.id === state.active && !w.minimized)) state.active = visible.filter(w => !w.minimized).at(-1)?.id || null;
+  return { state, conflicts };
+}
+
+export function createWorkspaceStore({ storage, key = 'bear-space:v1', viewport, onStatus = () => {} }) {
+  let base, loaded = false, lastWrite = null;
+  let status = { state: 'ready', saved: false, message: '', raw: null, lastWrite: null };
+  const screen = () => typeof viewport === 'function' ? viewport() : viewport;
+  const seed = () => normalizeWorkspaceData({ ...createWorkspace(null, screen()), excerpts: [], recoveries: [] }, { viewport: screen() });
+  const report = (state, saved, message = '', raw = null) => {
+    status = { state, saved, message, raw, lastWrite };
+    try { onStatus({ ...status }); } catch { /* Reporting does not change durability. */ }
+  };
+  function read() {
+    let raw;
+    try { raw = storage.getItem(key); } catch { throw { kind: 'unavailable', message: 'Browser storage cannot be read.', raw: null }; }
+    if (raw === null) return { state: seed(), raw };
+    try {
+      if (typeof raw !== 'string' || new TextEncoder().encode(raw).byteLength > MAX_WORKSPACE_BYTES) throw new Error('Stored workspace exceeds 2 MiB.');
+      const parsed = JSON.parse(raw); validateWorkspaceData(parsed);
+      return { state: normalizeWorkspaceData(parsed, { viewport: screen() }), raw };
+    } catch (error) { throw { kind: 'blocked', message: error.message || 'Stored workspace is damaged.', raw }; }
+  }
+  function load() {
+    try {
+      const result = read(); base = copy(result.state); loaded = true;
+      report('ready', result.raw !== null);
+      return copy(base);
+    } catch (error) {
+      base = seed(); loaded = true; report(error.kind, false, error.message, error.raw);
+      return copy(base);
+    }
+  }
+  function save(value) {
+    if (!loaded) load();
+    let local;
+    try { local = normalizeWorkspaceData(value, { viewport: screen() }); }
+    catch (error) { report('blocked', false, error.message); return { state: value, saved: false, conflicts: [] }; }
+    let remote;
+    try { remote = read(); }
+    catch (error) { report(error.kind, false, error.message, error.raw); return { state: local, saved: false, conflicts: [] }; }
+    const { state, conflicts } = mergeWorkspaceChanges({ base, local, remote: remote.state });
+    if (conflicts.some(field => field.endsWith('-limit'))) {
+      report('unavailable', false, 'Concurrent edits exceed workspace capacity. Export both current and stored versions before merging.', remote.raw);
+      return { state: copy(local), saved: false, conflicts };
+    }
+    const raw = JSON.stringify(state);
+    if (new TextEncoder().encode(raw).byteLength > MAX_WORKSPACE_BYTES) {
+      report('unavailable', false, 'Workspace exceeds 2 MiB and could not be saved.', remote.raw);
+      return { state, saved: false, conflicts };
+    }
+    try {
+      storage.setItem(key, raw);
+      // A storage adapter that silently fails must never produce a saved label.
+      if (storage.getItem(key) !== raw) throw new Error('Workspace write could not be confirmed.');
+      lastWrite = raw; base = copy(state);
+      report(conflicts.length ? 'conflict' : 'ready', true, conflicts.length ? 'Both edits were kept in recovery copies.' : '');
+      return { state: copy(state), saved: true, conflicts };
+    } catch (error) {
+      report('unavailable', false, error.message || 'Workspace could not be saved.', remote.raw);
+      return { state, saved: false, conflicts };
+    }
+  }
+  return { load, save, getStatus: () => ({ ...status }) };
+}
