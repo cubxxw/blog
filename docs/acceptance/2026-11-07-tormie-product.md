@@ -17,3 +17,11 @@ The image is a fresh browser capture of the real https://tormie.com/ homepage, n
 - Independent read-only review found no P1/P2. Two stale Product Lab heading sentinels were reconciled to headings already present in the unchanged HEAD template; the current layout/title was not rewritten to satisfy the check.
 
 Publication follows the existing Netlify Git production builder after the source reaches main. This source-validation record is not itself proof of an online deployment; verify the published revision and live bilingual routes separately. No new article, newsletter message, product-account operation or source-repository visibility change is included.
+
+## Production verification
+
+The final runtime source `a7deceb87e66703ee4bc8e5c15c4fa1e52c836df` was published by the existing Netlify production builder as deployment `6aef27fec2bd2dba165dbe30`, ready at November 7, 2026, 21:33:41 +08:00. GitHub Blog checks and Sitemap Ping completed successfully for that revision. The initial catalog addition was already published from `12b21207`; the follow-up sets only Tormie’s thumbnail focal point to center so the fixed-height card shows the headline and companion face. Screenshot pixels and the card’s dimensions are unchanged, and other products retain their existing focal defaults. A second independent read-only check found no P1/P2 in that narrow follow-up.
+
+Canonical live reads verified the English/Chinese homepages, Products routes, and About routes after following their existing redirects. Each contained Tormie and the public destination with no private repository link. Both live homepage cards carried the correct TestFlight stage, public URL and centered image style. The live JPEG remained 85,640 bytes. Browser verification on the public Chinese page confirmed the image loaded and the card displayed its current stage; the final screenshot stays outside Git.
+
+No production settings, credentials, newsletter subscription, product-account data, new article or testing audience was changed. Subsequent documentation-only commits do not change this deployed runtime source.
