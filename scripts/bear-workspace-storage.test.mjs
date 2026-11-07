@@ -25,3 +25,21 @@ test('two loaded stores merge before writing and expose a truthful readback rece
 test('capacity conflicts refuse disk writes instead of dropping another tab data',()=>{
  const storage=memory(null),store=call('createWorkspaceStore',{storage});store.load();storage.put(JSON.stringify(workspace({favorites:Array.from({length:200},(_,i)=>'/r'+i+'/')})));const original=storage.raw();const result=store.save(workspace({favorites:Array.from({length:200},(_,i)=>'/l'+i+'/')}));assert.equal(result.saved,false);assert.ok(result.conflicts.includes('favorites-limit'));assert.equal(storage.raw(),original);
 });
+test('a fourth recovery refuses repeated saves and retains every older disk copy',()=>{
+ const recoveries=Array.from({length:3},(_,i)=>({id:'older-'+i,note:'Unique older copy '+i,draft:'',at:'2026-11-07T00:00:00Z',reason:'conflict-remote'}));
+ const storage=memory(JSON.stringify(workspace({note:'base',recoveries}))),store=call('createWorkspaceStore',{storage});
+ const base=store.load(),local={...base,note:'This tab edit'};
+ storage.put(JSON.stringify({...base,note:'Other tab edit'}));const original=storage.raw();
+ for(let i=0;i<2;i++){
+  const result=store.save(local);assert.equal(result.saved,false);assert.ok(result.conflicts.includes('recoveries-limit'));
+  assert.equal(storage.raw(),original);assert.equal(result.state.note,'This tab edit');
+  assert.deepEqual(result.state.recoveries.map(r=>r.id),recoveries.map(r=>r.id));
+ }
+});
+test('an older over-capacity stored payload is preserved raw instead of normalized and overwritten',()=>{
+ const recoveries=Array.from({length:4},(_,i)=>({id:'older-'+i,note:'Unique older copy '+i,draft:'',at:'2026-11-07T00:00:00Z',reason:'before-restore'}));
+ const storage=memory(JSON.stringify(workspace({note:'Original',recoveries}))),original=storage.raw(),store=call('createWorkspaceStore',{storage});
+ const state=store.load();assert.equal(store.getStatus().state,'blocked');
+ assert.equal(store.getStatus().raw,original);assert.equal(store.save({...state,note:'New writing'}).saved,false);
+ assert.equal(storage.raw(),original);
+});

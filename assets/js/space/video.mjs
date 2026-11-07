@@ -64,7 +64,7 @@ export function parseYouTubeURL(value) {
   if (!authority || authority.includes('@') || authority.includes(':')) return null;
   let url;
   try { url = new URL(value); } catch { return null; }
-  if (url.protocol !== 'https:' || url.username || url.password || url.port !== '') return null;
+  if (url.protocol !== 'https:' || url.username !== '' || url.password !== '' || url.port !== '') return null;
   const host = url.hostname.toLowerCase();
   let id = '';
   if (host === SHORT_HOST) {
@@ -103,7 +103,7 @@ function isSafeHTTPOrigin(value) {
   if (value.startsWith('//') || /[\u0000-\u001f\u007f\\]/.test(value)) return false;
   try {
     const url = new URL(value);
-    return (url.protocol === 'https:' || url.protocol === 'http:') && !url.username && !url.password && !!url.hostname;
+    return (url.protocol === 'https:' || url.protocol === 'http:') && url.username === '' && url.password === '' && !!url.hostname;
   } catch { return false; }
 }
 

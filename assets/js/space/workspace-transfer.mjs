@@ -15,6 +15,7 @@ export function validateWorkspaceData(raw) {
   if (!Array.isArray(raw.windows) || typeof raw.note !== 'string' || typeof raw.draft !== 'string' || !Array.isArray(raw.favorites)) throw new Error('Invalid workspace data.');
   if (raw.note.length > 40000 || raw.draft.length > 6000) throw new Error('Private text exceeds the supported field limits. Original data must be exported separately.');
   for (const key of ['excerpts', 'recoveries']) if (raw[key] !== undefined && !Array.isArray(raw[key])) throw new Error(`Invalid workspace ${key}.`);
+  if ((raw.recoveries || []).length > 3) throw new Error('Recovery copies exceed capacity. Export the original data before resolving them.');
   if ((raw.excerpts || []).some(item => typeof item?.text === 'string' && item.text.length > MAX_EXCERPT_LENGTH)) throw new Error('Private excerpt text exceeds the supported field limit.');
   if ((raw.recoveries || []).some(item => typeof item?.note === 'string' && item.note.length > 40000 || typeof item?.draft === 'string' && item.draft.length > 6000)) throw new Error('Private recovery text exceeds the supported field limits.');
   if (new TextEncoder().encode(JSON.stringify(raw)).byteLength > MAX_WORKSPACE_BYTES) throw new Error('Workspace exceeds 2 MiB.');
