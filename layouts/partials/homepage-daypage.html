@@ -303,7 +303,7 @@
               <span class="hp-product__more">{{ if $isZh }}查看产品{{ else }}View product{{ end }}</span>
             </div>
           </a>
-          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links">{{ if ne $productUrl .github }}<a href="{{ $productUrl }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }}</a>{{ end }}<a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub</a></span></div>
+          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links">{{ if ne $productUrl .github }}<a href="{{ $productUrl }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }}</a>{{ end }}{{ if .github }}<a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub</a>{{ end }}</span></div>
         </article>
         {{- end }}
       </div>

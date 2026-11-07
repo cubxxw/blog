@@ -322,7 +322,7 @@
               {{- if ne $productUrl $product.github }}
               <a href="{{ $productUrl }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
               {{- end }}
-              <a href="{{ $product.github }}" target="_blank" rel="noopener">{{ if $isZh }}查看源码{{ else }}View source{{ end }}</a>
+              {{- with $product.github }}<a href="{{ . }}" target="_blank" rel="noopener">{{ if $isZh }}查看源码{{ else }}View source{{ end }}</a>{{ end }}
             </div>
           </div>
         </article>

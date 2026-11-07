@@ -11,7 +11,10 @@ const routes = [
     required: [
       "CUBXXW OS",
       "Product Lab",
-      "Products are where ideas meet reality.",
+      "Work & build notes.",
+      "Tormie",
+      "https://tormie.com",
+      "TestFlight",
       "capri",
       "Early access by request",
       "What this cycle tests",
@@ -38,6 +41,7 @@ const routes = [
       "IMStage: Synthetic Conversations for Tests and Evaluation",
     ],
     forbidden: [
+      "https://github.com/getyak/tormie",
       "leafhour.jpg",
       "imstage-zh.jpg",
       "imstage.org/?lang=zh",
@@ -50,7 +54,10 @@ const routes = [
     required: [
       "CUBXXW OS",
       "Product Lab",
-      "产品，是判断接受现实检验的地方。",
+      "作品与构建记录",
+      "Tormie",
+      "https://tormie.com",
+      "TestFlight",
       "capri",
       "早期使用申请",
       "这一轮正在验证",
@@ -77,6 +84,7 @@ const routes = [
       "IMStage：用于测试与评测的合成对话",
     ],
     forbidden: [
+      "https://github.com/getyak/tormie",
       "leafhour-en.jpg",
       "https://leafhour.com/en",
       "imstage-en.jpg",
@@ -171,7 +179,7 @@ for (const lang of ["en", "zh"]) {
   for (const route of ["index.html", "about/index.html"]) {
     const file = path.join(outputRoot, prefix, route);
     const html = await readFile(file, "utf8");
-    for (const value of ["capri", "https://gettalentsignal.com"]) {
+    for (const value of ["Tormie", "https://tormie.com", "capri", "https://gettalentsignal.com"]) {
       if (!html.includes(value)) failures.push(`${prefix}${route} is missing: ${value}`);
     }
     const leafhourURL = lang === "en" ? "https://leafhour.com/en" : "https://leafhour.com";
@@ -199,6 +207,7 @@ for (const lang of ["en", "zh"]) {
 }
 
 const screenshots = [
+  { file: "tormie.jpg", label: "Tormie" },
   { file: "leafhour.jpg", label: "Leafhour (zh)" },
   { file: "leafhour-en.jpg", label: "Leafhour (en)" },
   { file: "talent-signal.jpg", label: "capri (earlier Talent Signal interface)" },

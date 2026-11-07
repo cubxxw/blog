@@ -62,6 +62,32 @@ products:
       - /growth/posts/ai-english-learning
     tags: [ai, learning, open-source]
 
+  - id: tormie
+    name: Tormie
+    stage_zh: TestFlight 测试
+    stage_en: TestFlight beta
+    headline_zh: 留下此刻，回来接着聊。
+    headline_en: Your life, in good company.
+    os_thesis_zh: 保留原始记录，让后来的理解有据可查。
+    os_thesis_en: Keep the original. Make later understanding inspectable.
+    desc_zh: 用语音、文字和照片记录日常，把原始记录带回持续的对话。原文、转写与 AI 解读分开保留，理解有来源，也能由自己纠正。
+    desc_en: Capture everyday thoughts through voice, text and photos, then return to an ongoing conversation grounded in your original records. Originals, transcripts and AI interpretations stay distinct, with sources to inspect and interpretations to correct.
+    audience_zh: 日常记录者 · 个人知识与自我理解
+    audience_en: Everyday capture · Personal knowledge and reflection
+    stack: SwiftUI · Node.js · SQLite · MCP
+    color: sage
+    mark: TO
+    url: https://tormie.com
+    demo: https://tormie.com/#demo
+    image_alt_zh: Tormie 真实官网首屏，折纸伙伴与 Your life, in good company. 标题并置
+    image_alt_en: The live Tormie homepage with its folded-paper companion beside the headline Your life, in good company.
+    question_zh: 随手留下的记录，能否在之后的对话中帮助自己形成理解，同时保留原话和纠正的余地？
+    question_en: Can an everyday record help a later conversation make sense of an experience while preserving the original words and room for correction?
+    boundary_zh: iOS 正在 TestFlight 测试；官网演示使用合成内容，申请不等于立即获得邀请。私人记录不进入公开演示，AI 解读需要自行核对。
+    boundary_en: The iOS app is in TestFlight testing. The website demo uses synthetic content, and applying does not guarantee an immediate invitation. Private records stay out of the public demo; check AI interpretations yourself.
+    related: []
+    tags: [agent, ai, personal-productivity]
+
   - id: imstage
     name: IMStage
     stage_zh: 已上线
