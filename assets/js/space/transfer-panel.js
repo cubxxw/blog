@@ -1,0 +1,133 @@
+import { MAX_WORKSPACE_BYTES, createBackup, parseBackup } from './workspace-transfer.mjs';
+import { serializeWorkspace } from './state.mjs';
+
+export function mountTransferPanel({ host, catalog, getState, restoreState, download, notify, getStorageStatus = () => ({ state: 'ready', saved: true }) }) {
+  const zh = catalog.language === 'zh';
+  const t = (cn, en) => zh ? cn : en;
+  const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
+  const panel = el('section', 'space-transfer');
+  panel.setAttribute('aria-label', t('备份与恢复', 'Backup and restore'));
+  panel.append(el('h3', '', t('带走你的工作区', 'Take your workspace with you')));
+  panel.append(el('p', 'space-transfer__hint', t('备份包含笔记、留言草稿、收藏、来源摘录和窗口布局。恢复只写入当前浏览器。', 'Backups contain notes, message drafts, bookmarks, source excerpts and window layouts. Restore writes only to this browser.')));
+  const actions = el('div', 'space-transfer__actions');
+  const exportButton = el('button', 'space-button', t('下载备份', 'Download backup'));
+  exportButton.type = 'button'; exportButton.dataset.transferExport = '';
+  const fileLabel = el('label', 'space-transfer__file', t('选择备份文件', 'Choose a backup file'));
+  const file = el('input'); file.type = 'file'; file.accept = '.json,application/json'; file.dataset.transferFile = '';
+  file.setAttribute('aria-label', t('选择 JSON 备份，最多 2 MiB', 'Choose a JSON backup, up to 2 MiB'));
+  fileLabel.append(file); actions.append(exportButton, fileLabel); panel.append(actions);
+  const status = el('p', 'space-transfer__status'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite'); status.dataset.transferStatus = '';
+  panel.append(status);
+  const storageInfo = el('p', 'space-transfer__status'); storageInfo.setAttribute('role', 'status'); storageInfo.setAttribute('aria-live', 'polite'); storageInfo.dataset.transferStorageStatus = ''; panel.append(storageInfo);
+  const preview = el('div', 'space-transfer__preview'); preview.hidden = true; preview.dataset.transferPreview = '';
+  const summary = el('p', 'space-transfer__summary'); summary.dataset.transferSummary = '';
+  const snippet = el('pre', 'space-transfer__snippet'); snippet.dataset.transferSnippet = '';
+  const warning = el('p', 'space-transfer__hint');
+  const confirm = el('button', 'space-button', t('备份当前内容并恢复', 'Back up current content and restore')); confirm.type = 'button'; confirm.dataset.transferConfirm = '';
+  const cancel=el('button','space-button space-button--secondary',t('取消恢复','Cancel restore'));cancel.type='button';cancel.dataset.transferCancel='';
+  preview.append(el('h4', '', t('恢复前预览', 'Preview before restoring')), summary, snippet, warning, confirm,cancel); panel.append(preview);
+  const previous = el('button', 'space-button space-button--secondary', t('下载恢复前的备份', 'Download the previous workspace')); previous.type = 'button'; previous.hidden = true; previous.dataset.transferPrevious = ''; panel.append(previous);
+  const recoveries = el('div', 'space-transfer__recoveries'); recoveries.dataset.transferRecoveries = ''; panel.append(recoveries);
+  host.append(panel);
+  let disposed = false, generation = 0, selected = null, selectionState = '', priorBackup = null;
+  const workspaceRoot = host.closest?.('[data-bear-workspace]');
+  let recoveryFingerprint = '', previousRaw, previousStatus;
+  const filename = prefix => `${prefix}-${new Date().toISOString().slice(0, 10)}.json`;
+  const snapshot = () => serializeWorkspace(getState());
+  const exportJSON = (backup, prefix = 'bear-workspace') => download(JSON.stringify(backup), filename(prefix), 'application/json');
+  const fail = message => { status.textContent = message; status.dataset.error = 'true'; };
+  const succeed = message => { status.textContent = message; delete status.dataset.error; };
+  function renderRecoveries() {
+    const copies = getState().recoveries || [];
+    const storageStatus = getStorageStatus(), fingerprint = JSON.stringify(copies);
+    if (fingerprint === recoveryFingerprint && storageStatus.raw === previousRaw && storageStatus.state === previousStatus) return;
+    recoveryFingerprint = fingerprint; previousRaw = storageStatus.raw; previousStatus = storageStatus.state;
+    recoveries.replaceChildren();
+    if (copies.length) {
+      recoveries.append(el('h4', '', t('保留的内容副本', 'Preserved copies')));
+      recoveries.append(el('p', 'space-transfer__hint', t('并发编辑的两份文本保留在这里。下载后比较，再自行合并。', 'Copies from concurrent edits are kept here. Download and compare them before merging.')));
+      for (const [index, copy] of copies.entries()) {
+        const row = el('div', 'space-transfer__recovery');
+        const side = copy.reason === 'conflict-local' ? t('当前标签页', 'This tab') : copy.reason === 'conflict-remote' ? t('另一个标签页', 'Another tab') : t('恢复前内容', 'Previous content');
+        row.append(el('p', '', `${index + 1}. ${side}${copy.at ? ` · ${copy.at}` : ''}`));
+        const button = el('button', 'space-button space-button--secondary', t('导出这份文本', 'Export this copy')); button.type = 'button';
+        button.addEventListener('click', () => download(`${t('笔记', 'Note')}\n\n${copy.note || ''}\n\n---\n\n${t('留言草稿', 'Message draft')}\n\n${copy.draft || ''}`, `bear-recovery-${index + 1}.md`, 'text/markdown;charset=utf-8'));
+        row.append(button); recoveries.append(row);
+      }
+    }
+    if (['blocked', 'unavailable'].includes(storageStatus.state) && typeof storageStatus.raw === 'string') {
+      const label = storageStatus.state === 'blocked' ? t('导出未能读取的原始数据', 'Export unreadable original data') : t('导出浏览器里保存的版本', 'Export the stored version');
+      const rawButton = el('button', 'space-button space-button--secondary', label); rawButton.type = 'button'; rawButton.dataset.transferRaw = '';
+      rawButton.addEventListener('click', () => download(storageStatus.raw, filename('bear-unreadable-data'), 'application/json'));
+      recoveries.append(rawButton);
+    }
+  }
+  function refreshStorage() {
+    if (disposed) return;
+    const current = getStorageStatus();
+    storageInfo.dataset.error = String(current.saved === false || current.state === 'conflict');
+    if (current.state === 'blocked') storageInfo.textContent = t('已有数据未能读取，自动保存已暂停。先导出原始数据；当前内容也可单独下载备份。', 'Existing data could not be read, so automatic saving is paused. Export the original data; the current content can also be backed up.');
+    else if (current.saved === false) storageInfo.textContent = t('当前内容尚未保存到浏览器。请下载备份；已保存的版本也可单独导出。', 'Current content has not been saved in this browser. Download a backup; the stored version can also be exported separately.');
+    else if (current.state === 'conflict') storageInfo.textContent = t('两份编辑已保存为保留副本。下载后比较，再自行合并。', 'Both edits have been saved as preserved copies. Download and compare them before merging.');
+    else storageInfo.textContent = t('当前内容已保存在这个浏览器。', 'Current content is saved in this browser.');
+    renderRecoveries();
+  }
+  succeed(t('文件留在你的设备上，不会上传。', 'The file stays on your device and is never uploaded.'));
+  refreshStorage(); workspaceRoot?.addEventListener('bear:workspace-change', refreshStorage);
+  exportButton.addEventListener('click', () => {
+    try { exportJSON(createBackup(getState())); succeed(t('已生成工作区备份。', 'Workspace backup generated.')); }
+    catch { fail(t('备份未能生成。内容可能超过容量，请先导出笔记与保留副本。', 'The backup could not be generated. Export notes and preserved copies separately if the workspace is too large.')); }
+  });
+  previous.addEventListener('click', () => { if (priorBackup) exportJSON(priorBackup, 'bear-before-restore'); });
+  cancel.addEventListener('click',()=>{generation++;selected=null;preview.hidden=true;file.value='';confirm.disabled=false;succeed(t('恢复已取消，当前内容未改变。','Restore cancelled. Current content is unchanged.'));});
+  file.addEventListener('change', async () => {
+    const currentGeneration = ++generation; selected = null; preview.hidden = true;
+    const chosen = file.files?.[0]; if (!chosen) return;
+    if (chosen.size > MAX_WORKSPACE_BYTES) { fail(t('备份文件不能超过 2 MiB。', 'The backup must be at most 2 MiB.')); return; }
+    try {
+      const text=await chosen.text();
+      if (disposed || currentGeneration !== generation) return;
+      const result = parseBackup(text, { viewport: { width: 10000, height: 10000 }, catalog });
+      selected = result; selectionState = snapshot();
+      const s = result.summary;
+      summary.textContent = t(`${s.noteCharacters} 字笔记 · ${s.draftCharacters} 字草稿 · ${s.favorites} 条收藏 · ${s.excerpts} 条摘录 · ${s.recoveries} 份保留副本 · ${s.windows} 个窗口`, `${s.noteCharacters} note characters · ${s.draftCharacters} draft characters · ${s.favorites} bookmarks · ${s.excerpts} excerpts · ${s.recoveries} preserved copies · ${s.windows} windows`);
+      snippet.textContent = result.state.note.slice(0, 280) || t('这份备份没有笔记。', 'This backup contains no note.');
+      warning.textContent = result.warnings.length ? t('部分旧格式、失效来源或超限内容已处理。确认恢复前，请核对数量和笔记摘要。', 'Legacy data, unavailable sources or size limits were handled. Check the counts and note preview before restoring.') : t('恢复会替换当前笔记、草稿、收藏和布局；恢复前会生成当前备份。', 'Restore replaces the current notes, drafts, bookmarks and layouts. A backup of the current workspace is generated first.');
+      preview.hidden = false; confirm.disabled = false; succeed(t('备份有效。核对预览后再恢复。', 'Backup validated. Review the preview before restoring.'));
+    } catch {
+      if (!disposed && currentGeneration === generation) fail(t('未能读取这份备份。请使用 BEAR 工作区 JSON 备份，且版本为 1。当前内容没有改变。', 'This backup could not be read. Use a BEAR workspace JSON backup with version 1. Your current content has not changed.'));
+    }
+  });
+  confirm.addEventListener('click', async () => {
+    if (!selected || disposed || confirm.disabled) return;
+    if (snapshot() !== selectionState) {
+      selected = null; preview.hidden = true; file.value = '';
+      fail(t('预览期间工作区发生了变化。请重新选择备份并核对预览，避免覆盖新修改。', 'The workspace changed during preview. Choose the backup again and review it to protect your new edits.')); return;
+    }
+    confirm.disabled = true;
+    const candidate=selected,confirmationGeneration=generation;
+    try {
+      priorBackup = createBackup(getState()); previous.hidden = false;
+      // Download happens on the explicit restore gesture, before any state mutation.
+      exportJSON(priorBackup, 'bear-before-restore');
+      const result = await restoreState(candidate.state,{expected:selectionState,isCurrent:()=>!disposed&&generation===confirmationGeneration&&selected===candidate});
+      if(disposed||generation!==confirmationGeneration||selected!==candidate)return;
+      const saved = result === true || result?.saved === true;
+      const stale = !saved && result?.reason === 'stale-restore';
+      notify?.(saved ? t('工作区已恢复。', 'Workspace restored.') : stale ? t('工作区有新修改，恢复已停止。', 'The workspace changed, so restore was stopped.') : t('恢复尚未保存，请保留备份。', 'Restore is not saved. Keep your backup.'));
+      if (disposed) return;
+      if (stale) {
+        selected = null; preview.hidden = true; file.value = '';
+        fail(t('工作区有了新修改，预览已过期。请重新选择备份并核对预览。', 'The workspace has new changes and the preview expired. Choose the backup again and review it.'));
+      } else if (!saved) {
+        fail(t('恢复未能保存到浏览器。恢复前的备份已保留，当前内容请另行导出。', 'Restore could not be saved in this browser. The previous backup is preserved; export the current content as well.'));
+      } else {
+        selected = null; preview.hidden = true; file.value = '';
+        succeed(t('已恢复到当前浏览器，恢复前的内容仍可下载。', 'Restored in this browser. The previous workspace remains available to download.'));
+      }
+      refreshStorage();
+    } catch { if (!disposed) fail(t('恢复未完成。恢复前的备份仍可下载。', 'Restore did not complete. The previous backup remains available to download.')); }
+    finally { if (!disposed) confirm.disabled = false; }
+  });
+  return () => { disposed = true; generation++; selected = null; priorBackup = null; workspaceRoot?.removeEventListener('bear:workspace-change', refreshStorage); panel.remove(); };
+}

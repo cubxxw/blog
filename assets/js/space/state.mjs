@@ -1,5 +1,6 @@
 // The durable workspace contains values, never DOM nodes, credentials or executable code.
-export const APPS = ['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings'];
+import { normalizeExcerpts } from './excerpts.mjs';
+export const APPS = ['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'video', 'notes', 'contact', 'terminal', 'agent', 'settings'];
 const finite = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 export function fitRect(rect = {}, viewport = {}) {
@@ -36,11 +37,19 @@ export function planWindowArrangement(state, viewport = {}) {
   return { mode: 'overview', rectangles: [] };
 }
 function seed() {
-  return { version: 1, windows: [], active: null, note: '', draft: '', favorites: [], theme: 'light', wallpaper: 'dawn', initialized: false };
+  return { version: 1, windows: [], active: null, note: '', draft: '', favorites: [], excerpts: [], recoveries: [], theme: 'light', wallpaper: 'dawn', initialized: false };
+}
+export function normalizeRecoveryCopies(values) {
+  const ids = new Set();
+  return (Array.isArray(values) ? values : []).filter(item => item && typeof item === 'object' && typeof item.note === 'string' && typeof item.draft === 'string').slice(-3).map((item,index) => {
+    const base = typeof item.id === 'string' && /^[\w-]{1,120}$/.test(item.id) ? item.id : `recovery-${index+1}`;
+    let id=base,suffix=1;while(ids.has(id))id=`${base.slice(0,110)}-${suffix++}`;ids.add(id);
+    return {id,note:item.note.slice(0,40000),draft:item.draft.slice(0,6000),at:typeof item.at==='string'&&Number.isFinite(Date.parse(item.at))?new Date(item.at).toISOString():'',reason:typeof item.reason==='string'?item.reason.slice(0,40).replace(/[\u0000-\u001f\u007f]/g,''):''};
+  });
 }
 export function createWorkspace(saved, viewport) {
   let raw = saved;
-  try { if (typeof saved === 'string') raw = saved.length < 200000 ? JSON.parse(saved) : null; } catch { raw = null; }
+  try { if (typeof saved === 'string') raw = new TextEncoder().encode(saved).byteLength <= 2*1024*1024 ? JSON.parse(saved) : null; } catch { raw = null; }
   const result = seed();
   if (!raw || raw.version !== 1) return result;
   const used = new Set();
@@ -54,6 +63,8 @@ export function createWorkspace(saved, viewport) {
   result.active = result.windows.some(w => w.id === raw.active && !w.minimized) ? raw.active : result.windows.filter(w => !w.minimized).at(-1)?.id || null;
   result.note = typeof raw.note === 'string' ? raw.note.slice(0, 40000) : '';
   result.draft = typeof raw.draft === 'string' ? raw.draft.slice(0, 6000) : '';
+  result.excerpts = normalizeExcerpts(raw.excerpts);
+  result.recoveries = normalizeRecoveryCopies(raw.recoveries);
   result.favorites = Array.isArray(raw.favorites) ? [...new Set(raw.favorites.filter(v => typeof v === 'string' && v.startsWith('/') && !v.startsWith('//')).map(v => v.slice(0, 500)))].slice(0, 200) : [];
   result.theme = raw.theme === 'dark' ? 'dark' : 'light';
   result.wallpaper = ['dawn', 'dusk', 'forest'].includes(raw.wallpaper) ? raw.wallpaper : 'dawn';
@@ -100,6 +111,8 @@ export function reduceWorkspace(state, action, viewport) {
     next.windows.forEach(win => { win.rect = fitRect(win.rect, viewport); });
   } else if (action.type === 'note') next.note = String(action.text).slice(0, 40000);
   else if (action.type === 'draft') next.draft = String(action.text).slice(0, 6000);
+  else if (action.type === 'excerpts') next.excerpts = normalizeExcerpts(action.items);
+  else if (action.type === 'recoveries') next.recoveries = normalizeRecoveryCopies(action.items);
   else if (action.type === 'favorite' && typeof action.url === 'string' && action.url.startsWith('/') && !action.url.startsWith('//')) {
     next.favorites = next.favorites.includes(action.url) ? next.favorites.filter(v => v !== action.url) : [...next.favorites, action.url].slice(-200);
   } else if (action.type === 'theme') next.theme = action.value === 'dark' ? 'dark' : 'light';

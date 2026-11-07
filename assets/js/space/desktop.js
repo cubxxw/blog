@@ -8,6 +8,12 @@ import { APPS, createWorkspace, reduceWorkspace, serializeWorkspace, fitRect, pl
 import { mountApps, escapeHTML } from './apps.js';
 import { findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction, resolveSpaceRoute } from './navigation.mjs';
 import { usesSingleWindow } from './reading-layout.mjs';
+import { createWorkspaceStore } from './workspace-storage.mjs';
+import { createBackup } from './workspace-transfer.mjs';
+import { commitWorkspaceRestore } from './workspace-restore.mjs';
+import { createExcerpt } from './excerpts.mjs';
+import { parseYouTubeURL } from './video.mjs';
+import { photoState } from './media-state.mjs';
 
 const root = document.querySelector('[data-bear-workspace]');
 // Space belongs to a full page. Its own browser may show the blog, whose links
@@ -30,9 +36,11 @@ function mountDesktop(root) {
   mountClassicDesktop({root,execute,notify});
   const stateViewport = () => usesSingleWindow(root.clientWidth) ? { width: 10000, height: 10000 } : viewport();
   const storageKey = 'bear-space:v1';
-  let saved, saveFailure = false;
-  try { saved = localStorage.getItem(storageKey); } catch { saveFailure = true; }
-  let state = createWorkspace(saved,stateViewport());
+  let browserStorage;
+  try { browserStorage = window.localStorage; }
+  catch { browserStorage = {getItem(){throw Error('Storage unavailable');},setItem(){throw Error('Storage unavailable');}}; }
+  const store = createWorkspaceStore({storage:browserStorage,key:storageKey,viewport:stateViewport});
+  let state = store.load(), saveFailure = store.getStatus().state !== 'ready';
   const nodes = new Map();
   let onboarding = false, cafe, readingFocus = false, readingFocusReturn = null;
   let companionFocus = null;
@@ -56,25 +64,51 @@ function mountDesktop(root) {
     const toast = root.querySelector('[data-space-toast]'); toast.textContent = message; toast.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; },4000);
   }
-  const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,getStorageStatus:()=>!saveFailure,updateNote:text=>update({type:'note',text},false),notify,icon });
+  const storageNotice = document.createElement('button');
+  storageNotice.type='button';storageNotice.className='space-storage-notice';storageNotice.dataset.storageNotice='';storageNotice.hidden=true;root.append(storageNotice);
+  storageNotice.addEventListener('click',()=>open('settings'));
+  const apps = mountApps({ root,catalog,execute,getState:()=>state,getContext:()=>companionFocus,getStorageStatus:()=>!saveFailure,getWorkspaceStatus:()=>store.getStatus(),restoreState,updateNote:text=>update({type:'note',text},false),notify,icon });
   root.addEventListener('bear:agent-status',event=>{
     const button=root.querySelector('[data-space-dock] [data-open="agent"]');
     if(button){button.dataset.agentState=event.detail.state;button.title=t('空间助手','Space companion')+' · '+({working:t('进行中','Working'),waiting:t('等待确认','Approval needed'),done:t('已完成','Done'),error:t('未完成','Failed'),stopped:t('已停止','Stopped'),idle:t('就绪','Ready')}[event.detail.state] || '');}
   });
   function persist() {
-    try { localStorage.setItem(storageKey,serializeWorkspace(state)); saveFailure=false; return true; }
-    catch { if (!saveFailure) notify(t('浏览器未能保存。请导出一份笔记。','Browser storage failed. Please export your notes.')); saveFailure = true; return false; }
+    const previous=state,result=store.save(state);state=result.state;saveFailure=!result.saved;
+    const editor=root.querySelector('[data-note-editor]');
+    if(editor&&previous.note!==state.note&&editor.value!==state.note){const start=editor.selectionStart,end=editor.selectionEnd;editor.value=state.note;editor.setSelectionRange?.(Math.min(start,state.note.length),Math.min(end,state.note.length));}
+    showStorageStatus(result);
+    return result.saved;
+  }
+  function showStorageStatus(result) {
+    storageNotice.hidden=result.saved&&!(state.recoveries?.length);
+    storageNotice.textContent=result.saved?t('有保留副本 · 在设置中查看','Preserved copies · View in Settings'):t('尚未保存 · 导出与恢复','Not saved · Export and recover');
+  }
+  async function restoreState(next, {isCurrent=()=>true,expected=serializeWorkspace(state)}={}) {
+    const commit=()=>{
+      const result=commitWorkspaceRestore({getState:()=>state,next,expected,store,viewport:stateViewport(),isCurrent});
+      if(result.saved){
+        state=result.state;saveFailure=false;readingFocus=false;readingFocusReturn=null;
+        for(const [id,entry] of nodes)if(entry.el.dataset.app!=='settings'){apps.dispose(id);entry.rendered=false;}
+        render();root.dispatchEvent(new CustomEvent('bear:workspace-change',{detail:{type:'restore',active:state.active,saved:true}}));
+      }else if(!result.reason){saveFailure=true;}
+      showStorageStatus({saved:!saveFailure});
+      return result;
+    };
+    // The store also preserves conflicts without Web Locks; this lock only
+    // coordinates participating restores, and does not claim atomic tabs.
+    return globalThis.navigator?.locks?.request ? navigator.locks.request(storageKey,commit) : commit();
   }
   function title(win) {
     if (win.app === 'products' && win.payload) return catalog.products.find(p => p.id === win.payload)?.name || labels.products;
     if (win.app === 'reader' && win.payload) return [...catalog.articles, ...(catalog.readingDocuments || [])].find(a => a.url === win.payload)?.title || labels.reader;
-    if (win.app === 'photos' && win.payload) return catalog.photos.find(p => p.id === win.payload)?.title || labels.photos;
+    if (win.app === 'photos' && win.payload) return catalog.photos.find(p => p.id === photoState(catalog.photos,win.payload).selectedID)?.title || labels.photos;
+    if (win.app === 'video' && win.payload) return catalog.videos?.find(item=>item.id===parseYouTubeURL(win.payload)?.id)?.title || labels.video;
     return labels[win.app];
   }
   function update(action, redraw = true) {
     state = reduceWorkspace(state,action,stateViewport());
     const saved=persist(); if (redraw) render();
-    root.dispatchEvent(new CustomEvent('bear:workspace-change',{ detail:{type:action.type,active:state.active} }));
+    root.dispatchEvent(new CustomEvent('bear:workspace-change',{ detail:{type:action.type,active:state.active,saved} }));
     return saved;
   }
   function arrangementLabel(plan) {
@@ -149,6 +183,7 @@ function mountDesktop(root) {
     if (launchpad.open) drawLaunchpad();
     syncReadingFocus();
     syncArrangementControls();
+    syncPlayerVisibility();
   }
   function syncReadingFocus() {
     root.querySelectorAll('[data-reader-focus]').forEach(button => {
@@ -214,7 +249,13 @@ function mountDesktop(root) {
     return t(`未知命令：${name}。输入 help 查看命令。`,`Unknown command: ${name}. Type help.`);
   }
   function execute(name,args = {}) {
-    if (name === 'open') return open(args.app,args.payload);
+    if (name === 'open') {const result=open(args.app,args.payload);if(args.app==='reader'&&args.anchor)apps.revealAnchor('reader',args.anchor);return result;}
+    if(name==='excerpt'){
+      const result=createExcerpt(args,state.excerpts,catalog);
+      if(!result.ok||result.status==='duplicate')return {...result,saved:!saveFailure};
+      const saved=update({type:'excerpts',items:result.excerpts},false);return {...result,saved};
+    }
+    if(name==='excerpt-remove')return {saved:update({type:'excerpts',items:state.excerpts.filter(item=>item.id!==args.id)},false)};
     if (name === 'ask') { open('agent');root.dispatchEvent(new CustomEvent('bear:agent-prefill',{detail:{focus:companionFocus,question:args.question || '',selection:args.selection || ''}}));return true; }
     if (name === 'enter') { completeEntry(); render(); showLaunchpad(); return true; }
     if (name === 'language') {
@@ -246,7 +287,7 @@ function mountDesktop(root) {
     if (name === 'search') { showSearch(args.query || ''); return true; }
     if (name === 'launchpad') { showLaunchpad(args.query || ''); return true; }
     if (name === 'run') return runSandbox(args.command);
-    if (name === 'export') { apps.download(serializeWorkspace(state),'bear-workspace.json','application/json'); notify(t('已导出你的笔记、收藏和布局。','Exported your notes, bookmarks and layout.')); return true; }
+    if (name === 'export') { try{apps.download(JSON.stringify(createBackup(state)),'bear-workspace.json','application/json');notify(t('已生成工作区备份，包含笔记、摘录、收藏和布局。','Generated a workspace backup with notes, excerpts, bookmarks and layout.'));return true;}catch{notify(t('备份未能生成，请先在设置中导出文本副本。','The backup could not be generated. Export text copies in Settings first.'));return false;} }
     throw new Error(`Unknown workspace tool: ${name}`);
   }
   async function runSandbox(command) {
@@ -497,7 +538,12 @@ function mountDesktop(root) {
   let resizeTimer;
   window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{finishDrag(true);update({type:'viewport'});},100);});
   root.addEventListener('space:surfacechange',()=>{finishDrag(true);update({type:'viewport'});});
-  window.addEventListener('storage',event=>{if(event.key===storageKey&&event.newValue){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了空间。刷新后可以载入。','Another tab updated this space. Reload to load it.'));return;}state=createWorkspace(event.newValue,stateViewport());const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();}});
+  window.addEventListener('storage',event=>{if((event.key===storageKey||event.key===null)&&event.newValue!==store.getStatus().lastWrite){const localEditing=root.contains(document.activeElement)&&isEditableTarget(document.activeElement);if(localEditing){notify(t('另一个标签页更新了工作区。当前输入保留；保存时会核对并保留冲突副本。','Another tab updated the workspace. Your input remains; saving checks and preserves conflicting copies.'));return;}persist();const note=nodes.get('notes');if(note)note.rendered=false;const contact=nodes.get('contact');if(contact)contact.rendered=false;render();root.dispatchEvent(new CustomEvent('bear:workspace-change',{detail:{type:'storage',active:state.active,saved:!saveFailure}}));}});
+  function syncPlayerVisibility(){for(const win of state.windows)apps.setVisible(win.id,!document.hidden&&!root.hidden&&root.dataset.cafeMode==='desktop'&&!win.minimized&&(!usesSingleWindow(root.clientWidth)||win.id===state.active));}
+  const mediaVisibility=new MutationObserver(syncPlayerVisibility);mediaVisibility.observe(root,{attributes:true,attributeFilter:['hidden','data-cafe-mode']});
+  document.addEventListener('visibilitychange',syncPlayerVisibility);
+  window.addEventListener('pagehide',()=>{for(const win of state.windows)apps.setVisible(win.id,false);});
+  window.addEventListener('pageshow',syncPlayerVisibility);
   function setView(view,writeHash=true){
     knowledgeGeneration++;knowledgePending=false;
     delete productRoot.dataset.knowledgeView;
@@ -572,5 +618,6 @@ function mountDesktop(root) {
   const focusEntryURL=location.href;
   if(entryFocusManaged)handoffEntryFocus({ready:cafe.ready,target:initialTarget,origin:initialOrigin,document,window,isCurrent:()=>location.href===focusEntryURL&&state.active===entryRoute.app&&root.dataset.cafeMode==='desktop'&&!root.hidden,focus:()=>focusWindow(entryRoute.app)});
   root.dataset.ready='true';
+  showStorageStatus({saved:!saveFailure});
   if(saveFailure)notify(t('无法使用浏览器存储。笔记可导出，但刷新后可能丢失。','Browser storage is unavailable. Export notes before reloading.'));
 }
