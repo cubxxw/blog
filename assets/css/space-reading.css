@@ -1,5 +1,5 @@
 /* Reading tools stay inside BEAR OS; article and homepage styles are unchanged. */
-.space .space-reading-toolbar { flex-wrap: wrap; gap: 10px 14px; }
+.space .space-reading-document .space-reader-toolbar.space-reading-toolbar { flex-wrap: wrap; gap: 10px 14px; }
 .space .space-reading-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; width: 100%; border-top: 1px solid var(--sp-line); padding-top: 10px; }
 .space .space-reading-tools__save,
 .space .space-excerpt-shelf__action { min-width: 44px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--sp-line); border-radius: 7px; background: var(--sp-soft); color: var(--sp-ink); font-size: 14px; line-height: 1.45; text-align: left; }
