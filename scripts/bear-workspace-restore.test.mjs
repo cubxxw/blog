@@ -15,3 +15,11 @@ test('new typing or a cancelled preview prevents a late restore write',()=>{
 test('quota failure retains the prior UI state and original stored bytes',()=>{
  const f=fixture(),old=f.getState(),raw=f.raw();f.refuse();const result=commit({...f,next:{...createWorkspace(null,screen),note:'Import'},expected:serializeWorkspace(old),viewport:screen});assert.equal(result.saved,false);assert.equal(f.getState(),old);assert.equal(f.raw(),raw);
 });
+test('restoring three recovery copies never evicts one to append a before-copy',()=>{
+ const f=fixture(),old=f.getState(),raw=f.raw();
+ const recoveries=Array.from({length:3},(_,i)=>({id:'imported-'+i,note:'Unique imported copy '+i,draft:'',at:'2026-11-07T00:00:00Z',reason:'before-restore'}));
+ const next={...createWorkspace(null,screen),note:'Imported',recoveries};
+ const result=commit({...f,next,expected:serializeWorkspace(old),viewport:screen});
+ assert.equal(result.saved,false);assert.equal(result.reason,'recovery-capacity');
+ assert.equal(f.raw(),raw);assert.equal(f.getState(),old);assert.equal(next.recoveries.length,3);
+});

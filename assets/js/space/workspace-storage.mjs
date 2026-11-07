@@ -53,7 +53,7 @@ export function mergeWorkspaceChanges({ base, local, remote }) {
       state.recoveries.push({ id, note, draft, at, reason });
     }
   }
-  state.recoveries = state.recoveries.slice(-3);
+  if (state.recoveries.length > 3) conflicts.push('recoveries-limit');
   const visible = state.windows || [];
   if (!visible.some(w => w.id === state.active && !w.minimized)) state.active = visible.filter(w => !w.minimized).at(-1)?.id || null;
   return { state, conflicts };
@@ -99,7 +99,7 @@ export function createWorkspaceStore({ storage, key = 'bear-space:v1', viewport,
     const { state, conflicts } = mergeWorkspaceChanges({ base, local, remote: remote.state });
     if (conflicts.some(field => field.endsWith('-limit'))) {
       report('unavailable', false, 'Concurrent edits exceed workspace capacity. Export both current and stored versions before merging.', remote.raw);
-      return { state, saved: false, conflicts };
+      return { state: copy(local), saved: false, conflicts };
     }
     const raw = JSON.stringify(state);
     if (new TextEncoder().encode(raw).byteLength > MAX_WORKSPACE_BYTES) {

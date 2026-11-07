@@ -13,6 +13,8 @@ export function commitWorkspaceRestore({ getState, next, expected, store, viewpo
   const keepSettings = settings && windows.length < 16;
   if (keepSettings) windows.push(settings);
   const recovery = {id:`restore-${Date.parse(now).toString(36)}`,note:previous.note,draft:previous.draft,at:now,reason:'before-restore'};
-  const proposed = createWorkspace({...next,windows,active:keepSettings?settings.id:next.active,recoveries:[...(next.recoveries || []),...(recovery.note || recovery.draft ? [recovery] : [])].slice(-3)},viewport);
+  const recoveries = [...(next.recoveries || []),...(recovery.note || recovery.draft ? [recovery] : [])];
+  if (recoveries.length > 3) return {saved:false,reason:'recovery-capacity'};
+  const proposed = createWorkspace({...next,windows,active:keepSettings?settings.id:next.active,recoveries},viewport);
   return store.save(proposed);
 }

@@ -114,11 +114,14 @@ export function mountTransferPanel({ host, catalog, getState, restoreState, down
       if(disposed||generation!==confirmationGeneration||selected!==candidate)return;
       const saved = result === true || result?.saved === true;
       const stale = !saved && result?.reason === 'stale-restore';
-      notify?.(saved ? t('工作区已恢复。', 'Workspace restored.') : stale ? t('工作区有新修改，恢复已停止。', 'The workspace changed, so restore was stopped.') : t('恢复尚未保存，请保留备份。', 'Restore is not saved. Keep your backup.'));
+      const full = !saved && result?.reason === 'recovery-capacity';
+      notify?.(saved ? t('工作区已恢复。', 'Workspace restored.') : stale ? t('工作区有新修改，恢复已停止。', 'The workspace changed, so restore was stopped.') : full ? t('保留副本已达上限，恢复已停止。', 'Preserved copies are at capacity, so restore was stopped.') : t('恢复尚未保存，请保留备份。', 'Restore is not saved. Keep your backup.'));
       if (disposed) return;
       if (stale) {
         selected = null; preview.hidden = true; file.value = '';
         fail(t('工作区有了新修改，预览已过期。请重新选择备份并核对预览。', 'The workspace has new changes and the preview expired. Choose the backup again and review it.'));
+      } else if (full) {
+        fail(t('这份备份的保留副本已达上限，无法再保存恢复前的内容。当前内容没有改变。请保留两份备份，整理副本后再恢复。', 'This backup has no room for the current content as a preserved copy. Your current workspace is unchanged. Keep both backups and resolve the copies before restoring.'));
       } else if (!saved) {
         fail(t('恢复未能保存到浏览器。恢复前的备份已保留，当前内容请另行导出。', 'Restore could not be saved in this browser. The previous backup is preserved; export the current content as well.'));
       } else {
