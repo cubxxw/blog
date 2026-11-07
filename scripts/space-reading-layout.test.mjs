@@ -41,3 +41,11 @@ test('reader selection only exposes live text whose two endpoints belong to the 
   connected=false;assert.equal(readerSelectionText(body,selected),'');
   assert.equal(readerSelectionText({isConnected:true,contains:()=>false},selected),'');
 });
+test('reader explanation preserves rendered Selection whitespace after validating the source Range',()=>{
+  const first={},last={};
+  const body={isConnected:true,contains:node=>node===first||node===last,querySelectorAll:()=>[]};
+  const range={startContainer:first,endContainer:last,toString:()=> '::: tip\nprepare：',intersectsNode:()=>false};
+  const selected={rangeCount:1,isCollapsed:false,anchorNode:first,focusNode:last,
+    getRangeAt:()=>range,toString:()=> '::: tip prepare：'};
+  assert.equal(readerSelectionText(body,selected),'::: tip prepare：');
+});

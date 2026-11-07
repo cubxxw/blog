@@ -77,7 +77,9 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
           expect(await projectedFontCSS(choice)).toBeGreaterThanOrEqual(13);
         }
       }
-      for(const control of await settings.locator('.space-settings button').all())await hit(control);
+      for(const control of await settings.locator('.space-settings button:visible').all())await hit(control);
+      const transferFile=settings.locator('.space-transfer__file');await hit(transferFile);expect(await projectedFontCSS(transferFile)).toBeGreaterThanOrEqual(14);
+      await expect(settings.locator('[data-transfer-preview]')).toBeHidden();await expect(settings.locator('[data-transfer-previous]')).toBeHidden();
       expect(await projectedFontCSS(settings.locator('.space-capability > span').first())).toBeGreaterThanOrEqual(16);
       expect(await projectedFontCSS(settings.locator('.space-capability small').first())).toBeGreaterThanOrEqual(13);
       expect(await projectedFontCSS(settings.locator('.space-settings > p:not(.space-language__hint)'))).toBeGreaterThanOrEqual(16);

@@ -14,7 +14,7 @@ import { isArticleTextRange } from './excerpts.mjs';
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export function readerSelectionText(body, selected) {
   if (!body?.isConnected || selected?.rangeCount!==1 || selected.isCollapsed || !body.contains(selected.anchorNode) || !body.contains(selected.focusNode)) return '';
-  try { const content=body.querySelector?.('.post-content')||body,range=selected.getRangeAt(0);return isArticleTextRange(range,content)?range.toString().trim().slice(0,1200):''; }
+  try { const content=body.querySelector?.('.post-content')||body,range=selected.getRangeAt(0);return isArticleTextRange(range,content)?selected.toString().trim().slice(0,1200):''; }
   catch { return ''; }
 }
 const html = escapeHTML;

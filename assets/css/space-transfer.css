@@ -4,6 +4,9 @@
 .space .space-transfer__hint, .space .space-transfer__status { color: var(--sp-muted); font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
 .space .space-transfer__actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 16px 0 10px; }
 .space .space-transfer button, .space .space-transfer__file { min-height: 44px; padding: 10px 14px !important; font-size: 14px; line-height: 1.5; }
+/* Projected room monitors need the same logical target allowance as Settings.
+   The flat fallback and Jiangnan's expanded desktop keep their 44px defaults. */
+.space .space-spatial-screen:not(.jiangnan-workspace[data-surface="desktop"]) .space-transfer :is(button,.space-transfer__file) { min-width: 54px; min-height: 54px; font-size: 17px; }
 .space .space-transfer__file { display: inline-flex; align-items: center; position: relative; cursor: pointer; border: 1px solid var(--sp-line); border-radius: 8px; background: var(--sp-surface); }
 .space .space-transfer__file input { position: absolute; inset: 0; opacity: 0; width: 100%; cursor: pointer; }
 .space .space-transfer__file:focus-within, .space .space-transfer button:focus-visible { outline: 2px solid var(--sp-accent); outline-offset: 3px; }
