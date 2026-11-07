@@ -1,0 +1,26 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+
+const path = new URL('../assets/js/space/reading-tools.js',import.meta.url);
+const source = (await readFile(path,'utf8')).replace("'./excerpts.mjs'",JSON.stringify(new URL('./excerpts.mjs',path).href));
+const { isArticleTextRange } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+
+test('article-only ranges stay valid with a separate generated video nearby', () => {
+  const start={},end={},widget={};
+  const content={contains:n=>[start,end].includes(n),querySelectorAll:()=>[widget]};
+  assert.equal(isArticleTextRange({startContainer:start,endContainer:end,intersectsNode:()=>false},content),true);
+});
+
+test('player status and selections crossing the player cannot become source excerpts', () => {
+  const start={},end={},widget={};
+  const content={contains:()=>true,querySelectorAll:()=>[widget]};
+  assert.equal(isArticleTextRange({startContainer:start,endContainer:end,intersectsNode:node=>node===widget},content),false);
+  assert.equal(isArticleTextRange({startContainer:widget,endContainer:widget,intersectsNode:()=>true},content),false);
+});
+
+test('detached or uncheckable ranges fail closed', () => {
+  assert.equal(isArticleTextRange(null,null),false);
+  assert.equal(isArticleTextRange({startContainer:{},endContainer:{}},{contains:()=>false}),false);
+  assert.equal(isArticleTextRange({startContainer:{},endContainer:{}},{contains:()=>true,querySelectorAll:()=>[{}]}),false);
+});

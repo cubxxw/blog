@@ -1,0 +1,95 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import YAML from 'yaml';
+import { compileExecutionPlan } from './ci-run.mjs';
+import { requiredJobsPassed } from './lib/ci-contracts.mjs';
+const changes={schema:'blog-change-set/1',sourceSha:'a'.repeat(40),baseSha:null,fullScan:false,files:[],sourceFiles:[],suites:['workflow'],publish:false,reason:'maintenance'};
+test('documentation does not build or publish while shadow cannot publish production',()=>{
+  assert.deepEqual(compileExecutionPlan({changeSet:changes,mode:'shadow'}),{requiredChecks:['workflow'],runSite:false,production:false});
+  const article={...changes,publish:true,suites:['source','output','browser']};
+  assert.equal(compileExecutionPlan({changeSet:article,mode:'shadow'}).production,false);
+  assert.equal(compileExecutionPlan({changeSet:article,mode:'active'}).production,true);
+  assert.throws(()=>compileExecutionPlan({changeSet:article,mode:'misspelled'}));
+});
+test('a cancelled or skipped mandatory check is never a green gate',()=>{
+  for(const state of ['cancelled','skipped','failure',undefined])assert.equal(requiredJobsPassed({source:state},['source']),false);
+});
+test('production reusable workflow is isolated and gated behind verified main artifacts',()=>{
+  const main=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+  const release=YAML.parse(fs.readFileSync('.github/workflows/release-netlify.yml','utf8'));
+  assert.ok(main.jobs.release.needs.includes('verify'));
+  assert.equal(release.jobs.release.environment,'production');
+  assert.equal(release.jobs.release.concurrency['cancel-in-progress'],false);
+  assert.ok(release.on.workflow_call);
+  assert.equal(release.on.pull_request,undefined);
+  assert.equal(main.permissions.contents,'read');
+  assert.equal(main.jobs.verify.environment,undefined);
+  assert.match(main.jobs.verify.concurrency.group,/github\.run_id/, 'main verification cannot share a one-pending queue with bookkeeping runs');
+});
+test('manual backup applies the source gate before building',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/hugo.yml','utf8'));
+  const commands=workflow.jobs.build.steps.map(step=>step.run??'').join('\n');
+  const source=commands.indexOf('check-content-quality.mjs source');
+  assert.ok(source>=0 && source<commands.indexOf('site-build.mjs --target backup'));
+});
+
+test('Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/lighthouse.yml','utf8'));
+  const producer=workflow.jobs.lighthouse,publish=workflow.jobs.publish;
+  const upload=producer.steps.find(s=>s.uses?.startsWith('actions/upload-artifact@'));
+  const download=publish.steps.find(s=>s.uses?.startsWith('actions/download-artifact@'));
+  assert.ok(upload.id,'producer must expose the actual immutable upload');
+  assert.equal(upload.with.name,'lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}');
+  assert.equal(upload.with['artifact-ids'],undefined,'artifact IDs belong to the downloader, never upload inputs');
+  assert.equal(producer.outputs.lighthouse_artifact_id,`${'${{'} steps.${upload.id}.outputs.artifact-id }}`);
+  assert.equal(download.with.name,undefined,'consumer attempt must not guess producer name');
+  assert.equal(download.with['artifact-ids'],'${{ needs.lighthouse.outputs.lighthouse_artifact_id }}');
+  assert.match(publish.if,/needs\.lighthouse\.outputs\.lighthouse_artifact_id\s*!=\s*''/,'empty ID must skip the whole publisher, not download all or sync missing');
+  assert.notEqual(download['continue-on-error'],true,'a download/digest failure must stop publication');
+  const sync=publish.steps.find(s=>s.run?.includes('lighthouse-report-to-issue.mjs'));
+  assert.ok(sync);assert.equal(sync.if,undefined,'implicit success gate must remain before issue writes');
+  // Resolve the configured dependency reference for a failed-job-only rerun:
+  // producer attempt1/upload123 survives consumer attempt2; a complete rerun
+  // receives upload456 instead. Neither consumer run_attempt controls it.
+  const expression=download.with['artifact-ids'];
+  const reference=expression.match(/^\$\{\{\s*needs\.([\w-]+)\.outputs\.([\w-]+)\s*\}\}$/);
+  assert.ok(reference);
+  const resolve=ctx=>ctx.needs[reference[1]].outputs[reference[2]];
+  for(const [consumerAttempt,artifactId] of [[2,'123'],[3,'456']]) {
+    const ctx={github:{run_attempt:consumerAttempt},needs:{lighthouse:{outputs:{lighthouse_artifact_id:artifactId}}}};
+    assert.equal(resolve(ctx),artifactId);
+  }
+});
+
+
+test('failed interactive checks retain their HTML report and traces', () => {
+  const workflow = YAML.parse(fs.readFileSync('.github/workflows/main.yaml', 'utf8'));
+  const evidence = workflow.jobs.verify.steps.find(step => step.name === 'Preserve verification evidence');
+  assert.equal(evidence.if, 'always()', 'failure must still upload evidence');
+  const paths = evidence.with.path.split('\n').map(value => value.trim()).filter(Boolean);
+  assert.ok(paths.includes('tests/.artifacts/ci/lane-results/'), 'raw cross-engine results, HTML and traces must survive aggregation');
+  const laneEvidence=workflow.jobs.browser.steps.find(step=>step.name==='Preserve raw results and first-failure traces');
+  assert.equal(laneEvidence.if,'always()');
+  assert.equal(laneEvidence.with.path,'tests/.artifacts/ci/lane-results/');
+  assert.match(fs.readFileSync('scripts/lib/ci-parallel.mjs','utf8'),/--output=\$\{env\.SITE_TEST_RESULTS\}/,'interactive default traces must be routed into the uploaded lane folder');
+  assert.match(fs.readFileSync('playwright.config.ts','utf8'),/trace: 'retain-on-failure'/,'retain the first failed attempt as well as retries');
+});
+
+test('parallel browser jobs share one immutable candidate and gate certification on every lane',()=>{
+ const workflow=YAML.parse(fs.readFileSync('.github/workflows/main.yaml','utf8'));
+ const prepare=workflow.jobs.prepare,browser=workflow.jobs.browser,verify=workflow.jobs.verify;
+ assert.equal(browser.strategy['fail-fast'],false);
+ assert.equal(browser['timeout-minutes'],120);assert.equal(prepare['timeout-minutes'],120);assert.equal(verify['timeout-minutes'],120);
+ assert.deepEqual(verify.needs,['prepare','browser']);assert.equal(verify.if,'always()');
+ assert.equal(browser.needs,'prepare');assert.match(browser.if,/run_site == 'true'/);
+ const download=browser.steps.find(s=>s.uses?.startsWith('actions/download-artifact@'));
+ assert.equal(download.with['artifact-ids'],'${{ needs.prepare.outputs.artifact_id }}');
+ const candidate=prepare.steps.find(s=>s.id==='candidate');assert.match(candidate.with.name,/blog-ci-candidate/);
+ const certified=verify.steps.find(s=>s.id==='artifact');assert.match(certified.with.name,/blog-site/);
+ assert.equal(workflow.jobs.release.with.artifact_id,'${{ needs.verify.outputs.artifact_id }}');
+ assert.equal(verify.steps[0].name,'Reject incomplete or failed prerequisite jobs');
+ assert.match(verify.steps[0].run,/BLOG_BROWSER_RESULT.*success/);
+ const evidence=verify.steps.find(s=>s.with?.pattern);assert.match(evidence.with.pattern,/github.run_id.*github.run_attempt/);
+ assert.notEqual(download['continue-on-error'],true);assert.notEqual(evidence['continue-on-error'],true);
+});

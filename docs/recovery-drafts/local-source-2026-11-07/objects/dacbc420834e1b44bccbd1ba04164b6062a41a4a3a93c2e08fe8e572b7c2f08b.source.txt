@@ -1,0 +1,57 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { reportInventory, summarizeResults, aggregateLanes, prepareCandidate, validateCandidate, collectLaneResults } from './lib/ci-parallel.mjs';
+
+const spec=(id, status='expected', results=[{status:'passed',retry:0}])=>({id,title:id,tests:[{projectName:'desktop',expectedStatus:status==='skipped'?'skipped':'passed',status,results}]});
+const report=(...specs)=>({suites:[{specs}],errors:[]});
+const identity={sourceSha:'a'.repeat(40),inputDigest:'b'.repeat(64),runId:'123',attempt:'1',candidateDigest:'c'.repeat(64)};
+const receipt=(lane,actual)=>({schema:'blog-ci-lane/1',...identity,lane,exitCode:0,frozenUnchanged:true,summary:summarizeResults(actual)});
+const candidate={...identity,lanes:[{name:'quality',inventory:reportInventory(report(spec('q')))},{name:'legacy-1',inventory:reportInventory(report(spec('a')))},{name:'legacy-2',inventory:reportInventory(report(spec('b'))) }],inventories:{quality:reportInventory(report(spec('q'))),legacy:reportInventory(report(spec('a'),spec('b')))}};
+
+test('inventory includes each project and rejects duplicate identities',()=>{
+ assert.equal(reportInventory(report(spec('one'))).length,1);
+ assert.throws(()=>reportInventory(report(spec('one'),spec('one'))),/duplicate/i);
+});
+test('first pass, retries and skips remain separate; failures and fatal errors close the gate',()=>{
+ const s=summarizeResults(report(spec('a'),spec('b','flaky',[{status:'failed',retry:0},{status:'passed',retry:1}]),spec('c','skipped',[{status:'skipped',retry:0}])));
+ assert.deepEqual({firstPass:s.firstPass,flaky:s.flaky,skipped:s.skipped,retries:s.retries},{firstPass:1,flaky:1,skipped:1,retries:1});
+ assert.throws(()=>summarizeResults(report(spec('a','unexpected',[{status:'timedOut',retry:0}]))),/fail|unexpected/i);
+ assert.throws(()=>summarizeResults({suites:[],errors:[{message:'interrupted'}]}),/fatal|error/i);
+ assert.throws(()=>summarizeResults(report()),/empty/i);
+});
+test('all frozen lanes must match the exact complete inventory once',()=>{
+ const receipts=[receipt('quality',report(spec('q'))),receipt('legacy-1',report(spec('a'))),receipt('legacy-2',report(spec('b')))];
+ const out=aggregateLanes({candidate,receipts,identity});
+ assert.equal(out.total,3);assert.equal(out.firstPass,3);
+ for(const bad of [receipts.slice(0,2),[...receipts,receipts[0]],receipts.map((r,i)=>i===1?{...r,sourceSha:'d'.repeat(40)}:r),receipts.map((r,i)=>i===1?{...r,attempt:'2'}:r),receipts.map((r,i)=>i===1?{...r,exitCode:1}:r),receipts.map((r,i)=>i===1?{...r,frozenUnchanged:false}:r),receipts.map((r,i)=>i===1?receipt(r.lane,report(spec('other'))):r)])
+  assert.throws(()=>aggregateLanes({candidate,receipts:bad,identity}));
+ // The expected shards themselves must cover the full pre-shard inventory.
+ assert.throws(()=>aggregateLanes({candidate:{...candidate,lanes:candidate.lanes.slice(0,2)},receipts:receipts.slice(0,2),identity}),/inventory|coverage/i);
+});
+
+test('candidate binds metadata, deployment bytes, exact attempt and raw results before certification',t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ci-candidate-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+ const write=(name,value)=>{const p=path.join(dir,name);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,JSON.stringify(value));};
+ const plan={sourceSha:identity.sourceSha,inputDigest:identity.inputDigest,runSite:true,requiredChecks:['workflow','output','browser']};
+ const changes={fullScan:true,files:[],sourceFiles:[]};
+ write('plan.json',plan);write('changes.json',changes);write('workflow-report.json',{mode:'enforce',ok:true});write('site/output-report.json',{mode:'enforce',ok:true});
+ write('site/page-map.json',{complete:true,baseUrl:'https://example.test/',target:'production',pages:[{kind:'home',url:'https://example.test/',source:null}]});
+ write('site/public/index.html','frozen');
+ const inventoryRunner=(config,args)=>config.includes('quality')?reportInventory(report(spec('q'))):args.some(x=>x.startsWith('--shard='))?reportInventory(report(spec(args.find(x=>x.startsWith('--shard=')).slice(8,9)))):reportInventory(report(spec('1'),spec('2'),spec('3')));
+ const prepared=prepareCandidate({dir,plan,changes,runId:identity.runId,attempt:identity.attempt,inventoryRunner});
+ const trust={...identity,candidateDigest:prepared.candidateDigest};
+ const c=validateCandidate({dir,plan,trust});assert.equal(c.lanes.length,4);
+ assert.throws(()=>validateCandidate({dir,plan,trust:{...trust,attempt:'2'}}),/attempt/);
+ write('site/public/index.html','changed');assert.throws(()=>validateCandidate({dir,plan,trust}),/deployment/);write('site/public/index.html','frozen');
+ write('workflow-report.json',{mode:'enforce',ok:false});assert.throws(()=>validateCandidate({dir,plan,trust}),/metadata/);write('workflow-report.json',{mode:'enforce',ok:true});
+ for(const [i,lane] of c.lanes.entries()) {
+  const raw=report(spec(i===0?'q':String(i))),summary=summarizeResults(raw);
+  write(`lane-results/${lane.name}/results.json`,raw);write(`lane-results/${lane.name}/receipt.json`,{schema:'blog-ci-lane/1',...trust,lane:lane.name,exitCode:0,frozenUnchanged:true,summary});
+ }
+ assert.equal(collectLaneResults({dir,plan,trust}).summary.total,4);
+ write('lane-results/quality/results.json',report(spec('different')));assert.throws(()=>collectLaneResults({dir,plan,trust}),/disagrees/);
+ write('lane-results/quality/results.json',report(spec('q')));fs.mkdirSync(path.join(dir,'lane-results/unexpected'));assert.throws(()=>collectLaneResults({dir,plan,trust}),/extra/);
+});
