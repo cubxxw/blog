@@ -382,8 +382,28 @@ export async function buildSite({
       /Unable to generate Critical CSS|Plugin .* internal error/.test(
         lifecycle.stdout || "",
       )
-    )
+    ) {
+      // The pinned plugin suppresses its renderer exception. Reproduce one
+      // read-only viewport to expose that cause; this never accepts the bundle.
+      if (exec === executeBuild) {
+        const diagnostic = `
+          import { createRequire } from 'node:module';
+          import { pathToFileURL } from 'node:url';
+          const require = createRequire(${JSON.stringify(path.join(root, "package.json"))});
+          const entry = require.resolve('critical', { paths: [${JSON.stringify(path.join(root, "node_modules/netlify-plugin-critical-css"))}] });
+          const { generate } = await import(pathToFileURL(entry).href);
+          try {
+            await generate({ inline: false, base: ${JSON.stringify(path.join(work, "public"))}, src: 'index.html', dimensions: [{width:375,height:1200}], ignore: ['@font-face'] });
+            console.error('Single-viewport diagnostic completed; the full transformation is still incomplete.');
+          } catch (error) { console.error(error?.stack || String(error)); process.exitCode = 1; }
+        `;
+        try {
+          await exec({stage: "critical-css-diagnostic", command: process.execPath,
+            args: ["--input-type=module", "-e", diagnostic], cwd: work, env});
+        } catch { /* Keep the original incomplete-transformation failure. */ }
+      }
       throw new Error("Critical CSS reported an incomplete transformation");
+    }
     const pre = path.join(work, ".build/pre-critical.json");
     if (fs.existsSync(pre))
       for (const item of JSON.parse(fs.readFileSync(pre)))
