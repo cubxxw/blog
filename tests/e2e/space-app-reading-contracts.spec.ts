@@ -5,9 +5,9 @@ import {parse} from 'yaml';
 
 test.use({reducedMotion:'reduce',channel:'chromium',launchOptions:{args:process.platform==='darwin'?['--enable-gpu','--use-angle=metal']:['--enable-unsafe-swiftshader']}});
 
-type Product={id:string,name:string,headline:string,description:string,url:string,demo:string,github:string,image:string,alt:string};
+type Product={id:string,name:string,headline:string,description:string,url:string,demo:string,github:string|null,image:string,alt:string};
 type Book={title:string,author:string,description:string,url:string};
-type SourceProduct={id:string,name:string,url:string,url_zh?:string,url_en?:string,demo?:string,github?:string,headline_zh:string,headline_en:string,desc_zh:string,desc_en:string};
+type SourceProduct={id:string,name:string,url:string,url_zh?:string,url_en?:string,demo?:string,github?:string|null,headline_zh:string,headline_en:string,desc_zh:string,desc_en:string};
 const sourceProducts=parse(readFileSync('data/products.yml','utf8')).products as SourceProduct[];
 
 async function openApp(page:Page,app:string) {
@@ -60,11 +60,12 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
     await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-theme',view.theme);
     const catalog=await page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent||'{}')) as {products:Product[],books:Book[]};
     const locale=view.locale==='zh'?'zh':'en';
-    const expectedProducts=sourceProducts.map(product=>({id:product.id,name:product.name,headline:product[`headline_${locale}`],description:product[`desc_${locale}`],url:product[`url_${locale}`]||product.url,demo:product.demo||'',github:product.github||''}));
+    const expectedProducts=sourceProducts.map(product=>({id:product.id,name:product.name,headline:product[`headline_${locale}`],description:product[`desc_${locale}`],url:product[`url_${locale}`]||product.url,demo:product.demo||'',github:product.github??null}));
     expect(catalog.products.length).toBeGreaterThan(0);expect(catalog.products).toHaveLength(sourceProducts.length);
     expect(new Set(catalog.products.map(product=>product.id)).size).toBe(sourceProducts.length);
     expect(catalog.products.map(({id,name,headline,description,url,demo,github})=>({id,name,headline,description,url,demo,github}))).toEqual(expectedProducts);
     expect(catalog.products.find(product=>product.id==='leafhour')).toMatchObject({name:'Leafhour',url:locale==='zh'?'https://leafhour.com':'https://leafhour.com/en',demo:'https://leafhour.com/read?book=gutenberg-alice',github:'https://github.com/getyak/leafhour'});
+    expect(catalog.products.find(product=>product.id==='tormie')).toMatchObject({name:'Tormie',url:'https://tormie.com',demo:'https://tormie.com/#demo',github:null});
     expect(catalog.books).toHaveLength(4);
     const notes=await openApp(page,'notes'),editor=notes.locator('[data-note-editor]');await editor.fill('同一个输入框，先读产品和书，再接着写。');
     const original=await editor.elementHandle(),products=await openApp(page,'products');
@@ -123,7 +124,7 @@ for(const view of cases)test.describe(`${view.width}×${view.height} ${view.loca
         expect(geometry.height).toBeLessThanOrEqual(281);expect(geometry.fit).toBe('contain');
         expect(Math.abs((geometry.width-2)/(geometry.height-2)-geometry.natural)).toBeLessThan(.04);
       }
-      const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter(Boolean);
+      const links=products.locator('.space-product__links a'),urls=[product.url,product.demo,product.github].filter((url):url is string=>typeof url==='string'&&url.length>0);
       await expect(links).toHaveCount(urls.length);
       if(!product.demo)await expect(products.getByRole('link',{name:view.locale==='zh'?'测试预览 ↗':'Try the demo ↗',exact:true})).toHaveCount(0);
       for(let n=0;n<urls.length;n++){expect(await projectedFontCSS(links.nth(n))).toBeGreaterThanOrEqual(13);await isolatedLinkClick(page,links.nth(n),urls[n]);}

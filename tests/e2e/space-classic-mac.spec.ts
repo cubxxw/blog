@@ -59,7 +59,8 @@ test('the complete physical screen, native expansion and view menus preserve the
 });
 
 test('Finder folders open the real product directory, writing, photos and original profile',async({page})=>{
-  await desk(page);await page.locator('.space-finder-home__item[data-open="products"]').click();await expect(page.locator('[data-product-home] [data-select-product]')).toHaveCount(8);
+  await desk(page);await page.locator('.space-finder-home__item[data-open="products"]').click();await expect(page.locator('[data-product-home] [data-select-product]')).toHaveCount(9);
+  const tormie=page.locator('[data-product-home] [data-project-card="tormie"]');await expect(tormie.locator('[data-select-product="tormie"]')).toHaveCount(1);await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('href','https://tormie.com/');await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('target','_blank');await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('rel',/noopener/);
   await page.locator('[data-product-home] [data-select-product="leafhour"]').click();await expect(page.locator('.space-product h2')).toHaveText('Leafhour');await page.locator('[data-product-back]').click();await expect(page.locator('[data-product-home]')).toBeVisible();
   await home(page);await page.locator('.space-finder-home__overview .space-finder-home__item[data-open="reader"]').click();await expect(page.locator('[data-library-query]')).toBeVisible();
   await home(page);await page.locator('.space-finder-home__overview .space-finder-home__item[data-open="photos"]').click();await expect(page.locator('.sp-photo-grid')).toBeVisible();
