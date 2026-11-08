@@ -29,6 +29,7 @@ const roomSource = (await readFile(new URL('../assets/js/space/jiangnan-room.js'
   .replace("from './jiangnan-floor.mjs'", `from '${new URL('../assets/js/space/jiangnan-floor.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-cat-grounding.mjs'", `from '${new URL('../assets/js/space/jiangnan-cat-grounding.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-timber-finish.mjs'", `from '${new URL('../assets/js/space/jiangnan-timber-finish.mjs',import.meta.url).href}'`)
+  .replace("from './jiangnan-timber-sampling.mjs'", `from '${new URL('../assets/js/space/jiangnan-timber-sampling.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-lighting.mjs'", `from '${new URL('../assets/js/space/jiangnan-lighting.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-artwork.mjs'", `from '${new URL('../assets/js/space/jiangnan-artwork.mjs',import.meta.url).href}'`)
   .replace("from './jiangnan-furnishings-state.mjs'", `from '${new URL('../assets/js/space/jiangnan-furnishings-state.mjs',import.meta.url).href}'`);
