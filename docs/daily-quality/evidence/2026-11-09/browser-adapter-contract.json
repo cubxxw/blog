@@ -1,0 +1,19 @@
+{
+  "source": "4f03629d81e9e033f4a432b17ee00ca3442e3ee3",
+  "original": {
+    "playwright.daily.config.ts": {
+      "sha256": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+      "gitBlob": "21bc195b3b9512c07bcbc4e6af537e5cae0875b8"
+    },
+    "tests/daily/live-quality.spec.ts": {
+      "sha256": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+      "gitBlob": "cbcd7b7a7f49b0e18fc652d627cb5d482f0b50b3"
+    },
+    "tests/daily/reader-navigation.spec.ts": {
+      "sha256": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358",
+      "gitBlob": "4a5f7657b014644a5e49c090d7f2999c3bf810b1"
+    }
+  },
+  "adapter": "Absolute testDir/output and systemChrome channel only; original single worker/0retry/retain-on-failure/all timeouts and selection",
+  "worldSpecSource": "resume31-postdeploy-world.spec.ts copied byte-exact; current runtime is verified separately, no old certificate"
+}

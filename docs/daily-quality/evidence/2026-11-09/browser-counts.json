@@ -1,0 +1,772 @@
+{
+  "daily": {
+    "file": "daily-results.json",
+    "sha256": "eb1773a293b305d9b3d6577b8fcc2d688397ab6e0f90ccf01550015e616c3a15",
+    "identities": 36,
+    "firstPass": 36,
+    "flaky": 0,
+    "skipped": 0,
+    "failed": 0,
+    "unfinished": 0,
+    "retryAttempts": 0,
+    "globalErrors": 0,
+    "stats": {
+      "startTime": "2026-11-08T20:30:36.032Z",
+      "duration": 137012.683,
+      "expected": 36,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rows": [
+      {
+        "identity": [
+          "0e12b698f0712772606f-6b8ed9e48181d772f7d7",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2996
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-2602c981cdc6662eaeb3",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /zh/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1841
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-7fabdd5aff056d174491",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /engineering/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2115
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-b6f0585aaf1841d3303c",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /zh/engineering/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1437
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-e6ceeb58b26de2816e49",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1192
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-37f25e4d028ea7662fc3",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /zh/projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1847
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-3e7ebefb16f984a8bc7c",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2246
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-599b645aabd5056460e9",
+          "desktop",
+          0
+        ],
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2722
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-15153cf03c72123822a3",
+          "desktop",
+          0
+        ],
+        "title": "live reader can switch theme and home language",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2516
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-3f625ffc31235ffc3ea0",
+          "desktop",
+          0
+        ],
+        "title": "live lab performance sample /",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 4988
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-a4eb8373cbfe6860468b",
+          "desktop",
+          0
+        ],
+        "title": "live lab performance sample /zh/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 4699
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-ea94274ec4f607c2cedb",
+          "desktop",
+          0
+        ],
+        "title": "live lab performance sample /projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5034
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-164a33623f4bdc87d4ab",
+          "desktop",
+          0
+        ],
+        "title": "live lab performance sample /zh/projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 4387
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-2c86a7fe9fc4609a1976",
+          "desktop",
+          0
+        ],
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5059
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-f5e31caa9d2c8046f111",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1049
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-4882b9443cafb690bce0",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /zh/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1331
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-853a818311d9b0e8387a",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /engineering/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 582
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-6beee1b0b92fa68beee6",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /zh/engineering/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1043
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-9e85ff3b87af0efa88a8",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 1693
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-6ee1d335ba011f080bc1",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /zh/projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 866
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-4af85e66e68415f7d027",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 3170
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-790dac4597a9b74af9a2",
+          "mobile",
+          0
+        ],
+        "title": "live SEO /zh/growth/posts/2025-annual-review/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 755
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-988dc2faf3489a0e08ce",
+          "mobile",
+          0
+        ],
+        "title": "live reader can switch theme and home language",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 2755
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-a71467be5d74b93d6310",
+          "mobile",
+          0
+        ],
+        "title": "live lab performance sample /",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5942
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-b1d51f862ac985129e6c",
+          "mobile",
+          0
+        ],
+        "title": "live lab performance sample /zh/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 3861
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-795900ff7c37bdce0e39",
+          "mobile",
+          0
+        ],
+        "title": "live lab performance sample /projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5092
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-cfdfa162e6435379ba72",
+          "mobile",
+          0
+        ],
+        "title": "live lab performance sample /zh/projects/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5051
+          }
+        ]
+      },
+      {
+        "identity": [
+          "0e12b698f0712772606f-7e6f8409849f100bcbd9",
+          "mobile",
+          0
+        ],
+        "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 4473
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-daa5e79fb9faff3f10b4",
+          "desktop",
+          0
+        ],
+        "title": "live search opens a real article readable in both themes: /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 9132
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-e7a37b0e0c2dfc03aca8",
+          "desktop",
+          0
+        ],
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5911
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-325feacdde958ce6db5c",
+          "desktop",
+          0
+        ],
+        "title": "live search opens a real article readable in both themes: /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5311
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-04102175825b448ec12a",
+          "desktop",
+          0
+        ],
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 6596
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-7f826b832ed0e26c9034",
+          "mobile",
+          0
+        ],
+        "title": "live search opens a real article readable in both themes: /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5407
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-2f0b3ba282d8bc05ed9c",
+          "mobile",
+          0
+        ],
+        "title": "live Products defaults to BEAR OS and switches both ways: /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5918
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-1e6463cbd47b4d203e89",
+          "mobile",
+          0
+        ],
+        "title": "live search opens a real article readable in both themes: /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 4382
+          }
+        ]
+      },
+      {
+        "identity": [
+          "ba0b9ab1d8f722fefb17-ff6a06879ab0a2259796",
+          "mobile",
+          0
+        ],
+        "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 5541
+          }
+        ]
+      }
+    ]
+  },
+  "preview-world": {
+    "file": "preview-world-results.json",
+    "sha256": "a7c2bbf420a17cdab8a1e2b86fe2a68b345d55cf051e97ceaf38d14193d55613",
+    "identities": 4,
+    "firstPass": 4,
+    "flaky": 0,
+    "skipped": 0,
+    "failed": 0,
+    "unfinished": 0,
+    "retryAttempts": 0,
+    "globalErrors": 0,
+    "stats": {
+      "startTime": "2026-11-08T20:22:14.296Z",
+      "duration": 85552.511,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rows": [
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-f027f295adf2bd9e491d",
+          "desktop",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 24305
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-9f00f81676ef52039069",
+          "desktop",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 20145
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-7f9191c6822373943d3f",
+          "mobile",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 21102
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-4f12241612d92fe55542",
+          "mobile",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 16119
+          }
+        ]
+      }
+    ]
+  },
+  "production-world": {
+    "file": "production-world-results.json",
+    "sha256": "7ae37c0f63d264ddd99ce7e3c0f4bfbab6e520b5f00548640db543759c4e6aa9",
+    "identities": 4,
+    "firstPass": 4,
+    "flaky": 0,
+    "skipped": 0,
+    "failed": 0,
+    "unfinished": 0,
+    "retryAttempts": 0,
+    "globalErrors": 0,
+    "stats": {
+      "startTime": "2026-11-08T20:28:30.885Z",
+      "duration": 88654.861,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "rows": [
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-f027f295adf2bd9e491d",
+          "desktop",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 26702
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-9f00f81676ef52039069",
+          "desktop",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 20098
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-7f9191c6822373943d3f",
+          "mobile",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /en",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 20873
+          }
+        ]
+      },
+      {
+        "identity": [
+          "7981c09d23e5ff0a958d-4f12241612d92fe55542",
+          "mobile",
+          0
+        ],
+        "title": "deployed software world presents a real room and switches both ways /zh",
+        "status": "expected",
+        "attempts": [
+          {
+            "status": "passed",
+            "retry": 0,
+            "duration": 18230
+          }
+        ]
+      }
+    ]
+  }
+}
