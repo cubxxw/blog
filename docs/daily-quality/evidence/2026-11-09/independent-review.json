@@ -1,0 +1,25 @@
+{
+  "head": "4f03629d81e9e033f4a432b17ee00ca3442e3ee3",
+  "reviewer": "/root/review_daily_quality",
+  "findings": {
+    "closed": [
+      {
+        "priority": "P1",
+        "cause": "new sampling import missing from data URL geometry fixture",
+        "fix": "absolute URL rewrite, original assertions unchanged",
+        "verified": "51 focused +163 layout pass"
+      }
+    ],
+    "open": []
+  },
+  "scope": "Exact frozen body provenance, Number precision/expression order, all authored seeds, resource lifecycle, test entrypoints; local elapsed not online LCP/INP",
+  "blobs": {
+    "sampler": "203e203201120d8d15a791ee896871bc9bcfef07",
+    "room": "c1deef7bcacf0fa3fb8cdae5312eb267749e8bc1",
+    "test": "b1d550fdfc5180091561a3cd1b0283d9d24a4e10",
+    "reference": "a48a5c37aed6f89c13ea12ae76d639f2993cb8ff",
+    "package": "5951cf95f4c60dd50d72b277b2c7ae67d6b7b07d",
+    "geometry": "c22564458ac284c326e41d325b31090d137b430c"
+  },
+  "finalReview": "P1 closed: geometry adapter exact rewrite; no confirmed open P0/P1/P2; reviewer read logs163 layout and51 focused. DSH environment gap disclosed, not waived as pass."
+}

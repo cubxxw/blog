@@ -1,0 +1,79 @@
+{
+  "scope": "Local Node elapsed for all five 1024x512 samplers including column allocation; not CPU time, live LCP/INP or total startup",
+  "node": "v22.23.2",
+  "rounds": [
+    {
+      "order": [
+        "reference",
+        "candidate"
+      ],
+      "reference": {
+        "ms": 505.3905,
+        "sum": 749309.1490547103
+      },
+      "candidate": {
+        "ms": 450.20399999999995,
+        "sum": 749309.1490547103
+      }
+    },
+    {
+      "order": [
+        "candidate",
+        "reference"
+      ],
+      "candidate": {
+        "ms": 399.32166699999993,
+        "sum": 749309.1490547103
+      },
+      "reference": {
+        "ms": 514.113167,
+        "sum": 749309.1490547103
+      }
+    },
+    {
+      "order": [
+        "reference",
+        "candidate"
+      ],
+      "reference": {
+        "ms": 502.24500000000035,
+        "sum": 749309.1490547103
+      },
+      "candidate": {
+        "ms": 409.6590420000002,
+        "sum": 749309.1490547103
+      }
+    },
+    {
+      "order": [
+        "candidate",
+        "reference"
+      ],
+      "candidate": {
+        "ms": 400.7531250000002,
+        "sum": 749309.1490547103
+      },
+      "reference": {
+        "ms": 509.69112499999983,
+        "sum": 749309.1490547103
+      }
+    },
+    {
+      "order": [
+        "reference",
+        "candidate"
+      ],
+      "reference": {
+        "ms": 542.440458,
+        "sum": 749309.1490547103
+      },
+      "candidate": {
+        "ms": 592.0248750000001,
+        "sum": 749309.1490547103
+      }
+    }
+  ],
+  "referenceMs": 2573.88025,
+  "candidateMs": 2251.9627090000004,
+  "changePercent": -12.507090840764635
+}

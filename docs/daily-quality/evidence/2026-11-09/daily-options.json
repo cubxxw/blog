@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-09",
+  "options": [
+    {
+      "option": "Reuse wood column-only calculations",
+      "selected": true,
+      "evidence": "cold CDP CPU profile353.323ms self; full1024x512 grid repeats x-only terms",
+      "impact": "small startup CPU cost",
+      "cost": "small",
+      "risk": "floating-point/pixel fidelity and test loader integration",
+      "acceptance": "exact samples/bytes for all5 authored seeds; original geometry/timber/layout assertions; head CI; real preview and production",
+      "expected": "fewer trig/exp evaluations, no promised LCP/INP gain"
+    },
+    {
+      "option": "Public asynchronous shader compilation",
+      "selected": false,
+      "evidence": "3807.842ms self under Three shader preparation in one cold profile; sampling perturbs timing",
+      "cost": "medium/high",
+      "risk": "assets/material/environment lifecycle, cancel/hide/failure/first presented frame",
+      "expected": "reduce synchronous preparation stalls if controlled experiment validates",
+      "acceptance": "public compileAsync capability path, original quality and first presented frame/navigation budgets; no private GPU prewarm",
+      "deferred": "larger lifecycle change needs controlled separate batch"
+    },
+    {
+      "option": "Full-text index transport/sharding",
+      "selected": false,
+      "evidence": "historic full JSON size/15s failures; GET368 already removed unused match ranges",
+      "cost": "medium/high",
+      "risk": "ranking/recall/cancel/retry",
+      "acceptance": "full body tail recall and rank equality with real slow transport",
+      "deferred": "not the sampled3D CPU hotspot"
+    },
+    {
+      "option": "GSC page/query follow-up",
+      "selected": false,
+      "evidence": "existing full28/28 window48110→38085 impressions137→120clicks; unknown anonymous/query coverage",
+      "cost": "medium",
+      "risk": "attribution with incomplete sample",
+      "acceptance": "same response window/provenance; no missing rows converted to0",
+      "deferred": "no new authorized evidence proving an article rewrite needed"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "issue": "GET-456",
+  "runtimePR": "https://github.com/cubxxw/blog/pull/519",
+  "reviewedHead": "4f03629d81e9e033f4a432b17ee00ca3442e3ee3",
+  "base": "53eef3a526e99c059559f918328fa985b1baf7df",
+  "merge": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+  "headTreeEqualsMergeTree": "60ce1b992232fa5a612454174e5a8d0b243ad0fb",
+  "headCI": {
+    "id": 42519466312,
+    "conclusion": "success"
+  },
+  "mainCI": {
+    "conclusion": "success",
+    "headSha": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+    "status": "completed",
+    "url": "https://github.com/cubxxw/blog/actions/runs/42519952185"
+  },
+  "preview": {
+    "at": "2026-11-08T20:22:03.514614+00:00",
+    "mode": "preview",
+    "base": "https://6af0d92347c474b21e0734ec--cubxxw.netlify.app",
+    "before": {
+      "id": "6af0d92347c474b21e0734ec",
+      "commit_ref": "4f03629d81e9e033f4a432b17ee00ca3442e3ee3",
+      "state": "ready",
+      "context": "deploy-preview",
+      "published_at": null
+    },
+    "after": {
+      "id": "6af0d92347c474b21e0734ec",
+      "commit_ref": "4f03629d81e9e033f4a432b17ee00ca3442e3ee3",
+      "state": "ready",
+      "context": "deploy-preview",
+      "published_at": null
+    },
+    "world": [
+      {
+        "route": "/projects/",
+        "url": "https://6af0d92347c474b21e0734ec--cubxxw.netlify.app/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      },
+      {
+        "route": "/zh/projects/",
+        "url": "https://6af0d92347c474b21e0734ec--cubxxw.netlify.app/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      }
+    ],
+    "sameVersion": true,
+    "limits": "Trusted platform source plus actual bilingual fingerprint bytes; not browser acceptance or a whole-site certificate. World module has fingerprint, not a declared SRI attribute."
+  },
+  "productionBefore": {
+    "at": "2026-11-08T20:28:30.619913+00:00",
+    "mode": "production",
+    "base": "https://cubxxw.com",
+    "before": {
+      "id": "6af0da759973bd8b2ad1cb21",
+      "commit_ref": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+      "state": "ready",
+      "context": "production",
+      "published_at": "2026-11-08T20:27:43.729Z"
+    },
+    "after": {
+      "id": "6af0da759973bd8b2ad1cb21",
+      "commit_ref": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+      "state": "ready",
+      "context": "production",
+      "published_at": "2026-11-08T20:27:43.729Z"
+    },
+    "world": [
+      {
+        "route": "/projects/",
+        "url": "https://cubxxw.com/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      },
+      {
+        "route": "/zh/projects/",
+        "url": "https://cubxxw.com/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      }
+    ],
+    "sameVersion": true,
+    "limits": "Trusted platform source plus actual bilingual fingerprint bytes; not browser acceptance or a whole-site certificate. World module has fingerprint, not a declared SRI attribute."
+  },
+  "productionAfter": {
+    "at": "2026-11-08T20:33:21.320841+00:00",
+    "mode": "production",
+    "base": "https://cubxxw.com",
+    "before": {
+      "id": "6af0da759973bd8b2ad1cb21",
+      "commit_ref": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+      "state": "ready",
+      "context": "production",
+      "published_at": "2026-11-08T20:27:43.729Z"
+    },
+    "after": {
+      "id": "6af0da759973bd8b2ad1cb21",
+      "commit_ref": "627f6d8aada781ef65a526bfcf0dc8e50243bbbb",
+      "state": "ready",
+      "context": "production",
+      "published_at": "2026-11-08T20:27:43.729Z"
+    },
+    "world": [
+      {
+        "route": "/projects/",
+        "url": "https://cubxxw.com/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      },
+      {
+        "route": "/zh/projects/",
+        "url": "https://cubxxw.com/js/space/world-jiangnan.82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c.js",
+        "bytes": 280022,
+        "sha256": "82c7dd9a0aceec7e80facf49b08b03ee780461d1d71fd9ac3fcce2e653edfe9c",
+        "fingerprintVerified": true
+      }
+    ],
+    "sameVersion": true,
+    "limits": "Trusted platform source plus actual bilingual fingerprint bytes; not browser acceptance or a whole-site certificate. World module has fingerprint, not a declared SRI attribute."
+  },
+  "publicationInputs": {
+    "30379409e9efb007028ec084a7da6d70ab1e2e12": "1e160ad2d00a2fc0861686dfa71089f703e52ec56aa1eed4d35d05ebb42c4baf",
+    "53eef3a526e99c059559f918328fa985b1baf7df": "1e160ad2d00a2fc0861686dfa71089f703e52ec56aa1eed4d35d05ebb42c4baf",
+    "4f03629d81e9e033f4a432b17ee00ca3442e3ee3": "2c91ab32b2b7444ffb264f5a280e8e5d635465e045463e131f5f2601e741884a",
+    "627f6d8aada781ef65a526bfcf0dc8e50243bbbb": "2c91ab32b2b7444ffb264f5a280e8e5d635465e045463e131f5f2601e741884a"
+  },
+  "browserEnvironment": {
+    "actualPW": "1.63.0",
+    "declaredPW": "1.64.1",
+    "systemChrome": "157.0.8103.39",
+    "bundledChromium": "missing; no shared dependency modification"
+  },
+  "screenshots": "All4 preview and all4 production softwareGL PNG inspected; full artifacts preserved outside Git"
+}

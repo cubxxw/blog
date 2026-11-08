@@ -1,0 +1,68 @@
+{
+  "commands": [
+    {
+      "command": "node --test scripts/jiangnan-timber-sampling.test.mjs (original extracted code)",
+      "exit": 1,
+      "counts": "4pass2fail, sampler-red.log"
+    },
+    {
+      "command": "npm run bear:test (first)",
+      "exit": 1,
+      "counts": "721pass4fail0skip; geometry file abort +3 DSH errors"
+    },
+    {
+      "command": "node --test scripts/jiangnan-timber-sampling.test.mjs scripts/space-jiangnan-room-geometry.test.mjs scripts/space-jiangnan-timber.test.mjs scripts/space-world.test.mjs",
+      "exit": 0,
+      "counts": "51pass0fail0skip"
+    },
+    {
+      "command": "npm run space:layout:test",
+      "exit": 0,
+      "counts": "163pass0fail0skip"
+    },
+    {
+      "command": "npm run bear:test (after geometry fix)",
+      "exit": 1,
+      "counts": "744pass3fail0skip; missing shared DSH dependency"
+    },
+    {
+      "command": "node scripts/ci-light.mjs",
+      "exit": 0
+    },
+    {
+      "command": "node benchmark.mjs (5 interleaved rounds)",
+      "exit": 0
+    },
+    {
+      "command": "read-world.py --mode preview --deploy6af0d923 --source4f03629d",
+      "exit": 0
+    },
+    {
+      "command": "Playwright world.config.ts immutable preview/systemChrome SWGL",
+      "exit": 0,
+      "counts": "4first0fail/retry/skip/errors"
+    },
+    {
+      "command": "python3 live-seo.py",
+      "exit": 0,
+      "counts": "10pages issues0 reciprocalUnknown0, platform627f stable"
+    },
+    {
+      "command": "SITE_OUTPUT_DIR=<actual annual snapshot> node --test scripts/reading-fonts.test.mjs (initial fixture)",
+      "exit": 1,
+      "counts": "7pass1fail; CSS downloaded but missing from fixture URL path; original log retained"
+    },
+    {
+      "command": "same reading-fonts test after placing the already downloaded fingerprint-verified CSS",
+      "exit": 0,
+      "counts": "8pass0fail0skip; host contracts, not browser tests"
+    },
+    {
+      "command": "Playwright world.config.ts production/systemChrome forcedSWGL, single worker0retry",
+      "exit": 0,
+      "counts": "4first0fail/retry/skip/errors, all4 PNG viewed"
+    }
+  ],
+  "fullPerformanceCheck": "not run: no full current generated output; no local Hugo rebuild",
+  "newPaidCollection": 0
+}
