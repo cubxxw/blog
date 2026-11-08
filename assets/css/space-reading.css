@@ -1,0 +1,40 @@
+/* Reading tools stay inside BEAR OS; article and homepage styles are unchanged. */
+.space .space-reading-document .space-reader-toolbar.space-reading-toolbar { flex-wrap: wrap; gap: 10px 14px; }
+.space .space-reading-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; width: 100%; border-top: 1px solid var(--sp-line); padding-top: 10px; }
+.space .space-reading-tools__save,
+.space .space-excerpt-shelf__action { min-width: 44px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--sp-line); border-radius: 7px; background: var(--sp-soft); color: var(--sp-ink); font-size: 14px; line-height: 1.45; text-align: left; }
+.space .space-reading-tools__save { background: var(--sp-accent); color: var(--sp-paper); white-space: nowrap; }
+.space .space-reading-tools__save:disabled,
+.space .space-excerpt-shelf__action:disabled { cursor: default; opacity: .55; }
+.space .space-reading-tools__feedback { flex: 1 1 180px; min-width: 0; color: var(--sp-muted); font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+.space .space-reading-tools__feedback[data-error="true"],
+.space .space-excerpt-shelf__status[data-error="true"] { color: var(--sp-ink); font-weight: 550; }
+.space .space-excerpt-shelf { border-top: 1px solid var(--sp-line); padding: 24px; background: var(--sp-paper); color: var(--sp-ink); font-size: 15px; }
+.space .space-excerpt-shelf__header { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-bottom: 18px; }
+.space .space-excerpt-shelf__header h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.5; font-weight: 600; }
+.space .space-excerpt-shelf__header p { margin: 0; color: var(--sp-muted); font-size: 14px; line-height: 1.7; }
+.space .space-excerpt-shelf__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.space .space-excerpt-shelf__empty { padding: 12px 0; color: var(--sp-muted); font-size: 15px; line-height: 1.8; }
+.space .space-excerpt-shelf__entry { padding: 22px 0; border-top: 1px solid var(--sp-line); }
+.space .space-excerpt-shelf__quote { margin: 0 0 15px; padding: 0 0 0 15px; border-left: 2px solid var(--sp-accent); border-radius: 0; background: none; color: var(--sp-ink); font-size: 16px; line-height: 1.85; white-space: pre-wrap; overflow-wrap: anywhere; }
+.space .space-excerpt-shelf__source { display: flex; align-items: start; flex-wrap: wrap; justify-content: space-between; gap: 8px 14px; }
+.space .space-excerpt-shelf__backlink { max-width: 100%; background: none; border-color: transparent; color: var(--sp-accent); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.space .space-excerpt-shelf__unavailable { max-width: 100%; padding: 8px 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.7; }
+.space .space-excerpt-shelf__unavailable small { display: block; margin-top: 3px; color: var(--sp-muted); font-size: 14px; }
+.space .space-excerpt-shelf__status { margin-top: 12px; min-height: 1.6em; font-size: 14px; line-height: 1.7; color: var(--sp-muted); overflow-wrap: anywhere; }
+.space .space-excerpt-shelf__copy-fallback { display: block; width: 100%; min-height: 150px; margin-top: 15px; padding: 12px; border: 1px solid var(--sp-line); border-radius: 7px; background: var(--sp-surface); color: var(--sp-ink); font: 14px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace; resize: vertical; }
+.space .space-reading-tools__save:focus-visible,
+.space .space-excerpt-shelf__action:focus-visible,
+.space .space-excerpt-shelf__copy-fallback:focus-visible { outline: 2px solid var(--sp-accent); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .space .space-reading-tools__save:not(:disabled):hover,
+  .space .space-excerpt-shelf__action:not(:disabled):hover { filter: brightness(.95); }
+}
+@media (max-width: 640px) {
+  .space .space-excerpt-shelf { padding: 20px; }
+  .space .space-reading-tools__feedback { flex-basis: 100%; }
+  .space .space-excerpt-shelf__source { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .space .space-reading-tools *, .space .space-excerpt-shelf * { animation: none; transition: none; scroll-behavior: auto; }
+}

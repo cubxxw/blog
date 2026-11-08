@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import { APPS } from '../assets/js/space/state.mjs';
 import { MOBILE_APPS, findApplications, searchWorkspace, resultIndex, isEditableTarget, escapeAction } from '../assets/js/space/navigation.mjs';
 
-const labels = { welcome: '关于我', reader: '文章与思考', products: '产品实验室', photos: '旅途相册', map: '去过的地方', books: '我的书架', notes: '你的笔记', contact: '联系与留言', terminal: '终端', agent: '和 BEAR 聊聊', settings: '工作区设置' };
+const labels = { welcome: '关于我', reader: '文章与思考', products: '产品实验室', photos: '旅途相册', map: '去过的地方', books: '我的书架', video:'视频', notes: '你的笔记', contact: '联系与留言', terminal: '终端', agent: '和 BEAR 聊聊', settings: '工作区设置' };
 
 test('the five mobile destinations are registered and the full launcher exposes every application', () => {
   assert.deepEqual(MOBILE_APPS, ['welcome', 'reader', 'products', 'agent', 'settings']);
   assert.ok(MOBILE_APPS.every(app => APPS.includes(app)));
-  assert.equal(APPS.length, 12);
+  assert.deepEqual(findApplications(APPS,labels,'视频'),['video']);
   assert.deepEqual(findApplications(APPS, labels), APPS);
   for (const app of ['notes', 'books', 'contact', 'settings', 'terminal']) {
     assert.deepEqual(findApplications(APPS, labels, app), [app]);

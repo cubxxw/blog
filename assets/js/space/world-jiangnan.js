@@ -468,6 +468,9 @@ export function createCafeWorld({root,onComputer,onPhoto,onDetail,onInspect,onCa
     if(resident){resident.update(delta,{interactionSeconds:elapsed,breathingSeconds:elapsed,ambient:environmentActive,active:environmentActive&&(mode==='roam'||roomView()||inspection?.kind==='clock'),interactive:environmentActive&&mode==='inspect'&&resident.pending});publishResident();}
     if(frames%3===0)publishObjects();
     const readyMaps=Number(root.dataset.worldPbrMaps)>=5||performance.now()-startTime>2200;
+    // Asset callbacks and the existing material timer wake this pending frame.
+    // Do not spend software-GPU work on a scene that cannot yet finish boot.
+    if(firstPending&&(!readyMaps||exterior.vistaMode==='loading')){last=0;return;}
     // Entry may paint early; its one reflection waits for complete materials.
     const reflectionReady=Number(root.dataset.worldPbrMaps)>=12||performance.now()-startTime>2200;
     // A cubemap renders the room six more times. Never charge that work to the

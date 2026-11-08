@@ -136,7 +136,10 @@ test('mobile Finder offers three real recent articles and a visible path to ever
   const recent=home.locator('.space-finder-recent [data-payload]');await expect(recent).toHaveCount(3);
   const actual=await recent.evaluateAll(nodes=>nodes.map(node=>(node as HTMLElement).dataset.payload));
   const expected=await page.locator('[data-space-catalog]').evaluate(el=>JSON.parse(el.textContent!).articles.slice(0,3).map((article:any)=>article.url));expect(actual).toEqual(expected);
-  await captureReview(page,'finder-home-320');const apps=home.locator('[data-space-launchpad-trigger]');await expect(apps).toBeInViewport();await apps.click();await expect(page.locator('[data-space-launchpad]')).toBeVisible();await expect(page.locator('[data-launchpad-app]')).toHaveCount(12);
+  await captureReview(page,'finder-home-320');const apps=home.locator('[data-space-launchpad-trigger]');await expect(apps).toBeInViewport();await apps.click();await expect(page.locator('[data-space-launchpad]')).toBeVisible();
+  const launchers=page.locator('[data-launchpad-app]');await expect(launchers).toHaveCount(13);
+  expect(await launchers.evaluateAll(nodes=>nodes.map(node=>(node as HTMLElement).dataset.launchpadApp).sort())).toEqual(['welcome','browser','products','reader','photos','map','books','video','notes','contact','terminal','agent','settings'].sort());
+  for(const launcher of await launchers.all()){await launcher.scrollIntoViewIfNeeded();await expect(launcher).toBeInViewport();await expect(launcher).toBeEnabled();}
   await page.locator('[data-space-launchpad-close]').click();await expect(apps).toBeFocused();await recent.first().click();await expect(page.locator('[data-reader-body] .post-content')).toBeVisible();
 });
 

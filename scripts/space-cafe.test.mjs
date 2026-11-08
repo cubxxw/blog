@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { cafeTheme, cafeEntryMode, createSceneSelection } from '../assets/js/space/cafe.mjs';
+import {createBoot, advanceBoot} from '../assets/js/space/onboarding.mjs';
 
 test('the night room is the default and all six spatial cafés remain restorable', () => {
   for (const id of ['jiangnan', 'zen', 'garden', 'coast', 'mountain', 'lake', 'rain']) assert.equal(cafeTheme(id), id);
@@ -56,7 +57,9 @@ function controllerDeclaration(start, end) {
 }
 function pendingCameraController({loading=false}={}) {
   const surface = { inert: false }, desktop = [{ inert: true }, { inert: true }];
-  const root = { dataset: { cafeMode: 'cafe' } }, calls = [], storage = new Map();
+  const skip=new EventTarget(),status={textContent:''};
+  const panel={hidden:false,contains:()=>false,querySelector:s=>s==='[data-boot-status]'?status:skip,querySelectorAll:()=>[]};
+  const root = { dataset: { cafeMode: 'cafe' }, contains:()=>false, querySelectorAll:()=>[], querySelector:s=>s==='[data-space-boot]'?panel:{} }, calls = [], storage = new Map();
   if(loading)root.dataset.worldLoading='true';
   let movement;
   function move(mode) {
@@ -64,21 +67,30 @@ function pendingCameraController({loading=false}={}) {
     world.mode = mode;
     return new Promise((resolve, reject) => { movement = { resolve, reject }; });
   }
-  const world = { mode: 'roam', focus: () => move('roam'), start: () => move('roam'), leave: () => move('roam'), outside: () => move('roam') };
+  const world = { mode: 'roam', focus: () => world.mode === 'workspace' ? Promise.resolve(true) : move('roam'), start: () => move('roam'), leave: () => move('roam'), outside: () => move('roam') };
+  let finishStartup;
   const context = vm.createContext({
-    surface, desktop, root, world, ready: loading?new Promise(()=>{}):Promise.resolve(), boot: { dismiss() {} }, dialog: { open: false }, closePicker() {},
-    diagnostics:{record(){}},cancelRoom(){calls.push('cancel');delete root.dataset.worldLoading;},
+    surface, desktop, root, world, ready: loading?new Promise(resolve=>{finishStartup=resolve;}):Promise.resolve(), dialog: { open: false }, closePicker() {},
+    diagnostics:{record(){}},cancelRoom(){calls.push('cancel');delete root.dataset.worldLoading;context.world=null;},
+    document:{documentElement:{lang:'en'},activeElement:{isConnected:true}},pickerStatus:{},syncCat(){},syncPhotoLight(){},
+    createBoot,advanceBoot,performance,AbortController,setTimeout,clearTimeout,window:new EventTarget(),
+    matchMedia:()=>Object.assign(new EventTarget(),{matches:true}),
     sessionStorage: { setItem: (key, value) => storage.set(key, value) }, onEnter() {}, beforeVisit() {},
     focusDesktop: () => ({ focus: () => calls.push('focus') }),
     location: { href: 'https://blog.invalid/projects/' }, history: { replaceState() {} }, URL,
   });
-  vm.runInContext("let revision=0,disposed=false,mode='cafe',desiredMode='cafe';\n" +
+  const onboarding=readFileSync(new URL('../assets/js/space/onboarding.js',import.meta.url),'utf8');
+  vm.runInContext(onboarding.slice(onboarding.indexOf('export function')).replace('export function','function')+
+    '\nglobalThis.boot=mountOnboarding({root,enabled:true,onReveal:result=>{if(result?.workspace)api.enterDesktop(true);}});',context);
+  vm.runInContext("let revision=0,disposed=false,mode='cafe',desiredMode='cafe',failed=false,initializing=true,entryFocusManaged=false,failureFocusManaged=false;\n" +
     controllerDeclaration('  function setMode(value)', '  function commit(id)') +
+    controllerDeclaration('  function failWorld(message)', '  function firstVisibleFrame') +
     controllerDeclaration('  async function enterDesktop', '  async function visit') +
     controllerDeclaration('  async function visit', "  root.addEventListener('click'") +
-    '\nglobalThis.api={enterDesktop,visit,dispose(){disposed=true;}};', context);
+    '\nglobalThis.api={enterDesktop,visit,dispose(){disposed=true;boot.dispose();}};', context);
   return {
-    ...context.api, root, surface, desktop, calls, storage,
+    ...context.api, root, surface, desktop, calls, storage,boot:context.boot,panel,skipWorkspace(){skip.dispatchEvent(new Event('click'));},
+    finishStartup({failed=false}={}) { delete root.dataset.worldLoading;if(failed)vm.runInContext("failWorld('Synthetic room failure')",context);else{world.mode='workspace';context.boot.event('frame');}finishStartup(); },
     finishFocus() { world.mode = 'workspace'; movement.resolve(true); },
     finishVisit() { movement.resolve(true); },
     rejectFocus() { movement.reject(new Error('camera unavailable')); },
@@ -90,6 +102,42 @@ test('workspace entry cancels held startup and becomes usable before any rendere
   const f=pendingCameraController({loading:true});let result;
   f.enterDesktop(true).then(value=>{result=value;});await settleController();
   assert.equal(result,true);assert.equal(f.root.dataset.cafeMode,'desktop');assert.ok(f.desktop.every(node=>!node.inert));assert.deepEqual(f.calls,['cancel','focus']);
+  assert.equal(f.boot.active,false);assert.equal(f.panel.hidden,true);
+});
+
+test('returning from a hidden Lab waits for the live first frame instead of cancelling its renderer',async()=>{
+  const f=pendingCameraController({loading:true});let result;
+  const entry=f.enterDesktop(true,{waitForFrame:true}).then(value=>{result=value;});await settleController();
+  assert.equal(result,undefined);assert.deepEqual(f.calls,[]);assert.equal(f.root.dataset.worldLoading,'true');
+  assert.equal(f.boot.active,true);assert.equal(f.panel.hidden,false);assert.equal(f.root.dataset.bootState,'loading');
+  f.finishStartup();await entry;
+  assert.equal(result,true);assert.equal(f.root.dataset.cafeMode,'desktop');assert.deepEqual(f.calls,['focus']);
+  assert.equal(f.boot.active,false);assert.equal(f.panel.hidden,true);assert.equal(f.root.dataset.bootState,'complete');
+  assert.ok(f.desktop.every(node=>!node.inert));
+});
+
+test('a Lab return still reaches the ordinary focused workspace if its pending renderer fails',async()=>{
+  const f=pendingCameraController({loading:true});let result;
+  const entry=f.enterDesktop(true,{waitForFrame:true}).then(value=>{result=value;});await settleController();
+  assert.equal(result,undefined);assert.deepEqual(f.calls,[]);
+  assert.equal(f.boot.active,true);
+  f.finishStartup({failed:true});await entry;
+  assert.equal(result,false,'the real failure fallback supersedes the pending journey');assert.equal(f.root.dataset.cafeMode,'desktop');assert.deepEqual(f.calls,['cancel','focus']);
+  assert.equal(f.boot.active,false);assert.equal(f.panel.hidden,true);
+});
+
+test('the real Skip button remains immediately usable while Lab is waiting for its first frame',async()=>{
+  const f=pendingCameraController({loading:true});
+  const entry=f.enterDesktop(true,{waitForFrame:true});await settleController();
+  assert.equal(f.boot.active,true);f.skipWorkspace();await settleController();
+  assert.equal(f.root.dataset.cafeMode,'desktop');assert.equal(f.boot.active,false);assert.deepEqual(f.calls,['cancel','focus']);
+  f.finishStartup();assert.equal(await entry,false);assert.deepEqual(f.calls,['cancel','focus']);
+});
+
+test('a disposed Lab return cannot steal focus when its pending frame arrives later',async()=>{
+  const f=pendingCameraController({loading:true});
+  const entry=f.enterDesktop(true,{waitForFrame:true});await settleController();f.dispose();f.finishStartup();
+  assert.equal(await entry,false);assert.deepEqual(f.calls,[]);
 });
 
 test('an in-flight desktop journey keeps the café cancel surface active until the camera settles', async () => {

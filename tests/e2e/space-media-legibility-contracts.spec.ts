@@ -160,6 +160,10 @@ test('the classic fallback keeps 14px actions and 44px targets; shared map readi
   await page.setViewportSize({width:1440,height:900});await page.addInitScript(()=>{localStorage.setItem('space:cafe:theme:v2','zen');const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl'||type==='webgl2'||type==='experimental-webgl')return null;return Reflect.apply(original,this,[type,...args]);} as typeof original;});
   const catalog=await setup(page,'zh','light');await expect(page.locator('[data-bear-workspace]')).toHaveAttribute('data-world-failed','true');await expect(page.locator('.space-spatial-screen')).toHaveCount(0);
   await openApp(page,'photos');await galleryTypography(page,catalog.photos[0]);await win(page).locator(`[data-photo-select="${catalog.photos[0].id}"]`).click();await expect(preview(page)).toHaveAttribute('data-image-state','ready');for(const control of await win(page).locator('.sp-photo-detail__nav button,figcaption button,.sp-media-link:visible').all()){await hit(control);await visibleText(control,14);}
-  await win(page).locator('.sp-media-link').click();const map=win(page,'map');await expect(map).toBeVisible();await visibleText(map.locator('.sp-media-header .sp-media-kicker'),12);await hit(map.locator('.sp-media-link'));await visibleText(map.locator('.sp-media-link'),14);await visibleText(map.locator('.sp-media-footer'),12);
+  await win(page).locator('.sp-media-link').click();const map=win(page,'map');await expect(map).toBeVisible();await visibleText(map.locator('.sp-media-header .sp-media-kicker'),12);
+  const returnPhoto=map.getByRole('button',{name:'← 返回这张照片',exact:true}),gallery=map.getByRole('button',{name:'浏览相册 ↗',exact:true});
+  await expect(map.locator('.sp-media-link')).toHaveCount(2);
+  for(const control of [returnPhoto,gallery]){await hit(control);await visibleText(control,14);}
+  await visibleText(map.locator('.sp-media-footer'),12);
   const viewport=map.locator('[data-map-viewport] svg'),before=await viewport.getAttribute('viewBox');await map.locator('[data-map-zoom="in"]').click();expect(await viewport.getAttribute('viewBox')).not.toBe(before);expect(await map.locator('[data-window-body]').evaluate(el=>el.scrollWidth<=el.clientWidth+1)).toBe(true);
 });

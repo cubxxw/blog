@@ -27,14 +27,25 @@ test('bookmarks count only saved available documents, including reading pages',(
 });
 test('reader selection only exposes live text whose two endpoints belong to the current article',()=>{
   const first={},last={},other={};let connected=true;
-  const body={get isConnected(){return connected;},contains:node=>node===first||node===last};
-  const selected={rangeCount:1,isCollapsed:false,anchorNode:first,focusNode:last,toString:()=> '  当前文章的选中段落。  '};
+  const body={get isConnected(){return connected;},contains:node=>node===first||node===last,querySelectorAll:()=>[]};
+  const range={startContainer:first,endContainer:last,toString:()=> '  当前文章的选中段落。  ',intersectsNode:()=>false};
+  const selected={rangeCount:1,isCollapsed:false,anchorNode:first,focusNode:last,toString:range.toString,getRangeAt:()=>range};
   assert.equal(readerSelectionText(body,selected),'当前文章的选中段落。');
   assert.equal(readerSelectionText(body,{...selected,focusNode:other}),'');
   assert.equal(readerSelectionText(body,{...selected,anchorNode:other}),'');
   assert.equal(readerSelectionText(body,{...selected,isCollapsed:true}),'');
   assert.equal(readerSelectionText(body,{...selected,rangeCount:0}),'');
+  assert.equal(readerSelectionText(body,{...selected,rangeCount:2}),'');
+  assert.equal(readerSelectionText({...body,querySelectorAll:()=>[{}]},{...selected,getRangeAt:()=>({...range,intersectsNode:()=>true})}),'');
   assert.equal(readerSelectionText(body,null),'');
   connected=false;assert.equal(readerSelectionText(body,selected),'');
   assert.equal(readerSelectionText({isConnected:true,contains:()=>false},selected),'');
+});
+test('reader explanation preserves rendered Selection whitespace after validating the source Range',()=>{
+  const first={},last={};
+  const body={isConnected:true,contains:node=>node===first||node===last,querySelectorAll:()=>[]};
+  const range={startContainer:first,endContainer:last,toString:()=> '::: tip\nprepare：',intersectsNode:()=>false};
+  const selected={rangeCount:1,isCollapsed:false,anchorNode:first,focusNode:last,
+    getRangeAt:()=>range,toString:()=> '::: tip prepare：'};
+  assert.equal(readerSelectionText(body,selected),'::: tip prepare：');
 });
