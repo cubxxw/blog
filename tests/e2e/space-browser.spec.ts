@@ -12,23 +12,20 @@ test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
-// Opt-in driver decomposition for the compatible continuity journey only.
-// Locator.press already focuses this same button. This is not an application
-// focus repair: Escape must still restore canvas focus through its real handler.
-async function focusedSpeakerKey(page:Page,speaker:Locator,key:'Enter'|'Escape'){
- await speaker.focus();
- const focused=await readRoomObservation(page,()=>{
-  const roots=document.querySelectorAll('[data-bear-workspace]'),nodes=document.querySelectorAll('[data-room-object="speaker"]');
-  const button=nodes[0];
-  return roots.length===1&&nodes.length===1&&button instanceof HTMLButtonElement&&button.type==='button'&&button.isConnected&&button.ownerDocument===document&&roots[0].contains(button)&&document.activeElement===button&&document.hasFocus();
- },undefined,{timeout:5000,label:'Existing speaker keyboard focus',validate:(value):value is boolean=>value===true});
- expect(focused).toBe(true);await page.keyboard.press(key);
-}
-async function desk(page:Page,splitSpeakerKeyboard=false){
+// Only the two visitor continuity journeys opt in to the closed input owner.
+// Escape must still restore canvas focus through the real product handler.
+async function desk(page:Page,closedSpeakerDriver=false){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
- const speaker=page.locator('[data-room-object="speaker"]');if(splitSpeakerKeyboard)await focusedSpeakerKey(page,speaker,'Enter');else await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+ if(closedSpeakerDriver)await withRoomPointerBatch(page,async pointer=>{
+  await pointer.speakerKey('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+  await pointer.speakerKey('Escape');
+ },test.info());
+ else{
+  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+  await speaker.press('Escape');
+ }
  // Dismiss the keyboard menu before returning to a physical room target.
- if(splitSpeakerKeyboard)await focusedSpeakerKey(page,speaker,'Escape');else await speaker.press('Escape');expect((await observeRoomDom(page,test.info(),{selector:'.space-world__canvas',state:'focused'})).focused).toBe(true);
+ expect((await observeRoomDom(page,test.info(),{selector:'.space-world__canvas',state:'focused'})).focused).toBe(true);
  await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
  if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
 }
@@ -149,7 +146,7 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>{requests++;return route.fulfill({contentType:'text/html',body:'<!doctype html><html><body><h1>Quiet reading check</h1><label>A thought to return to <textarea aria-label="A thought to return to"></textarea></label><button onclick="this.textContent=\'Kept open\'">Keep this page open</button></body></html>'});});
- await desk(page,mover==='compatible');await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
+ await desk(page,true);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
  const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'});
  await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,frame.getByRole('button'));await expect(frame.getByRole('button')).toHaveText('Kept open');
  const browserFrame=createRoomBrowserFrameObservation(page);
