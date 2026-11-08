@@ -1,0 +1,130 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { snapshotDeployment } from './site-artifact.mjs';
+import { selectBrowserPages, legacyBrowserScope } from '../site-verify.mjs';
+
+const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
+const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
+const write=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');};
+const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function testsIn(report) {
+ const rows=[];
+ function walk(suites) {for(const suite of suites??[]){for(const spec of suite.specs??[])for(const test of spec.tests??[]){if(!spec.id||!test.projectName)throw Error('Missing test identity');rows.push({key:`${spec.id}|${test.projectName}|${test.repeatEachIndex??0}`,test});}walk(suite.suites);}}
+ walk(report.suites);return rows;
+}
+export function reportInventory(report) {
+ const ids=testsIn(report).map(row=>row.key).sort();
+ if(new Set(ids).size!==ids.length)throw Error('Duplicate test identity');
+ return ids;
+}
+export function summarizeResults(report) {
+ if(!Array.isArray(report.errors)||report.errors.length)throw Error('Fatal reporter errors');
+ const inventory=reportInventory(report);if(!inventory.length)throw Error('Empty browser result');
+ const summary={inventory,total:inventory.length,firstPass:0,flaky:0,skipped:0,retries:0,expectedFailures:0};
+ for(const {test} of testsIn(report)) {
+  const attempts=test.results??[];
+  if(test.status==='skipped'&&test.expectedStatus==='skipped'){summary.skipped++;continue;}
+  if(!['expected','flaky'].includes(test.status)||!attempts.length||attempts.at(-1).status!==test.expectedStatus)throw Error('Unexpected or failed browser test');
+  summary.retries+=Math.max(0,attempts.length-1);
+  if(test.status==='flaky')summary.flaky++;
+  else if(attempts.length===1&&attempts[0].status==='passed')summary.firstPass++;
+  else if(test.expectedStatus==='failed')summary.expectedFailures++;
+ }
+ if(summary.skipped===summary.total)throw Error('Empty executed browser coverage');
+ return summary;
+}
+function exact(actual,expected,message) {if(!same([...actual].sort(),[...expected].sort()))throw Error(message);}
+export function aggregateLanes({candidate,receipts,identity}) {
+ if(receipts.length!==candidate.lanes.length)throw Error('Missing or extra browser lane');
+ const names=new Set(),groupIds={};
+ const result={total:0,firstPass:0,flaky:0,skipped:0,retries:0,expectedFailures:0,lanes:[]};
+ for(const receipt of receipts) {
+  if(names.has(receipt.lane))throw Error('Duplicate browser lane');names.add(receipt.lane);
+  const expected=candidate.lanes.find(lane=>lane.name===receipt.lane);if(!expected)throw Error('Unknown browser lane');
+  for(const key of ['sourceSha','inputDigest','runId','attempt','candidateDigest'])if(receipt[key]!==identity[key])throw Error(`Browser lane ${key} mismatch`);
+  if(receipt.schema!=='blog-ci-lane/1'||receipt.exitCode!==0||receipt.frozenUnchanged!==true)throw Error('Browser lane did not succeed on frozen bytes');
+  exact(receipt.summary.inventory,expected.inventory,'Browser lane inventory mismatch');
+  const group=expected.group??(expected.name.startsWith('legacy-')?'legacy':expected.name);
+  (groupIds[group]??=[]).push(...expected.inventory);
+  for(const key of ['total','firstPass','flaky','skipped','retries','expectedFailures'])result[key]+=receipt.summary[key];
+  result.lanes.push({name:receipt.lane,...receipt.summary});
+ }
+ for(const [group,expected] of Object.entries(candidate.inventories)) {
+  const actual=groupIds[group]??[];
+  if(new Set(actual).size!==actual.length)throw Error('Duplicate shard coverage');
+  exact(actual,expected,`Incomplete ${group} inventory coverage`);
+ }
+ return result;
+}
+function browserEnv(dir,candidate,lane) {
+ return {...Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:^|_)proxy$/i.test(key))),NO_PROXY:'localhost,127.0.0.1,::1',CI:'true',SITE_OUTPUT_DIR:path.join(dir,'site/public'),SITE_PAGE_LIST:path.join(dir,'pages.json'),SITE_BASE_PATH:new URL(candidate.baseUrl).pathname,SITE_CANONICAL_ORIGIN:new URL(candidate.baseUrl).origin,
+  PLAYWRIGHT_HTML_OUTPUT_DIR:path.join(dir,'lane-results',lane,'html'),SITE_TEST_RESULTS:path.join(dir,'lane-results',lane,'traces'),PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(dir,'lane-results',lane,'results.json')};
+}
+const cli=()=>path.resolve('node_modules/@playwright/test/cli.js');
+function command(config,args,env,list=false) {
+ const actualEnv={...env};if(list)delete actualEnv.PLAYWRIGHT_JSON_OUTPUT_FILE;
+ const result=spawnSync(process.execPath,[cli(),'test',`--config=${config}`,...args,...(list?['--list','--reporter=json']:['--reporter=list,html,json',`--output=${env.SITE_TEST_RESULTS}`])],{env:actualEnv,stdio:list?['ignore','pipe','inherit']:'inherit',encoding:'utf8',maxBuffer:32*1024*1024});
+ if(result.error)throw result.error;
+ if(list){if(result.status!==0)throw Error('Browser inventory collection failed');return reportInventory(JSON.parse(result.stdout));}
+ return result.status;
+}
+function metadataDigest(dir,plan) {
+ const names=['plan.json','changes.json',...plan.requiredChecks.filter(n=>!['browser','interactive','output'].includes(n)).map(n=>`${n}-report.json`),...(plan.runSite?['site/page-map.json','site/output-report.json']:[])];
+ return hash(names.map(name=>[name,read(path.join(dir,name))]));
+}
+export function prepareCandidate({dir,plan,changes,runId,attempt,inventoryRunner=command}) {
+ const candidate={schema:'blog-ci-candidate/1',sourceSha:plan.sourceSha,inputDigest:plan.inputDigest,runId,attempt,metadataDigest:metadataDigest(dir,plan),fileSetDigest:plan.runSite?hash(snapshotDeployment(path.join(dir,'site'))):null,lanes:[],inventories:{}};
+ if(plan.runSite) {
+  const map=read(path.join(dir,'site/page-map.json'));candidate.baseUrl=map.baseUrl;candidate.pages=selectBrowserPages({changeSet:changes,pageMap:map});candidate.legacy=legacyBrowserScope(changes,map.target);
+  write(path.join(dir,'pages.json'),candidate.pages);
+  const groups=[{name:'quality',config:'playwright.quality.config.ts',args:[],browsers:'chromium'}];
+  if(candidate.legacy.required)groups.push({name:'legacy',config:'playwright.config.ts',args:['--grep-invert','Visual Regression'],browsers:'chromium'});
+  if(plan.requiredChecks.includes('interactive'))groups.push({name:'interactive',config:'playwright.interactive.config.ts',args:[],browsers:'chromium firefox webkit'});
+  for(const group of groups) {
+   const env=browserEnv(dir,candidate,group.name),full=inventoryRunner(group.config,group.args,env,true);if(!full.length)throw Error('Empty expected browser inventory');candidate.inventories[group.name]=full;
+   for(let index=1;index<=(group.name==='legacy'?3:1);index++) {
+    const name=group.name==='legacy'?`legacy-${index}`:group.name,args=[...group.args,...(group.name==='legacy'?[`--shard=${index}/3`]:[])];
+    const inventory=group.name==='legacy'?inventoryRunner(group.config,args,env,true):full;
+    if(!inventory.length)throw Error('Empty browser shard');candidate.lanes.push({name,group:group.name,config:group.config,args,browsers:group.browsers,inventory});
+   }
+  }
+  // Prove the pre-shard inventory is partitioned exactly before uploading it.
+  for(const [group,full] of Object.entries(candidate.inventories)) {
+   const partition=candidate.lanes.filter(l=>l.group===group).flatMap(l=>l.inventory);
+   if(new Set(partition).size!==partition.length)throw Error('Duplicate planned shard coverage');exact(partition,full,'Incomplete planned shard coverage');
+  }
+ }
+ write(path.join(dir,'candidate.json'),candidate);
+ return {candidateDigest:hash(candidate),matrix:{include:candidate.lanes.length?candidate.lanes.map(({name,browsers})=>({lane:name,browsers})):[{lane:'unused',browsers:''}]}};
+}
+export function validateCandidate({dir,plan,trust}) {
+ const c=read(path.join(dir,'candidate.json'));
+ if(c.schema!=='blog-ci-candidate/1'||hash(c)!==trust.candidateDigest)throw Error('Candidate digest mismatch');
+ for(const key of ['sourceSha','inputDigest','runId','attempt'])if(c[key]!==trust[key])throw Error(`Candidate ${key} mismatch; rerun the complete workflow`);
+ if(plan.sourceSha!==c.sourceSha||plan.inputDigest!==c.inputDigest||metadataDigest(dir,plan)!==c.metadataDigest)throw Error('Candidate metadata mismatch');
+ if(plan.runSite&&hash(snapshotDeployment(path.join(dir,'site')))!==c.fileSetDigest)throw Error('Frozen candidate deployment changed');
+ return c;
+}
+export function runLane({dir,plan,trust,name}) {
+ const candidate=validateCandidate({dir,plan,trust}),lane=candidate.lanes.find(l=>l.name===name);if(!lane)throw Error('Unknown required lane');
+ const destination=path.join(dir,'lane-results',name),receipt={schema:'blog-ci-lane/1',...trust,lane:name,exitCode:1,frozenUnchanged:false};
+ try {
+  const env=browserEnv(dir,candidate,name);
+  if(name==='interactive') {const check=spawnSync('npm',['run','interactive:check'],{env,stdio:'inherit'});if(check.error||check.status!==0)throw Error('Interactive source checks failed');}
+  const status=command(lane.config,lane.args,env);if(status!==0)throw Error(`Browser lane failed (${status})`);
+  validateCandidate({dir,plan,trust});receipt.frozenUnchanged=true;
+  receipt.summary=summarizeResults(read(path.join(destination,'results.json')));exact(receipt.summary.inventory,lane.inventory,'Executed lane inventory mismatch');receipt.exitCode=0;
+ } catch(error) {receipt.error=error.message;} finally {write(path.join(destination,'receipt.json'),receipt);}
+ if(receipt.exitCode!==0)throw Error(receipt.error);return receipt;
+}
+export function collectLaneResults({dir,plan,trust}) {
+ const candidate=validateCandidate({dir,plan,trust});
+ const resultsRoot=path.join(dir,'lane-results'),actual=fs.readdirSync(resultsRoot).sort();exact(actual,candidate.lanes.map(l=>l.name),'Missing or extra result lane directory');
+ const receipts=candidate.lanes.map(lane=>{
+  const folder=path.join(resultsRoot,lane.name),receipt=read(path.join(folder,'receipt.json'));
+  const summary=summarizeResults(read(path.join(folder,'results.json')));if(!same(receipt.summary,summary))throw Error('Raw browser report disagrees with receipt');return receipt;
+ });
+ return {candidate,summary:aggregateLanes({candidate,receipts,identity:trust})};
+}

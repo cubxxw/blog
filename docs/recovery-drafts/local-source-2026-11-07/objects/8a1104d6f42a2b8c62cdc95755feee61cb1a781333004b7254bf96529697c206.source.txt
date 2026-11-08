@@ -1,0 +1,145 @@
+// Excerpts are inert text and references. This module has no DOM or state dependency.
+export const MAX_EXCERPTS = 80;
+export const MAX_EXCERPT_LENGTH = 1200;
+const forbidden = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
+const safeID = value => typeof value === 'string' && /^[a-zA-Z0-9_-]{1,120}$/.test(value);
+
+function anchorValue(value) {
+  if (value === undefined || value === null || value === '') return '';
+  if (typeof value !== 'string' || value.length > 300) return null;
+  let anchor = value.startsWith('#') ? value.slice(1) : value;
+  try { anchor = decodeURIComponent(anchor); } catch { return null; }
+  return anchor && /^[\p{L}\p{N}_:.-]+$/u.test(anchor) ? anchor : null;
+}
+
+function siteSource(value) {
+  if (typeof value !== 'string' || value.length > 800 || !value.startsWith('/') || value.startsWith('//') || /[\\\u0000-\u0020\u007f?]/.test(value)) return null;
+  const parts = value.split('#');
+  if (parts.length > 2) return null;
+  const url = parts[0];
+  if (url.length > 500 || /[<>"`]/.test(url)) return null;
+  let decoded;
+  try { decoded = decodeURIComponent(url); } catch { return null; }
+  if (/[\\\u0000-\u0020\u007f?#<>"`]/.test(decoded) || decoded.includes('//') || /\/(?:\.|\.\.)(?:\/|$)/.test(decoded) || /%2f/i.test(url)) return null;
+  const anchor = anchorValue(parts[1]);
+  return anchor === null ? null : { url, anchor };
+}
+
+function hashText(value) {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i += 1) hash = Math.imul(hash ^ value.charCodeAt(i), 16777619);
+  return (hash >>> 0).toString(36);
+}
+
+function fallbackID(url, text) {
+  const value = `${url}\u0000${text}`;
+  return `excerpt-${hashText(value)}-${hashText([...value].reverse().join(''))}`;
+}
+
+/** With a catalog, source and title must come from its article records.
+ * Without one, only inert storage shape is restored; consumers must validate against
+ * their current catalog before presenting a backlink. anchors can be supplied by
+ * the reader's actual DOM to additionally verify the fragment's target.
+ */
+export function normalizeExcerpt(value, catalog, options = {}) {
+  if (!value || typeof value !== 'object' || typeof value.text !== 'string') return null;
+  const text = value.text.replace(/\r\n?/g, '\n').trim();
+  if (!text || text.length > MAX_EXCERPT_LENGTH || forbidden.test(text)) return null;
+  const source = siteSource(value.url);
+  if (!source) return null;
+  const suppliedAnchor = anchorValue(value.anchor);
+  if (suppliedAnchor === null || (suppliedAnchor && source.anchor && suppliedAnchor !== source.anchor)) return null;
+  const anchor = suppliedAnchor || source.anchor;
+  let title = value.title;
+  let record;
+  if (catalog !== undefined && catalog !== null) {
+    const articles = Array.isArray(catalog) ? catalog : catalog.articles;
+    if (!Array.isArray(articles)) return null;
+    record = articles.find(article => siteSource(article?.url)?.url === source.url);
+    if (!record) return null;
+    title = record.title;
+  }
+  if (typeof title !== 'string' || !title.trim() || title.length > 500 || /[\u0000-\u001f\u007f]/.test(title)) return null;
+  const anchors = options.anchors ?? record?.anchors;
+  if (anchor && anchors !== undefined && (!Array.isArray(anchors) || !anchors.some(item => anchorValue(item) === anchor))) return null;
+  let createdAt = '';
+  if (typeof value.createdAt === 'string' && value.createdAt.length <= 40 && Number.isFinite(Date.parse(value.createdAt))) createdAt = new Date(value.createdAt).toISOString();
+  return {
+    id: safeID(value.id) ? value.id : fallbackID(source.url, text),
+    text,
+    url: source.url,
+    title: title.trim(),
+    anchor,
+    createdAt,
+  };
+}
+
+export function normalizeExcerpts(values, catalog, options = {}) {
+  if (!Array.isArray(values)) return [];
+  const result = [], keys = new Set(), ids = new Set();
+  // Bound work even for a malicious restored array; valid workspace data is <= 80.
+  for (const value of values.slice(0, 1000)) {
+    const item = normalizeExcerpt(value, catalog, options);
+    if (!item) continue;
+    const key = `${item.url}\u0000${item.text}`;
+    if (keys.has(key)) continue;
+    keys.add(key);
+    const baseID = item.id;
+    let suffix = 1;
+    while (ids.has(item.id)) item.id = `${baseID.slice(0, 110)}-${suffix++}`;
+    ids.add(item.id);
+    result.push(item);
+    if (result.length === MAX_EXCERPTS) break;
+  }
+  return result;
+}
+
+/** Produces state values; the calling operation owns disk persistence. */
+export function createExcerpt(value, existing = [], catalog, options = {}) {
+  // A catalog change must never delete a reader's already-saved private text.
+  // Validate the new selection against the current catalog; restore old entries
+  // only by their safe inert shape, even if their public sources disappeared.
+  const excerpts = normalizeExcerpts(existing);
+  const excerpt = normalizeExcerpt(value, catalog, options);
+  if (!excerpt) return { ok: false, status: 'invalid', excerpts, error: 'invalid_excerpt' };
+  const duplicate = excerpts.find(item => item.url === excerpt.url && item.text === excerpt.text);
+  if (duplicate) return { ok: true, status: 'duplicate', excerpt: duplicate, excerpts };
+  if (excerpts.length >= MAX_EXCERPTS) return { ok: false, status: 'full', excerpts, error: 'excerpt_limit' };
+  const now = options.now ?? new Date().toISOString();
+  excerpt.createdAt = Number.isFinite(Date.parse(now)) ? new Date(now).toISOString() : '';
+  if (safeID(options.id)) excerpt.id = options.id;
+  const ids = new Set(excerpts.map(item => item.id));
+  const baseID = excerpt.id;
+  let suffix = 1;
+  while (ids.has(excerpt.id)) excerpt.id = `${baseID.slice(0, 110)}-${suffix++}`;
+  return { ok: true, status: 'saved', excerpt, excerpts: [...excerpts, excerpt] };
+}
+
+function markdownText(value) {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/[\\`*_[\]{}()!~|]/g, '\\$&');
+}
+
+/** Resolve a present-day source independently of historical private metadata. */
+export function resolveExcerptSource(value, catalog) {
+  if (catalog === undefined || catalog === null) return null;
+  const item = normalizeExcerpt(value);
+  if (!item) return null;
+  return normalizeExcerpt(item, catalog) || normalizeExcerpt({ ...item, anchor: '' }, catalog);
+}
+
+export function serializeExcerptMarkdown(values, catalog) {
+  return normalizeExcerpts(Array.isArray(values) ? values : [values]).map(item => {
+    const quote = item.text.split('\n').map(line => `> ${markdownText(line)}`).join('\n');
+    const source = resolveExcerptSource(item, catalog);
+    // URL pathname preserves existing percent escapes; encodeURI would encode them twice.
+    const path = new URL(item.url, 'https://excerpt.invalid').pathname.replace(/\(/g, '%28').replace(/\)/g, '%29');
+    if (source) {
+      const url = `${path}${source.anchor ? `#${encodeURIComponent(source.anchor)}` : ''}`;
+      return `${quote}\n\n— [${markdownText(source.title)}](${url})`;
+    }
+    const recorded = `${path}${item.anchor ? `#${encodeURIComponent(item.anchor)}` : ''}`;
+    const unavailable = catalog?.language === 'zh' ? '原文暂不可用' : 'Original currently unavailable';
+    const label = catalog?.language === 'zh' ? '保存时的来源记录' : 'Source recorded when saved';
+    return `${quote}\n\n— ${unavailable}：${markdownText(item.title)}\n\n${label}：\`${recorded}\``;
+  }).join('\n\n---\n\n');
+}
