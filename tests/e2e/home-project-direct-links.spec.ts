@@ -8,7 +8,7 @@ type Product = {
   url: string;
   url_zh?: string;
   url_en?: string;
-  github: string;
+  github?: string;
 };
 const products = parse(readFileSync('data/products.yml', 'utf8')).products as Product[];
 const locales = [
@@ -37,7 +37,9 @@ for (const locale of locales) {
       await expect(main).toHaveAttribute('href', destination);
       await expect(main).toHaveAttribute('target', '_blank');
       await expect(main).toHaveAttribute('rel', /noopener/);
-      await expect(card.getByRole('link', { name: `${product.name} GitHub`, exact: true })).toHaveAttribute('href', product.github);
+      const source = card.getByRole('link', { name: `${product.name} GitHub`, exact: true });
+      if (product.github) await expect(source).toHaveAttribute('href', product.github);
+      else await expect(source).toHaveCount(0);
       const open = card.locator('.hp-product__links a').filter({ hasText: /^(Open|打开)$/ });
       if (destination === product.github) await expect(open).toHaveCount(0);
       else await expect(open).toHaveAttribute('href', destination);
@@ -70,7 +72,7 @@ for (const locale of locales) {
     const popupPromise = page.waitForEvent('popup');
     await sourceMain.press('Enter');
     const popup = await popupPromise;
-    await expect(popup).toHaveURL(new URL(sourceOnly.github).href);
+    await expect(popup).toHaveURL(new URL(sourceOnly.github!).href);
     await popup.close();
     expect(spaceRequests).toEqual([]);
     await expect(page).toHaveURL(originalURL);
