@@ -13,6 +13,7 @@ import { contextualQuestion, serviceMessage, planInlineText } from './companion.
 import {createSessionStore,sessionMessages} from './agent-sessions.mjs';
 import {
   runAgentTask,
+  runPublicResearchTask,
   createToolExecutor,
   createApprovalGate,
   interpretRunResult,
@@ -45,10 +46,10 @@ function fallbackArticleText(html) {
   return String(html ?? '').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function createDOMArticleParser() {
+function createDOMArticleParser(requireArticle = false) {
   return function parseArticleText(html, source) {
     const doc = new DOMParser().parseFromString(String(html ?? ''), 'text/html');
-    const content = doc.querySelector('.post-content') || doc.querySelector('article') || doc.body;
+    const content = doc.querySelector('.post-content') || (!requireArticle && (doc.querySelector('article') || doc.body));
     if (!content) return '';
     // Import article text only; never its scripts or active embeds.
     content.querySelectorAll('script,style,iframe,object,embed,form,input,button,link,meta,svg,math,template,noscript').forEach((el) => el.remove());
@@ -107,6 +108,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     parseArticleText: typeof DOMParser !== 'undefined' ? createDOMArticleParser() : fallbackArticleText,
     fetchImpl: (...args) => fetch(...args),
   });
+  const researchTool = createToolExecutor({catalog,origin,policy:'public-research',parseArticleText:typeof DOMParser!=='undefined'?createDOMArticleParser(true):fallbackArticleText,fetchImpl:(...args)=>fetch(...args)});
 
   let disposed = false;
   let busy = false;
@@ -126,7 +128,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   host.innerHTML = `
     <div class="bear-agent" data-agent-root>
       <header class="bear-agent__header">
-        <div class="bear-agent__identity"><span class="bear-agent__orb" aria-hidden="true">✳</span><div><strong>${t('空间助手','Space companion')}</strong><small>DeepSeek Flash</small></div><button type="button" data-agent-new aria-label="${t('新对话','New conversation')}">＋</button><button type="button" data-agent-history aria-label="${t('会话历史','Conversation history')}" aria-expanded="false">◷</button></div>
+        <div class="bear-agent__identity"><span class="bear-agent__orb" aria-hidden="true">✳</span><div><strong>${t('空间助手','Space companion')}</strong><small data-agent-provider>DeepSeek Flash</small></div><button type="button" data-agent-new aria-label="${t('新对话','New conversation')}">＋</button><button type="button" data-agent-history aria-label="${t('会话历史','Conversation history')}" aria-expanded="false">◷</button></div>
         <p class="bear-agent__session-title" data-agent-session-title></p>
         <p class="bear-agent__persistence" data-agent-persistence hidden role="status"></p>
         <h2>${t('接下来，想探索什么？','Where shall we go next?')}</h2>
@@ -142,6 +144,8 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
             </details>
             <button type="button" class="bear-agent__context" data-agent-context hidden aria-label="${t('移除引用来源', 'Remove quoted source')}"><span class="space-sr-only" data-agent-context-label></span><span aria-hidden="true">×</span></button>
           </div>
+          <label class="bear-agent__mode">${t('模式','Mode')} <select data-agent-mode aria-describedby="bear-agent-mode-hint"><option value="conversation">${t('对话 · DeepSeek','Conversation · DeepSeek')}</option><option value="public-research">${t('公开资料 · 不调用模型','Public sources · No model')}</option></select></label>
+          <p class="bear-agent__mode-hint" id="bear-agent-mode-hint" data-agent-mode-hint hidden>${t('输入关键词（最多 200 字符）。只查公开目录，最多读取一篇本站文章；不调用模型、不改工作区。','Enter keywords (up to 200 characters). Search the public catalog and read at most one site article. No model call or workspace changes.')}</p>
           <form>
             <textarea data-agent-input rows="2" maxlength="4000" aria-label="${t('给空间助手的任务', 'Task for the space companion')}" placeholder="${t('说说你的想法…', 'What’s on your mind?')}"></textarea>
             <div class="bear-agent__controls">
@@ -177,6 +181,14 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   const sessionList=host.querySelector('[data-agent-session-list]'),sessionSearch=host.querySelector('[data-agent-session-search]');
   const sessionTitle=host.querySelector('[data-agent-session-title]'),sessionSave=host.querySelector('[data-agent-session-save]');
   const saveWarning=host.querySelector('[data-agent-persistence]');
+  const modeSelect=host.querySelector('[data-agent-mode]');
+  function syncMode(){
+    const research=modeSelect.value==='public-research';
+    host.querySelector('[data-agent-provider]').textContent=research?t('公开资料 · 不调用模型','Public sources · No model'):'DeepSeek Flash';
+    host.querySelector('[data-agent-mode-hint]').hidden=!research;
+    input.placeholder=research?t('搜索公开文章的关键词…','Keywords for public writing…'):t('说说你的想法…','What’s on your mind?');
+    host.querySelectorAll('.bear-agent__chips').forEach(node=>{node.hidden=research;});
+  }
   const nameOf=value=>value.legacy?t('之前的对话','Previous conversation'):value.title||t('新对话','New conversation');
   function drawSave(){sessionSave.textContent=sessions.persisted?t('仅保存在当前浏览器。换风景、切语言都还在。','Saved in this browser. Scenery and language changes keep it.'):t('浏览器未能保存，请先导出记录。当前页面仍保留你的对话。','Browser storage failed. Export your conversations; this page still retains them.');sessionSave.dataset.saved=String(sessions.persisted);saveWarning.hidden=sessions.persisted;saveWarning.textContent=sessions.persisted?'':t('记录未能保存，建议先导出。','History could not save. Export it before leaving.');}
   function saveDraft(){clearTimeout(draftTimer);if(!draftDirty)return;const saved=sessions.saveDraft(session.id,input.value,{expectedRevision:draftRevision});draftRevision=sessions.lastDraftRevision;if(saved)draftDirty=false;drawSave();}
@@ -215,7 +227,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   input.addEventListener('input',()=>{draftDirty=true;clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,250);if(passageQuestion(input.value)&&!String(selectedText).trim()){focus=null;drawContext();}updateStartHint();});
   const flushDraft=()=>{if(!disposed)saveDraft();};window.addEventListener('pagehide',flushDraft);
   const drawContext = () => {
-    contextBar.hidden = contextButton.hidden = !focus;
+    contextBar.hidden = contextButton.hidden = !focus || modeSelect.value==='public-research';
     const title = focus ? `${selectedText ? t('选中文字','Selected passage') : t('引用来源','Source')} · ${String(focus.title || '').slice(0,200)}` : '';
     contextTitle.textContent = title;
     host.querySelector('[data-agent-context-label]').textContent = title;
@@ -227,6 +239,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     updateStartHint();
   };
   drawContext();
+  modeSelect.addEventListener('change',()=>{syncMode();drawContext();});
   contextButton.addEventListener('click',()=>{focus=null;selectedText='';drawContext();input.focus();});
   contextDetails.addEventListener('keydown',event=>{if(event.key==='Escape'&&contextDetails.open){event.preventDefault();event.stopPropagation();contextDetails.open=false;contextDetails.querySelector('summary').focus({preventScroll:true});}});
   const prefill = event => {
@@ -247,6 +260,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
   const setBusy = (value) => {
     busy = value;
     send.disabled = value;
+    modeSelect.disabled = value;
     stop.hidden = !value;
     host.querySelectorAll('[data-agent-new],[data-agent-session-new],[data-agent-session],[data-agent-prompt]').forEach(button=>{button.disabled=value;});
   };
@@ -407,17 +421,18 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     badge.dataset.status = record.status;
   }
 
-  function addRetry(taskNode, question) {
+  function addRetry(taskNode, question, mode = 'conversation') {
     if (!question) return;
     const retry = el('button', 'bear-agent__retry', t('作为新任务重试', 'Retry as a new task'));
     retry.type = 'button';
     retry.dataset.agentRetry = '';
-    retry.addEventListener('click', () => { if (!busy) runTask(question,{context:false}); });
+    retry.addEventListener('click', () => { if (!busy) runTask(question,{context:false,mode}); });
     taskNode.append(retry);
   }
 
   function renderRecord(record, { restored = false } = {}) {
     const taskNode = createTaskNode(record.question, record);
+    labelTaskMode(taskNode,record.mode);
     setBadge(taskNode, record);
     const timeline = taskNode.querySelector('[data-agent-timeline]');
     for (const step of record.steps || []) {
@@ -449,7 +464,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     if (restored && record.status === 'interrupted') {
       taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', t('这个任务在上次会话中被中断，不会自动重跑。', 'This task was interrupted in an earlier session and is never rerun automatically.')));
     }
-    if (record.question && (record.status === 'failed' || record.status === 'interrupted')) addRetry(taskNode, record.question);
+    if (record.question && (record.status === 'failed' || record.status === 'interrupted')) addRetry(taskNode, record.question,record.mode);
     return taskNode;
   }
 
@@ -516,20 +531,28 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
 
   // ── Task lifecycle ─────────────────────────────────────────────────────────
 
-  async function runTask(question, {context = true} = {}) {
+  function labelTaskMode(taskNode,mode){
+    taskNode.dataset.agentTaskMode=mode==='public-research'?'public-research':'conversation';
+    if(mode==='public-research')taskNode.prepend(el('p','bear-agent__note',t('公开资料任务 · 不调用模型','Public-source task · No model call')));
+  }
+  async function runTask(question, {context = true,mode = modeSelect.value} = {}) {
     if (busy || disposed) return null;
     const raw = String(question ?? '').trim().slice(0, 4000);
     if (!raw) return null;
-    const useContext = context && !(passageQuestion(raw) && !String(selectedText).trim());
-    const text = contextualQuestion(raw,useContext ? focus : null,useContext ? selectedText : '');
+    const research=mode==='public-research';
+    modeSelect.value=research?'public-research':'conversation';syncMode();drawContext();
+    const useContext = !research && context && !(passageQuestion(raw) && !String(selectedText).trim());
+    const text = research?raw:contextualQuestion(raw,useContext ? focus : null,useContext ? selectedText : '');
     if (!text) return null;
     const sessionId=session.id,history=sessionMessages(sessions.active());
     closeHistory();
     recognition?.abort(); expand(); announce('working');
     const taskNode = createTaskNode(text, null);
+    labelTaskMode(taskNode,mode);
     const live = {
       id: `pending-${Date.now().toString(36)}`,
       question: text,
+      ...(research?{mode:'public-research'}:{}),
       status: 'running',
       steps: [],
       answer: '',
@@ -597,34 +620,35 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     };
 
     try {
-      const record = await runAgentTask({
+      const record = await (research?runPublicResearchTask:runAgentTask)({
         question: text,
+        ...(research?{catalog,origin}:{}),
         history,
         language: catalog?.language || 'zh',
         publicContext,
         requestTurn,
-        executeTool,
+        executeTool:research?researchTool:executeTool,
         approveTool: ({ taskId, name, args }) => requestApproval({ taskId, name, args }),
         signal: controller.signal,
         onEvent,
       });
-      renderRecordInto(taskNode, record);
+      if(!disposed)renderRecordInto(taskNode, record);
       persist(record);
-      applyFinalStatus(record);
+      if(!disposed)applyFinalStatus(record);
       return record;
     } catch (error) {
       const record = { ...live, status: 'failed', stopReason: 'error', steps:[...live.steps,{type:'error',message:error?.message}], endedAt: new Date().toISOString() };
       live.status = 'failed';
-      renderRecordInto(taskNode, record);
+      if(!disposed)renderRecordInto(taskNode, record);
       persist(record);
-      applyFinalStatus(record);
+      if(!disposed)applyFinalStatus(record);
       return record;
     } finally {
       controller = null;
       // Cancel (never merely forget) a pending approval: its buttons must not
       // survive the task or mutate the status of the next one.
       if (pendingApproval) { pendingApproval.cancel(); pendingApproval = null; }
-      setBusy(false);
+      if(!disposed)setBusy(false);else busy=false;
       announce(live.status === 'completed' ? 'done' : live.status === 'failed' ? 'error' : 'stopped');
     }
   }
@@ -634,17 +658,17 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     for (const node of taskNode.querySelectorAll('[data-agent-step="model"][data-status="running"]')) node.dataset.status = record.status === 'failed' ? 'error' : record.status === 'completed' ? 'ok' : 'interrupted';
     renderAnswer(taskNode.querySelector('[data-agent-answer]'), record.answer || '');
     if (record.status === 'failed') {
-      taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh)));
-      addRetry(taskNode, record.question);
+      taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', record.mode==='public-research'?t('公开资料任务未完成：','Public-source task incomplete: ')+(record.steps?.findLast(s=>s.type==='error')?.message||''):serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh)));
+      addRetry(taskNode, record.question,record.mode);
     } else if (record.status === 'interrupted') {
       taskNode.querySelector('[data-agent-answer]').append(el('p', 'bear-agent__note', t('任务被中断，没有标记为完成，也不会自动重跑。', 'The task was interrupted, not marked complete, and will not rerun automatically.')));
-      addRetry(taskNode, record.question);
+      addRetry(taskNode, record.question,record.mode);
     }
   }
 
   function applyFinalStatus(record) {
     if (record.status === 'completed') {
-      setStatus(t('任务完成。可以继续提问。', 'Task complete. Ask another question.'));
+      setStatus(record.mode==='public-research'?t('公开资料检索结束，未调用模型。','Public-source lookup finished. No model was called.'):t('任务完成。可以继续提问。', 'Task complete. Ask another question.'));
       return;
     }
     if (record.stopReason === 'aborted' || record.stopReason === 'timeout') {
@@ -655,7 +679,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
       setStatus(t('任务达到了它的步骤上限，未标记为完成。', 'The task reached its step limit and was not marked complete.'));
       return;
     }
-    setStatus(serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh));
+    setStatus(record.mode==='public-research'?t('公开资料任务未完成，可查看记录后重试。','Public-source lookup did not complete. Review the activity before retrying.'):serviceMessage(record.steps?.findLast(s=>s.type==='error')?.message,zh));
   }
 
   // Resume the selected conversation, preserving old task records on migration.
@@ -726,6 +750,7 @@ export function mountAgent({ host, catalog, execute, getState, notify, getContex
     host.querySelector('.bear-agent__header').append(chipRow);
   }
   root.dataset.ready = 'true';
+  syncMode();
 
   return function dispose() {
     if (disposed) return;

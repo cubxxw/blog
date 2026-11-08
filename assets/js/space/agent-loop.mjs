@@ -269,6 +269,48 @@ export function resolveArticleURL(value, origin) {
   }
 }
 
+export const PUBLIC_RESEARCH_LIMITS = Object.freeze({catalog:500, results:6, bytes:524288, excerpt:1600, timeoutMs:10000});
+
+// Membership grants only a canonical public article path, never an arbitrary
+// same-origin endpoint, credentialed URL, redirect or caller-supplied fragment.
+export function resolvePublicArticleURL(value, catalog, origin) {
+  if (typeof value !== 'string' || value.length > 500 || /[\u0000-\u0020\u007f\\]/.test(value) || /%(?:2e|2f|5c)/i.test(value)) return null;
+  if (/^https?:\/\//i.test(value) && /[@:]/.test(value.split('/')[2])) return null;
+  if (/(?:^|\/)\.{1,2}(?:\/|$)/.test(value)) return null;
+  const href = resolveArticleURL(value, origin);
+  if (!href) return null;
+  const url = new URL(href);
+  if (url.search || url.hash) return null;
+  const articles = Array.isArray(catalog?.articles) ? catalog.articles.slice(0,PUBLIC_RESEARCH_LIMITS.catalog) : [];
+  return articles.some(article => typeof article?.url === 'string' && article.url.startsWith('/') && !article.url.startsWith('//') && !/[?#\\]/.test(article.url) && new URL(article.url,origin).href === href) ? href : null;
+}
+
+async function boundedPublicHTML(response, signal) {
+  const cap=PUBLIC_RESEARCH_LIMITS.bytes;
+  if (Number(response.headers?.get?.('content-length')) > cap) throw new ToolFailure('Public article exceeds the byte limit.');
+  const type=response.headers?.get?.('content-type');
+  if (type && !/^text\/html(?:\s*;|$)/i.test(type)) throw new ToolFailure('The public article is not HTML.');
+  if (!response.body?.getReader) {
+    throw new ToolFailure('This browser cannot read a bounded article stream. Open the article directly.');
+  }
+  const reader=response.body.getReader(),decoder=new TextDecoder();let bytes=0,html='',complete=false;
+  try {
+    for (;;) {
+      if (signal?.aborted) throw makeAbortError();
+      const part=await withAbort(Promise.resolve(reader.read()),signal);
+      if (signal?.aborted) throw makeAbortError();
+      if (part.done) {complete=true;break;}
+      bytes+=part.value.byteLength;
+      if (bytes>cap) throw new ToolFailure('Public article exceeds the byte limit.');
+      html+=decoder.decode(part.value,{stream:true});
+    }
+    return html+decoder.decode();
+  } finally {
+    if(!complete)try{await reader.cancel();}catch{/* Read failures do not become success. */}
+    reader.releaseLock?.();
+  }
+}
+
 function fallbackArticleText(html) {
   return String(html ?? '')
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
@@ -318,18 +360,21 @@ export function createApprovalGate() {
 // window capacity, note overflow, failed or unconfirmed run) throws
 // ToolFailure. Only genuinely verified successes return normally, so the loop
 // can never record a failed request as done.
-export function createToolExecutor({ catalog, execute, getState, fetchImpl, parseArticleText, origin } = {}) {
+export function createToolExecutor({ catalog, execute, getState, fetchImpl, parseArticleText, origin, policy = 'conversation' } = {}) {
   const doFetch = fetchImpl || fetch;
   const extract = typeof parseArticleText === 'function' ? parseArticleText : fallbackArticleText;
   const state = () => {
     try { return typeof getState === 'function' ? getState() : null; } catch { return null; }
   };
+  const publicCatalog=()=>({articles:(Array.isArray(catalog?.articles)?catalog.articles:[]).slice(0,PUBLIC_RESEARCH_LIMITS.catalog).filter(a=>resolvePublicArticleURL(a?.url,catalog,origin)).map(a=>({title:str(a.title,200),url:a.url,date:str(a.date,20),section:str(a.section,40),description:str(a.description,200),tags:(Array.isArray(a.tags)?a.tags:[]).slice(0,8).map(tag=>str(tag,40))}))});
   return async function executeTool(name, args, meta = {}) {
     // A stopped task executes nothing, even if this callback was already queued.
     if (meta.signal?.aborted) throw makeAbortError();
+    const publicResearch=policy==='public-research';
+    if(publicResearch&&!['search_writing','read_writing'].includes(name))throw new ToolFailure('Public research is read-only: only catalog search and one article read are available.');
     switch (name) {
       case 'search_writing':
-        return JSON.stringify(searchWritingCatalog(catalog, args.query));
+        return JSON.stringify(searchWritingCatalog(publicResearch?publicCatalog():catalog, args.query));
       case 'list_photos':
         return JSON.stringify(listPhotosCatalog(catalog, args.region));
       case 'show_place': {
@@ -352,14 +397,17 @@ export function createToolExecutor({ catalog, execute, getState, fetchImpl, pars
         return typeof feedback === 'string' && feedback ? feedback : `Opened ${args.app}.`;
       }
       case 'read_writing': {
-        const href = resolveArticleURL(args.url, origin);
+        const href = publicResearch?resolvePublicArticleURL(args.url,catalog,origin):resolveArticleURL(args.url, origin);
         if (!href) throw new ToolFailure(`Refused: read_writing only reads same-origin public articles on this site. "${args.url}" is not one.`);
         if (meta.signal?.aborted) throw makeAbortError();
         try {
-          const response = await doFetch(href, meta.signal ? { signal: meta.signal } : {});
+          const response = await doFetch(href, publicResearch?{signal:meta.signal,credentials:'omit',redirect:'error'}:meta.signal ? { signal: meta.signal } : {});
           if (!response || !response.ok) throw new ToolFailure(`The article is unavailable (HTTP ${response ? response.status : 'error'}). Use search_writing to find a live article.`);
-          const html = await response.text();
-          const text = String(extract(html, href) ?? '').replace(/\s+/g, ' ').trim().slice(0, ARTICLE_TEXT_MAX);
+          if(publicResearch&&(response.redirected||response.url&&response.url!==href))throw new ToolFailure('Refused redirected public article.');
+          const html = publicResearch?await boundedPublicHTML(response,meta.signal):await response.text();
+          if(meta.signal?.aborted)throw makeAbortError();
+          if(publicResearch&&!resolvePublicArticleURL(args.url,catalog,origin))throw new ToolFailure('The public article was withdrawn from the current catalog.');
+          const text = String(extract(html, href) ?? '').replace(/\s+/g, ' ').trim().slice(0, publicResearch?PUBLIC_RESEARCH_LIMITS.excerpt:ARTICLE_TEXT_MAX);
           if (!text) throw new ToolFailure(`The article at ${href} had no readable public text.`);
           return JSON.stringify({ source: href, text });
         } catch (error) {
@@ -430,6 +478,7 @@ export function normalizeStoredRecord(raw) {
   if (!id) return null;
   return {
     id,
+    ...(raw.mode==='public-research'?{mode:'public-research'}:{}),
     question: typeof raw.question === 'string' ? raw.question.slice(0, 4000) : '',
     status: TASK_STATUSES.has(raw.status) ? raw.status : 'interrupted',
     steps: (Array.isArray(raw.steps) ? raw.steps.slice(0, 60) : []).map(boundStep).filter(Boolean),
@@ -617,6 +666,67 @@ function normalizeToolCalls(list, round) {
       arguments: rawArguments.slice(0, 4000) || (args ? JSON.stringify(args).slice(0, 4000) : '{}'),
     };
   });
+}
+
+// This explicit mode has no requestTurn/provider hook. It uses the same tool
+// receipts and persisted record shape as conversation tasks, without inventing
+// a model step or treating catalog metadata as a read article.
+export async function runPublicResearchTask({question,catalog,origin,executeTool,language='zh',signal,onEvent,limits}={}) {
+  const text=typeof question==='string'?question.trim():'';
+  if(!text||text.length>200)throw new TypeError('Public research needs a query of 1 to 200 characters.');
+  if(typeof executeTool!=='function')throw new TypeError('Public research needs the read-only tool executor.');
+  const id=createTaskId(),startedAt=new Date().toISOString(),startedMs=Date.now(),steps=[],controller=new AbortController();
+  const bounds=normalizeLimits(limits),timeoutMs=Math.min(bounds.timeoutMs,PUBLIC_RESEARCH_LIMITS.timeoutMs);
+  let timedOut=false,status='failed',stopReason='error',answer='';
+  const emit=event=>{try{onEvent?.(event);}catch{/* Observers cannot execute another operation. */}};
+  const onAbort=()=>controller.abort();
+  if(signal?.aborted)controller.abort();else signal?.addEventListener('abort',onAbort,{once:true});
+  const timer=setTimeout(()=>{timedOut=true;controller.abort();},timeoutMs);
+  const t=(cn,en)=>language==='zh'?cn:en;
+  const check=()=>{if(Date.now()-startedMs>=timeoutMs){timedOut=true;controller.abort();}if(controller.signal.aborted)throw makeAbortError();};
+  const finish=()=>{
+    clearTimeout(timer);signal?.removeEventListener('abort',onAbort);
+    const record={id,mode:'public-research',question:text,status,steps,answer,startedAt,endedAt:new Date().toISOString(),stopReason};
+    emit({type:'end',taskId:id,mode:record.mode,status,stopReason,answer});return record;
+  };
+  async function call(name,args){
+    check();
+    if(steps.length>=Math.min(bounds.maxToolCalls,2)){const error=new Error('Public research reached its two-tool limit.');error.limit=true;throw error;}
+    const step={type:'tool',id:`public-${steps.length+1}`,name,args,status:'running',result:''};steps.push(step);
+    emit({type:'tool-start',taskId:id,step:{id:step.id,name,args}});
+    try{
+      const raw=await withAbort(Promise.resolve().then(()=>{check();return executeTool(name,args,{taskId:id,signal:controller.signal});}),controller.signal);
+      check();if(raw?.ok===false)throw new ToolFailure('Public tool reported failure.');
+      const result=typeof raw==='string'?JSON.parse(raw):raw;
+      step.status='ok';step.result=boundResult(raw);emit({type:'tool-result',taskId:id,step:{...step}});return result;
+    }catch(error){
+      step.status=controller.signal.aborted||isAbortError(error)?'interrupted':'error';step.result=String(error?.message||error).slice(0,400);
+      emit({type:'tool-result',taskId:id,step:{...step}});throw error;
+    }
+  }
+  emit({type:'task-start',taskId:id,mode:'public-research',question:text,language});
+  try{
+    check();const matches=await call('search_writing',{query:text});check();
+    if(!Array.isArray(matches))throw new ToolFailure('Public catalog search returned an invalid result.');
+    const seen=new Set(),verified=[];
+    for(const match of matches.slice(0,PUBLIC_RESEARCH_LIMITS.results)){
+      const href=resolvePublicArticleURL(match?.url,catalog,origin);if(!href||seen.has(href))continue;seen.add(href);
+      const article=catalog.articles.slice(0,PUBLIC_RESEARCH_LIMITS.catalog).find(a=>resolveArticleURL(a?.url,origin)===href);
+      verified.push({url:article.url,href,title:str(article.title,200)});
+    }
+    if(!verified.length){answer=t('没有找到匹配的公开文章。只检索了本地公开目录，未读取文章、调用模型或改动工作区。','No matching public writing. Only the local public catalog was searched; no article, model or workspace mutation was used.');status='completed';stopReason='no-matches';return finish();}
+    answer=t('公开目录匹配（未调用模型）：','Public catalog matches (no model call):')+'\n'+verified.map(a=>`- ${a.title} — ${a.url}`).join('\n');
+    const source=verified[0],read=await call('read_writing',{url:source.url});check();
+    if(typeof read?.text!=='string'||!read.text.trim()||read.source!==source.href||resolvePublicArticleURL(source.url,catalog,origin)!==source.href)throw new ToolFailure('The article source could not be verified or was withdrawn.');
+    answer+='\n\n'+t('原文摘录（非模型总结）：','Original text excerpt (not a model summary):')+'\n'+read.text.slice(0,PUBLIC_RESEARCH_LIMITS.excerpt)+'\n'+source.href;
+    status='completed';stopReason='public-source-read';return finish();
+  }catch(error){
+    if(controller.signal.aborted||isAbortError(error)){status='interrupted';stopReason=timedOut?'timeout':'aborted';}
+    else if(error.limit){status='interrupted';stopReason='tool-limit';}
+    else {status='failed';stopReason='error';steps.push({type:'error',message:String(error?.message||error).slice(0,400)});}
+    if(answer)answer+='\n\n'+t('任务未完成，以上仅为部分目录结果；未确认原文读取。','Task incomplete: the entries above are partial catalog results, not a verified article read.');
+    return finish();
+  }
 }
 
 export async function runAgentTask({

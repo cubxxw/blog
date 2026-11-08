@@ -22,7 +22,12 @@ for(const entry of [
     await expect(products).toHaveAttribute('aria-label',entry.label);
     await expect(space.locator('[data-space-window="products"]')).toBeVisible();
     await expect.poll(()=>products.evaluate(el=>el.contains(document.activeElement))).toBe(true);
-    await expect(products.locator('[data-product-home] [data-select-product]')).toHaveCount(8);
+    await expect(products.locator('[data-product-home] [data-select-product]')).toHaveCount(9);
+    const tormie=products.locator('[data-project-card="tormie"]');
+    await expect(tormie.locator('[data-select-product="tormie"]')).toHaveCount(1);
+    await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('href','https://tormie.com/');
+    await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('target','_blank');
+    await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('rel',/noopener/);
     await products.locator('[data-product-home] [data-select-product]').first().click();
     await expect(products.locator('.space-product h2')).not.toBeEmpty();
     await expect(page.locator('[data-space-dock] [data-open="products"]')).toHaveAttribute('aria-label',entry.label);

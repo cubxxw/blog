@@ -12,11 +12,20 @@ test.use({channel:'chromium',reducedMotion:'reduce',launchOptions:{args:process.
 const root=(page:Page)=>page.locator('[data-bear-workspace]');
 const pointerEvidence=new WeakMap<Page,unknown[]>();
 async function app(page:Page,name:string){await page.locator('[data-mac-menu="file"]').click();await page.locator(`[data-mac-panel="file"] [data-open="${name}"]`).click();}
-async function desk(page:Page){
+// Only the two visitor continuity journeys opt in to the closed input owner.
+// Escape must still restore canvas focus through the real product handler.
+async function desk(page:Page,closedSpeakerDriver=false){
  await page.goto('/zh/projects/?vista=image&room-hour=21');await expectRoomAttributes(page,{'data-boot-state':'complete'},30000);
- const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+ if(closedSpeakerDriver)await withRoomPointerBatch(page,async pointer=>{
+  await pointer.speakerKey('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+  await pointer.speakerKey('Escape');
+ },test.info());
+ else{
+  const speaker=page.locator('[data-room-object="speaker"]');await speaker.press('Enter');await expectRoomAttributes(page,{'data-room-sound':'playing'},30000);
+  await speaker.press('Escape');
+ }
  // Dismiss the keyboard menu before returning to a physical room target.
- await speaker.press('Escape');expect((await observeRoomDom(page,test.info(),{selector:'.space-world__canvas',state:'focused'})).focused).toBe(true);
+ expect((await observeRoomDom(page,test.info(),{selector:'.space-world__canvas',state:'focused'})).focused).toBe(true);
  await hitRoomObject(page,'computer');await expectRoomAttributes(page,{'data-computer-view':'expanded'});
  if(page.viewportSize()!.width>640){await page.locator('[data-mac-menu="view"]').click();await page.locator('[data-computer-display="framed"]').click();await expectRoomAttributes(page,{'data-computer-view':'framed'});}
 }
@@ -72,7 +81,8 @@ test('the Mac browser has real project bookmarks, address navigation and site hi
  await page.route('https://leafhour.com/**',route=>route.fulfill({contentType:'text/html',body:'<!doctype html><html><head><title>Leafhour controlled test</title></head><body><h1>Controlled Leafhour fixture</h1><button onclick="this.textContent=\'Reading\'">Read a book</button></body></html>'}));
  await desk(page);const rain=(await rainSource(page))!,music=(await roomAudioSources(page)).find(s=>!s.stopped&&Math.abs(s.duration-100)>.05)!;
  await app(page,'browser');const browser=page.locator('[data-space-browser]');await expect(browser).toHaveAttribute('data-browser-view','home');
- await expect(browser.locator('[data-browser-bookmark]')).toHaveCount(8);await expect(browser.locator('[data-browser-bookmark="leafhour"]')).toHaveAttribute('href','https://leafhour.com/');await capture(page,'browser-home');
+ await expect(browser.locator('[data-browser-bookmark]')).toHaveCount(9);await expect(browser.locator('[data-browser-bookmark="leafhour"]')).toHaveAttribute('href','https://leafhour.com/');
+ const tormie=browser.locator('[data-browser-bookmark="tormie"]');await expect(tormie).toHaveCount(1);await expect(tormie).toHaveAttribute('href','https://tormie.com/');await expect(tormie).toHaveAttribute('target','_blank');await expect(tormie).toHaveAttribute('rel',/noopener/);await capture(page,'browser-home');
  if(page.viewportSize()!.width>640){const last=(await browser.locator('[data-browser-bookmark]').last().boundingBox())!,content=(await browser.locator('[data-browser-content]').boundingBox())!;expect(last.y+last.height).toBeLessThanOrEqual(content.y+content.height+1);}
  await browser.locator('[data-browser-bookmark="leafhour"]').click();await expect(browser).toHaveAttribute('data-browser-view','page');await expect(browser.locator('iframe')).toHaveAttribute('src','https://leafhour.com/');
  const frame=page.frameLocator('.space-browser__page');await expect(frame.getByRole('heading')).toHaveText('Controlled Leafhour fixture');await clickInWebPage(page,frame.getByRole('button',{name:'Read a book'}));await expect(frame.getByRole('button')).toHaveText('Reading');
@@ -124,7 +134,8 @@ test('alternate-scene work actions stay clear of the footer and roaming controls
 });
 
 test('the project directory exposes previews and direct website actions before opening details',async({page})=>{
- await desk(page);await app(page,'products');const gallery=page.locator('[data-product-home]');await expect(gallery.locator('[data-project-card]')).toHaveCount(8);await expect(gallery.locator('[data-project-featured="true"]')).toHaveCount(1);await expect(gallery.locator('[data-project-featured="true"] img')).toHaveCount(1);await expect(gallery.locator('[data-select-product]')).toHaveCount(8);await capture(page,'project-gallery');
+ await desk(page);await app(page,'products');const gallery=page.locator('[data-product-home]');await expect(gallery.locator('[data-project-card]')).toHaveCount(9);await expect(gallery.locator('[data-project-featured="true"]')).toHaveCount(1);await expect(gallery.locator('[data-project-featured="true"] img')).toHaveCount(1);await expect(gallery.locator('[data-select-product]')).toHaveCount(9);
+ const tormie=gallery.locator('[data-project-card="tormie"]');await expect(tormie.locator('[data-select-product="tormie"]')).toHaveCount(1);await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('href','https://tormie.com/');await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('target','_blank');await expect(tormie.locator('.space-project-card__actions a')).toHaveAttribute('rel',/noopener/);await capture(page,'project-gallery');
  const card=gallery.locator('[data-project-card="leafhour"]');await card.locator('[data-select-product]').click();await expect(page.locator('.space-product h2')).toHaveText('Leafhour');await page.locator('[data-product-back]').click();await expect(card.locator('[data-select-product]')).toBeFocused();
  await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');await expect(page.locator('.space-browser__page')).toHaveAttribute('src','https://leafhour.com/');
  await page.locator('[data-browser-home]').click();await app(page,'products');await card.locator('[data-open="browser"]').click();await expect(page.locator('[data-space-browser]')).toHaveAttribute('data-browser-view','page');
@@ -135,7 +146,7 @@ for(const mover of ['native','compatible'])test(`a visitor can leave a web draft
  if(mover==='compatible')await page.addInitScript(()=>Object.defineProperty(Element.prototype,'moveBefore',{configurable:true,value:undefined}));
  let requests=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  await page.route('https://leafhour.com/**',route=>{requests++;return route.fulfill({contentType:'text/html',body:'<!doctype html><html><body><h1>Quiet reading check</h1><label>A thought to return to <textarea aria-label="A thought to return to"></textarea></label><button onclick="this.textContent=\'Kept open\'">Keep this page open</button></body></html>'});});
- await desk(page);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
+ await desk(page,true);await app(page,'browser');await page.locator('[data-browser-bookmark="leafhour"]').click();
  const frame=page.frameLocator('.space-browser__page'),note=frame.getByRole('textbox',{name:'A thought to return to'});
  await clickInWebPage(page,note);await page.keyboard.type('The same page, when I come back.');await clickInWebPage(page,frame.getByRole('button'));await expect(frame.getByRole('button')).toHaveText('Kept open');
  const browserFrame=createRoomBrowserFrameObservation(page);

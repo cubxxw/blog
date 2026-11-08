@@ -1,6 +1,6 @@
 import type {Page,CDPSession,TestInfo} from '@playwright/test';
 export type RoomPoint={x:number;y:number};
-export type RoomPointer={click(point:RoomPoint):Promise<void>;drag(from:RoomPoint,to:RoomPoint):Promise<void>;focusCanvas():Promise<void>};
+export type RoomPointer={click(point:RoomPoint):Promise<void>;drag(from:RoomPoint,to:RoomPoint):Promise<void>;focusCanvas():Promise<void>;speakerKey(key:'Enter'|'Escape'):Promise<void>};
 const owners=new WeakMap<Page,{fail:(error:unknown)=>void}>();
 async function bounded<T>(operation:Promise<T>,label:string,onTimeout?:()=>void):Promise<T>{
  let timer:ReturnType<typeof setTimeout>|undefined;
@@ -12,9 +12,9 @@ function point(value:RoomPoint):RoomPoint{
  return {x:value.x,y:value.y};
 }
 
-// Only consecutive helper-owned, modifier-free mouse input belongs here. Keep
-// direct PW mouse/touch input outside. Native events remain real; only the
-// redundant per-object PW position sync is deferred to this owner's finally.
+// Only helper-owned, modifier-free mouse input and the closed speaker keyboard
+// path belong here. Keep other direct PW input outside. Native events remain
+// real; redundant PW mouse position sync is deferred to this owner's finally.
 export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPointer)=>Promise<T>,info?:Pick<TestInfo,'status'>):Promise<T>{
  const prior=owners.get(page);
  if(prior){const error=new Error('Room pointer batch already active');prior.fail(error);throw error;}
@@ -77,6 +77,27 @@ export async function withRoomPointerBatch<T>(page:Page,journey:(pointer:RoomPoi
    try{result=await bounded(target.send('Runtime.evaluate',{expression:'(()=>{const nodes=document.querySelectorAll(".space-world__canvas");if(nodes.length!==1||!nodes[0].isConnected)throw new Error("Room canvas missing or ambiguous");nodes[0].focus({preventScroll:true});if(document.activeElement!==nodes[0])throw new Error("Room canvas did not focus");return true;})()',returnByValue:true}),'canvas focus');}
    catch(error){uncertain=true;throw error;}
    guard();if(result.exceptionDetails||result.result.value!==true)throw new Error('Room canvas focus failed');
+  }),
+  speakerKey:key=>run(async()=>{
+   if(key!=='Enter'&&key!=='Escape')throw new Error('Room speaker key is invalid');
+   const target=await getSession();guard();
+   // PW 1.64.1 focusNode uses two no-argument focus calls for an ordinary button.
+   // This closed non-form handler does not navigate; this is not a replacement
+   // for Locator.press's generic signal waiting, locator retries or snapshots.
+   try{
+    const result=await bounded(target.send('Runtime.evaluate',{expression:`(()=>{
+     const roots=document.querySelectorAll('[data-bear-workspace]'),nodes=document.querySelectorAll('[data-room-object="speaker"]');
+     const root=roots[0],button=nodes[0];
+     const valid=()=>roots.length===1&&nodes.length===1&&root instanceof HTMLElement&&root.isConnected&&root.ownerDocument===document&&button instanceof HTMLButtonElement&&button.type==='button'&&button.isConnected&&button.ownerDocument===document&&root.contains(button)&&!button.isContentEditable&&!button.disabled&&button.form===null&&!button.hasAttribute('form')&&!button.closest('form');
+     if(!valid())throw new Error('Room speaker missing, ambiguous or outside closed input contract');
+     button.focus();button.focus();
+     const currentRoots=document.querySelectorAll('[data-bear-workspace]'),currentNodes=document.querySelectorAll('[data-room-object="speaker"]');
+     if(!valid()||currentRoots.length!==1||currentRoots[0]!==root||currentNodes.length!==1||currentNodes[0]!==button||document.activeElement!==button||!document.hasFocus())throw new Error('Room speaker did not retain actual focus');
+     return true;
+    })()`,returnByValue:true}),'speaker focus');
+    guard();if(result.exceptionDetails||result.result.value!==true)throw new Error('Room speaker focus failed');
+    await bounded(page.keyboard.press(key),'speaker key');guard();
+   }catch(error){uncertain=true;throw error;}
   }),
  };
  const onClose=()=>{if(!quarantining){fail(new Error('Room pointer page closed'));closing=true;}};

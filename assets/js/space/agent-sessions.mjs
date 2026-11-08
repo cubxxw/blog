@@ -26,7 +26,7 @@ export function createSessionStore({storage,key=SESSION_KEY,maxChars=2000000}={}
   function flush() {
     if(!safe){persisted=false;return false;}
     if([...rows.values()].reduce((n,row)=>n+JSON.stringify(row).length,0)>maxChars){persisted=false;return false;}
-    for(const [name,row] of [...pending])try{safe.setItem(name,JSON.stringify(row));pending.delete(name);}catch{persisted=false;return false;}
+    for(const [name,row] of [...pending])try{const raw=JSON.stringify(row);safe.setItem(name,raw);if(safe.getItem(name)!==raw)throw Error('Session write was not confirmed');pending.delete(name);}catch{persisted=false;return false;}
     persisted=true;return true;
   }
   function write(name,value){rows.set(name,value);pending.set(name,value);return flush();}
@@ -109,5 +109,5 @@ export function createSessionStore({storage,key=SESSION_KEY,maxChars=2000000}={}
   };
 }
 export function sessionMessages(session) {
-  return (session?.tasks||[]).filter(task=>task.status==='completed'&&task.question&&task.answer).flatMap(task=>[{role:'user',content:task.question},{role:'assistant',content:task.answer}]);
+  return (session?.tasks||[]).filter(task=>task.mode!=='public-research'&&task.status==='completed'&&task.question&&task.answer).flatMap(task=>[{role:'user',content:task.question},{role:'assistant',content:task.answer}]);
 }
