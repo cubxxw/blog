@@ -167,10 +167,10 @@ export function mountCafe({root,route,navigation,localeResume,execute,onEnter,be
     if(!world||world.mode!=='inspect')return false;++revision;const source=inspectTrigger,ownsFocus=inspectPanel.contains(document.activeElement)||roomInspection.contains(document.activeElement);inspectTrigger=null;const pending=world.restoreInspection();
     if(ownsFocus){const target=source?.isConnected&&source.getClientRects().length&&!source.closest('[inert]')?source:root.querySelector('.space-world__canvas');target?.focus({preventScroll:true});}return pending;
   }
-  async function enterDesktop(focus=false){
-    const current=++revision;desiredMode='desktop';boot.dismiss();
+  async function enterDesktop(focus=false,{waitForFrame=false}={}){
+    const current=++revision;desiredMode='desktop';if(!waitForFrame)boot.dismiss();
     if(dialog.open)closePicker();
-    if(root.dataset.worldLoading){
+    if(root.dataset.worldLoading&&!waitForFrame){
       diagnostics.record('workspace-selected');cancelRoom();setMode('desktop');onEnter();
       if(focus)focusDesktop()?.focus({preventScroll:true});return true;
     }

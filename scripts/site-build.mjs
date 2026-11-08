@@ -382,8 +382,35 @@ export async function buildSite({
       /Unable to generate Critical CSS|Plugin .* internal error/.test(
         lifecycle.stdout || "",
       )
-    )
+    ) {
+      // Match the pinned plugin's viewport/inline work without a target: both
+      // results stay in memory, and neither outcome accepts this failed build.
+      const criticalInputs = config.plugins?.find(
+        plugin => plugin.package === "netlify-plugin-critical-css",
+      )?.inputs || {};
+      const diagnostic = `
+          import { createRequire } from 'node:module';
+          import { pathToFileURL } from 'node:url';
+          const require = createRequire(${JSON.stringify(path.join(root, "package.json"))});
+          const entry = require.resolve('critical', { paths: [${JSON.stringify(path.join(root, "node_modules/netlify-plugin-critical-css"))}] });
+          const { generate } = await import(pathToFileURL(entry).href);
+          const dimensions = ${JSON.stringify(criticalInputs.dimensions ?? [{width:375,height:1200},{width:1024,height:1400},{width:1280,height:1500}])};
+          for (const inline of [false, true]) {
+            try {
+              const result = await generate({ inline, base: ${JSON.stringify(path.join(work, "public"))}, src: 'index.html', dimensions, ignore: ${JSON.stringify(criticalInputs.ignoreCssRules ?? ['@font-face'])} });
+              console.error('Critical CSS diagnostic result ' + JSON.stringify({inline, dimensions:dimensions.length, cssLength:typeof result?.css === 'string' ? result.css.length : null, htmlLength:typeof result?.html === 'string' ? result.html.length : null}));
+            } catch (error) {
+              console.error('Critical CSS diagnostic failure ' + JSON.stringify({inline}));
+              console.error(error?.stack || String(error)); process.exitCode = 1;
+            }
+          }
+        `;
+      try {
+        await exec({stage: "critical-css-diagnostic", command: process.execPath,
+          args: ["--input-type=module", "-e", diagnostic], cwd: work, env});
+      } catch { /* Keep the original incomplete-transformation failure. */ }
       throw new Error("Critical CSS reported an incomplete transformation");
+    }
     const pre = path.join(work, ".build/pre-critical.json");
     if (fs.existsSync(pre))
       for (const item of JSON.parse(fs.readFileSync(pre)))

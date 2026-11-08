@@ -120,11 +120,12 @@ test('a definitive window-image failure can complete entry with its recoverable 
   assert.equal(await f.world.firstFrame,true,'an image error must not trap the visitor at boot');
 });
 
-test('an unready early draw cannot move reflection work ahead of the first ready frame',async()=>{
+test('an unready early tick cannot render or move reflection ahead of the first ready frame',async()=>{
   const f=fixture();let ready=false;const completed=f.world.firstFrame.then(value=>{ready=value;});
-  f.flush();assert.equal(f.draws,1);assert.equal(ready,false);
+  f.flush();await Promise.resolve();assert.equal(f.draws,0);assert.equal(ready,false);
+  assert.equal(f.captures.length,0);assert.equal(f.reflected,false);
   f.world.setMaps(12);f.flush();await completed;
-  assert.equal(ready,true);assert.equal(f.draws,2);assert.equal(f.captures.length,0);
+  assert.equal(ready,true);assert.equal(f.draws,1);assert.equal(f.captures.length,0);
   f.advance(2300);f.flush();assert.equal(f.captures.length,1);
 });
 

@@ -89,10 +89,15 @@ test.describe('P1-P2 UX regression', () => {
     const launchpad = workspace.locator('[data-space-launchpad]');
     await workspace.locator('[data-space-menu-trigger]').click();
     await allApps.click();
-    await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(12);
+    const expectedApps = ['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'video', 'notes', 'contact', 'terminal', 'agent', 'settings'];
+    await expect(launchpad.locator('[data-launchpad-app]')).toHaveCount(expectedApps.length);
     expect(await launchpad.locator('[data-launchpad-app]').evaluateAll(buttons =>
       buttons.map(button => button.getAttribute('data-launchpad-app')).sort()
-    )).toEqual(['welcome', 'browser', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings'].sort());
+    )).toEqual(expectedApps.toSorted());
+    for (const button of await launchpad.locator('[data-launchpad-app]').all()) {
+      const box = await button.boundingBox();
+      expect(box?.width).toBeGreaterThanOrEqual(44);expect(box?.height).toBeGreaterThanOrEqual(44);
+    }
     await launchpad.locator('[data-launchpad-app="settings"]').click();
     const settings = workspace.locator('[data-space-window="settings"]');
     await expect(settings).toBeVisible();
@@ -111,7 +116,7 @@ test.describe('P1-P2 UX regression', () => {
       await expect.poll(async () => (await control.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
     }
 
-    for (const app of ['welcome', 'products', 'reader', 'photos', 'map', 'books', 'notes', 'contact', 'terminal', 'agent', 'settings']) {
+    for (const app of ['welcome', 'products', 'reader', 'photos', 'map', 'books', 'video', 'notes', 'contact', 'terminal', 'agent', 'settings']) {
       await workspace.locator('[data-space-menu-trigger]').click();
     await allApps.click();
       await expect(launchpad).toBeVisible();
@@ -274,6 +279,13 @@ test.describe('P1-P2 UX regression', () => {
       await expect(workspace).toHaveAttribute('data-ready', 'true');
       await enterWorkspace(page);
       await page.evaluate(() => (window as unknown as { BearSpace: { execute: (name: string, args: object) => unknown } }).BearSpace.execute('note', { text: 'Keep this private note.' }));
+      if (blocked === 'local') {
+        const notice = workspace.locator('[data-storage-notice]'), dock = workspace.locator('[data-space-dock]');
+        await expect(notice).toBeVisible();
+        const noticeBox = await notice.boundingBox(), dockBox = await dock.boundingBox();
+        expect(noticeBox).not.toBeNull();expect(dockBox).not.toBeNull();
+        expect(noticeBox!.y + noticeBox!.height).toBeLessThanOrEqual(dockBox!.y);
+      }
       await workspace.locator('[data-space-dock] [data-open="settings"]').click();
       const snapshot = () => page.evaluate(() => (window as unknown as { BearSpace: { snapshot: () => unknown } }).BearSpace.snapshot());
       const before = await snapshot();

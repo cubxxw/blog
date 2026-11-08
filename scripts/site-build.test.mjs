@@ -1,4 +1,5 @@
 import test from "node:test";
+import './patch-inline-critical.test.mjs';
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
@@ -419,4 +420,46 @@ test('all configured targets transformed allows output checks while ignored HTML
   assert.ok(calls.includes('output-check'));
   assert.match(fs.readFileSync(path.join(result.publicDir,'columns/example/index.html'),'utf8'),/<style>/);
   assert.doesNotMatch(fs.readFileSync(path.join(result.publicDir,'columns/ignored/index.html'),'utf8'),/<style>/);
+});
+
+for(const failFirst of [false,true])test(`critical diagnostic covers all viewports with both inline modes and retains the original failure (${failFirst?'first diagnostic fails':'diagnostics succeed'})`,async t=>{
+  const root=criticalFixture(t),calls=[],outDir=path.join(root,'out');
+  const packageDir=path.join(root,'node_modules/critical');fs.mkdirSync(packageDir,{recursive:true});
+  fs.mkdirSync(path.join(root,'node_modules/netlify-plugin-critical-css'),{recursive:true});
+  fs.writeFileSync(path.join(root,'package.json'),'{}');
+  fs.writeFileSync(path.join(packageDir,'package.json'),JSON.stringify({name:'critical',type:'module',exports:'./index.mjs'}));
+  const css='DO_NOT_LOG_GENERATED_CSS',html='DO_NOT_LOG_GENERATED_HTML';
+  fs.writeFileSync(path.join(packageDir,'index.mjs'),`export const calls=[];export async function generate(options){calls.push(options);if(${failFirst}&&options.inline===false)throw Error('synthetic-first-diagnostic-failure');return {css:${JSON.stringify(css)},html:${JSON.stringify(html)}};}`);
+  const {pathToFileURL}=await import('node:url');
+  const lifecycle=criticalLifecycle(root,calls,true),output=[];
+  let diagnosticCalls=0;
+  const exec=async call=>{
+    if(call.stage!=='critical-css-diagnostic'){
+      const result=await lifecycle(call);
+      return call.stage==='netlify-build'?{stdout:'Unable to generate Critical CSS for: index.html'}:result;
+    }
+    diagnosticCalls++;calls.push(call.stage);
+    const script=path.join(root,'read-only-diagnostic.mjs');fs.writeFileSync(script,call.args.at(-1));
+    const previousError=console.error,previousExit=process.exitCode;let failed=false;
+    console.error=(...args)=>output.push(args.map(String).join(' '));
+    try{await import(pathToFileURL(script).href);failed=process.exitCode===1;}
+    finally{console.error=previousError;process.exitCode=previousExit;}
+    if(failed)throw Error('synthetic diagnostic subprocess failure');
+    return {stdout:''};
+  };
+  await assert.rejects(()=>buildSite({repoRoot:root,sourceSha:'a'.repeat(40),clock:'2026-09-28T00:00:00Z',target:'production',outDir,exec}),/Critical CSS reported an incomplete transformation/);
+  assert.equal(diagnosticCalls,1);
+  const module=await import(pathToFileURL(path.join(packageDir,'index.mjs')).href);
+  assert.deepEqual(module.calls.map(options=>options.inline),[false,true]);
+  for(const options of module.calls){
+    assert.equal(Object.hasOwn(options,'target'),false,'read-only diagnostics cannot publish HTML/CSS');
+    assert.deepEqual(options.dimensions,[{width:375,height:1200},{width:1024,height:1400},{width:1280,height:1500}]);
+    assert.deepEqual(options.ignore,['@font-face']);
+  }
+  const results=output.filter(line=>line.startsWith('Critical CSS diagnostic result ')).map(line=>JSON.parse(line.slice('Critical CSS diagnostic result '.length)));
+  assert.equal(results.length,failFirst?1:2);
+  assert.ok(results.every(result=>result.cssLength===css.length&&result.htmlLength===html.length));
+  assert.equal(output.join('\n').includes(css),false);assert.equal(output.join('\n').includes(html),false);
+  if(failFirst)assert.match(output.join('\n'),/synthetic-first-diagnostic-failure/);
+  assert.equal(calls.includes('output-check'),false);assert.equal(calls.includes('page-map'),false);assert.equal(fs.existsSync(outDir),false);
 });

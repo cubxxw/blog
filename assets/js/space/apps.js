@@ -4,19 +4,26 @@ import { mountAgent } from './agent-panel.js';
 import { mountFinderHome } from './finder-home.js';
 import { mountBrowser } from './browser.js';
 import { projectHomeHTML } from './project-home.js';
-import { selectLibrary } from './reading-layout.mjs';
+import { selectLibrary, usesSingleWindow } from './reading-layout.mjs';
+import { mountReadingTools, mountExcerptShelf } from './reading-tools.js';
+import { mountTransferPanel } from './transfer-panel.js';
+import { mountVideoPlayer, mountReaderVideos } from './video-player.js';
+import { normalizeVideoReference } from './video.mjs';
+import { isArticleTextRange } from './excerpts.mjs';
 
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export function readerSelectionText(body, selected) {
-  if (!body?.isConnected || !selected?.rangeCount || selected.isCollapsed || !body.contains(selected.anchorNode) || !body.contains(selected.focusNode)) return '';
-  return selected.toString().trim().slice(0,1200);
+  if (!body?.isConnected || selected?.rangeCount!==1 || selected.isCollapsed || !body.contains(selected.anchorNode) || !body.contains(selected.focusNode)) return '';
+  try { const content=body.querySelector?.('.post-content')||body,range=selected.getRangeAt(0);return isArticleTextRange(range,content)?selected.toString().trim().slice(0,1200):''; }
+  catch { return ''; }
 }
 const html = escapeHTML;
-export function mountApps({ root, catalog, execute, getState, getContext, getStorageStatus = () => true, updateNote, notify, icon }) {
+export function mountApps({ root, catalog, execute, getState, getContext, getStorageStatus = () => true, getWorkspaceStatus=()=>({state:'ready',saved:getStorageStatus()}), restoreState, updateNote, notify, icon }) {
   const zh = catalog.language === 'zh';
   const t = (cn, en) => zh ? cn : en;
   const disposers = new Map();
   const browserViews = new Map();
+  const videoViews = new Map(),readerViews=new Map();
   const media = mountMedia({ catalog, execute, notify });
   let libraryView = { filter: 'all', query: '', scroll: 0 };
   try {
@@ -201,8 +208,15 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
       execute('ask',{question:t('解释下面选中的段落。','Explain this selected passage.'),selection});
     });
     const controller = new AbortController();
-    let disposed = false;
-    disposers.set(windowID, () => { disposed = true; controller.abort();document.removeEventListener('selectionchange',capture); });
+    let disposed = false,disposeTools=()=>{},videos=null,pendingAnchor='';
+    const reveal=anchor=>{
+      if(disposed)return false;pendingAnchor=String(anchor||'');const content=host.querySelector('[data-reader-body] .post-content');if(!content)return true;
+      const target=[...content.querySelectorAll('[id]')].find(node=>node.id===pendingAnchor);pendingAnchor='';
+      if(!target){notify?.(t('原文已打开，但保存的位置已变化。','The source is open, but its saved location changed.'));return false;}
+      target.scrollIntoView?.({block:'start',behavior:'auto'});target.tabIndex=-1;target.focus?.({preventScroll:true});return true;
+    };
+    readerViews.set(windowID,{setVisible:visible=>videos?.setVisible(visible),reveal});
+    disposers.set(windowID, () => { disposed = true; controller.abort();document.removeEventListener('selectionchange',capture);disposeTools();videos?.dispose();readerViews.delete(windowID); });
     const timer = setTimeout(() => controller.abort(), 12000);
     try {
       const href = safeURL(url, location.origin);
@@ -216,7 +230,7 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
       content.querySelectorAll('script,style,iframe,object,embed,form,input,button,link,meta,svg,math,template').forEach(el => el.remove());
       for (const el of content.querySelectorAll('*')) {
         for (const attr of [...el.attributes]) {
-          if (!['href','src','alt','title','class','width','height','colspan','rowspan'].includes(attr.name)) el.removeAttribute(attr.name);
+          if (!['href','src','alt','title','class','width','height','colspan','rowspan','id'].includes(attr.name) || attr.name==='id'&&!/^[\p{L}\p{N}_:.-]{1,300}$/u.test(attr.value)) el.removeAttribute(attr.name);
         }
         for (const attr of ['href','src']) {
           if (!el.hasAttribute(attr)) continue;
@@ -233,6 +247,10 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
       }
       if (disposed || !host.isConnected) return;
       host.querySelector('[data-reader-body]').replaceChildren(content);
+      videos=mountReaderVideos({content,article,execute,language:catalog.language,references:catalog.videos});
+      videos.setVisible(!document.hidden&&root.dataset.cafeMode==='desktop'&&!host.closest('[data-space-window]')?.hidden&&(!usesSingleWindow(root.clientWidth)||getState().active===windowID));
+      disposeTools=mountReadingTools({host,article,catalog,execute,getState,notify});
+      if(pendingAnchor)reveal(pendingAnchor);
     } catch (error) {
       if (disposed || !host.isConnected) return;
       host.querySelector('[data-reader-body]').innerHTML = `<p>${t('暂时没能打开正文。你仍可以直接阅读原文。','The article could not load. You can still read the original.')}</p>${link(url,t('打开原文','Read original'),'space-button')}`;
@@ -276,7 +294,9 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
       catch{if(!disposed)runtimeLabel.textContent=t('沙盒保存未完成，请导出文件。','Sandbox saving did not complete. Export a copy.');}
       finally{saving=false;if(!disposed)sandbox.disabled=!connected;}
     });
-    disposers.set(windowID,()=>{disposed=true;controller.abort();});
+    const shelf=document.createElement('section');shelf.dataset.excerptShelf='';host.querySelector('.space-notes').append(shelf);
+    const disposeShelf=mountExcerptShelf({host:shelf,catalog,getState,execute,notify});
+    disposers.set(windowID,()=>{disposed=true;controller.abort();disposeShelf();});
   }
   function showContact(host) {
     const links = catalog.links;
@@ -317,6 +337,14 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
       if (editor) { editor.value = payload.slice(0, 4000); editor.focus({ preventScroll: true }); }
     }
   }
+  function showVideo(host,payload,windowID) {
+    const references=catalog.videos||[],requested=payload||references[0]?.url;
+    const reference=normalizeVideoReference(requested,references,'',catalog.language);
+    host.innerHTML=`<section class="space-video-window"><div class="space-toolbar"><strong>${t('公开视频','Public video')}</strong></div><form data-video-form><label>${t('YouTube 链接','YouTube link')}<input type="url" data-video-url aria-label="${t('HTTPS YouTube 链接','HTTPS YouTube link')}" placeholder="https://www.youtube.com/watch?v=…" maxlength="2048"></label><button type="submit" class="space-button">${t('打开','Open')}</button></form><p data-video-input-status role="status" aria-live="polite"></p><div data-video-host></div><p class="space-video-window__hint">${t('点击播放才会连接 YouTube；播放进度仅保存在当前浏览器。','YouTube connects only after Play. Progress stays in this browser.')}</p></section>`;
+    const field=host.querySelector('[data-video-url]');field.value=reference?.watchURL||payload||'';
+    host.querySelector('[data-video-form]').addEventListener('submit',event=>{event.preventDefault();const next=normalizeVideoReference(field.value,references,'',catalog.language);if(!next){host.querySelector('[data-video-input-status]').textContent=t('请输入有效的 HTTPS YouTube 视频链接。','Enter a valid HTTPS YouTube video link.');return;}execute('open',{app:'video',payload:next.watchURL});});
+    const view=mountVideoPlayer({host:host.querySelector('[data-video-host]'),reference:reference||requested,language:catalog.language,references});videoViews.set(windowID,view);disposers.set(windowID,()=>{view.dispose();videoViews.delete(windowID);});
+  }
   function showSettings(host,windowID) {
     const s = getState();
     host.innerHTML = `<div class="space-settings"><h2>${t('工作区设置','Workspace settings')}</h2><p>${t('笔记、收藏和布局仅保存在此浏览器。清除网站数据前，先导出一份。','Notes, bookmarks and layout stay in this browser. Export a copy before clearing site data.')}</p>
@@ -339,8 +367,9 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     };
     const syncDisplay=()=>host.querySelectorAll('[data-computer-display]').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.computerDisplay===root.dataset.computerView));button.disabled=root.dataset.worldRenderer!=='jiangnan'||root.dataset.worldFailed==='true';});
     const displayObserver=new MutationObserver(syncDisplay);displayObserver.observe(root,{attributes:true,attributeFilter:['data-computer-view','data-world-renderer','data-world-failed']});syncDisplay();syncChoices();
+    const disposeTransfer=mountTransferPanel({host:host.querySelector('.space-settings'),catalog,getState,restoreState,download,notify,getStorageStatus:getWorkspaceStatus});
     root.addEventListener('bear:workspace-change',syncChoices);
-    disposers.set(windowID,()=>{ disposed=true;root.removeEventListener('bear:workspace-change',syncChoices);displayObserver.disconnect();controller.abort(); });
+    disposers.set(windowID,()=>{ disposed=true;root.removeEventListener('bear:workspace-change',syncChoices);displayObserver.disconnect();controller.abort();disposeTransfer(); });
     host.querySelectorAll('[data-set-language]').forEach(b => b.addEventListener('click', () => execute('language',{value:b.dataset.setLanguage})));
     host.querySelectorAll('[data-set-theme]').forEach(b => b.addEventListener('click', () => execute('theme',{value:b.dataset.setTheme})));
     host.querySelectorAll('[data-set-wallpaper]').forEach(b => b.addEventListener('click', () => execute('wallpaper',{value:b.dataset.setWallpaper})));
@@ -355,6 +384,7 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     else if (win.app === 'reader') { if (win.payload && articleByURL(win.payload)) showReader(host,win.payload,win.id); else showLibrary(host,win.payload === 'growth' ? 'growth' : libraryView.filter); }
     else if (win.app === 'photos') media.renderPhotos(host,win.payload,win.id);
     else if (win.app === 'map') media.renderMap(host,win.payload,win.id);
+    else if (win.app === 'video') showVideo(host,win.payload,win.id);
     else if (win.app === 'books') host.innerHTML = `<div class="space-toolbar space-books-toolbar"><span>${t('熊鑫伟 · 自著','Written by Xinwei')}</span>${button('reader',t('文章目录','Writing'))}</div><div class="space-book-grid">${catalog.books.map((b,i) => `<article class="space-book"><div class="space-book__cover"><small class="space-book__number">BEAR / ${String(i+1).padStart(2,'0')}</small><strong>${html(b.title)}</strong><small class="space-book__author">${html(b.author)}</small></div><p>${html(b.description)}</p>${link(b.url,t('阅读《'+b.title+'》','Read '+b.title))}</article>`).join('')}</div>`;
     else if (win.app === 'notes') showNotes(host,win.id);
     else if (win.app === 'contact') showContact(host);
@@ -362,5 +392,5 @@ export function mountApps({ root, catalog, execute, getState, getContext, getSto
     else if (win.app === 'agent') showAgent(host,win.id,win.payload);
     else if (win.app === 'settings') showSettings(host,win.id);
   }
-  return { render, download, syncFavorite, navigateBrowser(id,url){browserViews.get(id)?.visit(url);},dispose(id) { disposers.get(id)?.(); disposers.delete(id);browserViews.delete(id); media.dispose(id); } };
+  return { render, download, syncFavorite, navigateBrowser(id,url){browserViews.get(id)?.visit(url);},revealAnchor(id,anchor){return readerViews.get(id)?.reveal(anchor);},setVisible(id,visible){videoViews.get(id)?.setVisible(visible);readerViews.get(id)?.setVisible(visible);},dispose(id) { disposers.get(id)?.(); disposers.delete(id);browserViews.delete(id); media.dispose(id); } };
 }
