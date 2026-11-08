@@ -18,10 +18,11 @@ runs:
         # A cache outage must not block the locked install or every browser
         # partition. npm ci below remains the dependency source of truth.
         package-manager-cache: false
-    - uses: peaceiris/actions-hugo@v3
-      with:
-        hugo-version: ${{ steps.versions.outputs.hugo }}
-        extended: true
+    - name: Install the checksum-pinned official Hugo asset
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: bash scripts/ci/install-hugo.sh
     - name: Install the pinned workflow validator
       shell: bash
       env:
