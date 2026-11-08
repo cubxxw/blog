@@ -1,0 +1,22 @@
+{
+  "before": {
+    "id": "6aefe39c204bad7dae603737",
+    "commit_ref": "4776a6d74174a09aced5f27cf8dbd85f1bab8dd2",
+    "state": "ready"
+  },
+  "after": {
+    "id": "6aefe39c204bad7dae603737",
+    "commit_ref": "4776a6d74174a09aced5f27cf8dbd85f1bab8dd2",
+    "state": "ready"
+  },
+  "command": [
+    "node",
+    "--test",
+    "scripts/reading-fonts.test.mjs"
+  ],
+  "exitCode": 0,
+  "HTMLSHA256": "24a561caa1fac8402c8877ba3b4fe8b50730d9c43e8306bf54070d8aec1307ab",
+  "fontCSSSHA256": "c421d809486bad7eb8d8ecc052c1cfa7fefe8b5fde5ad0a6ffa65890a6bf2250",
+  "fontCSSBytes": 190896,
+  "scope": "Actual annual production HTML and CSS font contract only; full performance:check unrun; no >100-article generated inventory"
+}

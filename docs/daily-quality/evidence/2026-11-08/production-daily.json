@@ -1,0 +1,33 @@
+{
+  "source": "4776a6d74174a09aced5f27cf8dbd85f1bab8dd2",
+  "platform": {
+    "id": "6aefe39c204bad7dae603737",
+    "commit_ref": "4776a6d74174a09aced5f27cf8dbd85f1bab8dd2",
+    "state": "ready",
+    "published_at": "2026-11-08T02:54:11.079Z"
+  },
+  "listedTests": 36,
+  "executedIdentities": 36,
+  "firstPass": 36,
+  "fail": 0,
+  "flaky": 0,
+  "retries": 0,
+  "skip": 0,
+  "globalErrors": 0,
+  "stats": {
+    "startTime": "2026-11-08T03:20:11.722Z",
+    "duration": 163404.948,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "environment": "systemChrome + actualPW1.63, singleworker0retry; not locked Linux; no LCP or fieldINP pass claim",
+  "sourceTestsByteMatchProductionSource": {
+    "playwright.daily.config.ts": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "tests/daily/live-quality.spec.ts": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "tests/daily/reader-navigation.spec.ts": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358"
+  },
+  "rawResultsSHA256": "1ee8df9819c737fa88c5e838988a8de253fb2d1779cd2318bc08998616b7da53",
+  "phase": "actual production after external pause withdrawal; not historical0659 or304"
+}
