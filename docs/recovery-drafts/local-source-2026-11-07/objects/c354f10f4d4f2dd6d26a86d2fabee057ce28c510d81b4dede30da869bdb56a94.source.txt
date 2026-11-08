@@ -1,0 +1,179 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createWorkspace } from '../assets/js/space/state.mjs';
+const api = await import('../assets/js/space/workspace-transfer.mjs').catch(() => ({}));
+const viewport = { width: 1440, height: 900 };
+const catalog = { articles: [{ url: '/zh/a/', title: '真实来源' }] };
+const workspace = patch => ({ ...createWorkspace(null, viewport), excerpts: [], recoveries: [], ...patch });
+const parse = text => { assert.equal(typeof api.parseBackup, 'function'); return api.parseBackup(text, { viewport, catalog }); };
+test('named backup round trips private text and source excerpts without credentials or task history', () => {
+  assert.equal(typeof api.createBackup, 'function');
+  const state = workspace({ note: '笔记', draft: '草稿', favorites: ['/zh/a/'], excerpts: [{ id: 'e1', text: '引文', url: '/zh/a/', title: '真实来源', anchor: 'heading', createdAt: '2026-10-13T05:00:00.000Z' }], token: 'do not export', tasks: [{ command: 'rm' }] });
+  const backup = api.createBackup(state, { now: '2026-10-13T05:00:00.000Z' });
+  assert.equal(backup.format, 'bear-workspace'); assert.equal(backup.version, 1);
+  assert.equal(backup.exportedAt, '2026-10-13T05:00:00.000Z');
+  assert.ok(!JSON.stringify(backup).includes('do not export'));
+  assert.ok(!JSON.stringify(backup).includes('"tasks"'));
+  const result = parse(JSON.stringify(backup));
+  assert.equal(result.state.note, '笔记');
+  assert.equal(result.state.excerpts[0].text, '引文');
+  assert.equal(result.summary.excerpts, 1);
+  assert.equal(result.summary.favorites, 1);
+});
+test('old raw workspace backups remain compatible', () => {
+  const result = parse(JSON.stringify(workspace({ note: '旧备份', favorites: ['/zh/a/'] })));
+  assert.equal(result.state.note, '旧备份');
+  assert.ok(result.warnings.length > 0);
+});
+test('unknown envelopes, versions and broken JSON are refused before state conversion', () => {
+  for (const text of ['{bad', '[]', '{"version":99}', '{"version":1}', '{"format":"other","version":1,"workspace":{"version":1}}', '{"format":"bear-workspace","version":2,"workspace":{"version":1}}']) assert.throws(() => parse(text));
+});
+test('UTF-8 input budget counts bytes, not JavaScript string length', () => {
+  const text = JSON.stringify(workspace({ note: '熊'.repeat(800000) }));
+  assert.ok(text.length < 2 * 1048576);
+  assert.throws(() => parse(text), /size|large|MiB/i);
+});
+test('import accepts catalog origins but filters forged links and normalizes source titles', () => {
+  const result = parse(JSON.stringify(workspace({ favorites: ['/zh/a/', '//evil.test/', '/\\evil.test/', '/zh/missing/', 'https://evil.test/zh/a/'], excerpts: [{ id: 'ok', text: '<script>plain quote</script>', url: 'https://cubxxw.com/zh/a/', title: '伪造标题', anchor: 'heading', createdAt: '2026-10-13T05:00:00.000Z' }, { id: 'evil', text: 'bait', url: 'https://evil.test/zh/a/', title: '假的' }], windows: [{ app: 'reader', id: 'arbitrary', payload: 'https://evil.test/zh/a/' }] })));
+  assert.deepEqual(result.state.favorites, ['/zh/a/']);
+  assert.equal(result.state.excerpts.length, 1);
+  assert.equal(result.state.excerpts[0].url, '/zh/a/');
+  assert.equal(result.state.excerpts[0].title, '真实来源');
+  assert.equal(result.state.excerpts[0].text, '<script>plain quote</script>');
+  assert.equal(result.state.windows[0].id, 'reader');
+  assert.equal(result.state.windows[0].payload, '');
+  assert.ok(result.warnings.length > 0);
+});
+test('a safe excerpt from an unavailable old article retains its private quote', () => {
+  const result = parse(JSON.stringify(workspace({ excerpts: [{ id: 'old-quote', text: '不能丢掉的私人摘录', url: '/zh/retired-article/', title: '旧文章', anchor: 'old-heading', createdAt: '' }] })));
+  assert.equal(result.state.excerpts.length, 1);
+  assert.equal(result.state.excerpts[0].text, '不能丢掉的私人摘录');
+  assert.equal(result.state.excerpts[0].url, '/zh/retired-article/');
+  assert.ok(result.warnings.includes('excerpt-sources-unavailable'));
+});
+test('duplicate application windows cannot poison the one-window-per-app desktop', () => {
+  const result = parse(JSON.stringify(workspace({ windows: [{ id: 'one', app: 'notes' }, { id: 'two', app: 'notes' }, { id: 'host', app: 'shell' }] })));
+  assert.equal(result.state.windows.length, 1);
+  assert.equal(result.state.windows[0].id, 'notes');
+});
+test('structured restore rejects wrong private field types instead of turning them into empty content', () => {
+  for (const patch of [{ note: 12 }, { draft: [] }, { favorites: 'bad' }, { windows: {} }, { excerpts: {} }, { recoveries: 'bad' }]) assert.throws(() => parse(JSON.stringify(workspace(patch))));
+});
+
+test('maximum CJK private text, sources, titles and favorites round trip within the unified budget', () => {
+  const fullCatalog = { articles: Array.from({ length: 200 }, (_, i) => ({ url: `/zh/${String(i).padStart(3, '0')}-${'熊'.repeat(490)}/`, title: '熊'.repeat(500) })) };
+  const state = workspace({ note: '熊'.repeat(40000), draft: '熊'.repeat(6000), favorites: fullCatalog.articles.map(a => a.url), excerpts: Array.from({ length: 80 }, (_, i) => ({ id: `e-${i}`, text: `${i} ${'熊'.repeat(1197)}`, title: fullCatalog.articles[i].title, url: fullCatalog.articles[i].url, anchor: '', createdAt: '' })), recoveries: Array.from({ length: 3 }, (_, i) => ({ id: `r-${i}`, note: '熊'.repeat(40000), draft: '熊'.repeat(6000), at: '2026-10-13T05:00:00.000Z', reason: 'conflict-local' })) });
+  const text = JSON.stringify(api.createBackup(state));
+  assert.ok(new TextEncoder().encode(text).byteLength > 1048576);
+  assert.ok(new TextEncoder().encode(text).byteLength <= 2 * 1048576);
+  const result = api.parseBackup(text, { viewport, catalog: fullCatalog });
+  assert.equal(result.state.note.length, 40000); assert.equal(result.state.draft.length, 6000);
+  assert.equal(result.state.recoveries.length, 3); assert.equal(result.state.excerpts.length, 80); assert.equal(result.state.favorites.length, 200);
+});
+
+test('maximum escaped private text remains exportable and importable', () => {
+  const state = workspace({ note: '\u0001'.repeat(40000), draft: '\u0001'.repeat(6000), recoveries: Array.from({ length: 3 }, (_, i) => ({ id: `r-${i}`, note: '\u0001'.repeat(40000), draft: '\u0001'.repeat(6000), at: '', reason: 'previous' })) });
+  const text = JSON.stringify(api.createBackup(state));
+  assert.ok(new TextEncoder().encode(text).byteLength > 1048576);
+  const result = parse(text);
+  assert.equal(result.state.note, state.note); assert.equal(result.state.draft, state.draft);
+  assert.equal(result.state.recoveries[0].note, state.recoveries[0].note);
+});
+
+class Element {
+  constructor(tag) { this.tagName = tag; this.children = []; this.dataset = {}; this.listeners = {}; this.hidden = false; this.disabled = false; this.textContent = ''; this.files = []; }
+  setAttribute(name, value) { this[name] = value; }
+  append(...nodes) { for (const n of nodes) { n.parent = this; this.children.push(n); } }
+  replaceChildren(...nodes) { this.children = []; this.append(...nodes); }
+  remove() { if (this.parent) this.parent.children = this.parent.children.filter(n => n !== this); }
+  addEventListener(type, fn) { this.listeners[type] = fn; }
+  removeEventListener(type, fn) { if (this.listeners[type] === fn) delete this.listeners[type]; }
+  closest() { return this.workspaceRoot || null; }
+  async event(type) { return this.listeners[type]?.({ currentTarget: this }); }
+  find(key) { if (key in this.dataset) return this; for (const child of this.children) { const found = child.find(key); if (found) return found; } }
+}
+async function panelScenario(run) {
+  const oldDocument = globalThis.document;
+  globalThis.document = { createElement: tag => new Element(tag) };
+  try {
+    const { mountTransferPanel } = await import('../assets/js/space/transfer-panel.js');
+    const host = new Element('main'), workspaceRoot = new Element('section'), downloads = [];
+    host.workspaceRoot = workspaceRoot;
+    let state = workspace({ note: 'current note' }), restoreCalls = 0;
+    const result = { saved: true };
+    const storageStatus = { state: 'ready', saved: true };
+    const dispose = mountTransferPanel({ host, catalog: { ...catalog, language: 'zh' }, getState: () => state, restoreState: next => { restoreCalls++; if (result.saved) state = next; return result; }, download: (...args) => downloads.push(args), getStorageStatus: () => storageStatus });
+    const file = host.find('transferFile');
+    file.files = [{ size: 100, text: async () => JSON.stringify(api.createBackup(workspace({ note: 'incoming note' }))) }];
+    await run({ host, workspaceRoot, file, downloads, result, storageStatus, dispose, change: patch => { state = { ...state, ...patch }; }, calls: () => restoreCalls, state: () => state });
+  } finally { globalThis.document = oldDocument; }
+}
+
+test('restore requires a new preview if editing happened after selection', () => panelScenario(async p => {
+  await p.file.event('change');
+  p.change({ note: 'new editing' });
+  await p.host.find('transferConfirm').event('click');
+  assert.equal(p.calls(), 0); assert.equal(p.downloads.length, 0);
+  assert.equal(p.state().note, 'new editing');
+  assert.ok(p.host.find('transferStatus').textContent.includes('发生了变化'));
+  p.dispose();
+}));
+
+test('explicit restore downloads the exact previous workspace before replacing content', () => panelScenario(async p => {
+  await p.file.event('change');
+  assert.equal(p.calls(), 0);
+  await p.host.find('transferConfirm').event('click');
+  assert.equal(p.calls(), 1); assert.equal(p.downloads.length, 1);
+  assert.equal(JSON.parse(p.downloads[0][0]).workspace.note, 'current note');
+  assert.equal(p.state().note, 'incoming note');
+  assert.equal(p.host.find('transferPrevious').hidden, false);
+  p.dispose();
+}));
+
+test('failed restore keeps the prior backup and does not announce completion', () => panelScenario(async p => {
+  p.result.saved = false;
+  await p.file.event('change'); await p.host.find('transferConfirm').event('click');
+  assert.equal(p.state().note, 'current note');
+  assert.ok(p.host.find('transferStatus').textContent.includes('未能保存'));
+  assert.equal(p.host.find('transferPrevious').hidden, false);
+  p.dispose();
+}));
+
+test('a restore callback without a saved receipt cannot announce completion', () => panelScenario(async p => {
+  delete p.result.saved;
+  await p.file.event('change'); await p.host.find('transferConfirm').event('click');
+  assert.ok(p.host.find('transferStatus').textContent.includes('未能保存'));
+  assert.equal(p.state().note, 'current note');
+  p.dispose();
+}));
+
+test('a stale restore receipt invalidates preview without reporting success', () => panelScenario(async p => {
+  p.result.saved = false; p.result.reason = 'stale-restore';
+  await p.file.event('change'); await p.host.find('transferConfirm').event('click');
+  assert.equal(p.calls(), 1); assert.equal(p.state().note, 'current note');
+  assert.ok(p.host.find('transferStatus').textContent.includes('重新选择'));
+  assert.equal(p.host.find('transferPreview').hidden, true);
+  p.dispose();
+}));
+
+test('workspace events refresh recovery and unsaved notices without removing a selected preview', () => panelScenario(async p => {
+  await p.file.event('change');
+  const summary = p.host.find('transferSummary').textContent;
+  p.change({ recoveries: [{ id: 'r1', note: 'another edit', draft: '', at: '', reason: 'conflict-remote' }] });
+  p.storageStatus.state = 'unavailable'; p.storageStatus.saved = false; p.storageStatus.raw = JSON.stringify(workspace({ note: 'disk note' }));
+  await p.workspaceRoot.event('bear:workspace-change');
+  assert.equal(p.host.find('transferPreview').hidden, false);
+  assert.equal(p.host.find('transferSummary').textContent, summary);
+  assert.ok(p.host.find('transferStorageStatus').textContent.includes('尚未保存'));
+  assert.ok(p.host.find('transferRecoveries').children.length > 0);
+  assert.ok(p.host.find('transferRaw'));
+  p.dispose(); assert.equal(p.workspaceRoot.listeners['bear:workspace-change'], undefined);
+}));
+
+test('disposing a panel prevents a late file read from creating a preview', () => panelScenario(async p => {
+  let resolve;
+  p.file.files[0].text = () => new Promise(r => { resolve = r; });
+  const reading = p.file.event('change'); p.dispose();
+  resolve(JSON.stringify(api.createBackup(workspace({ note: 'incoming' })))); await reading;
+  assert.equal(p.host.children.length, 0); assert.equal(p.calls(), 0);
+}));

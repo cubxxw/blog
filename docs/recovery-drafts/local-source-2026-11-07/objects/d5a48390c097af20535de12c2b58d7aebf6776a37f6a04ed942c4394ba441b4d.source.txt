@@ -1,0 +1,56 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {normalizeVideoChapters, normalizeVideoReference, formatVideoTime} from '../assets/js/space/video.mjs';
+
+const id = 'BsWxPI9UM4c';
+const chapters = [
+  {start:1899,title_zh:'归类错误',title_en:'Categorize errors'},
+  {start:1011,title_zh:'记录错误',title_en:'Write notes'},
+  {start:1434,title_zh:'人工判断',title_en:'Human judgment'},
+];
+
+test('public chapter metadata is localized, ordered and copied without mutating the catalog',()=>{
+  const before = JSON.stringify(chapters);
+  assert.deepEqual(normalizeVideoChapters(chapters,'en'),[
+    {start:1011,title:'Write notes'}, {start:1434,title:'Human judgment'}, {start:1899,title:'Categorize errors'},
+  ]);
+  assert.equal(normalizeVideoChapters(chapters,'zh')[0].title,'记录错误');
+  assert.equal(JSON.stringify(chapters),before);
+});
+
+test('invalid and duplicate chapter starts cannot become seek or source parameters',()=>{
+  const input = [
+    {start:0,title:'Beginning'}, {start:0,title:'Duplicate'}, {start:-1,title:'Negative'},
+    {start:21600,title:'Bound'}, {start:21601,title:'Beyond'}, {start:12.5,title:'Fraction'},
+    {start:'12',title:'String'}, {start:NaN,title:'Not a number'}, {start:Infinity,title:'Infinity'},
+    {title:'Missing'}, null, {start:30,title:'   '},
+  ];
+  assert.deepEqual(normalizeVideoChapters(input),[{start:0,title:'Beginning'},{start:21600,title:'Bound'}]);
+  assert.deepEqual(normalizeVideoChapters({start:1,title:'Wrong container'}),[]);
+});
+
+test('chapter labels are bounded inert text and output controls have a fixed limit',()=>{
+  const input=Array.from({length:100},(_,i)=>({start:i,title:'A\u0000  chapter '+ 'x'.repeat(200)}));
+  const result=normalizeVideoChapters(input);
+  assert.equal(result.length,12);
+  for(const entry of result) { assert.ok(entry.title.length<=120); assert.doesNotMatch(entry.title,/[\u0000-\u001f\u007f]/); }
+});
+
+test('known references carry chapters through normalization in both languages and unknown videos do not borrow them',()=>{
+  const references=[{id,chapters,title:'Evaluation'}];
+  const video=normalizeVideoReference(`https://www.youtube.com/watch?v=${id}&t=1434s`,references,'','en');
+  assert.equal(video.start,1434);
+  assert.equal(video.chapters[1].title,'Human judgment');
+  assert.deepEqual(normalizeVideoReference(video,undefined,'','en').chapters,video.chapters);
+  assert.deepEqual(normalizeVideoReference('https://youtu.be/abcdefghijk',references).chapters,[]);
+});
+
+test('timestamps display actual bounded seconds without accepting misleading values',()=>{
+  assert.equal(formatVideoTime(0),'0:00');
+  assert.equal(formatVideoTime(1011),'16:51');
+  assert.equal(formatVideoTime(1434),'23:54');
+  assert.equal(formatVideoTime(1899),'31:39');
+  assert.equal(formatVideoTime(3651),'1:00:51');
+  assert.equal(formatVideoTime(21600),'6:00:00');
+  for(const value of [-1,21601,12.5,'12',NaN,undefined]) assert.equal(formatVideoTime(value),'');
+});

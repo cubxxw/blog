@@ -1,0 +1,236 @@
+name: Blog Quality and Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      draft_deploy:
+        description: Upload verified main artifact as a Netlify draft (never production)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  BLOG_RELEASE_MODE: ${{ vars.BLOG_RELEASE_MODE || 'shadow' }}
+
+jobs:
+  prepare:
+    name: Build one frozen candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: blog-prepare-${{ github.event.pull_request.number || github.run_id }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      publish: ${{ steps.plan.outputs.publish }}
+      source_sha: ${{ steps.plan.outputs.source_sha }}
+      run_site: ${{ steps.plan.outputs.run_site }}
+      artifact_id: ${{ steps.candidate.outputs.artifact-id }}
+      candidate_digest: ${{ steps.prepare.outputs.candidate_digest }}
+      matrix: ${{ steps.prepare.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+      - name: Freeze scope and build clock
+        id: plan
+        run: node scripts/ci-run.mjs plan
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: ${{ steps.plan.outputs.run_site == 'true' && 'chromium' || '' }}
+      - name: Enforce offline checks and freeze one candidate
+        id: prepare
+        run: node scripts/ci-run.mjs prepare
+      - name: Verify reusable author audio
+        run: npm run voice:test
+      - name: Verify BEAR OS tool and media boundaries
+        run: npm run bear:test
+      - name: Verify public interaction and AI rendering contracts
+        run: npm run ux:test
+      - name: Upload unverified candidate for this attempt only
+        id: candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-ci-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/.artifacts/ci/
+          include-hidden-files: true
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-prepare-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tests/.artifacts/ci/*-report.json
+            tests/.artifacts/ci/site/output-report.json
+            tests/.artifacts/ci/changes.json
+            tests/.artifacts/ci/plan.json
+            tests/.artifacts/ci/candidate.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  browser:
+    name: Frozen browser / ${{ matrix.lane }}
+    needs: prepare
+    if: needs.prepare.outputs.run_site == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    env:
+      CANDIDATE_DIGEST: ${{ needs.prepare.outputs.candidate_digest }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: ${{ matrix.browsers }}
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: tests/.artifacts/ci/
+      - name: Verify exact inventory on the frozen candidate
+        env:
+          BLOG_CI_LANE: ${{ matrix.lane }}
+        run: node scripts/ci-run.mjs lane --lane "$BLOG_CI_LANE"
+      - name: Preserve raw results and first-failure traces
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-ci-result-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.lane }}
+          path: tests/.artifacts/ci/lane-results/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
+  verify:
+    name: Required blog quality
+    needs: [prepare, browser]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: blog-verify-${{ github.event.pull_request.number || github.run_id }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      publish: ${{ needs.prepare.outputs.publish }}
+      source_sha: ${{ needs.prepare.outputs.source_sha }}
+      artifact_id: ${{ steps.artifact.outputs.artifact-id }}
+      manifest_digest: ${{ steps.verify.outputs.manifest_digest }}
+    env:
+      CANDIDATE_DIGEST: ${{ needs.prepare.outputs.candidate_digest }}
+    steps:
+      - name: Reject incomplete or failed prerequisite jobs
+        env:
+          BLOG_PREPARE_RESULT: ${{ needs.prepare.result }}
+          BLOG_BROWSER_RESULT: ${{ needs.browser.result }}
+          BLOG_RUN_SITE: ${{ needs.prepare.outputs.run_site }}
+        run: |
+          test "$BLOG_PREPARE_RESULT" = success
+          if [ "$BLOG_RUN_SITE" = true ]; then
+            test "$BLOG_BROWSER_RESULT" = success
+          else
+            test "$BLOG_RUN_SITE" = false
+            test "$BLOG_BROWSER_RESULT" = skipped
+          fi
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: ''
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: tests/.artifacts/ci/
+      - name: Download only this run and attempt's lane evidence
+        if: needs.prepare.outputs.run_site == 'true'
+        uses: actions/download-artifact@v8
+        with:
+          pattern: blog-ci-result-${{ github.run_id }}-${{ github.run_attempt }}-*
+          merge-multiple: true
+          path: tests/.artifacts/ci/lane-results/
+      - name: Enforce complete inventory and certify unchanged bytes
+        id: verify
+        run: node scripts/ci-run.mjs finalize
+      - name: Upload the verified deployment bundle
+        id: artifact
+        if: needs.prepare.outputs.run_site == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-site-${{ github.sha }}-${{ github.run_attempt }}
+          path: tests/.artifacts/ci/site/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-quality-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tests/.artifacts/ci/*-report.json
+            tests/.artifacts/ci/changes.json
+            tests/.artifacts/ci/plan.json
+            tests/.artifacts/ci/candidate.json
+            tests/.artifacts/ci/parallel-summary.json
+            tests/.artifacts/ci/lane-results/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+
+  release:
+    needs: [verify]
+    if: >-
+      github.ref == 'refs/heads/main' && github.event_name != 'pull_request' &&
+      needs.verify.outputs.publish == 'true' &&
+      (vars.BLOG_RELEASE_MODE == 'active' || (github.event_name == 'workflow_dispatch' && inputs.draft_deploy))
+    permissions:
+      contents: read
+      actions: read
+      deployments: write
+    uses: ./.github/workflows/release-netlify.yml
+    with:
+      source_sha: ${{ needs.verify.outputs.source_sha }}
+      artifact_id: ${{ needs.verify.outputs.artifact_id }}
+      manifest_digest: ${{ needs.verify.outputs.manifest_digest }}
+      draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft_deploy || false }}
+    secrets:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+  followups:
+    needs: [verify, release]
+    if: needs.release.outputs.deployment_id != '' && vars.BLOG_FOLLOWUPS_ENABLED == 'true'
+    permissions:
+      contents: write
+      actions: read
+      deployments: read
+      issues: write
+    uses: ./.github/workflows/release-followups.yml
+    with:
+      deployment_id: ${{ needs.release.outputs.deployment_id }}
+      artifact_id: ${{ needs.verify.outputs.artifact_id }}
+    secrets:
+      BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+      BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

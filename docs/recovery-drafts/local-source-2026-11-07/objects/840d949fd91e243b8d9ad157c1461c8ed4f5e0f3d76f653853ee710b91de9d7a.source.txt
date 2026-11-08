@@ -1,0 +1,293 @@
+/* Load after the existing workspace modules. Hit boxes stay still on press;
+   only their material or inner artwork responds. Nothing styles the blog. */
+.space {
+  --sp-control-size: 44px;
+  --sp-control-press: color-mix(in srgb, var(--sp-ink) 10%, transparent);
+  --sp-control-hover: color-mix(in srgb, var(--sp-accent) 7%, var(--sp-paper));
+}
+
+.space button {
+  min-width: var(--sp-control-size);
+  min-height: var(--sp-control-size);
+  touch-action: manipulation;
+  transition: background-color 140ms ease, box-shadow 140ms ease, filter 100ms ease;
+}
+
+.space :is(button, a, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--sp-focus);
+  outline-offset: 3px;
+}
+
+.space :is(button, [role="button"]):not(:disabled):not([aria-disabled="true"]):active {
+  filter: brightness(.9);
+  box-shadow: inset 0 0 0 100vmax var(--sp-control-press);
+  transition-duration: 0s;
+}
+
+.space :is(button, [role="button"]):is(:disabled, [aria-disabled="true"]) {
+  cursor: default;
+  opacity: .55;
+  filter: none;
+  box-shadow: none;
+}
+
+.space :is(button, [role="button"])[aria-busy="true"] {
+  cursor: progress;
+}
+
+/* Large text links act like controls only in application chrome. Article links
+   keep normal text flow and are never expanded into oversized inline boxes. */
+.space :is(.space-toolbar, .space-product__links, .space-contact-links, .space-contact__actions, .space-book, .sp-media-footer) a,
+.space .space-menubar a,
+.space .space-welcome__foot a {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--sp-control-size);
+  min-height: var(--sp-control-size);
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 14px;
+  line-height: 1.45;
+  transition: background-color 140ms ease, box-shadow 140ms ease;
+}
+
+.space .space-button {
+  min-height: var(--sp-control-size);
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  line-height: 1.45;
+  font-weight: 550;
+  justify-content: center;
+  text-align: center;
+}
+
+.space a.space-button:active,
+.space :is(.space-toolbar, .space-contact-links, .space-contact__actions, .space-product__links) a:active {
+  box-shadow: inset 0 0 0 100vmax var(--sp-control-press);
+  text-decoration: none;
+  transition-duration: 0s;
+}
+
+/* Workspace chrome: the header gains enough room for real, non-overlapping
+   44px targets. Desktop geometry should read this header's actual height. */
+.space .space-menubar__left,
+.space .space-menubar__right { gap: 8px; }
+.space .space-menubar button {
+  min-width: var(--sp-control-size);
+  min-height: var(--sp-control-size);
+  padding: 0 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.space .space-menubar .space-brand { padding: 0 6px; }
+.space .space-menubar .space-menubar__search { font-size: 13px; }
+.space .space-menu { padding: 6px; }
+.space .space-menu :is(button, a) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--sp-control-size);
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.space .space-menu__hint { flex: none; font-size: 11px; }
+
+.product-space > .product-view-switch,
+.product-space[data-product-view="bear"] > .product-view-switch { --sp-controls-focus: #46775e; }
+.product-space:has(.space[data-theme="dark"]) > .product-view-switch { --sp-controls-focus: #b6d5ab; }
+.product-space > .product-view-switch button,
+.product-space[data-product-view="bear"] > .product-view-switch button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 11px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  touch-action: manipulation;
+  transition: background-color 140ms ease, box-shadow 140ms ease;
+}
+.product-space > .product-view-switch button:focus-visible { outline: 2px solid var(--sp-controls-focus); outline-offset: 2px; }
+.product-space > .product-view-switch button:active { box-shadow: inset 0 0 0 100vmax rgb(0 0 0 / .12); transition-duration: 0s; }
+
+@media (min-width: 641px) {
+  .space .space-menubar { height: 48px; }
+  .space .space-window-layer { inset: 48px 0 0; }
+  .space .space-menu { top: 52px; }
+  .product-space[data-product-view="bear"] > .product-view-switch { top: 1px; padding: 0; }
+}
+
+/* Traffic dots have a quiet 16px visual inside separate 44px buttons. No
+   pseudo-element extends outside a button or steals the title's drag region. */
+.space .space-window { container-type: inline-size; container-name: bear-workspace-window; }
+.space .space-window__bar { min-height: 48px; height: 48px; padding: 0 8px; gap: 8px; }
+.space .space-window-controls { gap: 0; }
+.space .space-window-controls button { width: 44px; height: 44px; min-width: 44px; min-height: 44px; border-radius: 9px; flex: none; }
+.space .space-window-controls button::before { width: 16px; height: 16px; left: 14px; top: 14px; pointer-events: none; transition: transform 100ms ease; }
+.space .space-window-controls button::after { font-size: 13px; line-height: 44px; pointer-events: none; }
+.space .space-window-controls button:active::before { transform: scale(.88); transition-duration: 0s; }
+.space .space-window__layout { min-width: 44px; min-height: 44px; padding: 6px !important; font-size: 20px; }
+.space .space-window__bar strong { min-width: 0; font-size: 12px; }
+
+/* Thirteen desktop destinations fit as one Dock. The mobile five-destination
+   grid and its existing visibility rules remain intact. */
+.space .space-dock { gap: 8px; padding: 10px 12px 7px; }
+.space .space-dock button { min-width: 44px; min-height: 52px; padding: 0; }
+.space .space-dock button:hover .space-icon { transform: none; }
+.space .space-dock button:active .space-icon { transform: translateY(1px) scale(.96); transition-duration: 0s; }
+.space .space-desktop-icons button,
+.space .space-launchpad__app { min-width: 44px; min-height: 74px; }
+.space .space-launchpad__app strong { font-size: 13px; }
+.space .space-agent-launch { min-height: 44px; font-size: 13px !important; }
+
+/* Application actions share a readable scale and wrap within their own window. */
+.space .space-toolbar { flex-wrap: wrap; font-size: 13px; gap: 8px 12px; }
+.space .space-toolbar > div { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.space .space-toolbar :is(button, a) { min-height: 44px; padding: 9px 11px; font-size: 14px; line-height: 1.45; }
+.space :is([data-reader-favorite], [data-note-export]) { margin-left: 0 !important; }
+.space .space-sidebar button { min-height: 44px; padding: 10px; font-size: 13px; line-height: 1.45; margin-bottom: 4px; overflow-wrap: anywhere; }
+.space .space-sidebar button[aria-pressed="true"] { font-weight: 600; box-shadow: inset 2px 0 var(--sp-accent); }
+.space .space-list-item { min-height: 64px; }
+.space .space-list-item strong { font-size: 15px; line-height: 1.55; }
+.space .space-list-item span { font-size: 13px; }
+.space .space-list-item small { font-size: 11px; }
+.space .space-welcome__routes button { min-height: 64px; padding: 13px 0 9px; }
+.space .space-welcome__routes strong { font-size: 14px; line-height: 1.5; }
+.space .space-welcome__routes span { font-size: 12px; line-height: 1.6; }
+.space .space-settings__choices { gap: 8px; }
+.space .space-settings__choices button { min-height: 44px; padding: 10px 14px; font-size: 14px; line-height: 1.5; }
+.space .space-settings__choices button[aria-pressed="true"] { border-color: var(--sp-accent); font-weight: 600; }
+
+/* Photographs and places use actual controls, including the unstyled Back
+   button seen in the audit. Map markers retain their geographic transforms. */
+.space .sp-media-link,
+.space .sp-photo-detail__nav > button,
+.space .sp-photo-detail__nav > div button,
+.space .sp-photo-detail figcaption button,
+.space .sp-photo-filters button,
+.space .sp-media-source button,
+.space .sp-media-pagination button,
+.space .sp-media-image [data-image-retry],
+.space .sp-map-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 9px 11px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.space .sp-media-link { border: 1px solid var(--sp-line); border-radius: 7px; padding: 9px 10px; }
+.space .sp-photo-detail__nav { gap: 8px; }
+.space .sp-photo-detail__nav > div { gap: 8px; }
+.space .sp-photo-detail__nav > button { border: 1px solid var(--sp-line); }
+.space .sp-photo-detail__nav > div button { font-size: 18px; }
+.space .sp-photo-detail figcaption button { border: 1px solid var(--sp-line); }
+.space .sp-photo-filters { gap: 8px; }
+.space .sp-photo-filters button { border-radius: 8px; }
+.space .sp-photo-filters button span { font-size: 12px; }
+.space .sp-media-header { flex-wrap: wrap; gap: 12px; }
+.space .sp-media-source strong,
+.space .sp-photo-detail figcaption strong { font-size: 14px; }
+.space .sp-media-source p,
+.space .sp-photo-detail figcaption p,
+.space .sp-photo-card__place { font-size: 12px; line-height: 1.65; }
+.space .sp-photo-card strong { font-size: 14px; }
+.space .sp-photo-card:hover img { transform: none; }
+.space .sp-map-controls { gap: 8px; }
+.space .sp-map-controls button:nth-child(-n+2) { font-size: 20px; }
+.space .sp-place-list { gap: 8px; }
+.space .sp-place-list button { min-width: 44px; min-height: 60px; padding: 11px 9px; }
+.space .sp-place-list button strong { font-size: 13px; line-height: 1.45; }
+.space .sp-place-list button small { font-size: 11px; }
+.space .sp-place-writing > button { min-height: 60px; }
+.space .sp-place-writing button strong { font-size: 14px; line-height: 1.5; }
+.space .sp-map-pin:focus-visible .sp-map-pin__halo { stroke: var(--sp-focus); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.space .sp-map-viewport:focus-visible { outline-offset: -3px; }
+
+/* Forms and operational states retain space for their labels and results. */
+.space .space-toolbar input,
+.space .space-search input,
+.space .space-launchpad__search input,
+.space .space-terminal input,
+.space .space-contact textarea,
+.space .bear-agent .bear-agent__composer textarea { min-height: 44px; font-size: 16px; line-height: 1.5; }
+.space .space-launchpad__search { padding: 5px 12px; }
+.space .space-search header button,
+.space .space-overview header button,
+.space .space-launchpad > header button { min-height: 44px; min-width: 44px; padding: 9px 12px; font-size: 14px; line-height: 1.45; }
+.space .space-search-result { min-height: 56px; }
+.space .space-search-result strong { font-size: 14px; }
+.space .space-search-result small { font-size: 12px; }
+.space .space-search footer,
+.space .space-overview__item small { font-size: 12px; }
+.space .space-overview__item strong { font-size: 14px; }
+.space .bear-agent button { min-width: 44px; min-height: 44px; font-size: 14px; line-height: 1.45; }
+.space .bear-agent .bear-agent__chips,
+.space .bear-agent .bear-agent__approval-actions,
+.space .bear-agent .bear-agent__controls { gap: 8px; flex-wrap: wrap; }
+.space .bear-agent .bear-agent__chip { border-radius: 8px; }
+.space .bear-agent .bear-agent__status { font-size: 12px; }
+.space .space-transfer button,
+.space .space-transfer__file { min-height: 44px; font-size: 14px !important; }
+.space .space-reading-tools__save,
+.space .space-excerpt-shelf__action { min-width: 44px; min-height: 44px; }
+.space .space-note-sandbox-status { margin: 0; padding: 12px 20px; border-top: 1px solid var(--sp-line); color: var(--sp-ink); font-size: 14px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.space .space-note-sandbox-status:empty { display: none; }
+
+@container bear-workspace-window (max-width: 440px) {
+  .space .sp-photo-detail__nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .space .sp-photo-detail__nav > button { grid-column: 1; grid-row: 1; justify-self: start; }
+  .space .sp-photo-detail__nav > span { grid-column: 2; grid-row: 1; }
+  .space .sp-photo-detail__nav > div { grid-column: 1 / -1; justify-self: end; }
+  .space .sp-map-controls { position: static; flex-wrap: wrap; border: 0; border-top: 1px solid var(--sp-line); border-radius: 0; padding: 8px; box-shadow: none; }
+  .space .sp-map-caption { position: static; display: block; padding: 8px 12px; border-radius: 0; font-size: 11px; background: var(--sp-surface); color: var(--sp-muted); }
+  .space .sp-place-list { grid-template-columns: 1fr; }
+  .space .space-toolbar input { width: 100%; }
+  .space .bear-agent .bear-agent__composer form { flex-direction: column; align-items: stretch; }
+  .space .bear-agent .bear-agent__controls { justify-content: flex-end; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .space :is(.space-toolbar, .space-contact-links, .space-contact__actions, .space-product__links) a:hover { background: var(--sp-control-hover); }
+  .space :is(.sp-media-link, .sp-photo-detail__nav > button, .sp-photo-detail__nav > div button, .sp-photo-detail figcaption button, .sp-media-pagination button, .sp-map-controls button, .space-window-controls button, .space-window__layout):not(:disabled):not([aria-disabled="true"]):hover { background: var(--sp-soft); }
+  .space .space-dock button:not(:disabled):hover .space-icon { transform: translateY(-3px); }
+  .space .sp-photo-card:hover img { transform: scale(1.015); }
+}
+
+@media (max-width: 640px) {
+  .space .space-menubar .space-brand { padding: 0 4px; }
+  .space .space-menubar__left,
+  .space .space-menubar__right { gap: 0; }
+  .space .space-menubar__right > a { display: none; }
+  .space .space-window__bar { padding: 0 4px; gap: 2px; }
+  .space .space-dock { gap: 2px; padding: 7px 5px 5px; }
+  .space .space-dock button { min-width: 44px; min-height: 68px; }
+  .space .space-dock__mobile-label { font-size: 12px; }
+  .space .space-dock button:hover .space-icon { transform: none; }
+  .space .space-dock button:active .space-icon { transform: scale(.96); }
+  .space .space-sidebar button { font-size: 13px; }
+  .space .space-menu { max-height: calc(100dvh - 70px - env(safe-area-inset-top)); overflow-y: auto; }
+}
+
+@media (min-width: 641px) and (max-width: 740px) {
+  .space .space-dock { max-width: 100%; box-sizing: border-box; justify-content: flex-start; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
+  .space .space-dock button { flex: 0 0 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space .space-window-controls button::before,
+  .space .space-dock .space-icon,
+  .space .sp-photo-card img { transition: none; }
+  .space .space-window-controls button:active::before,
+  .space .space-dock button:hover .space-icon,
+  .space .space-dock button:active .space-icon,
+  .space .sp-photo-card:hover img { transform: none; }
+  .product-space > .product-view-switch button { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .space :is(button, a, input, textarea, select, summary, [tabindex]):focus-visible,
+  .product-space > .product-view-switch button:focus-visible { outline-color: Highlight; }
+  .space .space-window-controls button::before { border: 1px solid ButtonText; }
+  .space .space-window-controls button::after { opacity: 1; }
+}

@@ -1,0 +1,106 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
+import { resolveChangeSet, publicationInputDigest } from './lib/ci-changes.mjs';
+import { requiredChecksFor, releaseMode } from './lib/ci-contracts.mjs';
+import { prepareCandidate, validateCandidate, runLane, collectLaneResults } from './lib/ci-parallel.mjs';
+
+export function compileExecutionPlan({changeSet,mode}) {
+  const state=releaseMode(mode),requiredChecks=requiredChecksFor(changeSet);
+  return {requiredChecks,runSite:requiredChecks.includes('output')||requiredChecks.includes('browser'),production:changeSet.publish&&state==='active'};
+}
+const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
+const write=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');};
+function run(command,args,options={}) {const r=spawnSync(command,args,{stdio:'inherit',...options});if(r.error||r.status!==0)throw new Error(`${command} ${args[0]} failed (${r.status??r.error?.code})`);}
+const tests={
+  workflow:['scripts/ci-changes.test.mjs','scripts/ci-workflows.test.mjs','scripts/ci-parallel.test.mjs','scripts/site-release.test.mjs','scripts/site-artifact.test.mjs','scripts/site-build.test.mjs','scripts/site-verify.test.mjs','scripts/live-site-probes.test.mjs','scripts/tag-workflow.test.mjs','scripts/backup-site.test.mjs','scripts/netlify-build-control.test.mjs','scripts/frozen-routing.test.mjs'],
+  functions:['scripts/home-chat-utils.test.mjs','scripts/article-ai.test.mjs','scripts/article-ai-client.test.mjs','scripts/share-conversation.test.mjs','scripts/reading-reply.test.mjs','scripts/buttondown-tags.test.mjs','scripts/newsletter-state.test.mjs','scripts/generate-content-index.test.mjs','scripts/release-followups.test.mjs','scripts/search-delivery.test.mjs','scripts/audit-public-site.test.mjs'],
+  seo:['scripts/psi-fetch.test.mjs','scripts/psi-stage-contract.test.mjs','scripts/seo-report.test.mjs','scripts/seo-pipeline.test.mjs','scripts/seo-autofix-gate.test.mjs','scripts/daily-report-issue.test.mjs','scripts/lighthouse-report-to-issue.test.mjs','scripts/gsc-fetch.test.mjs','scripts/gsc-inspect.test.mjs','scripts/gsc-report.test.mjs','scripts/social-card-contracts.test.mjs','scripts/social-identity.test.mjs'],
+};
+async function main() {
+  const args=process.argv.slice(2),stage=args.shift();
+  const get=flag=>{const i=args.indexOf(flag);return i<0?undefined:args[i+1];};
+  const root=process.cwd(),dir=path.resolve(get('--run-dir')??'tests/.artifacts/ci');
+  if(stage==='plan') {
+    const sourceSha=get('--sha')??process.env.GITHUB_SHA;
+    const changes=await resolveChangeSet({repoRoot:root,eventPath:process.env.GITHUB_EVENT_PATH,headSha:sourceSha,eventName:process.env.GITHUB_EVENT_NAME,ref:process.env.GITHUB_REF});
+    const plan=compileExecutionPlan({changeSet:changes,mode:process.env.BLOG_RELEASE_MODE});
+    const clock=new Date().toISOString();
+    write(path.join(dir,'changes.json'),changes);write(path.join(dir,'plan.json'),{...plan,clock,sourceSha,inputDigest:publicationInputDigest({repoRoot:root,sha:sourceSha})});
+    if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,`run_site=${plan.runSite}\npublish=${changes.publish}\nsource_sha=${sourceSha}\nbrowser_engines=${plan.requiredChecks.includes('interactive')?'chromium firefox webkit':plan.runSite?'chromium':''}\n`);
+    console.log(JSON.stringify({...plan,reason:changes.reason}));return;
+  }
+  if(!['verify','prepare','lane','finalize'].includes(stage))throw new Error('Usage: ci-run.mjs plan|verify|prepare|lane|finalize');
+  const plan=JSON.parse(fs.readFileSync(path.join(dir,'plan.json'))),changes=JSON.parse(fs.readFileSync(path.join(dir,'changes.json')));
+  const expected=compileExecutionPlan({changeSet:changes,mode:process.env.BLOG_RELEASE_MODE});
+  if(JSON.stringify(expected.requiredChecks)!==JSON.stringify(plan.requiredChecks)||expected.runSite!==plan.runSite||expected.production!==plan.production||plan.sourceSha!==changes.sourceSha)throw new Error('Execution plan identity mismatch');
+  const reports={},bundle=path.join(dir,'site');
+  const trust={sourceSha:process.env.GITHUB_SHA,inputDigest:publicationInputDigest({repoRoot:root,sha:process.env.GITHUB_SHA??plan.sourceSha}),runId:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT,candidateDigest:process.env.CANDIDATE_DIGEST};
+  if(stage==='lane') {runLane({dir,plan,trust,name:get('--lane')});return;}
+  if(stage==='finalize') {
+    validateCandidate({dir,plan,trust});
+    for(const name of plan.requiredChecks.filter(n=>!['browser','interactive'].includes(n)))reports[name]=JSON.parse(fs.readFileSync(path.join(name==='output'?bundle:dir,`${name}-report.json`)));
+  }
+  if(stage!=='finalize'&&plan.requiredChecks.includes('source')) {
+    run(process.execPath,['scripts/check-content-quality.mjs','source','--change-set',path.join(dir,'changes.json'),'--out',path.join(dir,'source-report.json')]);
+    reports.source=JSON.parse(fs.readFileSync(path.join(dir,'source-report.json')));
+    run(process.execPath,['--test','scripts/content-source.test.mjs','scripts/content-quality-report.test.mjs','scripts/content-output.test.mjs']);
+  }
+  for(const suite of ['workflow','functions','seo'])if(stage!=='finalize'&&plan.requiredChecks.includes(suite)) {
+    if(suite==='workflow')run('actionlint',['-shellcheck=']);
+    run(process.execPath,['--test',...tests[suite]]);reports[suite]={schema:'blog-test-report/1',mode:'enforce',ok:true,suite};write(path.join(dir,`${suite}-report.json`),reports[suite]);
+  }
+  const publishCandidate=()=>{
+    const output=prepareCandidate({dir,plan,changes,runId:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT});
+    if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,`candidate_digest=${output.candidateDigest}\nmatrix=${JSON.stringify(output.matrix)}\n`);
+  };
+  if(!plan.runSite){
+    for(const name of plan.requiredChecks)if(reports[name]?.ok!==true||reports[name]?.mode!=='enforce')throw Error(`Required ${name} offline report missing`);
+    if(stage==='prepare')publishCandidate();
+    console.log('Required offline checks passed; no site build or deployment');return;
+  }
+  const artifact=await import('./lib/site-artifact.mjs');
+  const releaseId=`${process.env.GITHUB_RUN_ID??'local'}-${process.env.GITHUB_RUN_ATTEMPT??'1'}`;
+  let built;
+  if(stage!=='finalize') {
+    const {buildSite}=await import('./site-build.mjs');
+    built=await buildSite({repoRoot:root,sourceSha:plan.sourceSha,clock:plan.clock,target:'production',outDir:bundle});
+    run(process.execPath,['--test','scripts/performance-seo.test.mjs'],{env:{...process.env,SITE_OUTPUT_DIR:built.publicDir}});
+    artifact.writeReleaseMarker({bundleRoot:bundle,sourceSha:plan.sourceSha,releaseId,clock:plan.clock});
+  }
+  const frozen=artifact.snapshotDeployment(bundle);
+  if(stage==='prepare'){publishCandidate();return;}
+  if(stage==='finalize') {
+    const {candidate,summary}=collectLaneResults({dir,plan,trust});
+    reports.browser={schema:'blog-browser/1',mode:'enforce',ok:true,pages:candidate.pages,projects:['desktop','mobile','desktop-dark','mobile-dark'],legacy:candidate.legacy,suites:summary.lanes.filter(l=>l.name!=='interactive'),exitCode:0};
+    write(path.join(dir,'parallel-summary.json'),summary);
+    if(plan.requiredChecks.includes('interactive'))reports.interactive={schema:'blog-test-report/1',mode:'enforce',ok:true,suite:'interactive',counts:summary.lanes.find(l=>l.name==='interactive')};
+  } else {
+    const {verifySite}=await import('./site-verify.mjs');
+    const browser=await verifySite({publicDir:built.publicDir,pageMapPath:built.pageMapPath,changeSetPath:path.join(dir,'changes.json'),reportDir:path.join(dir,'browser')});
+    if(!browser.ok)throw new Error('Browser checks failed');
+    reports.browser=JSON.parse(fs.readFileSync(browser.reportPath));
+    if(plan.requiredChecks.includes('interactive')) {
+      run('npm',['run','interactive:check']);
+      run('npm',['run','interactive:test'],{env:{...process.env,SITE_OUTPUT_DIR:built.publicDir}});
+      reports.interactive={schema:'blog-test-report/1',mode:'enforce',ok:true,suite:'interactive'};
+    }
+  }
+  if(JSON.stringify(frozen)!==JSON.stringify(artifact.snapshotDeployment(bundle)))throw new Error('Deployment files changed during tests');
+  reports.output=JSON.parse(fs.readFileSync(path.join(bundle,'output-report.json')));
+  const pageMap=JSON.parse(fs.readFileSync(path.join(bundle,'page-map.json')));
+  const checks=[];
+  for(const name of plan.requiredChecks) {
+    const report=reports[name];if(!report||report.mode!=='enforce'||!report.ok)throw new Error(`Required ${name} report missing or non-enforcing`);
+    write(path.join(bundle,`${name}-report.json`),report);checks.push({name,status:'success',reportDigest:digest(report)});
+  }
+  const manifest=artifact.createManifest({bundleRoot:bundle,sourceSha:plan.sourceSha,inputDigest:plan.inputDigest,releaseId,target:'production',clock:plan.clock,toolchain:JSON.parse(fs.readFileSync('config/ci-toolchain.json')),pageMap,requiredChecks:plan.requiredChecks,checks});
+  write(path.join(bundle,'manifest.json'),manifest);
+  artifact.packageArtifact({bundleRoot:bundle,manifest,outFile:path.join(dir,'site.tar.gz'),requiredChecks:plan.requiredChecks});
+  if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,`manifest_digest=${digest(manifest)}\n`);
+  console.log(`Verified ${manifest.files.length} deployment files for ${plan.sourceSha}`);
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(error=>{console.error(error.message);process.exitCode=1;});
