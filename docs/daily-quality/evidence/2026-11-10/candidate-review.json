@@ -1,0 +1,9 @@
+{
+  "head": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+  "base": "83a0df21aadfd9ae29923f6fd7bdeb3a07fe5d5f",
+  "reviewer": "/root/review_daily_quality",
+  "confirmedOpenFindings": [],
+  "ENBlob": "f2045e56075ea09156ac296dd4d0788de6b7d014",
+  "ZHBlob": "84946c332a9bca0a44fb69c1a2a77ad32e7fe5ee",
+  "scope": "68completefences/headings/originalopening/title/meta preserved;4existinganchors independently verified by HTTP; tag/permissions/snapshot facts and bilingual meaning match; candidate only, no published or CTR claim"
+}

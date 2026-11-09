@@ -517,7 +517,11 @@ re-verified):
   on any required failure. The durable upload covers per-run state PLUS the
   exact three planned new observations (never the historical directory).
   Manual `lookback` input preserved (`55` = 56-day inclusive backfill);
-  `with_device`/`with_country` are opt-in SEPARATE cuts.
+  Scheduled runs collect both page-based device and country cuts so their
+  daily coverage stays current. Manual `with_device`/`with_country` inputs
+  remain opt-in and independent; direct CLI defaults are unchanged. These
+  are SEPARATE cuts, never a joint query×device×country dataset. Historical
+  gaps still require an explicit backfill and completeness readback.
 - **Analyze** (`seo-analyze.yml`): a minimal `context` job freezes the run's
   UTC identity BEFORE fragile preparation and passes it by job outputs →
   trusted prepare (deterministic report, bounded prompt) → separate read-only

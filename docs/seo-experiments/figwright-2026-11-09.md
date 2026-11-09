@@ -55,3 +55,9 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 英文Mem0页面作为未同步改写的背景参考，当前完整窗口406曝光/1点击/平均位置7.23，前一窗口781/4/7.31。它的主题与需求不同，只用于观察站点背景变化；一旦自身改动或抓取状态不匹配，标记受干扰，不作为因果对照，也不阻止更高价值的后续工作。
 
 每次观测写清窗口、已知抓取状态、数据新鲜度和是否达到判读条件。样本仍不足时延长观察，不能把短期零点击或少量增长写成确定结果。Google标题与摘要是自动生成的，本次HTML更新不证明搜索结果已采用它们。[标题说明](https://developers.google.com/search/docs/appearance/title-link)、[摘要说明](https://developers.google.com/search/docs/appearance/snippet)
+
+## 2026-11-10 续查
+
+复用只读索引检查 [42689692761](https://github.com/cubxxw/blog/actions/runs/42689692761)，双语页仍 PASS、可索引且 canonical 匹配。英文最近抓取2026-09-26T10:30:38Z、中文2026-11-01T10:18:51Z，均早于实际部署2026-11-09T02:42:28.419Z。[检查与来源摘要](../daily-quality/evidence/2026-11-10/inspection-summary.json)保留源 SHA 和原件 hash。没有再次提交索引请求，未观察到新版抓取，首个可计入效果的完整GSC日、14天与28天判读日仍为未知。
+
+新完整窗口10-10—11-06英文页面235曝光/0点击、精确 figwright 168/0，中文页面30/1、精确查询11/0；前窗9-12—10-09英文页面57/1、精确查询9/1，中文旧行未返回保持未知。[新窗口原数](../daily-quality/evidence/2026-11-10/target-window-evidence.json)单列，未覆盖上文10-09—11-05冻结基线。新窗口也全部早于本次部署，不作为修改后的效果。设备与国家切片当前窗口无可计入日期，已由GET-478调查并使用既有采集器补数，完成状态见[10日日报](../daily-quality/2026-11-10.md)。

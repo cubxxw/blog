@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-09T20:33:28.903989+00:00",
+  "reviewer": "/root/review_daily_quality",
+  "base": "83a0df21aadfd9ae29923f6fd7bdeb3a07fe5d5f",
+  "confirmedOpenFindings": [],
+  "blobs": {
+    "workflow": "314394a08c89f0747c37db7a9d1905c49b11df01",
+    "test": "82e9c5ba9612b7322a82b994d9cce9c785736033",
+    "pipeline-doc": "1c9d6951fd8efbad35d6d9c8f485ec1f9ab47e4f"
+  },
+  "limits": [
+    "scheduled requests increase within existing property/read-only collector",
+    "manual choices and CLI unchanged",
+    "no quota/page/plan/outcome relaxation",
+    "queued backfill not claimed complete"
+  ]
+}

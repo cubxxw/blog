@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "file": "playwright.daily.config.ts",
+      "sha256": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+      "matchesCurrentMain83a0": true
+    },
+    {
+      "file": "tests/daily/live-quality.spec.ts",
+      "sha256": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+      "matchesCurrentMain83a0": true
+    },
+    {
+      "file": "tests/daily/reader-navigation.spec.ts",
+      "sha256": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358",
+      "matchesCurrentMain83a0": true
+    }
+  ],
+  "actualPW": "1.63.0",
+  "declaredPW": "1.64.1",
+  "systemChrome": "157.0.8103.39",
+  "adapter": "absolute output/testDir/report and Chrome channel only; original selection/timeouts/1worker0retry/retain-on-failure",
+  "scope": "Current production5a067373; not candidate GoReleaser source acceptance"
+}

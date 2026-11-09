@@ -77,8 +77,13 @@ jobs:
             exit 0
           fi
           EXTRA=""
-          case "$WITH_DEVICE" in true) EXTRA="$EXTRA --with-device" ;; esac
-          case "$WITH_COUNTRY" in true) EXTRA="$EXTRA --with-country" ;; esac
+          if [ "$GITHUB_EVENT_NAME" = schedule ]; then
+            # Keep separate page cuts current for search experiment analysis.
+            EXTRA="--with-device --with-country"
+          else
+            case "$WITH_DEVICE" in true) EXTRA="$EXTRA --with-device" ;; esac
+            case "$WITH_COUNTRY" in true) EXTRA="$EXTRA --with-country" ;; esac
+          fi
           set +e
           node scripts/gsc-fetch.mjs --lookback "$LOOKBACK" --out "$GSC_OUT" $EXTRA
           code=$?

@@ -1,0 +1,24 @@
+[
+  {
+    "path": "content/en/engineering/posts/go-release-tools.md",
+    "baseSHA256": "62ebbb39151744a2accaf414a5744bd1aa3b3c78ec579891d36500bdec0e21fb",
+    "candidateSHA256": "14e3bc6f668fc22fa564b8875585ca99c8e24f64d79212a14744bd785f2fac3c",
+    "oldHeadingsUnchanged": true,
+    "codeFences": 68,
+    "completeCodeFenceBodiesUnchanged": true,
+    "codeFenceBodiesSHA256": "32a5a1872b3f863aa4bae08611a7848d1acf9fa3a40c7e8196edb0432d4f94d1",
+    "completeSourceRestorationAfterRemovingOnlyNewParagraphAndLastmod": true,
+    "addedParagraph": "For a GitHub Actions release, start with the [GoReleaser workflow](#using-goreleaser-in-github-actions): it runs on a pushed tag and gives the job `contents: write`. The example passes `GITHUB_TOKEN` to the upstream `goreleaser/goreleaser-action`. To check the build and packaging locally before publishing, follow the [snapshot steps](#quick-start); this does not publish a release."
+  },
+  {
+    "path": "content/zh/engineering/posts/go-release-tools.md",
+    "baseSHA256": "63cbddaadd35812fc18743e0f57a4e130d0fcc377742b8b6a3feff4f8ca80b6f",
+    "candidateSHA256": "1e8abd08f24b395c7cabac452d3b98049cb44ddf36db4b5961c4d0617d87fc43",
+    "oldHeadingsUnchanged": true,
+    "codeFences": 68,
+    "completeCodeFenceBodiesUnchanged": true,
+    "codeFenceBodiesSHA256": "199ec88ad848bdba33357aa9785d5ac6993a2ad294e56a8645d19dd26a5c3dfa",
+    "completeSourceRestorationAfterRemovingOnlyNewParagraphAndLastmod": true,
+    "addedParagraph": "准备接入 GitHub Actions，可以直接看 [GoReleaser 工作流](#在-github-actions-中使用-goreleaser)：示例由推送 tag 触发，为 job 设置 `contents: write`，再把 `GITHUB_TOKEN` 传给上游的 `goreleaser/goreleaser-action`。先在本机检查构建和打包结果，可以从[本地 snapshot 步骤](#快速开始)开始，这一步不会发布 release。"
+  }
+]
