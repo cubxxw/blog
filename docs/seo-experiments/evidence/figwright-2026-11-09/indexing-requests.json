@@ -1,0 +1,23 @@
+{
+  "schema": "seo-indexing-request/1",
+  "property": "sc-domain:cubxxw.com",
+  "method": "Google Search Console authenticated UI",
+  "observedAt": "2026-11-09 02:47:51 UTC",
+  "requests": [
+    {
+      "checkedAt": "2026-11-09T02:44:16.070495+00:00",
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "requested": true,
+      "authoritativeState": "Indexing requested",
+      "meaning": "URL was added to a priority crawl queue; this is not completed recrawling or search growth."
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "requested": true,
+      "authoritativeState": "Indexing requested",
+      "meaning": "URL was added to a priority crawl queue; this is not completed recrawling or search growth."
+    }
+  ],
+  "completedRecrawl": false,
+  "searchGrowthEstablished": false
+}

@@ -1,0 +1,29 @@
+{
+  "zh": {
+    "jsonBlocksParsed": 1,
+    "mcpConfigValid": true,
+    "descriptionCharacters": 160,
+    "oldHeadingsPreserved": 20,
+    "originalDatePreserved": true,
+    "clientStartupIncluded": true
+  },
+  "en": {
+    "jsonBlocksParsed": 1,
+    "mcpConfigValid": true,
+    "descriptionCharacters": 152,
+    "oldHeadingsPreserved": 20,
+    "originalDatePreserved": true,
+    "clientStartupIncluded": true
+  },
+  "plugin": {
+    "manifestPath": "manifest.json",
+    "name": "Figwright",
+    "api": "1.0.0",
+    "editorType": [
+      "figma",
+      "figjam",
+      "dev"
+    ],
+    "archiveFiles": 4
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-09T02:42:39.334Z",
+  "siteId": "10e9c8fc-0201-4d41-9240-5c35f10ee952",
+  "name": "cubxxw",
+  "published": {
+    "id": "6af132641f653ac8bf072d61",
+    "state": "ready",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "published_at": "2026-11-09T02:42:28.419Z"
+  },
+  "candidate": {
+    "id": "6af132641f653ac8bf072d61",
+    "state": "ready",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "published_at": "2026-11-09T02:42:28.419Z",
+    "error_message": null
+  }
+}

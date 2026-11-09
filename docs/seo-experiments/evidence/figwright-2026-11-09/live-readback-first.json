@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-11-09T02:35:50.758060+00:00",
+  "pages": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "lang": "en",
+      "title": "Figwright MCP Setup: Free Figma and a Maintainable Design System",
+      "descriptionCharacters": 152,
+      "htmlSha256": "949a8b30f6781fff6fa6233be44bd0f40c6dd98d386a6afc1acfacb2c8f4798a",
+      "checks": {
+        "direct200": true,
+        "title": true,
+        "description": false,
+        "ogTitle": false,
+        "ogDescription": false,
+        "canonical": true,
+        "hreflangEnglish": true,
+        "hreflangChinese": true,
+        "hreflangDefault": true,
+        "indexAllowed": true,
+        "setupAnchor": true,
+        "workflowAnchor": true,
+        "freeLimitsAnchor": true,
+        "pinnedServerInBody": true,
+        "codexCommandInBody": true,
+        "clientStartupInBody": true,
+        "pluginAndPingInBody": true,
+        "versionBoundary": true
+      },
+      "passed": false
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "lang": "zh",
+      "title": "Figwright MCP 上手：连接免费 Figma，维护自己的设计系统",
+      "descriptionCharacters": 160,
+      "htmlSha256": "88dd87c104c0af65f5d12266d27441b12d03d45862dfdb6ae95be801238267e1",
+      "checks": {
+        "direct200": true,
+        "title": true,
+        "description": false,
+        "ogTitle": false,
+        "ogDescription": false,
+        "canonical": true,
+        "hreflangEnglish": true,
+        "hreflangChinese": true,
+        "hreflangDefault": true,
+        "indexAllowed": true,
+        "setupAnchor": true,
+        "workflowAnchor": true,
+        "freeLimitsAnchor": true,
+        "pinnedServerInBody": true,
+        "codexCommandInBody": true,
+        "clientStartupInBody": true,
+        "pluginAndPingInBody": true,
+        "versionBoundary": true
+      },
+      "passed": false
+    }
+  ],
+  "sitemap": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "present": true,
+      "lastmod": "2026-11-09T10:18:00+08:00",
+      "updatedDate": true
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "present": true,
+      "lastmod": "2026-11-09T10:18:00+08:00",
+      "updatedDate": true
+    }
+  ],
+  "passed": false
+}

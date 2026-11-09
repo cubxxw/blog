@@ -2,6 +2,8 @@
 
 任务：[GET-463](https://linear.app/getyak/issue/GET-463/figwright-搜索点击试点明确入口补齐连接步骤并验证上线)。作者于2026-11-09明确授权完成该既有文章的搜索意图调查、修改、验证与上线。实施起点为 main `7f302b5366824860f45dfdf75831941e52665923`。
 
+本轮页面实施状态：已上线并通过双语HTML核验，最终产品提交`5a0673739f6732696a661da65fabb06fca58aa70`。Google已接受两页[索引请求](evidence/figwright-2026-11-09/indexing-requests.json)，仍待确认新版实际抓取；搜索点击效果未验收。发布、失败与实际验证见[本轮日报](../daily-quality/2026-11-09-seo-clicks.md)。
+
 ## 基线与来源
 
 Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / final，GSC 数据日期 America/Los_Angeles。使用仓库 `gsc-report.mjs`，显式 `--summary-response-aggregation byPage`；重叠快照按现有逐日选择规则去重。当前完整窗口2026-10-09—11-05；前一窗口2026-09-11—10-08。最新快照为11月8日采集的 `data/seo/gsc-2026-11-08.json`，数据截至11月5日。

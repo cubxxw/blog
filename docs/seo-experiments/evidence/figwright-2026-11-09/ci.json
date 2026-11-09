@@ -1,0 +1,13 @@
+{
+  "conclusion": "success",
+  "headSha": "5a0673739f6732696a661da65fabb06fca58aa70",
+  "status": "completed",
+  "url": "https://github.com/cubxxw/blog/actions/runs/42552142482",
+  "jobs": [
+    {
+      "name": "Required blog quality",
+      "conclusion": "success",
+      "status": "completed"
+    }
+  ]
+}
