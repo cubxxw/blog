@@ -1,5 +1,5 @@
 ---
-title: 'Figwright MCP Setup: Free Figma and a Maintainable Design System'
+title: 'Figwright MCP: Free Figma Setup and Design Systems'
 date: 2026-09-26T15:18:51+08:00
 lastmod: 2026-11-09T10:18:00+08:00
 showtoc: true
