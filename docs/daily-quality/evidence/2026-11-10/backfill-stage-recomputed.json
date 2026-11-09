@@ -1,0 +1,56 @@
+{
+  "gsc": {
+    "process": {
+      "exitCode": 0
+    },
+    "result": {
+      "status": "succeeded",
+      "outcome": "ok",
+      "generated": null,
+      "evidence": null
+    },
+    "artifact": {
+      "path": "data/seo/gsc-2026-11-09-203137940Z-b3360c.json",
+      "present": true,
+      "boundToRun": true,
+      "observedAt": "2026-11-09T20:31:38.020Z",
+      "detail": "ok"
+    }
+  },
+  "psi": {
+    "process": {
+      "exitCode": 2
+    },
+    "result": {
+      "status": "failed",
+      "outcome": "partial",
+      "generated": null,
+      "evidence": null
+    },
+    "artifact": {
+      "path": "data/seo/psi-2026-11-09-203137940Z-a0cbf8.json",
+      "present": true,
+      "boundToRun": true,
+      "observedAt": "2026-11-09T20:47:15.568Z",
+      "detail": "ok"
+    }
+  },
+  "crux": {
+    "process": {
+      "exitCode": 0
+    },
+    "result": {
+      "status": "succeeded",
+      "outcome": "no-sample",
+      "generated": null,
+      "evidence": null
+    },
+    "artifact": {
+      "path": "data/seo/crux-2026-11-09-203137940Z-5ad228.json",
+      "present": true,
+      "boundToRun": true,
+      "observedAt": "2026-11-09T20:47:15.892Z",
+      "detail": "ok"
+    }
+  }
+}

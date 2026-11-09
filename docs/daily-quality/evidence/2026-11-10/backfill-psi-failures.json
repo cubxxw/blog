@@ -1,0 +1,178 @@
+{
+  "counts": {
+    "planned": 26,
+    "succeeded": 22,
+    "partial": 0,
+    "failed": 4,
+    "missing": 0,
+    "usable": 22,
+    "duplicate": 0,
+    "unplanned": 0,
+    "byStrategy": {
+      "mobile": {
+        "planned": 13,
+        "succeeded": 11,
+        "partial": 0,
+        "failed": 2,
+        "missing": 0,
+        "usable": 11
+      },
+      "desktop": {
+        "planned": 13,
+        "succeeded": 11,
+        "partial": 0,
+        "failed": 2,
+        "missing": 0,
+        "usable": 11
+      }
+    }
+  },
+  "failed": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "reasonCategory": "psi-api-failure",
+      "reasonBasis": "PSI API returned HTTP 400; this is the PSI endpoint's status, never the origin's status",
+      "attempts": 1,
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null,
+      "error": "psi-api-failure: PSI API HTTP 400",
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "final",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 400,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "unknown"
+            ],
+            "runtimeErrorCode": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "reasonCategory": "psi-api-failure",
+      "reasonBasis": "PSI API returned HTTP 500; this is the PSI endpoint's status, never the origin's status",
+      "attempts": 3,
+      "psiHttpStatus": 500,
+      "lighthouseRuntimeError": null,
+      "error": "psi-api-failure: PSI API HTTP 500",
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "retryable",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 500,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "lighthouseError"
+            ],
+            "runtimeErrorCode": "PROTOCOL_TIMEOUT"
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "retryable",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 500,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "lighthouseError"
+            ],
+            "runtimeErrorCode": "PAGE_HUNG"
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "final",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 500,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "lighthouseError"
+            ],
+            "runtimeErrorCode": "PAGE_HUNG"
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "reasonCategory": "psi-api-failure",
+      "reasonBasis": "PSI API returned HTTP 400; this is the PSI endpoint's status, never the origin's status",
+      "attempts": 1,
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null,
+      "error": "psi-api-failure: PSI API HTTP 400",
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "final",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 400,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "unknown"
+            ],
+            "runtimeErrorCode": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "reasonCategory": "timeout",
+      "reasonBasis": "request exceeded the single per-attempt deadline (headers and body)",
+      "attempts": 3,
+      "psiHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": "timeout: per-attempt deadline exceeded (120000 ms)",
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "retryable",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 500,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "lighthouseError"
+            ],
+            "runtimeErrorCode": "PAGE_HUNG"
+          }
+        },
+        {
+          "attempt": 2,
+          "outcome": "retryable",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 500,
+          "providerError": {
+            "status": "unknown",
+            "reasons": [
+              "lighthouseError"
+            ],
+            "runtimeErrorCode": "PAGE_HUNG"
+          }
+        },
+        {
+          "attempt": 3,
+          "outcome": "final",
+          "reasonCategory": "timeout",
+          "psiHttpStatus": null
+        }
+      ]
+    }
+  ],
+  "limits": "sourceSHA/throttling/screen incomplete, no comparable performance-gain certificate"
+}

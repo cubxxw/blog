@@ -1,0 +1,106 @@
+{
+  "windows": {
+    "previous": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-10",
+      "end": "2026-11-06",
+      "days": 28
+    }
+  },
+  "cuts": {
+    "pageDeviceCut": [
+      {
+        "context": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final",
+          "dimensions": [
+            "date",
+            "page",
+            "device"
+          ],
+          "filters": [
+            {
+              "groupType": "and",
+              "filters": [
+                {
+                  "dimension": "page",
+                  "operator": "includingRegex",
+                  "expression": "^https?://cubxxw\\.com/"
+                }
+              ]
+            }
+          ],
+          "requestAggregationType": "byPage",
+          "slice": "blog_date_page_device"
+        },
+        "responseAggregationType": "byPage",
+        "windows": {
+          "previous": {
+            "daysCounted": 28,
+            "provenCompleteDays": 28,
+            "metricsComplete": true,
+            "partial": false
+          },
+          "current": {
+            "daysCounted": 28,
+            "provenCompleteDays": 28,
+            "metricsComplete": true,
+            "partial": false
+          }
+        }
+      }
+    ],
+    "pageCountryCut": [
+      {
+        "context": {
+          "property": "sc-domain:cubxxw.com",
+          "searchType": "web",
+          "dataState": "final",
+          "dimensions": [
+            "date",
+            "page",
+            "country"
+          ],
+          "filters": [
+            {
+              "groupType": "and",
+              "filters": [
+                {
+                  "dimension": "page",
+                  "operator": "includingRegex",
+                  "expression": "^https?://cubxxw\\.com/"
+                }
+              ]
+            }
+          ],
+          "requestAggregationType": "byPage",
+          "slice": "blog_date_page_country"
+        },
+        "responseAggregationType": "byPage",
+        "windows": {
+          "previous": {
+            "daysCounted": 28,
+            "provenCompleteDays": 28,
+            "metricsComplete": true,
+            "partial": false
+          },
+          "current": {
+            "daysCounted": 28,
+            "provenCompleteDays": 28,
+            "metricsComplete": true,
+            "partial": false
+          }
+        }
+      }
+    ]
+  },
+  "limits": [
+    "28/28 means complete requested dates and pagination under each exact context; it does not certify all internal Google rows",
+    "filtered page-device/country sums may differ from unfiltered domain date-page totals; no denominator substitution"
+  ]
+}

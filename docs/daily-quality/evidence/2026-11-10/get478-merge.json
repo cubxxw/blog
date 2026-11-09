@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-09T20:43:41.395471+00:00",
+  "PR": 523,
+  "state": "MERGED",
+  "head": "8a0e3277d3ea534b295fd70cd863526d2fe5fb5b",
+  "base": "83a0df21aadfd9ae29923f6fd7bdeb3a07fe5d5f",
+  "merge": "9b0235c236368028b9d7f154b4cded2a0d33699a",
+  "mergedAt": "2026-11-09T20:42:28Z",
+  "headAndMergeTree": "ff06b7fa0973d90a9832699ddc02f3b687de82e9",
+  "headCI": {
+    "id": 42694330704,
+    "conclusion": "success"
+  },
+  "mainCI": {
+    "id": 42695523365,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "workflowBlob": "314394a08c89f0747c37db7a9d1905c49b11df01",
+  "cronExecutedAfterFix": false,
+  "productRelease": false
+}
