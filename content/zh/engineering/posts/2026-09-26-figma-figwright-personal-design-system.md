@@ -1,6 +1,7 @@
 ---
-title: '一个人如何维护自己的界面：用 Figma、Figwright 与 AI 搭建设计系统'
+title: 'Figwright MCP 上手：连接免费 Figma，维护自己的设计系统'
 date: 2026-09-26T15:18:51+08:00
+lastmod: 2026-11-09T10:18:00+08:00
 showtoc: true
 tocopen: false
 type: posts
@@ -14,12 +15,47 @@ tags:
   - Context Engineering
   - Solo Builder
 description: >
-  从一个人长期维护界面的需要出发，解释如何组合免费 Figma、Figwright 与 Claude/Codex。通过日志卡片的设计和改版，讲清设计说明、token、组件与画布的分工，Figwright 如何借插件连接 AI，以及怎样用层级、留白、对齐、颜色和状态反馈作设计判断，形成适合 Web 与 iOS 的工作流。
+  Figwright 是连接 AI 编程助手与 Figma 的开源双向 MCP。本文给出免费 Figma 的边界、Claude Code 与 Codex 连接、插件安装和读取检查，再以日志卡片说明怎样维护设计说明、token、组件与画布，接续 Web 与 iOS 界面修改。安装按 v0.7.0 核对，源码分析保留原版本。
 cover:
   image: /images/covers/engineering/2026/figma-figwright-personal-design-system.jpg
   alt: '一张设计画布通过连接线关联桌面界面与手机界面'
   relative: false
 ---
+
+Figwright 是一个第三方开源 Figma MCP 服务。AI 编程助手通过本机服务连接 Figma 插件，既能读取设计稿，也能修改画布。它可以配合免费 Figma 使用，不需要购买 Dev Mode 席位；模型订阅或调用费用仍需单独计算。[Figwright v0.7.0 说明](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup)
+
+## 先接通 Figwright：安装与读取检查 {#figwright-setup}
+
+下面的连接步骤于 2026 年 11 月 9 日按 **Figwright v0.7.0** 核对。运行 MCP 服务的 Node.js 需要 20.19+（20.x），或 22.12 及以上版本。服务和 Figma 插件使用同一版本；后文的设计系统与源码分析保留各自注明的版本范围。[安装与更新说明](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup)
+
+**1. 把服务添加到 AI 客户端。** Claude Code 的项目 `.mcp.json` 可以使用下面的配置；如果文件已有其他服务，把 `figwright` 项合并进去：
+
+```json
+{
+  "mcpServers": {
+    "figwright": {
+      "command": "npx",
+      "args": ["-y", "@figwright/mcp@0.7.0"]
+    }
+  }
+}
+```
+
+使用 Codex CLI 时，可以添加同一个启动命令。它会写入 Codex 的 MCP 配置，无需把上面的 JSON 当成 Codex 配置文件：[Codex MCP 配置说明](https://developers.openai.com/codex/mcp/)
+
+```bash
+codex mcp add figwright -- npx -y @figwright/mcp@0.7.0
+```
+
+添加完成后，在项目目录启动或重启对应的 AI 客户端。Claude Code 使用项目级 `.mcp.json` 时，按提示批准该服务；在客户端的 `/mcp` 中确认 `figwright` 已加载，再继续打开 Figma 插件。[Claude Code 项目级 MCP](https://code.claude.com/docs/en/mcp#project-scope)
+
+**2. 在 Figma 桌面版安装插件。** 从 [v0.7.0 Release](https://github.com/awdr74100/figwright/releases/tag/v0.7.0) 下载并解压插件包，打开 `Plugins → Development → Import plugin from manifest…`，选择其中的 `manifest.json`。只添加 MCP 服务还不够，画布一侧也需要运行插件。[插件安装说明](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#2-install-the-figma-plugin)
+
+**3. 检查连接，再读取选中的画布。** 在目标文件中打开 Figwright 插件，看到 `Connected` 后，让 Agent 调用 `ping`。随后选中一个 Frame，要求它“读取当前选中区域，列出尺寸、布局间距和变量绑定，先不要修改画布”。返回的节点应与当前文件和选择区域一致，再继续尝试写入。[连接检查](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#3-connect)
+
+连通工具之后，可以接着看下面的卡片练习，讨论组件和 token 怎样进入日常维护。免费套餐的限制与本地连接的数据范围，见[“免费的范围要分开看”](#免费的范围要分开看)。
+
+## 接通工具之后，怎样长期维护界面 {#design-system-workflow}
 
 我一个人做产品，想搭建一套自己的设计系统，把对应的 UI 和前端长期维护好。页面做好之后，还会加功能、改样式、适配另一个端。我希望下一次打开项目时，能够接着已有的设计往下做，也能说清楚一处改动会影响哪些地方。
 
@@ -185,7 +221,7 @@ Figma 插件内部也有分工：能使用浏览器能力的界面层负责连�
 
 本地连接也不等于整条工作流离线。如果客户端把工具返回的设计上下文交给远程模型，这部分数据仍会进入该模型的处理链路，应按实际客户端和模型的配置判断。
 
-本文对工具行为的核查固定在提交 `ee1ad57`。公开 [v0.5.0 Release](https://github.com/awdr74100/figwright/releases/tag/v0.5.0) 发布于 2026 年 8 月 30 日，不能仅凭版本名称，就假设已安装的包和插件包含后续主干的全部功能。应检查实际连接后的工具清单，并对照安装版本的文档。下面的示例是调用思路，参数以实际安装版为准。
+下文关于组件映射、token 与设计差异的源码分析仍固定在提交 `ee1ad57`。公开 [v0.5.0 Release](https://github.com/awdr74100/figwright/releases/tag/v0.5.0) 发布于 2026 年 8 月 30 日，不能仅凭版本名称，就假设已安装的包和插件包含后续主干的全部功能。应检查实际连接后的工具清单，并对照安装版本的文档。下面的示例是调用思路，参数以实际安装版为准。
 
 ### 从画布进入代码：先读对应关系
 
@@ -356,7 +392,7 @@ Figwright 的文件选择机制能帮助调用落到指定文件，其 [固定�
 
 ## 参考资料
 
-以下资料核查于 2026 年 9 月 26 日。Figwright 的实现与工作流细节固定引用提交 `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`。产品套餐和工具能力仍应在实际采用时复核。
+主体资料核查于 2026 年 9 月 26 日，Figwright 的实现与工作流细节固定引用提交 `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`。2026 年 11 月 9 日补充了按 v0.7.0 固定版本核对的安装入口与连接检查。产品套餐和工具能力仍应在实际采用时复核。
 
 1. [Figma：Structure your Figma file for better code](https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/)——组件、变量、命名、Auto Layout 与行为注释。
 2. [DayPage 公开仓库](https://github.com/getyak/daypage)——项目入口；本文对同源 token 与 CI 的描述依据作者已有工程记录，未在本轮重跑验证。
@@ -383,3 +419,6 @@ Figwright 的文件选择机制能帮助调用落到指定文件，其 [固定�
 23. [Google Labs：Stitch Design Skills](https://github.com/google-labs-code/stitch-skills)——设计生成、编辑、变体及 MCP 前提。
 24. [Figma：How Plugins Run](https://developers.figma.com/docs/plugins/how-plugins-run/)——插件界面层、沙箱层与文档访问机制。
 25. [Figma：Rate limits & access](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/)——官方 MCP 按套餐和 seat 提供的访问范围与额度。
+26. [Figwright v0.7.0 README](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup)——本轮安装入口的 Node.js 前提、客户端配置、插件导入及连接检查；各小节链接指向同一份固定文档。
+27. [OpenAI：Codex MCP](https://developers.openai.com/codex/mcp/)——Codex CLI 添加 stdio MCP 服务的命令格式。
+28. [Claude Code：Project scope](https://code.claude.com/docs/en/mcp#project-scope)——项目级 MCP 配置的加载与批准。

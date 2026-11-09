@@ -1,6 +1,7 @@
 ---
-title: 'Maintaining a UI on Your Own: A Design System with Figma, Figwright, and AI'
+title: 'Figwright MCP Setup: Free Figma and a Maintainable Design System'
 date: 2026-09-26T15:18:51+08:00
+lastmod: 2026-11-09T10:18:00+08:00
 showtoc: true
 tocopen: false
 type: posts
@@ -14,12 +15,47 @@ tags:
   - Context Engineering
   - Solo Builder
 description: >
-  Maintain a UI on your own with free Figma, Figwright, and AI: organize design files, tokens, and components, judge visuals, and update Web and iOS together.
+  Set up Figwright MCP with free Figma, Claude Code or Codex, verify the plugin connection, then maintain design tokens and components across Web and iOS.
 cover:
   image: /images/covers/engineering/2026/figma-figwright-personal-design-system.jpg
   alt: 'A design canvas connected by lines to desktop and mobile interfaces'
   relative: false
 ---
+
+Figwright is a third-party, open-source Figma MCP server. It connects an AI coding assistant to a Figma plugin through a local server, allowing the assistant to read designs and edit the canvas. It works with Figma's free tier without a Dev Mode seat; model subscriptions or usage costs are separate. [Figwright v0.7.0 documentation](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup)
+
+## Set up Figwright and verify a read {#figwright-setup}
+
+These connection steps were checked against **Figwright v0.7.0** on November 9, 2026. The MCP server requires Node.js 20.19+ within the 20.x line, or 22.12 and later. Use matching server and Figma plugin versions. The design-system discussion and source analysis below retain their stated version boundaries. [Setup and update instructions](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup)
+
+**1. Add the server to your AI client.** For Claude Code, use the following configuration in the project's `.mcp.json`. If the file already has other servers, merge the `figwright` entry into it:
+
+```json
+{
+  "mcpServers": {
+    "figwright": {
+      "command": "npx",
+      "args": ["-y", "@figwright/mcp@0.7.0"]
+    }
+  }
+}
+```
+
+With Codex CLI, add the same launch command as follows. This writes to Codex's MCP configuration; the JSON above is not a Codex configuration file. [Codex MCP configuration](https://developers.openai.com/codex/mcp/)
+
+```bash
+codex mcp add figwright -- npx -y @figwright/mcp@0.7.0
+```
+
+After adding the server, start or restart the AI client in the project directory. When Claude Code uses a project-level `.mcp.json`, approve the server when prompted. Use `/mcp` in the client to confirm that `figwright` has loaded before opening the Figma plugin. [Claude Code project-scoped MCP](https://code.claude.com/docs/en/mcp#project-scope)
+
+**2. Install the plugin in Figma desktop.** Download and unzip the plugin package from the [v0.7.0 release](https://github.com/awdr74100/figwright/releases/tag/v0.7.0). Open `Plugins → Development → Import plugin from manifest…` and select its `manifest.json`. Adding the MCP server alone is not enough: the plugin must also run on the canvas side. [Plugin installation](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#2-install-the-figma-plugin)
+
+**3. Check the connection, then read the selection.** Open the Figwright plugin in the target file. Once it shows `Connected`, ask the agent to call `ping`. Select a frame and ask it to “read the current selection, list its dimensions, layout spacing, and variable bindings, and leave the canvas unchanged.” Confirm that the returned nodes match the current file and selection before trying a write. [Connection check](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#3-connect)
+
+Once connected, continue with the card exercise below to work through maintaining components and tokens. For free-tier limits and the scope of the local connection, see [“Be clear about which parts are free”](#be-clear-about-which-parts-are-free).
+
+## After connecting: maintain a UI over time {#design-system-workflow}
 
 I build products on my own, and I want a design system that helps me maintain their UI and frontend over time. Finishing a page is only the beginning: features get added, styles change, and another platform may need support. When I return to a project, I want to build on the design already there and understand what a change will affect.
 
@@ -185,7 +221,7 @@ Figma's official remote MCP also currently offers limited access to Starter user
 
 A local connection does not make the entire workflow offline, either. If the client sends design context returned by a tool to a remote model, that data still enters the model's processing pipeline. Check the actual client and model configuration.
 
-The tool behavior examined here is pinned to commit `ee1ad57`. The public [v0.5.0 release](https://github.com/awdr74100/figwright/releases/tag/v0.5.0) was published on August 30, 2026. A version name alone does not establish that an installed package and plugin contain every feature subsequently added to the main branch. Inspect the tools available after connecting, and consult documentation for the installed version. The examples below illustrate the intended calls; use the parameters supported by your installation.
+The source analysis of component mappings, tokens, and design differences below remains pinned to commit `ee1ad57`. The public [v0.5.0 release](https://github.com/awdr74100/figwright/releases/tag/v0.5.0) was published on August 30, 2026. A version name alone does not establish that an installed package and plugin contain every feature subsequently added to the main branch. Inspect the tools available after connecting, and consult documentation for the installed version. The examples below illustrate the intended calls; use the parameters supported by your installation.
 
 ### From canvas to code: read the mappings first
 
@@ -356,7 +392,7 @@ I once summed up my engineering question this way: “Build around one problem: 
 
 ## References
 
-These sources were checked on September 26, 2026. Citations for Figwright's implementation and workflows are pinned to commit `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`. Recheck product plans and tool capabilities when adopting them.
+The main sources were checked on September 26, 2026. Citations for Figwright's implementation and workflows are pinned to commit `ee1ad5708634f8c2c0c1ac517f048acd2d7fca65`. Setup instructions and connection checks pinned to v0.7.0 were added on November 9, 2026. Recheck product plans and tool capabilities when adopting them.
 
 1. [Figma: Structure your Figma file for better code](https://developers.figma.com/docs/figma-mcp-server/structure-figma-file/) — Components, variables, naming, Auto Layout, and behavior annotations.
 2. [DayPage public repository](https://github.com/getyak/daypage) — Project entry point. The description of shared token sources and CI comes from the author's existing engineering records; neither was rerun for this article.
@@ -383,3 +419,6 @@ These sources were checked on September 26, 2026. Citations for Figwright's impl
 23. [Google Labs: Stitch Design Skills](https://github.com/google-labs-code/stitch-skills) — Design generation, editing, variations, and the MCP prerequisite.
 24. [Figma: How Plugins Run](https://developers.figma.com/docs/plugins/how-plugins-run/) — Plugin UI and sandbox layers, and document access.
 25. [Figma: Rate limits & access](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/) — Official MCP access and allowances by plan and seat.
+26. [Figwright v0.7.0 README](https://github.com/awdr74100/figwright/blob/afd947f62ec1e2588d2e72bd5a6e768c05227148/README.md#setup) — Node.js requirements, client configuration, plugin import, and connection checks for this setup update; section links refer to the same pinned document.
+27. [OpenAI: Codex MCP](https://developers.openai.com/codex/mcp/) — The Codex CLI command format for adding a stdio MCP server.
+28. [Claude Code: Project scope](https://code.claude.com/docs/en/mcp#project-scope) — Loading and approving project-scoped MCP configuration.

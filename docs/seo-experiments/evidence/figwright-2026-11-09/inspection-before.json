@@ -1,0 +1,61 @@
+{
+  "schema": "gsc-inspection/1",
+  "meta": {
+    "sourceSha": "7f302b5366824860f45dfdf75831941e52665923",
+    "fetchedAt": "2026-11-09T02:29:11.783Z",
+    "property": "sc-domain:cubxxw.com",
+    "languageCode": "en-US",
+    "basis": "Google indexed version only; separate from current HTTP/HTML, not a live test or indexing request",
+    "maxUrls": 25,
+    "maxAttemptsPerRequest": 2,
+    "timeoutMs": 30000,
+    "canaryUrl": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+    "runStatus": "complete",
+    "processError": null
+  },
+  "counts": {
+    "planned": 2,
+    "inspected": 2,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-09-26T10:30:38Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-11-01T10:18:51Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "pending": [
+    "11-class Page indexing exports, migration settings and T+14/T+28 remain separate evidence gates"
+  ]
+}

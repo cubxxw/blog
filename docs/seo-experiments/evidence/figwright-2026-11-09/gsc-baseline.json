@@ -1,0 +1,171 @@
+{
+  "schema": "seo-experiment-baseline/1",
+  "property": "sc-domain:cubxxw.com",
+  "host": "cubxxw.com",
+  "searchType": "web",
+  "dataState": "final",
+  "dataTimezone": "America/Los_Angeles",
+  "responseAggregationType": "byPage",
+  "windows": {
+    "previous": {
+      "window": {
+        "start": "2026-09-11",
+        "end": "2026-10-08",
+        "days": 28
+      },
+      "pageCoverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-11",
+          "2026-09-12",
+          "2026-09-13",
+          "2026-09-14",
+          "2026-09-15",
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-09-20",
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "pageRows": [
+        {
+          "page": "https://cubxxw.com/projects/mem0/",
+          "clicks": 4,
+          "impressions": 781,
+          "ctr": 0.005121638924455826,
+          "position": 7.306017925736236
+        },
+        {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 54,
+          "ctr": 0.018518518518518517,
+          "position": 6.7592592592592595
+        }
+      ],
+      "queryPagePairs": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 1,
+          "impressions": 8,
+          "ctr": 0.125,
+          "position": 12.125
+        }
+      ],
+      "queryRowsIncomplete": true
+    },
+    "current": {
+      "window": {
+        "start": "2026-10-09",
+        "end": "2026-11-05",
+        "days": 28
+      },
+      "pageCoverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30",
+          "2026-10-31",
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "pageRows": [
+        {
+          "page": "https://cubxxw.com/projects/mem0/",
+          "clicks": 1,
+          "impressions": 406,
+          "ctr": 0.0024630541871921183,
+          "position": 7.231527093596059
+        },
+        {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 0,
+          "impressions": 229,
+          "ctr": 0,
+          "position": 6.179039301310044
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 28,
+          "ctr": 0.03571428571428571,
+          "position": 9.142857142857142
+        }
+      ],
+      "queryPagePairs": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 162,
+          "ctr": 0,
+          "position": 6.654320987654321
+        },
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 10.636363636363637
+        }
+      ],
+      "queryRowsIncomplete": true
+    }
+  }
+}
