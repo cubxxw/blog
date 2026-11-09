@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "command": "node --test --test-name-pattern='actual Snapshot shell collects scheduled' scripts/seo-pipeline.test.mjs (original workflow)",
+      "exit": 1,
+      "pass": 0,
+      "fail": 1,
+      "skip": 0
+    },
+    {
+      "command": "node --test scripts/seo-pipeline.test.mjs scripts/gsc-fetch.test.mjs scripts/gsc-report.test.mjs",
+      "exit": 0,
+      "pass": 154,
+      "fail": 0,
+      "skip": 0
+    }
+  ],
+  "newRegressionCases": 1,
+  "executedShellVariants": 5,
+  "collectorStubExit": 2,
+  "paidAPICalls": 0
+}

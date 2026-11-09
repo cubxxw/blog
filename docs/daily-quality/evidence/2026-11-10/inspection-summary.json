@@ -1,0 +1,42 @@
+{
+  "runs": [
+    42689304601,
+    42689692761
+  ],
+  "sourceSHA": "83a0df21aadfd9ae29923f6fd7bdeb3a07fe5d5f",
+  "inspectedURLs": 4,
+  "unknown": 0,
+  "blocked": 0,
+  "figwright": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "lastCrawlTime": "2026-09-26T10:30:38Z",
+      "publishedAt": "2026-11-09T02:42:28.419000+00:00",
+      "observedPostDeploymentCrawl": false,
+      "firstEligibleFullGSCDate": null,
+      "day14Assessment": null,
+      "day28Assessment": null,
+      "status": "waiting for observed post-deployment crawl; no repeated indexing submission"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "lastCrawlTime": "2026-11-01T10:18:51Z",
+      "publishedAt": "2026-11-09T02:42:28.419000+00:00",
+      "observedPostDeploymentCrawl": false,
+      "firstEligibleFullGSCDate": null,
+      "day14Assessment": null,
+      "day28Assessment": null,
+      "status": "waiting for observed post-deployment crawl; no repeated indexing submission"
+    }
+  ],
+  "raw": [
+    {
+      "file": "canary/seo-index-inspection-42689304601-1/inspection-42689304601-1.json",
+      "sha256": "783fe2c0895edf11b54d9aefb9b17e45b461187cb4b627084e09bf8f8d86ed6c"
+    },
+    {
+      "file": "inspection-batch/seo-index-inspection-42689692761-1/inspection-42689692761-1.json",
+      "sha256": "02dce0d26299490a84acca2533b70cf6a700e8ab805aadd89f35fd26310a524d"
+    }
+  ]
+}

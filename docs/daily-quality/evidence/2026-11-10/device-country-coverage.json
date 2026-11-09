@@ -1,0 +1,96 @@
+{
+  "pageDeviceCut": [
+    {
+      "context": {
+        "property": "sc-domain:cubxxw.com",
+        "searchType": "web",
+        "dataState": "final",
+        "dimensions": [
+          "date",
+          "page",
+          "device"
+        ],
+        "filters": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https?://cubxxw\\.com/"
+              }
+            ]
+          }
+        ],
+        "requestAggregationType": "byPage",
+        "slice": "blog_date_page_device"
+      },
+      "groups": [
+        {
+          "responseAggregationType": "byPage",
+          "windows": {
+            "previous": {
+              "daysCounted": 27,
+              "expectedDays": null,
+              "metricsComplete": false,
+              "partial": true
+            },
+            "current": {
+              "daysCounted": 0,
+              "expectedDays": null,
+              "metricsComplete": false,
+              "partial": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "pageCountryCut": [
+    {
+      "context": {
+        "property": "sc-domain:cubxxw.com",
+        "searchType": "web",
+        "dataState": "final",
+        "dimensions": [
+          "date",
+          "page",
+          "country"
+        ],
+        "filters": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https?://cubxxw\\.com/"
+              }
+            ]
+          }
+        ],
+        "requestAggregationType": "byPage",
+        "slice": "blog_date_page_country"
+      },
+      "groups": [
+        {
+          "responseAggregationType": "byPage",
+          "windows": {
+            "previous": {
+              "daysCounted": 27,
+              "expectedDays": null,
+              "metricsComplete": false,
+              "partial": true
+            },
+            "current": {
+              "daysCounted": 0,
+              "expectedDays": null,
+              "metricsComplete": false,
+              "partial": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

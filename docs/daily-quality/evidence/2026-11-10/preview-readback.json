@@ -1,0 +1,80 @@
+{
+  "at": "2026-11-09T20:20:29.602199+00:00",
+  "previewBefore": {
+    "id": "6af22967438d3f33e81e4189",
+    "state": "ready",
+    "commit_ref": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+    "published_at": null,
+    "context": "deploy-preview",
+    "deploy_ssl_url": "https://deploy-preview-522--cubxxw.netlify.app"
+  },
+  "previewAfter": {
+    "id": "6af22967438d3f33e81e4189",
+    "state": "ready",
+    "commit_ref": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+    "published_at": null,
+    "context": "deploy-preview",
+    "deploy_ssl_url": "https://deploy-preview-522--cubxxw.netlify.app"
+  },
+  "productionBefore": {
+    "id": "6af132641f653ac8bf072d61",
+    "state": "ready",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "published_at": "2026-11-09T02:42:28.419Z"
+  },
+  "productionAfter": {
+    "id": "6af132641f653ac8bf072d61",
+    "state": "ready",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "published_at": "2026-11-09T02:42:28.419Z"
+  },
+  "rows": [
+    {
+      "language": "en",
+      "route": "/engineering/posts/go-release-tools/",
+      "previewURL": "https://6af22967438d3f33e81e4189--cubxxw.netlify.app/engineering/posts/go-release-tools/",
+      "htmlSHA256": "350d8cc4cc72cea6c1fbbd628da5c11c9e9a3f09b82932e1d199ac6f48331f8c",
+      "checks": {
+        "paragraphExact": true,
+        "linksResolve": true,
+        "oldIDsRetained": true,
+        "codeHTMLTextIdentical": true,
+        "titleUnchanged": true,
+        "descriptionUnchanged": true,
+        "previewCanonicalMatchesDeployURL": true,
+        "languageAlternates": true,
+        "notYetInProduction": true
+      },
+      "linkTargets": [
+        "using-goreleaser-in-github-actions",
+        "quick-start"
+      ],
+      "codeBlocks": 72,
+      "productionSHA256": "29bc71f7df54602095cb4c91bd0e4f89b9b8fe1dc3a8a4f7d814119719f5d6d7"
+    },
+    {
+      "language": "zh",
+      "route": "/zh/engineering/posts/go-release-tools/",
+      "previewURL": "https://6af22967438d3f33e81e4189--cubxxw.netlify.app/zh/engineering/posts/go-release-tools/",
+      "htmlSHA256": "255ef728c96b9763be075ba23e02c27ec587b643053c588cf815bf13937552fa",
+      "checks": {
+        "paragraphExact": true,
+        "linksResolve": true,
+        "oldIDsRetained": true,
+        "codeHTMLTextIdentical": true,
+        "titleUnchanged": true,
+        "descriptionUnchanged": true,
+        "previewCanonicalMatchesDeployURL": true,
+        "languageAlternates": true,
+        "notYetInProduction": true
+      },
+      "linkTargets": [
+        "在-github-actions-中使用-goreleaser",
+        "快速开始"
+      ],
+      "codeBlocks": 72,
+      "productionSHA256": "a4d32de7333415ef14afb00f4677626811288e68cd13ba841a740b7c2b30b2c0"
+    }
+  ],
+  "limits": "HTTP/HTML checks, not browser tests, production delivery, Google indexed HTML or click improvement"
+}

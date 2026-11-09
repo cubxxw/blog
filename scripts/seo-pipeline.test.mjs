@@ -1098,6 +1098,34 @@ test('snapshot workflow plans exact artifacts, validates each stage and aggregat
 });
 
 
+test('actual Snapshot shell collects scheduled page cuts and preserves manual choices', () => {
+  const step = stepByName(loadWorkflow('seo-snapshot.yml'), 'snapshot', 'Fetch Google Search Console snapshot');
+  for (const [event, device, country, expected] of [
+    ['schedule', 'false', 'false', ['--with-device', '--with-country']],
+    ['workflow_dispatch', 'false', 'false', []],
+    ['workflow_dispatch', 'true', 'false', ['--with-device']],
+    ['workflow_dispatch', 'false', 'true', ['--with-country']],
+    ['workflow_dispatch', 'true', 'true', ['--with-device', '--with-country']],
+  ]) {
+    const dir = mkdtempSync(join(process.env.SEO_TEST_ARTIFACT_DIR ?? tmpdir(), 'snapshot-cuts-'));
+    mkdirSync(join(dir, 'run'));
+    writeFileSync(join(dir, 'run/plan.json'), '{}');
+    const calls = join(dir, 'calls');
+    const output = join(dir, 'outputs');
+    const shell = 'node() { printf "%s\\n" "$@" > "$CALLS"; return 2; }\n' + step.run;
+    const r = spawnSync('/bin/bash', ['-e', '-o', 'pipefail', '-c', shell], {
+      cwd: dir, encoding: 'utf8', env: { ...process.env, GITHUB_EVENT_NAME: event,
+        PLAN_READY: 'true', GSC_OUT: 'planned.json', LOOKBACK: '2',
+        WITH_DEVICE: device, WITH_COUNTRY: country, GITHUB_OUTPUT: output, CALLS: calls },
+    });
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(readFileSync(calls, 'utf8').trim().split('\n'),
+      ['scripts/gsc-fetch.mjs', '--lookback', '2', '--out', 'planned.json', ...expected],
+      `${event}/${device}/${country}: execute the actual workflow collector command`);
+    assert.equal(readFileSync(output, 'utf8').trim(), 'code=2', 'partial collector outcome remains nonzero');
+  }
+});
+
 // A failed plan must never contact a collector or persist fallback daily paths.
 test('actual Snapshot shell refuses collection and persistence without a successful exact-path plan', () => {
   const steps = loadWorkflow('seo-snapshot.yml').jobs.snapshot.steps;
