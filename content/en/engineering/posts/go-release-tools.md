@@ -2,7 +2,7 @@
 title: 'GoReleaser v2 + GitHub Actions: Go Release Guide'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:07:39+08:00'
-lastmod: 2026-07-29T14:05:00+08:00
+lastmod: 2026-11-10T04:11:16+08:00
 showtoc: true
 tocopen: false
 type: posts
@@ -19,6 +19,8 @@ tldr:
 ---
 
 The goal of GoReleaser is to automate much of the tedious work when releasing software, by using sensible defaults and making it simple for the most common use cases.
+
+For a GitHub Actions release, start with the [GoReleaser workflow](#using-goreleaser-in-github-actions): it runs on a pushed tag and gives the job `contents: write`. The example passes `GITHUB_TOKEN` to the upstream `goreleaser/goreleaser-action`. To check the build and packaging locally before publishing, follow the [snapshot steps](#quick-start); this does not publish a release.
 
 ## Preparation:
 
