@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-09T20:54:04.469358+00:00",
+  "rows": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "status": 200,
+      "finalURL": "https://cubxxw.com/projects/?profile=about",
+      "bodyBytes": 286742,
+      "bodySHA256": "0e0a93fd25ce61889820c33b5699dc399d95030ba97a7404f2ac5f32f8c7be35"
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "status": 200,
+      "finalURL": "https://cubxxw.com/zh/projects/?profile=about",
+      "bodyBytes": 323435,
+      "bodySHA256": "943b5f257cf459a6ddf555ab6e82858c664af8021e1f3929fed6fdf8674eb4a5"
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "status": 200,
+      "finalURL": "https://cubxxw.com/projects/",
+      "bodyBytes": 286742,
+      "bodySHA256": "0e0a93fd25ce61889820c33b5699dc399d95030ba97a7404f2ac5f32f8c7be35"
+    }
+  ],
+  "scope": "HTTP navigation response only; no browser rendering/LCP or proof PSI endpoint issue resolved"
+}
