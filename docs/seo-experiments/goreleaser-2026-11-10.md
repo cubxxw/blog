@@ -27,3 +27,7 @@
 首轮读取工具对 HTML 可省略 p 结束标签和 preview canonical 作了错误假设，检查失败已[保留](../daily-quality/evidence/2026-11-10/preview-readback-first.json)；修正读取工具后[复验通过](../daily-quality/evidence/2026-11-10/preview-readback.json)，文章源码未为此改变。预览 canonical 绑定 Netlify API 的 deploy-preview URL，不伪称生产 canonical。此为 HTML 检查，不是浏览器或生产验收。
 
 如果作者批准，再按最新 head 与现有门禁正常合并，读取 Netlify 实际生产 source、双语段落/锚点及元数据。上线后确认 Google 新版抓取，再从首个完整 GSC 数据日开始14天观察、28天判读；当前这些日期均未确定。预期是减少寻找已有示例的步骤，不预报点击提升百分比；查询组与页面指标分别报告，不把本轮内容入口单独认定为 CTR 原因。
+
+## 本轮设备、国家补数边界
+
+GET-478通过既有只读Snapshot补齐56天，两个独立切片前后窗各28完整计划日期，[覆盖与上下文](../daily-quality/evidence/2026-11-10/backfill-coverage.json)保留。Google内部全部行覆盖仍未知；同一snapshot的无过滤英文页面为1103曝光/2点击，主站page过滤的device/country切片各仅合计38/0，其中设备桌面36、手机2。两组分母不同，不用38解释全页点击，也不凭缺行填0；查询与设备/国家没有联合采集，不能推断某个查询的手机或国家表现。具体过滤差额留下一轮受控调查。[聚合证据](../daily-quality/evidence/2026-11-10/backfill-target-cuts.json)
