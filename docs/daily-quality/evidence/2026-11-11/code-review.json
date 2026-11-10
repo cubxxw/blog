@@ -1,0 +1,12 @@
+{
+  "base": "fb65a5c6da86bfa0bee2fc3aaae4d68978e17220",
+  "reviewer": "/root/review_daily_quality",
+  "confirmedP0P1P2": [],
+  "blobs": {
+    "module": "24e15cb5bd0f8dc6030fc6b1cd21935e90f47a79",
+    "tests": "1ef6d2ef8af19efb7974007fcdf0154ff5b873f7",
+    "workflow": "b116942a6fccd0ced78c482d80cfad1d5618ed79"
+  },
+  "actualLiveCases": 0,
+  "requiredAfterPublication": "exactsource manual8case validation; issue not Done before that"
+}

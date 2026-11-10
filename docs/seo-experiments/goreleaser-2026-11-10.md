@@ -31,3 +31,11 @@
 ## 本轮设备、国家补数边界
 
 GET-478通过既有只读Snapshot补齐56天，两个独立切片前后窗各28完整计划日期，[覆盖与上下文](../daily-quality/evidence/2026-11-10/backfill-coverage.json)保留。Google内部全部行覆盖仍未知；同一snapshot的无过滤英文页面为1103曝光/2点击，主站page过滤的device/country切片各仅合计38/0，其中设备桌面36、手机2。两组分母不同，不用38解释全页点击，也不凭缺行填0；查询与设备/国家没有联合采集，不能推断某个查询的手机或国家表现。具体过滤差额留下一轮受控调查。[聚合证据](../daily-quality/evidence/2026-11-10/backfill-target-cuts.json)
+
+## 2026-11-11 同日控制与新窗口
+
+[GET-487的两日真实控制](gsc-scope-2026-11-11.md)补齐上段调查：同维度有无hostname过滤结果相同，page auto/byPage也相同；设备/国家维度出现较低指标或目标缺行。旧1103对38不能直接归因于过滤，移除过滤没有恢复指标，本轮不改采集默认值。Google内部具体原因与全28天归因仍未知。
+
+新完整窗10-11—11-07英文页面1136曝光/2点击/CTR0.18%，前窗9-13—10-10为3099/0/0%；中文22/0/0%，前窗72/0/0%。精确Action查询中`goreleaser/goreleaser-action`8/0、`goreleaser action`2/0，`goreleaser-action`本窗未返回，不能搬用旧值或补零。[新窗口原数](../daily-quality/evidence/2026-11-11/search-target-evidence.json)不覆盖原冻结窗口。
+
+文章提案仍是原head a3955d0的草稿PR522，未获新答复，未合并、未上线；GET-477保持In Progress/need human，不重复询问。上述数据调查不扩大文章授权。
