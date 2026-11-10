@@ -1,0 +1,122 @@
+[
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/",
+    "LCPms": 956,
+    "CLS": 0.0030508041381835938,
+    "longTaskMs": 77,
+    "navigationError": "",
+    "resources": 22,
+    "decodedBodyBytes": 181830,
+    "observationMs": 4231.900000095367,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/",
+    "LCPms": 644,
+    "CLS": 0.015989240010579428,
+    "longTaskMs": 0,
+    "navigationError": "",
+    "resources": 24,
+    "decodedBodyBytes": 187940,
+    "observationMs": 4089.300000190735,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/projects/",
+    "LCPms": 3272,
+    "CLS": 0.003806254069010417,
+    "longTaskMs": 2718,
+    "navigationError": "",
+    "resources": 52,
+    "decodedBodyBytes": 286742,
+    "observationMs": 4382.199999809265,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/projects/",
+    "LCPms": 2544,
+    "CLS": 0.002189245488908556,
+    "longTaskMs": 2554,
+    "navigationError": "",
+    "resources": 53,
+    "decodedBodyBytes": 323435,
+    "observationMs": 4123.5,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "LCPms": 1208,
+    "CLS": 0.00615780978732639,
+    "longTaskMs": 137,
+    "navigationError": "",
+    "resources": 91,
+    "decodedBodyBytes": 143369,
+    "observationMs": 4804.900000095367,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/",
+    "LCPms": 368,
+    "CLS": 0,
+    "longTaskMs": 60,
+    "navigationError": "",
+    "resources": 18,
+    "decodedBodyBytes": 181830,
+    "observationMs": 3545.7999999523163,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/",
+    "LCPms": 1356,
+    "CLS": 0,
+    "longTaskMs": 0,
+    "navigationError": "",
+    "resources": 17,
+    "decodedBodyBytes": 187940,
+    "observationMs": 5379.899999856949,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/projects/",
+    "LCPms": 2476,
+    "CLS": 0.010929247741885483,
+    "longTaskMs": 5250,
+    "navigationError": "",
+    "resources": 53,
+    "decodedBodyBytes": 286742,
+    "observationMs": 6518.5,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/projects/",
+    "LCPms": 2636,
+    "CLS": 0.007609583383661457,
+    "longTaskMs": 3193,
+    "navigationError": "",
+    "resources": 53,
+    "decodedBodyBytes": 323435,
+    "observationMs": 4845.299999952316,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "LCPms": 1548,
+    "CLS": 0,
+    "longTaskMs": 0,
+    "navigationError": "",
+    "resources": 27,
+    "decodedBodyBytes": 143369,
+    "observationMs": 5411.899999856949,
+    "windowBasis": "cumulative from navigation; requested additional 3000ms after load"
+  }
+]

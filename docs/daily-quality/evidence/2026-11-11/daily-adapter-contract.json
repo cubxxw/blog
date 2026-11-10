@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "fb65a5c6da86bfa0bee2fc3aaae4d68978e17220",
+  "actualPW": "1.63.0",
+  "declaredPW": "1.64.1",
+  "chromePlist": "157.0.8103.40",
+  "adaptation": "absolute framework/testDir/output and system Chrome channel only; source spec and budgets unchanged",
+  "hashes": {
+    "playwright.daily.config.ts": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "tests/daily/live-quality.spec.ts": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "tests/daily/reader-navigation.spec.ts": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "at": "2026-11-10T20:31:25.052380+00:00",
+  "codePR": 525,
+  "head": "2089eb401a66dbd252326f052e87669a26686c45",
+  "merge": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+  "PRCI": 42893815965,
+  "mainCI": 42894118258,
+  "bothSuccess": true,
+  "sourceTree": "59357ff119cb43374dec8501a77bf5bcabd7b7f2",
+  "mergeTree": "59357ff119cb43374dec8501a77bf5bcabd7b7f2",
+  "testCounts": {
+    "new": 7,
+    "existing": 57,
+    "pass": 64,
+    "fail": 0,
+    "skip": 0
+  },
+  "redEvidence": [
+    "new module missing: file-level test failure before implementation",
+    "pagination negative assertion failed before raw-proof validation fix"
+  ],
+  "live": [
+    {
+      "run": 42894303391,
+      "attempt": 1,
+      "artifactId": 13798814258,
+      "artifactName": "gsc-scope-42894303391-1",
+      "zipBytes": 22006,
+      "digest": "sha256:732d48b59b1d9e85fa665629d8fb5631bfe7f2ce644fe63feba2524ae684ba50",
+      "allCRC": true,
+      "sourceSHA": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+      "actualNetworkRetryCount": "unknown; retained original max3attempts, do not infer zero from run attempt1"
+    },
+    {
+      "run": 42895038531,
+      "attempt": 1,
+      "artifactId": 13800655918,
+      "artifactName": "gsc-scope-42895038531-1",
+      "zipBytes": 19981,
+      "digest": "sha256:22e8aedec606c8f7a53ab3631f77df79c6cf37dec2c868e9acff019e38c9703d",
+      "allCRC": true,
+      "sourceSHA": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+      "actualNetworkRetryCount": "unknown; retained original max3attempts, do not infer zero from run attempt1"
+    }
+  ]
+}

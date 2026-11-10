@@ -1,0 +1,598 @@
+{
+  "file": "daily-results.json",
+  "sha256": "469fa5d4d43920e24e33671bd097fb68a71d2e7a0ada7ffa68b0df6487a456d6",
+  "identities": 36,
+  "firstPass": 36,
+  "flaky": 0,
+  "skipped": 0,
+  "failed": 0,
+  "unfinished": 0,
+  "retryAttempts": 0,
+  "globalErrors": 0,
+  "stats": {
+    "startTime": "2026-11-10T20:15:22.296Z",
+    "duration": 148840.638,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "identity": [
+        "0e12b698f0712772606f-6b8ed9e48181d772f7d7",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 3490
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-2602c981cdc6662eaeb3",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /zh/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 2160
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-7fabdd5aff056d174491",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /engineering/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1640
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-b6f0585aaf1841d3303c",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /zh/engineering/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1561
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-e6ceeb58b26de2816e49",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1525
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-37f25e4d028ea7662fc3",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /zh/projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 2871
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-3e7ebefb16f984a8bc7c",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 2560
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-599b645aabd5056460e9",
+        "desktop",
+        0
+      ],
+      "title": "live SEO /zh/growth/posts/2025-annual-review/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 3006
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-15153cf03c72123822a3",
+        "desktop",
+        0
+      ],
+      "title": "live reader can switch theme and home language",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 2513
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-3f625ffc31235ffc3ea0",
+        "desktop",
+        0
+      ],
+      "title": "live lab performance sample /",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4358
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-a4eb8373cbfe6860468b",
+        "desktop",
+        0
+      ],
+      "title": "live lab performance sample /zh/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4215
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-ea94274ec4f607c2cedb",
+        "desktop",
+        0
+      ],
+      "title": "live lab performance sample /projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4689
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-164a33623f4bdc87d4ab",
+        "desktop",
+        0
+      ],
+      "title": "live lab performance sample /zh/projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4399
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-2c86a7fe9fc4609a1976",
+        "desktop",
+        0
+      ],
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4945
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-f5e31caa9d2c8046f111",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1256
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-4882b9443cafb690bce0",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /zh/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 869
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-853a818311d9b0e8387a",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /engineering/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1446
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-6beee1b0b92fa68beee6",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /zh/engineering/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1732
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-9e85ff3b87af0efa88a8",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 2621
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-6ee1d335ba011f080bc1",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /zh/projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1580
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-4af85e66e68415f7d027",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1478
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-790dac4597a9b74af9a2",
+        "mobile",
+        0
+      ],
+      "title": "live SEO /zh/growth/posts/2025-annual-review/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1523
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-988dc2faf3489a0e08ce",
+        "mobile",
+        0
+      ],
+      "title": "live reader can switch theme and home language",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 1909
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-a71467be5d74b93d6310",
+        "mobile",
+        0
+      ],
+      "title": "live lab performance sample /",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 3685
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-b1d51f862ac985129e6c",
+        "mobile",
+        0
+      ],
+      "title": "live lab performance sample /zh/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5560
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-795900ff7c37bdce0e39",
+        "mobile",
+        0
+      ],
+      "title": "live lab performance sample /projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 6833
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-cfdfa162e6435379ba72",
+        "mobile",
+        0
+      ],
+      "title": "live lab performance sample /zh/projects/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5432
+        }
+      ]
+    },
+    {
+      "identity": [
+        "0e12b698f0712772606f-7e6f8409849f100bcbd9",
+        "mobile",
+        0
+      ],
+      "title": "live lab performance sample /zh/growth/posts/2025-annual-review/",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5621
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-daa5e79fb9faff3f10b4",
+        "desktop",
+        0
+      ],
+      "title": "live search opens a real article readable in both themes: /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5571
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-e7a37b0e0c2dfc03aca8",
+        "desktop",
+        0
+      ],
+      "title": "live Products defaults to BEAR OS and switches both ways: /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 8152
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-325feacdde958ce6db5c",
+        "desktop",
+        0
+      ],
+      "title": "live search opens a real article readable in both themes: /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7305
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-04102175825b448ec12a",
+        "desktop",
+        0
+      ],
+      "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7827
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-7f826b832ed0e26c9034",
+        "mobile",
+        0
+      ],
+      "title": "live search opens a real article readable in both themes: /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5128
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-2f0b3ba282d8bc05ed9c",
+        "mobile",
+        0
+      ],
+      "title": "live Products defaults to BEAR OS and switches both ways: /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 6383
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-1e6463cbd47b4d203e89",
+        "mobile",
+        0
+      ],
+      "title": "live search opens a real article readable in both themes: /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 5315
+        }
+      ]
+    },
+    {
+      "identity": [
+        "ba0b9ab1d8f722fefb17-ff6a06879ab0a2259796",
+        "mobile",
+        0
+      ],
+      "title": "live Products defaults to BEAR OS and switches both ways: /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7517
+        }
+      ]
+    }
+  ]
+}

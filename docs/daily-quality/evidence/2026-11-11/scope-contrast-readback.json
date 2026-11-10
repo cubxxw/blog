@@ -1,0 +1,670 @@
+{
+  "schema": "scope-contrast-readback/1",
+  "sourceSHA": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+  "validatedByOriginalCode": true,
+  "observations": [
+    {
+      "run": "42894303391",
+      "day": "2026-11-06",
+      "expected": {
+        "day": "2026-11-06",
+        "sourceSha": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+        "runId": "42894303391",
+        "attempt": 1,
+        "fetchedAt": "2026-11-10T20:20:41.742Z"
+      },
+      "processExit": 0,
+      "counts": {
+        "planned": 8,
+        "observed": 8,
+        "unknown": 0,
+        "blocked": 0
+      },
+      "reportSHA256": "e4655de08db5fe637637444436fd4d38ab9b260a2221b07a54b1fa1f6840f3ee",
+      "results": [
+        {
+          "id": "page-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "page-unfiltered-auto"
+          },
+          "metrics": {
+            "clicks": 1,
+            "impressions": 45,
+            "ctr": 0.022222222222222223,
+            "position": 7.377777777777778
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              165
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-unfiltered-byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "byPage",
+            "slice": "page-unfiltered-byPage"
+          },
+          "metrics": {
+            "clicks": 1,
+            "impressions": 45,
+            "ctr": 0.022222222222222223,
+            "position": 7.377777777777778
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              165
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "page-filtered-auto"
+          },
+          "metrics": {
+            "clicks": 1,
+            "impressions": 45,
+            "ctr": 0.022222222222222223,
+            "position": 7.377777777777778
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              163
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-filtered-byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "byPage",
+            "slice": "page-filtered-byPage"
+          },
+          "metrics": {
+            "clicks": 1,
+            "impressions": 45,
+            "ctr": 0.022222222222222223,
+            "position": 7.377777777777778
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              163
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "device-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "device"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "device-unfiltered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              53
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "device-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "device"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "device-filtered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              51
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "country-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "country"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "country-unfiltered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          "targetStatus": "returned",
+          "targetRows": 2,
+          "pagination": {
+            "pageRowCounts": [
+              84
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "country-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "country"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "country-filtered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          "targetStatus": "returned",
+          "targetRows": 2,
+          "pagination": {
+            "pageRowCounts": [
+              82
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        }
+      ]
+    },
+    {
+      "run": "42895038531",
+      "day": "2026-11-05",
+      "expected": {
+        "day": "2026-11-05",
+        "sourceSha": "e91c898d7b67e7f49bf6b9a6e4646772acc8e2cf",
+        "runId": "42895038531",
+        "attempt": 1,
+        "fetchedAt": "2026-11-10T20:25:15.375Z"
+      },
+      "processExit": 0,
+      "counts": {
+        "planned": 8,
+        "observed": 8,
+        "unknown": 0,
+        "blocked": 0
+      },
+      "reportSHA256": "0100a538a6904c1f214da5d390f3e0584e721387284c43ba77c48dd626d189a3",
+      "results": [
+        {
+          "id": "page-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "page-unfiltered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 112,
+            "ctr": 0,
+            "position": 6.732142857142857
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              155
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-unfiltered-byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [],
+            "requestAggregationType": "byPage",
+            "slice": "page-unfiltered-byPage"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 112,
+            "ctr": 0,
+            "position": 6.732142857142857
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              155
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "page-filtered-auto"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 112,
+            "ctr": 0,
+            "position": 6.732142857142857
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              155
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "page-filtered-byPage",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "byPage",
+            "slice": "page-filtered-byPage"
+          },
+          "metrics": {
+            "clicks": 0,
+            "impressions": 112,
+            "ctr": 0,
+            "position": 6.732142857142857
+          },
+          "targetStatus": "returned",
+          "targetRows": 1,
+          "pagination": {
+            "pageRowCounts": [
+              155
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "device-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "device"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "device-unfiltered-auto"
+          },
+          "metrics": null,
+          "targetStatus": "not-returned",
+          "targetRows": 0,
+          "pagination": {
+            "pageRowCounts": [
+              43
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "device-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "device"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "device-filtered-auto"
+          },
+          "metrics": null,
+          "targetStatus": "not-returned",
+          "targetRows": 0,
+          "pagination": {
+            "pageRowCounts": [
+              43
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "country-unfiltered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "country"
+            ],
+            "filters": [],
+            "requestAggregationType": "auto",
+            "slice": "country-unfiltered-auto"
+          },
+          "metrics": null,
+          "targetStatus": "not-returned",
+          "targetRows": 0,
+          "pagination": {
+            "pageRowCounts": [
+              53
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        },
+        {
+          "id": "country-filtered-auto",
+          "context": {
+            "property": "sc-domain:cubxxw.com",
+            "searchType": "web",
+            "dataState": "final",
+            "dimensions": [
+              "date",
+              "page",
+              "country"
+            ],
+            "filters": [
+              {
+                "groupType": "and",
+                "filters": [
+                  {
+                    "dimension": "page",
+                    "operator": "includingRegex",
+                    "expression": "^https?://cubxxw\\.com/"
+                  }
+                ]
+              }
+            ],
+            "requestAggregationType": "auto",
+            "slice": "country-filtered-auto"
+          },
+          "metrics": null,
+          "targetStatus": "not-returned",
+          "targetRows": 0,
+          "pagination": {
+            "pageRowCounts": [
+              53
+            ],
+            "responseAggregationType": "byPage",
+            "aggregationTypesSeen": [
+              "byPage"
+            ],
+            "terminator": "short-page",
+            "pages": 1
+          }
+        }
+      ]
+    }
+  ],
+  "internalGoogleRowCoverage": "unknown"
+}
