@@ -1,0 +1,86 @@
+name: GSC Scope Comparison
+
+on:
+  workflow_dispatch:
+    inputs:
+      probe_date:
+        description: "One finalized GSC calendar day; GoReleaser page control only"
+        type: string
+        required: true
+        default: "2026-11-06"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gsc-scope-comparison
+  cancel-in-progress: false
+
+jobs:
+  comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+      PROBE_DATE: ${{ inputs.probe_date }}
+      REPORT_PATH: run/scope-${{ github.run_id }}-${{ github.run_attempt }}.json
+      PROGRESS_PATH: run/progress-${{ github.run_id }}-${{ github.run_attempt }}.jsonl
+      PROCESS_PATH: run/process-${{ github.run_id }}-${{ github.run_attempt }}.json
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - name: Check the actual transport and evidence boundaries offline
+        run: node --test .github/scripts/gsc-scope-check.test.mjs scripts/gsc-fetch.test.mjs
+      - name: Freeze this observation time
+        run: |
+          mkdir -p run
+          node --input-type=module - <<'JS'
+          import { appendFileSync } from 'node:fs';
+          appendFileSync(process.env.GITHUB_ENV, `OBSERVED_AT=${new Date().toISOString()}\n`);
+          JS
+      - name: Compare one date (first case canary, eight fixed contexts)
+        id: probe
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: |
+          set +e
+          node .github/scripts/gsc-scope-check.mjs
+          code=$?
+          set -e
+          PROBE_EXIT_CODE="$code" node --input-type=module - <<'JS'
+          import { writeFileSync } from 'node:fs';
+          writeFileSync(process.env.PROCESS_PATH, JSON.stringify({
+            schema: 'gsc-scope-process/1', sourceSha: process.env.SOURCE_SHA,
+            runId: process.env.GITHUB_RUN_ID, attempt: Number(process.env.GITHUB_RUN_ATTEMPT),
+            observedAt: process.env.OBSERVED_AT, reportPath: process.env.REPORT_PATH,
+            exitCode: Number(process.env.PROBE_EXIT_CODE),
+          }, null, 2) + '\n', { flag: 'wx' });
+          JS
+          exit "$code"
+      - name: Preserve exact evidence including partial progress
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gsc-scope-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/**
+          if-no-files-found: error
+          retention-days: 14
+      - name: Recompute raw evidence and process identity before success
+        if: always()
+        env:
+          PROBE_OUTCOME: ${{ steps.probe.outcome }}
+        run: |
+          node .github/scripts/gsc-scope-check.mjs --validate
+          node --input-type=module - <<'JS'
+          import { readFileSync } from 'node:fs';
+          const p = JSON.parse(readFileSync(process.env.PROCESS_PATH, 'utf8'));
+          if (process.env.PROBE_OUTCOME !== 'success' || p.schema !== 'gsc-scope-process/1' ||
+              p.exitCode !== 0 || p.sourceSha !== process.env.SOURCE_SHA ||
+              p.runId !== process.env.GITHUB_RUN_ID || p.attempt !== Number(process.env.GITHUB_RUN_ATTEMPT) ||
+              p.observedAt !== process.env.OBSERVED_AT || p.reportPath !== process.env.REPORT_PATH) process.exitCode = 1;
+          JS
