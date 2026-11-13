@@ -2,7 +2,7 @@
 title: 'GoReleaser v2 教程：用 GitHub Actions 自动发布 Go'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:07:39+08:00
-lastmod: 2026-07-29T14:05:00+08:00
+lastmod: 2026-11-10T04:11:16+08:00
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,8 @@ tldr:
 ---
 
 GoReleaser 的目标是自动化发布软件时的大部分繁琐工作，通过使用合理的默认值并使最常见的用例变得简单。
+
+准备接入 GitHub Actions，可以直接看 [GoReleaser 工作流](#在-github-actions-中使用-goreleaser)：示例由推送 tag 触发，为 job 设置 `contents: write`，再把 `GITHUB_TOKEN` 传给上游的 `goreleaser/goreleaser-action`。先在本机检查构建和打包结果，可以从[本地 snapshot 步骤](#快速开始)开始，这一步不会发布 release。
 
 ## 准备工作：
 
