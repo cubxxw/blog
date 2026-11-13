@@ -67,3 +67,11 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 只读[42893703167](https://github.com/cubxxw/blog/actions/runs/42893703167)两页均PASS、可抓取且canonical匹配；英文最近抓取仍2026-09-26T10:30:38Z、中文2026-11-01T10:18:51Z，均早于实际部署。[原始归属与回执](../daily-quality/evidence/2026-11-11/fig-crawl-readback.json)已核对。没有再次索引提交，效果首个完整日、T14、T28仍未知，GET-463保持In Progress。
 
 新窗口10-11—11-07英文页面244曝光/0点击/CTR0%、精确figwright177/0/0%；中文页面30/1/3.33%、精确查询11/0/0%。前窗9-13—10-10英文页面59/1/1.69%，中文未返回保持未知。窗口完全在部署前，[新原数](../daily-quality/evidence/2026-11-11/search-target-evidence.json)与冻结基线分列，不作上线效果。[设备/国家分母对照](gsc-scope-2026-11-11.md)仅支持各上下文独立报告，不改变本实验主指标。
+
+## 2026-11-13 续查
+
+只读[43348000783](https://github.com/cubxxw/blog/actions/runs/43348000783)双页仍PASS、可抓取且canonical匹配，英文9月26日、中文11月1日的crawl仍早于11月9日02:42:28 UTC部署。没有再次索引提交，首个效果完整日、T14/T28仍未知，GET-463保持In Progress。[回执](../daily-quality/evidence/2026-11-13/inspection-summary.json)
+
+新完整窗口10-13—11-09英文页面258曝光/0点击，精确figwright193/0；中文30/1、精确词11/0。前窗9-15—10-12英文68/1，中文未返回保持未知。本窗已包含洛杉矶11月8日部分部署日和11月9日，不能再称完全在上线前；仍因缺新版抓取证据而不能作为效果窗口。冻结原基线不覆盖。[原数](../daily-quality/evidence/2026-11-13/target-evidence.json)
+
+背景参考Mem0保持未修改，本轮补查其真实查询、官方意图与Google索引状态，并仅保留入口假设。[调查](mem0-2026-11-13.md)不构成随机对照或文章授权，也不借其变化宣布Fig试点成立。

@@ -1,0 +1,106 @@
+{
+  "run": "43348000783",
+  "canaryRun": "43347778403",
+  "source": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+  "counts": {
+    "planned": 3,
+    "inspected": 3,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-09-26T10:30:38Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-11-01T10:18:51Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/mem0/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/projects/mem0/",
+        "userCanonical": "https://cubxxw.com/projects/mem0/",
+        "lastCrawlTime": "2026-10-26T21:36:37Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "meta": {
+    "sourceSha": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+    "fetchedAt": "2026-11-13T01:52:05.391Z",
+    "property": "sc-domain:cubxxw.com",
+    "languageCode": "en-US",
+    "basis": "Google indexed version only; separate from current HTTP/HTML, not a live test or indexing request",
+    "maxUrls": 25,
+    "maxAttemptsPerRequest": 2,
+    "timeoutMs": 30000,
+    "canaryUrl": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+    "runStatus": "complete",
+    "processError": null
+  },
+  "artifactReceipt": {
+    "artifact": 14003040284,
+    "source": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+    "run": "43348000783",
+    "zipBytes": 1269,
+    "sha256": "b63ef88f93ead8d9f8f56406a061f28e072bbf7d405230846029c7e7a118c89a",
+    "allCRC": true,
+    "files": [
+      {
+        "name": "inspection-43348000783-1.json",
+        "bytes": 2845,
+        "sha256": "6f70de7a9aea38b52b64fa71b41392a97acc62c8b9f13a3be39c625c46cf6273"
+      },
+      {
+        "name": "inspection-process-43348000783-1.json",
+        "bytes": 216,
+        "sha256": "1fc5be4927d3646b63643b268941541bdfb8cdedfcd9329a56b7990b8e150976"
+      }
+    ]
+  },
+  "process": {
+    "schema": "gsc-inspection-process/1",
+    "sourceSha": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+    "observedAt": "2026-11-13T01:52:24.230Z",
+    "reportPath": "run/inspection-43348000783-1.json",
+    "exitCode": 0
+  },
+  "noIndexSubmission": true,
+  "httpRetries": "not independently exposed; run attempt1 is not HTTP0retry"
+}

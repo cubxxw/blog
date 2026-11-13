@@ -1,0 +1,1241 @@
+{
+  "windows": {
+    "previous": {
+      "start": "2026-09-15",
+      "end": "2026-10-12",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-13",
+      "end": "2026-11-09",
+      "days": 28
+    }
+  },
+  "selection": {
+    "status": "selected",
+    "requestedResponseAggregation": "byPage",
+    "context": {
+      "property": "sc-domain:cubxxw.com",
+      "searchType": "web",
+      "dataState": "final",
+      "dimensions": [
+        "date",
+        "page"
+      ],
+      "filters": [],
+      "requestAggregationType": "auto",
+      "slice": "date_page"
+    },
+    "responseAggregationType": "byPage",
+    "candidateContexts": [
+      {
+        "property": "sc-domain:cubxxw.com",
+        "searchType": "web",
+        "dataState": "final",
+        "dimensions": [
+          "date",
+          "page"
+        ],
+        "filters": [],
+        "requestAggregationType": "auto",
+        "slice": "date_page"
+      }
+    ],
+    "availableResponseAggregations": [
+      "byPage",
+      "unrecorded-legacy"
+    ],
+    "basis": "explicit exact response aggregation in the unique domain-wide date_page request context; gsc-snapshot/2 provenance required; other groups retained separately, never merged"
+  },
+  "hostSummary": {
+    "previous": {
+      "metrics": {
+        "clicks": 136,
+        "impressions": 42472,
+        "ctr": 0.0032021096251648143,
+        "position": 9.162389338858542
+      },
+      "pageCount": 491,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-15",
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-09-20",
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "current": {
+      "metrics": {
+        "clicks": 146,
+        "impressions": 36877,
+        "ctr": 0.003959107302654771,
+        "position": 8.748678037801339
+      },
+      "pageCount": 442,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30",
+          "2026-10-31",
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "host": "cubxxw.com"
+  },
+  "targetPages": {
+    "previous": [
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 2613,
+        "ctr": 0,
+        "position": 6.904324531190203
+      },
+      {
+        "page": "https://cubxxw.com/projects/mem0/",
+        "clicks": 4,
+        "impressions": 676,
+        "ctr": 0.005917159763313609,
+        "position": 7.288461538461538
+      },
+      {
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "clicks": 0,
+        "impressions": 318,
+        "ctr": 0,
+        "position": 9.20125786163522
+      },
+      {
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "clicks": 1,
+        "impressions": 124,
+        "ctr": 0.008064516129032258,
+        "position": 9.838709677419354
+      },
+      {
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "clicks": 2,
+        "impressions": 73,
+        "ctr": 0.0273972602739726,
+        "position": 10.561643835616438
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 69,
+        "ctr": 0,
+        "position": 4.913043478260869
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 1,
+        "impressions": 68,
+        "ctr": 0.014705882352941176,
+        "position": 7.220588235294118
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#archives",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#build-options",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#using-goreleaser-in-github-actions",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#docker-images-with-ko",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 9.333333333333334
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#build-hooks",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#customization",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#docker-images-with-ko",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#annotate",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#docker-manifests",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#quick-start",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#signature-verification",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 4
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#archives",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 4
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#snapcraft-packages-snapssnapcraft-packages",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      }
+    ],
+    "current": [
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 3,
+        "impressions": 1226,
+        "ctr": 0.0024469820554649264,
+        "position": 7.446982055464926
+      },
+      {
+        "page": "https://cubxxw.com/projects/mem0/",
+        "clicks": 3,
+        "impressions": 416,
+        "ctr": 0.007211538461538462,
+        "position": 7.319711538461538
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 0,
+        "impressions": 258,
+        "ctr": 0,
+        "position": 6.042635658914729
+      },
+      {
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "clicks": 2,
+        "impressions": 117,
+        "ctr": 0.017094017094017096,
+        "position": 7.418803418803419
+      },
+      {
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "clicks": 1,
+        "impressions": 55,
+        "ctr": 0.01818181818181818,
+        "position": 9.636363636363637
+      },
+      {
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "clicks": 1,
+        "impressions": 33,
+        "ctr": 0.030303030303030304,
+        "position": 10.303030303030303
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 1,
+        "impressions": 30,
+        "ctr": 0.03333333333333333,
+        "position": 9.066666666666666
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 22,
+        "ctr": 0,
+        "position": 6.681818181818182
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#archives",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#build-options",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#using-goreleaser-in-github-actions",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#configuration-options",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/#docker-images-with-ko",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "page": "https://cubxxw.com/projects/mem0/#a-minimal-correctly-scoped-oss-loop",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 3
+      },
+      {
+        "page": "https://cubxxw.com/projects/mem0/#mem0-oss-v3-the-current-mental-model",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 3
+      },
+      {
+        "page": "https://cubxxw.com/projects/mem0/#retrieval",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 3
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#archives",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 2
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#build-hooks",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 2
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#customization",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 2
+      },
+      {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/#docker-images-with-ko",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 2
+      }
+    ]
+  },
+  "queryPairs": {
+    "previous": [
+      {
+        "query": "mem0 oss",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 1,
+        "impressions": 108,
+        "ctr": 0.009259259259259259,
+        "position": 8.296296296296296
+      },
+      {
+        "query": "goreleaser/goreleaser-action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 32,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "mem0 v3",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 1,
+        "impressions": 20,
+        "ctr": 0.05,
+        "position": 6.95
+      },
+      {
+        "query": "figwright",
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "label": "nonbrand",
+        "clicks": 1,
+        "impressions": 16,
+        "ctr": 0.0625,
+        "position": 11.375
+      },
+      {
+        "query": "gorelease",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 7.454545454545454
+      },
+      {
+        "query": "goreleaser action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 7.7
+      },
+      {
+        "query": "goreleaser",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 6.222222222222222
+      },
+      {
+        "query": "site:cubxxw.com/zh",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 17.11111111111111
+      },
+      {
+        "query": "site:cubxxw.com/zh",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 13
+      },
+      {
+        "query": "goreleaser-action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 8.142857142857142
+      },
+      {
+        "query": "mem0",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 23.833333333333332
+      },
+      {
+        "query": "mem0 oss",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 1,
+        "impressions": 5,
+        "ctr": 0.2,
+        "position": 5.6
+      },
+      {
+        "query": "mem0 \u4ecb\u7ecd",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 14.75
+      },
+      {
+        "query": "site:cubxxw.com/projects/mem0",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 1
+      },
+      {
+        "query": "mem0 graph memory",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 36
+      },
+      {
+        "query": "mem0 v3",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 4.333333333333333
+      },
+      {
+        "query": "site:cubxxw.com/engineering",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "site:cubxxw.com/engineering/posts",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "site:cubxxw.com/projects",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "site:cubxxw.com/projects",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 2
+      },
+      {
+        "query": "site:cubxxw.com/projects/langgraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 1
+      },
+      {
+        "query": "site:cubxxw.com/zh/projects",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "site:cubxxw.com/zh/projects",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 2
+      },
+      {
+        "query": "go releaser",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 5.5
+      },
+      {
+        "query": "goreleaser changelog",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "goreleaser github",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6.5
+      },
+      {
+        "query": "mem0 \u539f\u7406",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "query": "mem0\u662f\u4ec0\u4e48",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 18.5
+      },
+      {
+        "query": "mem0\u8bb0\u5fc6",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 17
+      },
+      {
+        "query": "memory0",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "site:cubxxw.com/zh/engineering",
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "2026\u5e74\u306b\u6ce8\u76ee\u3059\u3079\u304dai\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u306e\u30aa\u30fc\u30b1\u30b9\u30c8\u30ec\u30fc\u30b7\u30e7\u30f3\u57fa\u76e4\u306b\u306f\u3069\u3093\u306a\u3082\u306e\u304c\u3042\u308a\u3001\u305d\u308c\u305e\u308c\u3069\u306e\u3088\u3046\u306a\u30a2\u30fc\u30ad\u30c6\u30af\u30c1\u30e3\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u304b\uff1f",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "github goreleaser",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "goreleaser 2020 default ldflags main.version",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "query": "goreleaser default ldflags main.version 2020",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "goreleaser github action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "langchain langgraph updates april 2025",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 17
+      },
+      {
+        "query": "langgraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "langgraph architecture",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 29
+      },
+      {
+        "query": "langgraph documentation durable execution human in the loop persistence 2026",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 79
+      },
+      {
+        "query": "langgraph evm blockchain tool",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 54
+      },
+      {
+        "query": "langgraph new features 2025",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 54
+      },
+      {
+        "query": "langgraph official documentation agents durable execution 2026",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 67
+      },
+      {
+        "query": "langgraph official documentation architecture design 2024 2025",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "langgraph stategraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 15
+      },
+      {
+        "query": "langgraph update",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 35
+      },
+      {
+        "query": "langgraph updates 2026",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 77
+      },
+      {
+        "query": "langgraph \u6846\u67b6",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "langgraph\u67b6\u6784",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "mem0 graph",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 28
+      },
+      {
+        "query": "only this file",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "site:cubxxw.com",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "site-maintenance",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 19
+      },
+      {
+        "query": "stategraph langgraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 18
+      },
+      {
+        "query": "what is langgraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "what is mem0",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 27
+      }
+    ],
+    "current": [
+      {
+        "query": "figwright",
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 193,
+        "ctr": 0,
+        "position": 6.424870466321243
+      },
+      {
+        "query": "mem0 oss",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 32,
+        "ctr": 0,
+        "position": 8.25
+      },
+      {
+        "query": "figwright",
+        "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 10.636363636363637
+      },
+      {
+        "query": "goreleaser",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 11.7
+      },
+      {
+        "query": "mem0 oss",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 5.625
+      },
+      {
+        "query": "mem0 \u6559\u7a0b",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 7.375
+      },
+      {
+        "query": "gorelease",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 5.857142857142857
+      },
+      {
+        "query": "goreleaser/goreleaser-action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 9.142857142857142
+      },
+      {
+        "query": "mem0 v3",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 6.4
+      },
+      {
+        "query": "goreleaser github",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "query": "mem0",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 11.5
+      },
+      {
+        "query": "mem0 v3",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 4.25
+      },
+      {
+        "query": "ghr_ settings.yaml",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 16.5
+      },
+      {
+        "query": "goreleaser action",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "query": "langgraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "query": "mem 0",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 60
+      },
+      {
+        "query": "go releaser",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 49
+      },
+      {
+        "query": "goreleaser changelog",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 12
+      },
+      {
+        "query": "langgraph evm blockchain tool",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 59
+      },
+      {
+        "query": "langgraph new features 2025",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 47
+      },
+      {
+        "query": "langgraph stategraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 20
+      },
+      {
+        "query": "langgraph update 2026",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 76
+      },
+      {
+        "query": "langgraph \u662f\u4ec0\u4e48",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 21
+      },
+      {
+        "query": "langgraph\u9879\u76ee",
+        "page": "https://cubxxw.com/zh/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 4
+      },
+      {
+        "query": "langraph",
+        "page": "https://cubxxw.com/projects/langgraph/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "mem0",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 93
+      },
+      {
+        "query": "mem0 ai github",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 88
+      },
+      {
+        "query": "mem0 github",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 29
+      },
+      {
+        "query": "mem0 open source",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 66
+      },
+      {
+        "query": "mem0 paper",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 60
+      },
+      {
+        "query": "mem0\u8bb0\u5fc6",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      },
+      {
+        "query": "memo oss",
+        "page": "https://cubxxw.com/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "query": "not allowed",
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 3
+      },
+      {
+        "query": "\u5e2e\u6211\u9009\u4e00\u4e2a\u80fd\u628a\u5ba2\u670d\u5bf9\u8bdd\u6c89\u6dc0\u6210\u5ba2\u6237\u8bb0\u5fc6\u7684\u5de5\u5177 \u8981\u652f\u6301\u4e2d\u6587",
+        "page": "https://cubxxw.com/zh/projects/mem0/",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 1
+      }
+    ]
+  },
+  "coverageLimit": "Google internal/anonymous row coverage unknown; missing is not zero; exact canonical rows only"
+}

@@ -1,0 +1,24 @@
+{
+  "source": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+  "fullReportFile": "/Users/cubxxw/.codex/artifacts/blog-daily-quality/2026-11-13/gsc-full-display.json",
+  "sha256": "9ab0b27d42a9cbb25dbe99802e12e202372a30ecded537da8012004d3550dd48",
+  "bytes": 2340974,
+  "reproduction": "import {buildReport} from scripts/lib/gsc-report-core.mjs; same dir/start/end/host/includeQueryRows/asOf/summaryResponseAggregation; pagesLimit=rowsLimit=pairsLimit=5000",
+  "queryPairs": {
+    "previous": {
+      "totalPairs": 1179,
+      "limit": 5000,
+      "truncated": false,
+      "savedPairs": 1179
+    },
+    "current": {
+      "totalPairs": 623,
+      "limit": 5000,
+      "truncated": false,
+      "savedPairs": 623
+    }
+  },
+  "defaultReportSummaryUnchanged": true,
+  "scope": "display-only; no new API collection or gate change",
+  "selectedEvidenceDerivedFrom": "gsc-full-display.json"
+}

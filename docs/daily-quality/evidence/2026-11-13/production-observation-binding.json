@@ -1,0 +1,28 @@
+{
+  "before": {
+    "id": "6af132641f653ac8bf072d61",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "state": "ready",
+    "published_at": "2026-11-09T02:42:28.419Z"
+  },
+  "after": {
+    "id": "6af132641f653ac8bf072d61",
+    "commit_ref": "5a0673739f6732696a661da65fabb06fca58aa70",
+    "state": "ready",
+    "published_at": "2026-11-09T02:42:28.419Z"
+  },
+  "sourceInputs": "current daily source blobs match deployed5a per git diff; no frozen build certification",
+  "rawSampleSourceLabel": "source SHA unverified is preserved in raw attachment; external platform binding is separate",
+  "dailyStats": {
+    "startTime": "2026-11-13T01:54:56.792Z",
+    "duration": 151751.105,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "countRawSHA256": "be2f20ddd76fb5e79177976b84692f4e1a1aed2d64dde3f4085d1aa7577ff074",
+  "seoPages": 16,
+  "seoIssues": 0,
+  "googleIndexClaim": "only separate Google Inspection run; HTTP/daily never proves indexing"
+}

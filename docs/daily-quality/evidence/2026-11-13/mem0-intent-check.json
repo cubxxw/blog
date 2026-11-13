@@ -1,0 +1,20 @@
+{
+  "url": "https://cubxxw.com/projects/mem0/",
+  "status": 200,
+  "finalUrl": "https://cubxxw.com/projects/mem0/",
+  "sha256": "fa0ca2be696bfa82dd31712d5f4b1cc0d72708ee13ec2782923c87a503e956d3",
+  "bytes": 130423,
+  "anchorsVerified": [
+    "a-minimal-correctly-scoped-oss-loop",
+    "the-graph-boundary-that-old-tutorials-blur"
+  ],
+  "sourceLastContentChange": {
+    "commit": "d84ec86892490368e25c113a2329205c632c2b90",
+    "authorDate": "2026-09-24T21:43:00+08:00"
+  },
+  "officialSources": [
+    "https://docs.mem0.ai/open-source/overview",
+    "https://docs.mem0.ai/migration/oss-v2-to-v3"
+  ],
+  "conclusion": "existing title/body already answers OSS scope; library vs server entry is only a small unproven hypothesis, no confirmed crawl/read blocker; no article edit or model invocation"
+}
