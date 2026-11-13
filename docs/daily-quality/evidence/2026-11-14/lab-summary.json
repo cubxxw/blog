@@ -1,0 +1,122 @@
+[
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/",
+    "lcpMs": 1088,
+    "cls": 0.0030508041381835938,
+    "longTaskMs": 84,
+    "observationMs": 4772.699999999255,
+    "resources": 22,
+    "documentBodyBytes": 181830,
+    "encodedBodyBytes": 51670,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/",
+    "lcpMs": 1036,
+    "cls": 0.015995375315348306,
+    "longTaskMs": 0,
+    "observationMs": 4804.29999999702,
+    "resources": 23,
+    "documentBodyBytes": 187940,
+    "encodedBodyBytes": 55091,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/projects/",
+    "lcpMs": 7384,
+    "cls": 0.03694552951388889,
+    "longTaskMs": 9194,
+    "observationMs": 11837.300000000745,
+    "resources": 52,
+    "documentBodyBytes": 286742,
+    "encodedBodyBytes": 68667,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/projects/",
+    "lcpMs": 3260,
+    "cls": 0.002189245488908556,
+    "longTaskMs": 2738,
+    "observationMs": 4894.89999999851,
+    "resources": 52,
+    "documentBodyBytes": 323435,
+    "encodedBodyBytes": 85740,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "desktop",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "lcpMs": 1196,
+    "cls": 0.00615780978732639,
+    "longTaskMs": 202,
+    "observationMs": 5628.5,
+    "resources": 94,
+    "documentBodyBytes": 143369,
+    "encodedBodyBytes": 42696,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/",
+    "lcpMs": 584,
+    "cls": 0,
+    "longTaskMs": 77,
+    "observationMs": 3773.300000000745,
+    "resources": 17,
+    "documentBodyBytes": 181830,
+    "encodedBodyBytes": 51670,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/",
+    "lcpMs": 448,
+    "cls": 0,
+    "longTaskMs": 0,
+    "observationMs": 3904.099999997765,
+    "resources": 18,
+    "documentBodyBytes": 187940,
+    "encodedBodyBytes": 55091,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/projects/",
+    "lcpMs": 2560,
+    "cls": 0.019713006617045146,
+    "longTaskMs": 2687,
+    "observationMs": 4096.60000000149,
+    "resources": 52,
+    "documentBodyBytes": 286742,
+    "encodedBodyBytes": 68739,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/projects/",
+    "lcpMs": 2732,
+    "cls": 0.007609583383661457,
+    "longTaskMs": 3253,
+    "observationMs": 4939.199999999255,
+    "resources": 53,
+    "documentBodyBytes": 323435,
+    "encodedBodyBytes": 85740,
+    "note": "document bytes only, not full-page wire or field INP"
+  },
+  {
+    "project": "mobile",
+    "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+    "lcpMs": 1168,
+    "cls": 0,
+    "longTaskMs": 71,
+    "observationMs": 5226.900000002235,
+    "resources": 93,
+    "documentBodyBytes": 143369,
+    "encodedBodyBytes": 42634,
+    "note": "document bytes only, not full-page wire or field INP"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "run": 43498816225,
+  "source": "13e384eb0879b39c8f3495c598ce55ce22c9bd2c",
+  "artifactId": 14072293457,
+  "zipBytes": 1295,
+  "sha256": "fb02793fde3bd5d2529134cc7d095bf4f87ff65cf1f69b6439656215e95728d3",
+  "allCRC": true,
+  "files": [
+    {
+      "name": "inspection-43498816225-1.json",
+      "sha256": "c5d3ba3aff6674131f7005879c81002fa54b01716ffc1827eca7ebe94139ef41"
+    },
+    {
+      "name": "inspection-process-43498816225-1.json",
+      "sha256": "4ee6c6af3ed7df044d725f6e90b1f6dee2fdcd373870b6a627987a6a70740d18"
+    }
+  ],
+  "HTTPRetries": "not exposed; workflow attempt1 is independent"
+}

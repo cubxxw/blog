@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-13T20:06:53.057270+00:00",
+  "before": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "state": "ready",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "after": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "state": "ready",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "versionUnchanged": true,
+  "sitemap": {
+    "status": 200,
+    "pageLocs": 440,
+    "uniquePages": 440,
+    "imageLocs": 249,
+    "uniqueImages": 143,
+    "allEntries": 689
+  },
+  "limits": "HTTP/html sample and JSON parse only; no Google indexing or all-site link-health claim",
+  "pages": 16,
+  "issues": 0,
+  "reciprocityUnknown": 0
+}

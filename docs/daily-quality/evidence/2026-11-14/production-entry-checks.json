@@ -1,0 +1,82 @@
+{
+  "at": "2026-11-13T20:10:39.693024+00:00",
+  "deployedBefore": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "state": "ready",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "published_at": "2026-11-13T08:44:36.637Z",
+    "context": "production",
+    "deploy_ssl_url": "https://main--cubxxw.netlify.app"
+  },
+  "deployedAfter": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "state": "ready",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "published_at": "2026-11-13T08:44:36.637Z",
+    "context": "production",
+    "deploy_ssl_url": "https://main--cubxxw.netlify.app"
+  },
+  "productionBefore": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "state": "ready",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "productionAfter": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "state": "ready",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "rows": [
+    {
+      "language": "en",
+      "route": "/engineering/posts/go-release-tools/",
+      "productionURL": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "htmlSHA256": "91d7cc63abe03d0f560db35d6c5cec5b916bba5285cfabb17dbd7c9bb1362483",
+      "checks": {
+        "paragraphLinksExact": true,
+        "paragraphExact": true,
+        "linksResolve": true,
+        "oldIDsRetained": true,
+        "codeHTMLTextIdentical": true,
+        "titleUnchanged": true,
+        "descriptionUnchanged": true,
+        "productionSelfCanonical": true,
+        "languageAlternates": true,
+        "absentOnOldImmutableDeploy": true
+      },
+      "linkTargets": [
+        "using-goreleaser-in-github-actions",
+        "quick-start"
+      ],
+      "codeBlocks": 72,
+      "oldImmutableHTMLSHA256": "29bc71f7df54602095cb4c91bd0e4f89b9b8fe1dc3a8a4f7d814119719f5d6d7"
+    },
+    {
+      "language": "zh",
+      "route": "/zh/engineering/posts/go-release-tools/",
+      "productionURL": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "htmlSHA256": "bdfc0edf72fba5ee01df78da51395704aa6d22442239d5f5b1390c09ad1a6187",
+      "checks": {
+        "paragraphLinksExact": true,
+        "paragraphExact": true,
+        "linksResolve": true,
+        "oldIDsRetained": true,
+        "codeHTMLTextIdentical": true,
+        "titleUnchanged": true,
+        "descriptionUnchanged": true,
+        "productionSelfCanonical": true,
+        "languageAlternates": true,
+        "absentOnOldImmutableDeploy": true
+      },
+      "linkTargets": [
+        "在-github-actions-中使用-goreleaser",
+        "快速开始"
+      ],
+      "codeBlocks": 72,
+      "oldImmutableHTMLSHA256": "a4d32de7333415ef14afb00f4677626811288e68cd13ba841a740b7c2b30b2c0"
+    }
+  ],
+  "limits": "Current production vs explicitly bound old immutable deployment, HTTP/HTML checks only. Not Google indexed HTML or click improvement; separate browser evidence follows."
+}
