@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en",
+    "path": "content/en/engineering/posts/go-release-tools.md",
+    "reviewedHead": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+    "publishedSource": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "beforeParent": "69ce3f126374a7e92d9942a7bff282329f690fbd",
+    "reviewedPublishedCurrentBytesExact": true,
+    "sha256": "14e3bc6f668fc22fa564b8875585ca99c8e24f64d79212a14744bd785f2fac3c",
+    "oldCompleteFences": 72,
+    "newCompleteFences": 72,
+    "fullFencesByteIdentical": true,
+    "legacyFirstColumnRegexSubset": {
+      "old": 68,
+      "new": 68
+    },
+    "parser": "repository MarkdownIt fenced-code tokens, including list-indented fences",
+    "oldFullSpansSHA256": "247694a42922c852129d434d29b4d2869513b1232a3e7fab7353c76bce7460b7",
+    "newFullSpansSHA256": "247694a42922c852129d434d29b4d2869513b1232a3e7fab7353c76bce7460b7",
+    "listIndentedAdditionalFences": 4
+  },
+  {
+    "language": "zh",
+    "path": "content/zh/engineering/posts/go-release-tools.md",
+    "reviewedHead": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+    "publishedSource": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "beforeParent": "69ce3f126374a7e92d9942a7bff282329f690fbd",
+    "reviewedPublishedCurrentBytesExact": true,
+    "sha256": "1e8abd08f24b395c7cabac452d3b98049cb44ddf36db4b5961c4d0617d87fc43",
+    "oldCompleteFences": 72,
+    "newCompleteFences": 72,
+    "fullFencesByteIdentical": true,
+    "legacyFirstColumnRegexSubset": {
+      "old": 68,
+      "new": 68
+    },
+    "parser": "repository MarkdownIt fenced-code tokens, including list-indented fences",
+    "oldFullSpansSHA256": "779da9397d1a5d4f3e01a1c785527f64f40749a07fbcd4b52f88f436551125e1",
+    "newFullSpansSHA256": "779da9397d1a5d4f3e01a1c785527f64f40749a07fbcd4b52f88f436551125e1",
+    "listIndentedAdditionalFences": 4
+  }
+]

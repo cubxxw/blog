@@ -1,0 +1,51 @@
+{
+  "params": {
+    "dir": "data/seo",
+    "start": "2026-09-16",
+    "end": "2026-11-10",
+    "host": "cubxxw.com",
+    "includeQueryRows": true,
+    "asOf": "2026-11-13T19:59:42Z",
+    "summaryResponseAggregation": "byPage",
+    "windows": {
+      "previous": {
+        "start": "2026-09-16",
+        "end": "2026-10-13",
+        "days": 28
+      },
+      "current": {
+        "start": "2026-10-14",
+        "end": "2026-11-10",
+        "days": 28
+      }
+    }
+  },
+  "source": "13e384eb0879b39c8f3495c598ce55ce22c9bd2c",
+  "fullReportSHA256": "04d6118da301e84f2c41b1a4b0e245593b5963a59228f50bbd7d927a86699999",
+  "fullAPIOverrides": {
+    "pagesLimit": 5000,
+    "rowsLimit": 5000,
+    "pairsLimit": 5000
+  },
+  "defaultCLIReportSHA256": "1dd1cd7a8ea625c0bb900babab21226421031905df56bf301511e39dc48dea59",
+  "summaryEqual": true,
+  "pairs": {
+    "previous": {
+      "totalPairs": 1179,
+      "limit": 5000,
+      "truncated": false
+    },
+    "current": {
+      "totalPairs": 623,
+      "limit": 5000,
+      "truncated": false
+    }
+  },
+  "collectionOrGateChanged": false,
+  "firstCutoffCorrection": {
+    "initialExplicitCutoff": "2026-11-13T20:05:00Z",
+    "observedClock": "2026-11-13T20:04:08Z",
+    "correctedCutoff": "2026-11-13T19:59:42Z",
+    "reason": "Use the known heartbeat clock, not a future manually rounded timestamp. Original reports retained; no input or threshold change."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "file": "go-results.json",
+  "sha256": "dc654fd5f2df3e55f645ef81ecea369a66c552ea96d5f1cb45effd3d8c560502",
+  "identities": 4,
+  "firstPass": 4,
+  "flaky": 0,
+  "skipped": 0,
+  "failed": 0,
+  "unfinished": 0,
+  "retryAttempts": 0,
+  "globalErrors": 0,
+  "stats": {
+    "startTime": "2026-11-13T20:12:16.625Z",
+    "duration": 20513.772,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rows": [
+    {
+      "identity": [
+        "c54ce49119615334647f-8faf20f0c829d44e9ff4",
+        "desktop",
+        0
+      ],
+      "title": "published GoReleaser entry links /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4405
+        }
+      ]
+    },
+    {
+      "identity": [
+        "c54ce49119615334647f-c585d16236846ff1f436",
+        "desktop",
+        0
+      ],
+      "title": "published GoReleaser entry links /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4845
+        }
+      ]
+    },
+    {
+      "identity": [
+        "c54ce49119615334647f-a1705808d17b0089f86f",
+        "mobile",
+        0
+      ],
+      "title": "published GoReleaser entry links /en",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 3081
+        }
+      ]
+    },
+    {
+      "identity": [
+        "c54ce49119615334647f-13ba952f9078b3feeffe",
+        "mobile",
+        0
+      ],
+      "title": "published GoReleaser entry links /zh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4457
+        }
+      ]
+    }
+  ]
+}

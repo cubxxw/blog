@@ -1,0 +1,504 @@
+{
+  "asOf": "2026-11-13T19:59:42Z",
+  "windows": {
+    "previous": {
+      "start": "2026-09-16",
+      "end": "2026-10-13",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-14",
+      "end": "2026-11-10",
+      "days": 28
+    }
+  },
+  "identity": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "host": "cubxxw.com"
+  },
+  "pageContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "page"
+    ],
+    "filters": [],
+    "requestAggregationType": "auto",
+    "slice": "date_page"
+  },
+  "queryContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "query",
+      "page"
+    ],
+    "filters": [
+      {
+        "groupType": "and",
+        "filters": [
+          {
+            "dimension": "page",
+            "operator": "includingRegex",
+            "expression": "^https?://cubxxw\\.com/"
+          }
+        ]
+      }
+    ],
+    "requestAggregationType": "byPage",
+    "slice": "blog_date_query_page"
+  },
+  "site": {
+    "previous": {
+      "metrics": {
+        "clicks": 138,
+        "impressions": 41083,
+        "ctr": 0.0033590536231531292,
+        "position": 9.195871771779082
+      },
+      "pageCount": 491,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-16",
+          "2026-09-17",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-09-20",
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "current": {
+      "metrics": {
+        "clicks": 149,
+        "impressions": 37098,
+        "ctr": 0.0040163890236670444,
+        "position": 8.694269232842741
+      },
+      "pageCount": 442,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30",
+          "2026-10-31",
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09",
+          "2026-11-10"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "host": "cubxxw.com"
+  },
+  "display": {
+    "previous": {
+      "totalPairs": 1179,
+      "limit": 5000,
+      "truncated": false
+    },
+    "current": {
+      "totalPairs": 623,
+      "limit": 5000,
+      "truncated": false
+    }
+  },
+  "targets": {
+    "GoEN": {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "page": {
+        "previous": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 2212,
+          "ctr": 0,
+          "position": 6.922694394213382
+        },
+        "current": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 3,
+          "impressions": 1240,
+          "ctr": 0.0024193548387096775,
+          "position": 7.445161290322581
+        }
+      },
+      "queryPairs": {
+        "previous": [
+          {
+            "query": "goreleaser/goreleaser-action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 31,
+            "ctr": 0,
+            "position": 6.935483870967742
+          },
+          {
+            "query": "gorelease",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 7.454545454545454
+          },
+          {
+            "query": "goreleaser action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 7.818181818181818
+          },
+          {
+            "query": "goreleaser",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 8,
+            "ctr": 0,
+            "position": 6.375
+          },
+          {
+            "query": "goreleaser-action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 7,
+            "ctr": 0,
+            "position": 8.142857142857142
+          },
+          {
+            "query": "site:cubxxw.com/engineering",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "site-maintenance",
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "query": "site:cubxxw.com/engineering/posts",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "site-maintenance",
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "query": "goreleaser changelog",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "query": "goreleaser github",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6.5
+          },
+          {
+            "query": "github goreleaser",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "query": "go releaser",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "query": "goreleaser 2020 default ldflags main.version",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "query": "goreleaser github action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "query": "only this file",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          }
+        ],
+        "current": [
+          {
+            "query": "goreleaser",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 10,
+            "ctr": 0,
+            "position": 11.7
+          },
+          {
+            "query": "gorelease",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 7,
+            "ctr": 0,
+            "position": 5.857142857142857
+          },
+          {
+            "query": "goreleaser/goreleaser-action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 9.666666666666666
+          },
+          {
+            "query": "goreleaser github",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "query": "ghr_ settings.yaml",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 16.5
+          },
+          {
+            "query": "go releaser",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 49
+          },
+          {
+            "query": "goreleaser action",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "query": "goreleaser changelog",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 12
+          },
+          {
+            "query": "not allowed",
+            "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          }
+        ]
+      }
+    },
+    "GoZH": {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "page": {
+        "previous": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 67,
+          "ctr": 0,
+          "position": 4.970149253731344
+        },
+        "current": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 22,
+          "ctr": 0,
+          "position": 6.681818181818182
+        }
+      },
+      "queryPairs": {
+        "previous": [
+          {
+            "query": "site:cubxxw.com/zh/engineering",
+            "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+            "label": "site-maintenance",
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7
+          }
+        ],
+        "current": []
+      }
+    },
+    "FigEN": {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "page": {
+        "previous": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 75,
+          "ctr": 0.013333333333333334,
+          "position": 7.093333333333334
+        },
+        "current": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 259,
+          "ctr": 0.003861003861003861,
+          "position": 6.077220077220077
+        }
+      },
+      "queryPairs": {
+        "previous": [
+          {
+            "query": "figwright",
+            "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+            "label": "nonbrand",
+            "clicks": 1,
+            "impressions": 16,
+            "ctr": 0.0625,
+            "position": 11.375
+          }
+        ],
+        "current": [
+          {
+            "query": "figwright",
+            "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 199,
+            "ctr": 0,
+            "position": 6.432160804020101
+          }
+        ]
+      }
+    },
+    "FigZH": {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "page": {
+        "previous": null,
+        "current": {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 32,
+          "ctr": 0.03125,
+          "position": 8.96875
+        }
+      },
+      "queryPairs": {
+        "previous": [],
+        "current": [
+          {
+            "query": "figwright",
+            "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+            "label": "nonbrand",
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 10.636363636363637
+          }
+        ]
+      }
+    }
+  },
+  "unknowns": "Google internal/anonymous row coverage unknown; canonical exact URLs only, missing rows remain null; device/country cuts are separate denominators"
+}

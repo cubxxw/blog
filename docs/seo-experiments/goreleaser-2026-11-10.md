@@ -1,6 +1,6 @@
 # GoReleaser：让 Action 读者直接找到示例
 
-[GET-477](https://linear.app/getyak/issue/GET-477/help-goreleaser-action-readers-reach-the-right-example) 复用仍开放的[工程教程实验 #394](https://github.com/cubxxw/blog/issues/394)。本轮是具体提案，**尚未获文章发布授权、尚未上线**。[草稿 PR522](https://github.com/cubxxw/blog/pull/522) 只修改已有双语文章的入口段落与 lastmod。当前明确的内容修改授权仅覆盖 Figwright，因此本提案通过独立审查、适用 CI 与预览核验后交作者决定。
+[GET-477](https://linear.app/getyak/issue/GET-477/help-goreleaser-action-readers-reach-the-right-example) 复用仍开放的[工程教程实验 #394](https://github.com/cubxxw/blog/issues/394)。**最新状态（2026-11-14）：PR522已在作者对该PR的单次处置授权记录下由外部合并并上线，双语生产验收通过；Google新版抓取及点击效果仍待观察。** [PR522](https://github.com/cubxxw/blog/pull/522)仅修改已有双语文章的入口段落与lastmod；本轮没有重复修改或合并正文，不扩大其他文章授权。以下提案和等待记录保留各自历史时点，最新交付见末节及[14日日报](../daily-quality/2026-11-14.md)。
 
 ## 查询、意图与已有正文
 
@@ -20,9 +20,9 @@
 
 ## 最小提案与验证
 
-在原开篇后、Preparation / 准备工作之前加入一个直达段落，分别链接现有 GitHub Actions 与 Quick Start / 快速开始锚点。保留标题、摘要、发布日期、全部旧章节、每语68个完整 fenced code block；移除新增段落并恢复 lastmod 后可逐字节还原原文。[保存性检查](../daily-quality/evidence/2026-11-10/source-preservation.json)
+在原开篇后、Preparation / 准备工作之前加入一个直达段落，分别链接现有 GitHub Actions 与 Quick Start / 快速开始锚点。保留标题、摘要、发布日期、全部旧章节和代码块；移除新增段落并恢复 lastmod 后可逐字节还原原文。[提案阶段保存性检查](../daily-quality/evidence/2026-11-10/source-preservation.json)的列首正则覆盖每语68块；14日独立复核补计4个列表内围栏，完整72块均保真，见末节。
 
-候选 head `a3955d0446e10ac66b671ed83dcadcc30b7b04a0`，源码 CI [42690877586](https://github.com/cubxxw/blog/actions/runs/42690877586) success；独立审查无确认P0/P1/P2。[不可变预览](https://6af22967438d3f33e81e4189--cubxxw.netlify.app/engineering/posts/go-release-tools/) source 同 head。双语 HTTP 核验各9项通过：新段、链接、旧锚点、72个生成 pre 的原文本、title/description/hreflang/canonical，以及生产仍未出现提案。72个生成 pre 与68个源码 fence 是不同计数。
+候选 head `a3955d0446e10ac66b671ed83dcadcc30b7b04a0`，源码 CI [42690877586](https://github.com/cubxxw/blog/actions/runs/42690877586) success；当时独立审查无确认P0/P1/P2。[不可变预览](https://6af22967438d3f33e81e4189--cubxxw.netlify.app/engineering/posts/go-release-tools/) source 同 head。双语 HTTP 核验各9项通过：新段、链接、旧锚点、72个生成 pre 的原文本、title/description/hreflang/canonical，以及生产仍未出现提案。旧源码计数68仅是列首正则子集，不能与完整72个生成pre并列为两种完整总数；本轮已补齐源码解析计数。
 
 首轮读取工具对 HTML 可省略 p 结束标签和 preview canonical 作了错误假设，检查失败已[保留](../daily-quality/evidence/2026-11-10/preview-readback-first.json)；修正读取工具后[复验通过](../daily-quality/evidence/2026-11-10/preview-readback.json)，文章源码未为此改变。预览 canonical 绑定 Netlify API 的 deploy-preview URL，不伪称生产 canonical。此为 HTML 检查，不是浏览器或生产验收。
 
@@ -38,4 +38,16 @@ GET-478通过既有只读Snapshot补齐56天，两个独立切片前后窗各28�
 
 新完整窗10-11—11-07英文页面1136曝光/2点击/CTR0.18%，前窗9-13—10-10为3099/0/0%；中文22/0/0%，前窗72/0/0%。精确Action查询中`goreleaser/goreleaser-action`8/0、`goreleaser action`2/0，`goreleaser-action`本窗未返回，不能搬用旧值或补零。[新窗口原数](../daily-quality/evidence/2026-11-11/search-target-evidence.json)不覆盖原冻结窗口。
 
-文章提案仍是原head a3955d0的草稿PR522，未获新答复，未合并、未上线；GET-477保持In Progress/need human，不重复询问。上述数据调查不扩大文章授权。
+在11月11日这一观察时点，文章提案仍是原head a3955d0的草稿PR522，未获新答复、未合并或上线；当时GET-477保持In Progress/need human，未重复询问。上述数据调查不扩大文章授权。
+
+## 2026-11-14：接续已授权发布的生产验收
+
+[11月13日处置说明](https://github.com/cubxxw/blog/pull/522#issuecomment-6848213708)记录作者对PR522的明确单次授权。该PR于08:41:30 UTC由外部合并，merge `62b2f54cd779da55a0703abd90a2b080bf8d46af`；Netlify生产`6af6cd3c05ce7467a6ab6611`于08:44:36.637 UTC发布ready。本聊天本轮只接续验证与登记，没有再提交或合并文章。[发布与主干CI读回](../daily-quality/evidence/2026-11-14/release-observation.json)
+
+两个生产文章blob与此前独立审查head `a3955d0446e10ac66b671ed83dcadcc30b7b04a0`精确相同；本轮用仓库MarkdownIt计入列首68块与列表内4块，每语完整72个源码fence的原始围栏范围与发布前parent逐字节相同。HTTP生产与旧不可变5a部署比较，新增段落、实际href/目标锚点、旧ID、原72个生成pre文本、标题、摘要、canonical和语言声明各10项通过。另有双语×桌面手机4个真实锚点点击旅程及原36日检首次通过，0失败/重试/跳过/全局错误。[源码](../daily-quality/evidence/2026-11-14/source-preservation.json)、[HTML](../daily-quality/evidence/2026-11-14/production-entry-checks.json)、[浏览器](../daily-quality/evidence/2026-11-14/go-browser-counts.json)分别保存，不把源码fence与生成pre核验混用；原计数缺口保留为已修正P2。
+
+新增上线前参考窗口10月14日—11月10日与9月16日—10月13日各28完整计划日期，asOf13日19:59:42Z，主站Web/final/byPage。英文1240/3/CTR0.24%，前2212/0；中文22/0，前67/0。英文可见Action词`goreleaser/goreleaser-action`6/0、`goreleaser action`1/0，精确`goreleaser-action`未返回保持未知。全部日期早于11月13日发布，不能解释为本次收益，也不覆盖原11月10日1103/2冻结基线。[配对原数](../daily-quality/evidence/2026-11-14/target-evidence.json)
+
+只读[43498816225](https://github.com/cubxxw/blog/actions/runs/43498816225)报告Go EN最近抓取2026-11-07T10:21:48Z、ZH2026-10-29T22:55:22Z，两页PASS/允许索引/自canonical一致，仍早于本次发布。没有重复索引提交，Google索引HTML/标题采用版本没有新证据。首个完整效果日及T14/T28均未知；确认新版抓取后按洛杉矶日期另行冻结完整14/28日观察，不用当前上线前窗口替代。页面、精确查询及站点背景分母分别报告；小样本不作因果结论。
+
+GET-477实施范围在本轮文档交付和最终平台验收后结案；搜索效果继续在本登记与工程教程实验#394观察。原need human来自当时的正文授权等待，不应在上述外部授权与实际发布后继续当作技术阻塞。Figwright效果观察GET-463保持进行中。

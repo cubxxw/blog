@@ -1,0 +1,39 @@
+{
+  "pr": "https://github.com/cubxxw/blog/pull/522",
+  "head": "a3955d0446e10ac66b671ed83dcadcc30b7b04a0",
+  "merge": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+  "mergedAt": "2026-11-13T08:41:30Z",
+  "externalMerge": true,
+  "authorizationRecord": {
+    "url": "https://github.com/cubxxw/blog/pull/522#issuecomment-6848213708",
+    "user": "kubbot",
+    "createdAt": "2026-11-13T08:41:25Z",
+    "body": "按作者本轮对这个 PR 的明确处置授权，结束此前等待批准的草稿状态。独立复核当前提交 `a3955d0446e10ac66b671ed83dcadcc30b7b04a0`：仅新增中英文各一段入口说明并更新 lastmod，现有 68 个代码块/语言与当前 main 完全一致。两种语言的真实预览页面 HTTP 200，工作流和 snapshot 两个目标锚点均存在。当前 Required blog quality、GitGuardian 及 Netlify Preview 成功，没有未解决评审线程。按已审查的 head SHA 合并；这里没有执行 GoReleaser 或发布任何原生包。"
+  },
+  "platform": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "state": "ready",
+    "published_at": "2026-11-13T08:44:36.637Z",
+    "observedAt": "2026-11-14T04:14:52.248662+08:00"
+  },
+  "deployedSourceCI": {
+    "attempt": 1,
+    "conclusion": "success",
+    "databaseId": 43395201283,
+    "event": "push",
+    "headSha": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "status": "completed",
+    "url": "https://github.com/cubxxw/blog/actions/runs/43395201283"
+  },
+  "sourceBaselineCI": {
+    "attempt": 1,
+    "conclusion": "success",
+    "databaseId": 43498549044,
+    "event": "workflow_dispatch",
+    "headSha": "13e384eb0879b39c8f3495c598ce55ce22c9bd2c",
+    "status": "completed",
+    "url": "https://github.com/cubxxw/blog/actions/runs/43498549044"
+  },
+  "deliveryScope": "Read back and accept existing externally authorized deployment; no article edit or article merge initiated in this heartbeat."
+}

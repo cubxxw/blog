@@ -1,0 +1,110 @@
+{
+  "PSIActiveTargets": 26,
+  "psiLatest": {
+    "file": "psi-2026-11-13.json",
+    "observedAt": "2026-11-13T13:53:00.553Z",
+    "runStatus": "partial",
+    "planCertified": true,
+    "counts": {
+      "planned": 26,
+      "succeeded": 22,
+      "partial": 0,
+      "failed": 4,
+      "missing": 0,
+      "usable": 22,
+      "duplicate": 0,
+      "unplanned": 0,
+      "byStrategy": {
+        "mobile": {
+          "planned": 13,
+          "succeeded": 10,
+          "partial": 0,
+          "failed": 3,
+          "missing": 0,
+          "usable": 10
+        },
+        "desktop": {
+          "planned": 13,
+          "succeeded": 12,
+          "partial": 0,
+          "failed": 1,
+          "missing": 0,
+          "usable": 12
+        }
+      }
+    }
+  },
+  "psiDenominators": {
+    "mobile": {
+      "planned": 13,
+      "succeeded": 10,
+      "partial": 0,
+      "failed": 3,
+      "missing": 0,
+      "usable": 10
+    },
+    "desktop": {
+      "planned": 13,
+      "succeeded": 12,
+      "partial": 0,
+      "failed": 1,
+      "missing": 0,
+      "usable": 12
+    }
+  },
+  "failedActive": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "currentOutcome": "failed",
+      "status": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "currentOutcome": "failed",
+      "status": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "currentOutcome": "failed",
+      "status": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "currentOutcome": "failed",
+      "status": null
+    }
+  ],
+  "fieldINP": "unknown",
+  "CrUX": "PHONE/DESKTOP no-sample",
+  "performanceFullCheck": "not run: no current complete generated output; no Hugo rebuild",
+  "overBudgetAboutDesktopSamples": [
+    {
+      "source": "psi-lab",
+      "lcpMs": 11282.5,
+      "cls": 0.6962962962962963,
+      "labTargets": {
+        "lcpMs": 2500,
+        "cls": 0.1
+      },
+      "measurementDate": "2026-11-13T13:43:17.903Z",
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop"
+    },
+    {
+      "source": "psi-lab",
+      "lcpMs": 407.5,
+      "cls": 0.6962962962962963,
+      "labTargets": {
+        "lcpMs": 2500,
+        "cls": 0.1
+      },
+      "measurementDate": "2026-11-13T13:45:43.861Z",
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop"
+    }
+  ]
+}

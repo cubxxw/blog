@@ -1,0 +1,86 @@
+{
+  "counts": {
+    "planned": 4,
+    "inspected": 4,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "run": 43498816225,
+  "source": "13e384eb0879b39c8f3495c598ce55ce22c9bd2c",
+  "artifactId": 14072293457,
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "lastCrawlTime": "2026-11-07T10:21:48Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "userCanonical": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "lastCrawlTime": "2026-10-29T22:55:22Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-09-26T10:30:38Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "userCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "lastCrawlTime": "2026-11-01T10:18:51Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "indexSubmission": false,
+  "eligibleEffectDay": null,
+  "T14": null,
+  "T28": null,
+  "limits": "URL Inspection metadata, not indexed HTML/title adoption or a click-growth claim. Workflow attempt and HTTP transport retries are separate."
+}
