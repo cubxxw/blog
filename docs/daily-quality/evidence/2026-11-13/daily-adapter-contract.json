@@ -1,0 +1,17 @@
+{
+  "source": "6f843bd16f6de883bf73fdfbea91a0a3751cb900",
+  "tracked": {
+    "playwright.daily.config.ts": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "tests/daily/live-quality.spec.ts": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "tests/daily/reader-navigation.spec.ts": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358"
+  },
+  "adapterSHA256": "59311e40a60d1f53a2d74739f24c0911faa1db82a1eb049a50f283a0cc340c3f",
+  "adaptation": [
+    "absolute package import/testDir",
+    "existing system Chrome channel",
+    "external output paths via existing env",
+    "task-scoped TMPDIR short alias on external disk"
+  ],
+  "assertionsChanged": false,
+  "timeoutsWorkersRetriesUnchanged": true
+}
