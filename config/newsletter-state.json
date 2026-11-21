@@ -1543,6 +1543,11 @@
       "at": "2026-10-24T16:19:33.113Z",
       "id": "em_3cxz481ytx8ejbd251qeb4m1y0",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/": {
+      "at": "2026-11-21T19:52:23.772Z",
+      "id": "em_3bymfdrt6e9g4t8nbwzraardjp",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4914,10 +4919,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "9f804c6e-90ab-40e1-8c50-6eea7482c20e",
       "at": "2026-11-21T19:52:23.772Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_3bymfdrt6e9g4t8nbwzraardjp",
+      "completedAt": "2026-11-21T19:52:23.772Z"
     }
   }
 }
