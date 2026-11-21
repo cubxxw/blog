@@ -1,0 +1,51 @@
+[
+  {
+    "label": "frontmatter",
+    "command": [
+      "npm",
+      "run",
+      "frontmatter:check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.6513322499813512
+  },
+  {
+    "label": "tags",
+    "command": [
+      "npm",
+      "run",
+      "tags:check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.2273840409470722
+  },
+  {
+    "label": "flavor",
+    "command": [
+      "npm",
+      "run",
+      "flavor:check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.22954754199599847
+  },
+  {
+    "label": "ci-light",
+    "command": [
+      "node",
+      "scripts/ci-light.mjs"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 20.263750415993854
+  },
+  {
+    "label": "diffcheck",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.018818958022166044
+  }
+]

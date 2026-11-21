@@ -1,0 +1,329 @@
+{
+  "at": "2026-11-18T12:21:42.761370+00:00",
+  "before": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "state": "ready",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "after": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "commit_ref": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+    "state": "ready",
+    "published_at": "2026-11-13T08:44:36.637Z"
+  },
+  "versionUnchanged": true,
+  "sampledPages": 18,
+  "issues": 0,
+  "reciprocityUnknown": 0,
+  "pages": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "jsonldCount": 2,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/",
+        "zh": "https://cubxxw.com/zh/",
+        "x-default": "https://cubxxw.com/"
+      },
+      "jsonldCount": 2,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/engineering/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/",
+        "zh": "https://cubxxw.com/zh/engineering/",
+        "x-default": "https://cubxxw.com/engineering/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/projects/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/projects/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/projects/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/",
+        "zh": "https://cubxxw.com/zh/projects/",
+        "x-default": "https://cubxxw.com/projects/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "zh": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "x-default": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2025-annual-review/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "x-default": "https://cubxxw.com/growth/posts/2025-annual-review/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/projects/mem0/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/projects/mem0/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/mem0/",
+        "zh": "https://cubxxw.com/zh/projects/mem0/",
+        "x-default": "https://cubxxw.com/projects/mem0/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/projects/mem0/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/projects/mem0/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/projects/mem0/",
+        "zh": "https://cubxxw.com/zh/projects/mem0/",
+        "x-default": "https://cubxxw.com/projects/mem0/"
+      },
+      "jsonldCount": 5,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/engineering/posts/go-release-tools/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/go-release-tools/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/posts/go-release-tools/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/go-release-tools/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "x-default": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "x-default": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "zh": "https://cubxxw.com/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "x-default": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2025-annual-review/",
+      "status": 200,
+      "canonical": [
+        "https://cubxxw.com/growth/posts/2025-annual-review/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2025-annual-review/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "x-default": "https://cubxxw.com/growth/posts/2025-annual-review/"
+      },
+      "jsonldCount": 4,
+      "issues": [],
+      "unknown": [],
+      "xRobotsTagValues": []
+    }
+  ],
+  "sitemap": {
+    "status": 200,
+    "pageLocs": 440,
+    "uniquePages": 440,
+    "imageLocs": 249,
+    "uniqueImages": 143,
+    "allEntries": 689
+  },
+  "bootstrap": [
+    {
+      "url": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "status": 200,
+      "bodyBytes": 4299,
+      "sha256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "integrity": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "contentEncoding": "identity"
+    }
+  ],
+  "limits": "HTTP/html sample and JSON parse only; no Google indexing or all-site link-health claim",
+  "duplicateReadOnlyInvocation": "two identical HTTP observer invocations; final saved18page result counted once, not36 tests; no failure in either invocation"
+}

@@ -1,0 +1,16 @@
+{
+  "reviewer": "/root/review_daily_quality",
+  "approved": true,
+  "noConfirmedP0P1P2": true,
+  "closedFinding": {
+    "priority": "P2",
+    "issue": "inherited SITE_DAILY_BASE_URL could redirect actual browser target",
+    "fix": "explicit production baseURL and receipt before browser execution",
+    "browserExecutedBeforeFix": 0
+  },
+  "sha256": {
+    "run-daily.py": "233e8a40f3fdfd05d6d96039a22ba716efe37d8c99d55b4ce291e185847d144f",
+    "live-seo.py": "f6471180660f5b88283c5777879a9f4f2f87b77ec866e5fb353ef584c6006c7d"
+  },
+  "notBrowserAcceptance": true
+}

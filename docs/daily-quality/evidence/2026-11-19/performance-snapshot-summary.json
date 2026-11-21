@@ -1,0 +1,95 @@
+{
+  "sourceSHA": "c3c41e6ae71dec089436fe365ac05af32ea0a3e9",
+  "snapshotOnly": true,
+  "newCollection": false,
+  "psi": {
+    "fetchedAt": "2026-11-18T15:08:15.963Z",
+    "planned": 26,
+    "success": 21,
+    "failed": [
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "mobile",
+        "finalStatus": "failed",
+        "usable": false,
+        "reasonCategory": "psi-api-failure",
+        "attempts": 1,
+        "psiHttpStatus": 400
+      },
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "desktop",
+        "finalStatus": "failed",
+        "usable": false,
+        "reasonCategory": "psi-api-failure",
+        "attempts": 3,
+        "psiHttpStatus": 500
+      },
+      {
+        "url": "https://cubxxw.com/zh/about/",
+        "strategy": "desktop",
+        "finalStatus": "failed",
+        "usable": false,
+        "reasonCategory": "psi-api-failure",
+        "attempts": 3,
+        "psiHttpStatus": 500
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "mobile",
+        "finalStatus": "failed",
+        "usable": false,
+        "reasonCategory": "psi-api-failure",
+        "attempts": 1,
+        "psiHttpStatus": 400
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "desktop",
+        "finalStatus": "failed",
+        "usable": false,
+        "reasonCategory": "psi-api-failure",
+        "attempts": 3,
+        "psiHttpStatus": 500
+      }
+    ],
+    "comparableProvenanceCompleteCount": 0,
+    "sourceSHAOfMeasuredSite": "unknown"
+  },
+  "crux": {
+    "meta": {
+      "fetchedAt": "2026-11-18T15:08:16.266Z",
+      "runDate": "2026-11-18",
+      "origin": "https://cubxxw.com",
+      "formFactors": [
+        "PHONE",
+        "DESKTOP"
+      ],
+      "metrics": [
+        "largest_contentful_paint",
+        "interaction_to_next_paint",
+        "cumulative_layout_shift",
+        "first_contentful_paint",
+        "experimental_time_to_first_byte",
+        "round_trip_time",
+        "navigation_types"
+      ],
+      "warnings": [
+        "PHONE: origin not eligible (insufficient real-user samples)",
+        "DESKTOP: origin not eligible (insufficient real-user samples)"
+      ]
+    },
+    "results": [
+      {
+        "formFactor": "PHONE",
+        "notEligible": true
+      },
+      {
+        "formFactor": "DESKTOP",
+        "notEligible": true
+      }
+    ]
+  },
+  "fieldINP": "unknown",
+  "limits": "PSI source/throttling/screen missing; no old last-good replacement; no current LCP or causal improvement claim"
+}

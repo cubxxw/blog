@@ -1,0 +1,42 @@
+{
+  "goInstallationNov16": {
+    "exitCode": "unknown on timeout",
+    "timeoutSeconds": 240,
+    "generationWorkflowsExecuted": 0,
+    "output": "first install stdout/stderr not persisted; unknown"
+  },
+  "previewObserverFirst": {
+    "exitCode": 1,
+    "completedLanguageComparisons": 0,
+    "reason": "expected production canonical on preview; repo preview explicitly uses DEPLOY_PRIME_URL",
+    "productionContentIssue": false,
+    "originalRawAndLogRetained": true
+  },
+  "previewObserverBindingP2": {
+    "status": "closed before live run",
+    "fix": "exact site UUID/domain/published site/context/ready before and after"
+  },
+  "previewBindingFixtureFirst": {
+    "methods": 4,
+    "errors": 2,
+    "reason": "fixture called outdated helper name; corrected only fixture name",
+    "statusAfterFix": "4 methods passed,2 positives+10 negative subcases"
+  },
+  "gscSchemaExploration": [
+    "KeyError queryPagePairs",
+    "KeyError previous",
+    "no successful report overwritten; structured final report extraction uses actual groups/tables/windows schema"
+  ],
+  "optionalDigestProbe": "attempted unexported publicationInputDigest import failed; no publication digest certification claimed",
+  "noBrowserFailures": "Selected raw has0 failures; earlier log reports36 passed but its raw is missing, so no raw-level certification of earlier execution",
+  "firstFailureCounting": "negative Go commands expected; browser36first only; HTTP preview succeeded attempt2, not first",
+  "dailyDuplicateExecution": {
+    "earlierCommandSeconds": 133.61142470798222,
+    "earlierRawMissing": true,
+    "selectedRawCertified": true,
+    "runOverlapObserved": true,
+    "executionOwner": "unknown",
+    "originalLogsAndReceiptsPreserved": true,
+    "noExtraRerunToReplaceEvidence": true
+  }
+}

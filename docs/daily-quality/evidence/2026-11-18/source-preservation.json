@@ -1,0 +1,62 @@
+{
+  "base": "c64bec77367326309e6cadbfa433c36f1bf749a0",
+  "head": "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40",
+  "sourceFenceParser": "repository MarkdownIt, full document including nested fences",
+  "languages": {
+    "zh": {
+      "path": "content/zh/engineering/posts/directives-and-the-use-of-automation-tools.md",
+      "baseBlob": "26e66adcc6c6acf8ef64448c7742feb8a2aedf62",
+      "candidateBlob": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743",
+      "beforeAfterFences": [
+        30,
+        30
+      ],
+      "changedFences": [
+        {
+          "index": 1,
+          "before": "go get github.com/golang/mock/mockgen\n",
+          "after": "go install github.com/golang/mock/mockgen@v1.6.0\ngo get github.com/golang/mock/gomock@v1.6.0\n",
+          "infoBefore": "arduino",
+          "infoAfter": "sh"
+        },
+        {
+          "index": 4,
+          "before": "go generatex\n",
+          "after": "go generate\n",
+          "infoBefore": "go",
+          "infoAfter": "go"
+        }
+      ],
+      "unchangedFences": 28,
+      "demoSha256": "77d74cdfe60c0ce63738cd63360339f83b04f90ed0fa9e58fa0c220a48940da3"
+    },
+    "en": {
+      "path": "content/en/engineering/posts/directives-and-the-use-of-automation-tools.md",
+      "baseBlob": "1553f8657e1177d25fa9b04d318be59a5b9b173e",
+      "candidateBlob": "391e5799188ee703ddc044f6a181b4cf4b74a9f5",
+      "beforeAfterFences": [
+        29,
+        29
+      ],
+      "changedFences": [
+        {
+          "index": 1,
+          "before": "go get github.com/golang/mock/mockgen\n",
+          "after": "go install github.com/golang/mock/mockgen@v1.6.0\ngo get github.com/golang/mock/gomock@v1.6.0\n",
+          "infoBefore": "arduino",
+          "infoAfter": "sh"
+        },
+        {
+          "index": 4,
+          "before": "gogenerex\n",
+          "after": "go generate\n",
+          "infoBefore": "go",
+          "infoAfter": "go"
+        }
+      ],
+      "unchangedFences": 27,
+      "demoSha256": "17014a23e795e139908c2f30e57fa82fae7372c11da0f919b9a65f2b6e5c6082"
+    }
+  },
+  "expectedChangeScope": "lastmod; installation paragraph/commands; original generation typo; two adjacent citations/references; no runtime/layout/title/description/opening/route change"
+}

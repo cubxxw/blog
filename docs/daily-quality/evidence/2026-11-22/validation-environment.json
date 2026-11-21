@@ -1,0 +1,15 @@
+{
+  "actualPlaywright": "1.63.0",
+  "declaredPlaywright": "1.64.1",
+  "systemChrome": "157.0.8103.80",
+  "lockedChromiumInstalledAtExpectedPath": false,
+  "notLockedLinux": true,
+  "sharedDependenciesChanged": false,
+  "productionSource": "d2b572b961b0a9248c4db41319d1d347a5e37ce9",
+  "productionDeploy": "6b015f24c2762bf0d4f0f4e9",
+  "exactAdapterReview": "production-adapter-review.json",
+  "fullHugo": 0,
+  "fullPerformanceCheck": 0,
+  "newLighthouse": 0,
+  "paidModelsOrAPIs": 0
+}
