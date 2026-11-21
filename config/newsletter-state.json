@@ -1543,6 +1543,16 @@
       "at": "2026-10-24T16:19:33.113Z",
       "id": "em_3cxz481ytx8ejbd251qeb4m1y0",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/": {
+      "at": "2026-11-21T19:52:23.772Z",
+      "id": "em_3bymfdrt6e9g4t8nbwzraardjp",
+      "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/ai-models-what-comes-next/": {
+      "at": "2026-11-21T19:52:23.772Z",
+      "id": "em_6508hrd5xn83c9x3c1939nfzk5",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4910,6 +4920,26 @@
       "mode": "draft",
       "providerId": "em_3cxz481ytx8ejbd251qeb4m1y0",
       "completedAt": "2026-10-24T16:19:33.113Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/ai-models-what-comes-next/",
+      "status": "completed",
+      "attemptId": "9f804c6e-90ab-40e1-8c50-6eea7482c20e",
+      "at": "2026-11-21T19:52:23.772Z",
+      "mode": "draft",
+      "providerId": "em_3bymfdrt6e9g4t8nbwzraardjp",
+      "completedAt": "2026-11-21T19:52:23.772Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/ai-models-what-comes-next/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/ai-models-what-comes-next/",
+      "status": "completed",
+      "attemptId": "b97d973b-c609-4a56-9358-b92350085aeb",
+      "at": "2026-11-21T19:52:23.772Z",
+      "mode": "draft",
+      "providerId": "em_6508hrd5xn83c9x3c1939nfzk5",
+      "completedAt": "2026-11-21T19:52:23.772Z"
     }
   }
 }
