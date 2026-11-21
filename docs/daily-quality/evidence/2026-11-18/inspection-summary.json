@@ -1,0 +1,57 @@
+{
+  "run": 44302901347,
+  "source": "c64bec77367326309e6cadbfa433c36f1bf749a0",
+  "fetchedAt": "2026-11-18T12:20:18.515Z",
+  "observedAt": null,
+  "counts": {
+    "planned": 6,
+    "inspected": 6,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-11-07T10:21:48Z",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "pageFetchState": "SUCCESSFUL"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-10-29T22:55:22Z",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "pageFetchState": "SUCCESSFUL"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-09-26T10:30:38Z",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "pageFetchState": "SUCCESSFUL"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-11-01T10:18:51Z",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "pageFetchState": "SUCCESSFUL"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-11-06T08:42:10Z",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "pageFetchState": "SUCCESSFUL"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "verdict": "PASS",
+      "lastCrawlTime": "2026-11-07T00:55:01Z",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "pageFetchState": "SUCCESSFUL"
+    }
+  ],
+  "limits": "read-only Google index observation; no indexing submission; HTTP retry count unknown; old crawls do not establish revised page adoption"
+}

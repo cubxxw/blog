@@ -83,3 +83,9 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 完整窗口10月14日—11月10日：EN页面259曝光/1点击/CTR0.39%，精确figwright199/0；ZH32/1/3.13%，精确词11/0。前窗9月16日—10月13日EN75/1，ZH未返回保持未知。当前窗含部署后的洛杉矶11月9—10日，但没有新版抓取证据，不能将这一点击记为修改收益或效果窗口。原冻结基线保持，[新原数](../daily-quality/evidence/2026-11-14/target-evidence.json)独立保存。
 
 本轮主要接续已由作者批准发布的GoReleaser入口验收，不重复13日Mem0正文核查、两日维度控制或Fig标题调整。当前生产升级为62b，Fig内容本轮未改；后续以新版实际抓取和到期点击窗口为判读条件。
+
+## 2026-11-18 观察
+
+新只读[44302901347](https://github.com/cubxxw/blog/actions/runs/44302901347)已核6URL原件，Fig双页仍PASS/允许索引/自canonical，EN crawl仍9月26日、ZH仍11月1日，早于11月9日部署。没有索引重提，首个效果完整日/T14/T28未知。[结果](../daily-quality/evidence/2026-11-18/inspection-summary.json)
+
+完整10月18日—11月14日页面窗口，EN253曝光/1点击/CTR0.40%，ZH32/1/3.13%；前窗9月20日—10月17日EN87/1，ZH未返回保持未知。窗口跨部署、缺新版crawl，不据1点击宣称试点有效，也不覆盖原冻结基线。[配对](../daily-quality/evidence/2026-11-18/search-evidence.json)

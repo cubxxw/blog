@@ -1,0 +1,83 @@
+{
+  "source": "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40",
+  "deployId": "6afd97f386444a72b551aa84",
+  "immutablePreview": true,
+  "platformBefore": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "source": "62b2f54cd779da55a0703abd90a2b080bf8d46af"
+  },
+  "platformAfter": {
+    "id": "6af6cd3c05ce7467a6ab6611",
+    "source": "62b2f54cd779da55a0703abd90a2b080bf8d46af"
+  },
+  "results": {
+    "en": {
+      "url": "https://6afd97f386444a72b551aa84--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "productionUrl": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "previewSha256": "a5d5829852092fdab778ec31659d33077462f02d6b9b83b20a1a3c5aabe96d1f",
+      "productionSha256": "78ac3618307da6cebd980f8f4bf6a78153fb3ca74af030d6d03177d8d46ac14f",
+      "httpStatus": 200,
+      "allPreCount": 29,
+      "changedPreIndexes": [
+        1,
+        4
+      ],
+      "unchangedCodeBlocks": 27,
+      "allOldIdsRetained": true,
+      "titleDescriptionPreserved": true,
+      "canonicalLanguagePathsMatchProduction": true,
+      "previewCanonical": "https://deploy-preview-533--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "productionCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "previewHreflang": {
+        "en": "https://deploy-preview-533--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://deploy-preview-533--cubxxw.netlify.app/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://deploy-preview-533--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "productionHreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "previewRobots": "noindex, nofollow",
+      "previewXRobotsTag": [
+        "noindex"
+      ],
+      "productionXRobotsTag": []
+    },
+    "zh": {
+      "url": "https://6afd97f386444a72b551aa84--cubxxw.netlify.app/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "productionUrl": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "previewSha256": "de191ca375d0c988d6cb50a5021bef4c227ea9dffebfb9019d05df95f8d95972",
+      "productionSha256": "3c86c94e6e9f45580383b484d61b2f7d4df3814b8f7887dc79ad42f4349f8a3e",
+      "httpStatus": 200,
+      "allPreCount": 30,
+      "changedPreIndexes": [
+        1,
+        4
+      ],
+      "unchangedCodeBlocks": 28,
+      "allOldIdsRetained": true,
+      "titleDescriptionPreserved": true,
+      "canonicalLanguagePathsMatchProduction": true,
+      "previewCanonical": "https://deploy-preview-533--cubxxw.netlify.app/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "productionCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "previewHreflang": {
+        "en": "https://deploy-preview-533--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://deploy-preview-533--cubxxw.netlify.app/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://deploy-preview-533--cubxxw.netlify.app/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "productionHreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "previewRobots": "noindex, nofollow",
+      "previewXRobotsTag": [
+        "noindex"
+      ],
+      "productionXRobotsTag": []
+    }
+  },
+  "scope": "HTTP HTML and code fidelity; no browser/rendering/Google adoption claim",
+  "status": "passed"
+}

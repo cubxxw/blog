@@ -1,0 +1,85 @@
+{
+  "asOf": "2026-11-18T12:10:42.459Z",
+  "offlineReportExitCode": 2,
+  "psi": {
+    "denominators": {
+      "mobile": {
+        "planned": 13,
+        "succeeded": 10,
+        "partial": 0,
+        "failed": 3,
+        "missing": 0,
+        "usable": 10
+      },
+      "desktop": {
+        "planned": 13,
+        "succeeded": 10,
+        "partial": 0,
+        "failed": 3,
+        "missing": 0,
+        "usable": 10
+      }
+    },
+    "activePlan": {
+      "file": "psi-2026-11-17.json",
+      "observedAt": "2026-11-17T15:31:42.442Z",
+      "certified": true,
+      "collectionComplete": false,
+      "reason": "latest PSI plan has missing, failed, duplicate, unplanned or invalid collection slots"
+    },
+    "failedSlots": [
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "desktop",
+        "outcome": "failed"
+      },
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "mobile",
+        "outcome": "failed"
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "desktop",
+        "outcome": "failed"
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "mobile",
+        "outcome": "failed"
+      },
+      {
+        "url": "https://cubxxw.com/zh/about/",
+        "strategy": "desktop",
+        "outcome": "failed"
+      },
+      {
+        "url": "https://cubxxw.com/zh/about/",
+        "strategy": "mobile",
+        "outcome": "failed"
+      }
+    ],
+    "freshnessStatus": "partial",
+    "sourceSHA": "unknown",
+    "throttling": "unknown",
+    "screen": "unknown"
+  },
+  "crux": {
+    "status": "unknown",
+    "groups": [
+      {
+        "origin": "https://cubxxw.com",
+        "formFactor": "DESKTOP",
+        "outcome": "no-sample"
+      },
+      {
+        "origin": "https://cubxxw.com",
+        "formFactor": "PHONE",
+        "outcome": "no-sample"
+      }
+    ],
+    "fieldINP": "unknown"
+  },
+  "automaticActions": "no actionable automatic content change; concrete GET563 command investigation continued; no gate relaxation",
+  "newPaidCollectionOrModels": false
+}

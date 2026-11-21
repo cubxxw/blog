@@ -1,0 +1,627 @@
+{
+  "sourceSHA": "c3c41e6ae71dec089436fe365ac05af32ea0a3e9",
+  "asOf": "2026-11-19T01:20:24.572Z",
+  "windows": {
+    "previous": {
+      "start": "2026-09-21",
+      "end": "2026-10-18",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-19",
+      "end": "2026-11-15",
+      "days": 28
+    }
+  },
+  "mainHostPages": {
+    "previous": {
+      "metrics": {
+        "clicks": 141,
+        "impressions": 35653,
+        "ctr": 0.003954786413485541,
+        "position": 8.906964350826017
+      },
+      "pageCount": 449,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17",
+          "2026-10-18"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "current": {
+      "metrics": {
+        "clicks": 146,
+        "impressions": 35937,
+        "ctr": 0.004062665219690013,
+        "position": 8.608175418092774
+      },
+      "pageCount": 438,
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30",
+          "2026-10-31",
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09",
+          "2026-11-10",
+          "2026-11-11",
+          "2026-11-12",
+          "2026-11-13",
+          "2026-11-14",
+          "2026-11-15"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      },
+      "basis": "sum of returned page-dimension rows for the main host (strict hostname equality); not property chart totals"
+    },
+    "host": "cubxxw.com"
+  },
+  "targets": {
+    "previous": {
+      "displayPageCount": 449,
+      "displayPairCount": 779,
+      "canonicalPages": [
+        {
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "clicks": 1,
+          "impressions": 232,
+          "ctr": 0.004310344827586207,
+          "position": 6.125
+        },
+        {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 99,
+          "ctr": 0.010101010101010102,
+          "position": 7.05050505050505
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "clicks": 0,
+          "impressions": 19,
+          "ctr": 0,
+          "position": 15.105263157894736
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        }
+      ],
+      "canonicalQueries": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 1,
+          "impressions": 31,
+          "ctr": 0.03225806451612903,
+          "position": 9.32258064516129
+        },
+        {
+          "query": "go directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 15,
+          "ctr": 0,
+          "position": 2.8666666666666667
+        },
+        {
+          "query": "go directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 4.9
+        },
+        {
+          "query": "go compiler directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 9,
+          "ctr": 0,
+          "position": 6.666666666666667
+        },
+        {
+          "query": "go:build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 7,
+          "ctr": 0,
+          "position": 3.7142857142857144
+        },
+        {
+          "query": "directive go",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 6.25
+        },
+        {
+          "query": "golang directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 5.333333333333333
+        },
+        {
+          "query": "go build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 5.5
+        },
+        {
+          "query": "go build tags",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 44
+        },
+        {
+          "query": "go build verbose",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 79
+        }
+      ],
+      "directiveFragmentPageCount": 10,
+      "goReleaserPages": [
+        {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 1021,
+          "ctr": 0,
+          "position": 7.189030362389814
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 55,
+          "ctr": 0,
+          "position": 4.6909090909090905
+        }
+      ],
+      "goReleaserQueries": [
+        {
+          "query": "goreleaser/goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 30,
+          "ctr": 0,
+          "position": 6.9
+        },
+        {
+          "query": "goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 6.833333333333333
+        },
+        {
+          "query": "gorelease",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 7.181818181818182
+        },
+        {
+          "query": "goreleaser action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 7.7
+        },
+        {
+          "query": "goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "goreleaser github",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 6.333333333333333
+        },
+        {
+          "query": "goreleaser changelog",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "query": "ghr_ settings.yaml",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 16
+        },
+        {
+          "query": "github goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "query": "goreleaser github action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "query": "only this file",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 7
+        }
+      ]
+    },
+    "current": {
+      "displayPageCount": 438,
+      "displayPairCount": 622,
+      "canonicalPages": [
+        {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 241,
+          "ctr": 0.004149377593360996,
+          "position": 5.950207468879668
+        },
+        {
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "clicks": 1,
+          "impressions": 221,
+          "ctr": 0.004524886877828055,
+          "position": 7.882352941176471
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 31,
+          "ctr": 0.03225806451612903,
+          "position": 9.064516129032258
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 9.625
+        }
+      ],
+      "canonicalQueries": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 184,
+          "ctr": 0,
+          "position": 6.375
+        },
+        {
+          "query": "golang directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 14,
+          "ctr": 0,
+          "position": 3
+        },
+        {
+          "query": "go directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 3.8333333333333335
+        },
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 10.636363636363637
+        },
+        {
+          "query": "go compiler directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "query": "go directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.8
+        },
+        {
+          "query": "go:build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.6
+        },
+        {
+          "query": "go tool directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 9.75
+        },
+        {
+          "query": "directive go",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "go build tags",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 41.666666666666664
+        },
+        {
+          "query": "golang macros",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 32.5
+        },
+        {
+          "query": "go build tool",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "nosplit",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "query": "what does go generate do",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 11
+        }
+      ],
+      "directiveFragmentPageCount": 10,
+      "goReleaserPages": [
+        {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 3,
+          "impressions": 1363,
+          "ctr": 0.0022010271460014674,
+          "position": 7.443873807776963
+        },
+        {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 23,
+          "ctr": 0,
+          "position": 6.913043478260869
+        }
+      ],
+      "goReleaserQueries": [
+        {
+          "query": "gorelease",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "query": "goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 14.333333333333334
+        },
+        {
+          "query": "goreleaser/goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 9.833333333333334
+        },
+        {
+          "query": "goreleaser github",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8.666666666666666
+        },
+        {
+          "query": "ghr_ settings.yaml",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 17
+        },
+        {
+          "query": "go releaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "query": "goreleaser changelog",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 12
+        },
+        {
+          "query": "not allowed",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 3
+        }
+      ]
+    }
+  },
+  "limits": [
+    "returned page totals are not property chart totals",
+    "28 planned dates does not prove Google internal anonymous row coverage",
+    "missing page/query rows are unknown, never zero",
+    "fragments stay separate",
+    "no fresh crawl inspection this round",
+    "availability probe through16 does not prove date/page/query rows16"
+  ],
+  "sourceSnapshotGitBlob": "7fe68371b63236a8f8fb3aa8157f58b8eaa601ad",
+  "displayLimit": 5000,
+  "queryDisplayTruncated": false,
+  "dateRowsThrough": "2026-11-15",
+  "availabilityProbeThrough": "2026-11-16",
+  "originalRequestAggregation": "auto",
+  "selectedResponseAggregation": "byPage"
+}

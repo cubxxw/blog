@@ -1,0 +1,37 @@
+{
+  "sourceBaseline": "c64bec77367326309e6cadbfa433c36f1bf749a0",
+  "articleHead": "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40",
+  "productionSource": "62b2f54cd779da55a0703abd90a2b080bf8d46af",
+  "productionDeploy": "6af6cd3c05ce7467a6ab6611",
+  "productionPublishedAt": "2026-11-13T08:44:36.637Z",
+  "previewDeploy": "6afd97f386444a72b551aa84",
+  "previewContext": "deploy-preview",
+  "actualPlaywright": "1.63.0",
+  "declaredPlaywright": "1.64.1",
+  "actualBrowser": "Google Chrome157.0.8103.80",
+  "lockedChromiumMissing": true,
+  "adapterOnly": [
+    "absolute testDir and output paths",
+    "system Chrome channel"
+  ],
+  "sourceDailyFilesEqualProduction": [
+    {
+      "path": "playwright.daily.config.ts",
+      "equalsProductionSource": true
+    },
+    {
+      "path": "tests/daily/live-quality.spec.ts",
+      "equalsProductionSource": true
+    },
+    {
+      "path": "tests/daily/reader-navigation.spec.ts",
+      "equalsProductionSource": true
+    }
+  ],
+  "workerLimit": 1,
+  "retries": 0,
+  "caseTimeoutMs": 45000,
+  "trace": "retain-on-failure",
+  "goToolchain": "go1.26.6 darwin/arm64",
+  "noSharedDependencyChanges": true
+}

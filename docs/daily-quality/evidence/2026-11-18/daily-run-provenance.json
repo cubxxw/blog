@@ -1,0 +1,44 @@
+{
+  "schema": "daily-run-provenance/1",
+  "selected": {
+    "log": "daily-selected/daily.log",
+    "commandReceipt": "daily-selected/daily-command.json",
+    "raw": "daily-selected/daily-results.json",
+    "rawSha256": "6329d2604c0934d44d82224f1fa8e51ae805c10fc48cd5b04dd10f73925c1c1c",
+    "startTime": "2026-11-18T12:20:35.400Z",
+    "rawDurationMs": 116731.781,
+    "commandElapsedSeconds": 117.08,
+    "caseAttempt0Passed": 36,
+    "failed": 0,
+    "retry": 0,
+    "skip": 0,
+    "globalErrors": 0
+  },
+  "earlier": {
+    "log": "daily-earlier-unattributed/daily-command.log",
+    "commandReceipt": "daily-earlier-unattributed/daily-command-receipt.json",
+    "commandElapsedSeconds": 133.61142470798222,
+    "commandExitCode": 0,
+    "logSummary": "36 passed (2.2m)",
+    "rawPreserved": false,
+    "rawIdentityCountsCertified": false,
+    "separateExecutionNotZero": true,
+    "historicalExecutionOwner": "unknown; not attributed to reviewer or another named task"
+  },
+  "overlap": {
+    "sameOutputDirectory": true,
+    "earlierLogLastWriteUTC": "2026-11-18T12:21:02.942733Z",
+    "selectedStartUTC": "2026-11-18T12:20:35.400Z",
+    "overlapObserved": true,
+    "durationFromLogTimestampApproxSeconds": 27.5,
+    "performanceEnvironmentControlled": false
+  },
+  "claimsProhibited": [
+    "whole-turn unique first run",
+    "72 independently certified identities",
+    "earlier run0executed",
+    "earlier raw all-green",
+    "isolated performance or causal comparison"
+  ],
+  "future": "No further daily run for same unchanged pending candidate; use exclusive task lock and unique per-attempt output if fresh risk requires testing"
+}

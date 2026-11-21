@@ -1,0 +1,24 @@
+{
+  "candidateHead": "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40",
+  "reviews": [
+    {
+      "receipt": "go-example-independent-review.json",
+      "sha256": "cb2906e38b8c45ca8743876ec4176b85215d740227f9e6b1c26eb9b6781d22c4",
+      "approved": true,
+      "unclosedFindings": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      },
+      "scope": "independent source/observer review; original private receipt retained"
+    },
+    {
+      "receipt": "preview-validator-independent-review.json",
+      "sha256": "26d3491d38ba266c4fdfc2dfadc9ba16f0bca30b4d065664b68004127d4a90fa",
+      "approved": true,
+      "unclosedFindings": null,
+      "scope": "independent source/observer review; original private receipt retained"
+    }
+  ],
+  "articlePublicationAuthorized": false
+}

@@ -1,0 +1,16 @@
+{
+  "run": 44302901347,
+  "attempt": 1,
+  "source": "c64bec77367326309e6cadbfa433c36f1bf749a0",
+  "artifactId": 14426566964,
+  "zipBytes": 1371,
+  "zipSHA256": "10541e77d296c04fd100779061e0b82686672e2e61b1a6586443afed758369f9",
+  "allCRCValid": true,
+  "files": {
+    "inspection-44302901347-1.json": "ad64f70e0f9eb6e39a7c827072b2364dde9873b7e36e53a912a26b7f18475346",
+    "inspection-process-44302901347-1.json": "53b2276a1e6b837fcce580425b5139cd03cd4c024301e773d5665a30585bb678"
+  },
+  "processExit": 0,
+  "individualResultReadback": "six exact requested URLs and canonical/crawl results verified",
+  "httpRetryCount": "unknown; not separately instrumented"
+}

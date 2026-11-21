@@ -1,0 +1,135 @@
+{
+  "goVersion": "go version go1.26.6 darwin/arm64",
+  "mockgenVersion": "v1.6.0",
+  "sourceBaseline": "c64bec77367326309e6cadbfa433c36f1bf749a0",
+  "status": "passed",
+  "singleWorker": true,
+  "globalSettingsChanged": false,
+  "commands": [
+    {
+      "label": "go-version",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.080258917005267
+    },
+    {
+      "label": "go-caches",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.019816874992102385
+    },
+    {
+      "label": "go-install-mockgen",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 16.153917999996338
+    },
+    {
+      "label": "mockgen-version",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.5797839579754509
+    },
+    {
+      "label": "zh-mod-init",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.010102291009388864
+    },
+    {
+      "label": "zh-gomock-dependency",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 2.2857359170448035
+    },
+    {
+      "label": "zh-original-command-red",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "timedOut": false,
+      "elapsedSeconds": 0.01841366704320535
+    },
+    {
+      "label": "zh-generate",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.1841032499796711
+    },
+    {
+      "label": "zh-generated-mock-test",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 3.1852284579654224
+    },
+    {
+      "label": "en-mod-init",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.01027741702273488
+    },
+    {
+      "label": "en-gomock-dependency",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 1.1487933339667507
+    },
+    {
+      "label": "en-original-command-red",
+      "exitCode": 127,
+      "expectedExitCode": 127,
+      "timedOut": false,
+      "elapsedSeconds": 0.02048375003505498
+    },
+    {
+      "label": "en-generate",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.12579291698057204
+    },
+    {
+      "label": "en-generated-mock-test",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.8157500840025023
+    }
+  ],
+  "languageWorkflows": {
+    "zh": {
+      "sourceSha256": "77d74cdfe60c0ce63738cd63360339f83b04f90ed0fa9e58fa0c220a48940da3",
+      "generatedSha256": "ab8325fb2d13c0427602b53932bce27489536ef4cb5ede709704ad4a0a6bbe80",
+      "originalCommandRejected": true,
+      "generateSucceeded": true,
+      "realMockTestsPassed": 1,
+      "realMockTestsFailed": 0,
+      "realMockTestsSkipped": 0
+    },
+    "en": {
+      "sourceSha256": "17014a23e795e139908c2f30e57fa82fae7372c11da0f919b9a65f2b6e5c6082",
+      "generatedSha256": "ab8325fb2d13c0427602b53932bce27489536ef4cb5ede709704ad4a0a6bbe80",
+      "originalCommandRejected": true,
+      "generateSucceeded": true,
+      "realMockTestsPassed": 1,
+      "realMockTestsFailed": 0,
+      "realMockTestsSkipped": 0
+    }
+  },
+  "previousAttempt": {
+    "date": "2026-11-16",
+    "status": "literal installation timeout240s",
+    "languageWorkflowCasesExecuted": 0,
+    "firstInstallOutput": "not persisted, unknown"
+  },
+  "scope": "two exact extracted go:generate examples; not every Go directive in the article; host tests not site/browser tests"
+}

@@ -1,0 +1,4976 @@
+{
+  "params": {
+    "dir": "data/seo",
+    "start": "2026-09-20",
+    "end": "2026-11-14",
+    "host": "cubxxw.com",
+    "includeQueryRows": true,
+    "asOf": "2026-11-18T12:10:42.459Z",
+    "summaryResponseAggregation": "byPage",
+    "windows": {
+      "previous": {
+        "start": "2026-09-20",
+        "end": "2026-10-17",
+        "days": 28
+      },
+      "current": {
+        "start": "2026-10-18",
+        "end": "2026-11-14",
+        "days": 28
+      }
+    }
+  },
+  "windows": {
+    "previous": {
+      "start": "2026-09-20",
+      "end": "2026-10-17",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-18",
+      "end": "2026-11-14",
+      "days": 28
+    }
+  },
+  "identity": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "host": "cubxxw.com"
+  },
+  "pageContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "page"
+    ],
+    "filters": [],
+    "requestAggregationType": "auto",
+    "slice": "date_page"
+  },
+  "queryContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "query",
+      "page"
+    ],
+    "filters": [
+      {
+        "groupType": "and",
+        "filters": [
+          {
+            "dimension": "page",
+            "operator": "includingRegex",
+            "expression": "^https?://cubxxw\\.com/"
+          }
+        ]
+      }
+    ],
+    "requestAggregationType": "byPage",
+    "slice": "blog_date_query_page"
+  },
+  "pageResponseAggregation": "byPage",
+  "queryResponseAggregation": "byPage",
+  "mainHostReturnedPageSummary": {
+    "previous": {
+      "metrics": {
+        "clicks": 145,
+        "impressions": 36762,
+        "ctr": 0.003944290299766063,
+        "position": 8.908438061041293
+      },
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-09-20",
+          "2026-09-21",
+          "2026-09-22",
+          "2026-09-23",
+          "2026-09-24",
+          "2026-09-25",
+          "2026-09-26",
+          "2026-09-27",
+          "2026-09-28",
+          "2026-09-29",
+          "2026-09-30",
+          "2026-10-01",
+          "2026-10-02",
+          "2026-10-03",
+          "2026-10-04",
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07",
+          "2026-10-08",
+          "2026-10-09",
+          "2026-10-10",
+          "2026-10-11",
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16",
+          "2026-10-17"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      }
+    },
+    "current": {
+      "metrics": {
+        "clicks": 140,
+        "impressions": 36188,
+        "ctr": 0.003868685752183044,
+        "position": 8.642975572012823
+      },
+      "coverage": {
+        "daysCounted": 28,
+        "countedDates": [
+          "2026-10-18",
+          "2026-10-19",
+          "2026-10-20",
+          "2026-10-21",
+          "2026-10-22",
+          "2026-10-23",
+          "2026-10-24",
+          "2026-10-25",
+          "2026-10-26",
+          "2026-10-27",
+          "2026-10-28",
+          "2026-10-29",
+          "2026-10-30",
+          "2026-10-31",
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09",
+          "2026-11-10",
+          "2026-11-11",
+          "2026-11-12",
+          "2026-11-13",
+          "2026-11-14"
+        ],
+        "provenCompleteDays": 28,
+        "expectedDays": 28,
+        "metricsComplete": true,
+        "partial": false
+      }
+    }
+  },
+  "canonicalPages": {
+    "previous": {
+      "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/": {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "clicks": 1,
+        "impressions": 237,
+        "ctr": 0.004219409282700422,
+        "position": 6.2025316455696204
+      },
+      "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/": {
+        "page": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "clicks": 0,
+        "impressions": 21,
+        "ctr": 0,
+        "position": 15.285714285714286
+      },
+      "https://cubxxw.com/engineering/posts/go-release-tools/": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 1047,
+        "ctr": 0,
+        "position": 7.148997134670487
+      },
+      "https://cubxxw.com/zh/engineering/posts/go-release-tools/": {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 58,
+        "ctr": 0,
+        "position": 4.827586206896552
+      },
+      "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 1,
+        "impressions": 87,
+        "ctr": 0.011494252873563218,
+        "position": 7.333333333333333
+      },
+      "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": null
+    },
+    "current": {
+      "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/": {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "clicks": 0,
+        "impressions": 219,
+        "ctr": 0,
+        "position": 7.904109589041096
+      },
+      "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/": {
+        "page": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 9.625
+      },
+      "https://cubxxw.com/engineering/posts/go-release-tools/": {
+        "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "clicks": 3,
+        "impressions": 1352,
+        "ctr": 0.0022189349112426036,
+        "position": 7.435650887573964
+      },
+      "https://cubxxw.com/zh/engineering/posts/go-release-tools/": {
+        "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+        "clicks": 0,
+        "impressions": 23,
+        "ctr": 0,
+        "position": 6.739130434782608
+      },
+      "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+        "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 1,
+        "impressions": 253,
+        "ctr": 0.003952569169960474,
+        "position": 5.905138339920948
+      },
+      "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+        "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "clicks": 1,
+        "impressions": 32,
+        "ctr": 0.03125,
+        "position": 8.96875
+      }
+    }
+  },
+  "canonicalQueries": {
+    "previous": {
+      "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/": [
+        {
+          "query": "go directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 16,
+          "ctr": 0,
+          "position": 2.9375
+        },
+        {
+          "query": "go compiler directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 7.1
+        },
+        {
+          "query": "go directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 4.9
+        },
+        {
+          "query": "go:build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 7,
+          "ctr": 0,
+          "position": 3.7142857142857144
+        },
+        {
+          "query": "directive go",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 6.25
+        },
+        {
+          "query": "go build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 5.666666666666667
+        },
+        {
+          "query": "golang directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 5.333333333333333
+        },
+        {
+          "query": "go build tags",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 44
+        },
+        {
+          "query": "go build verbose",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 79
+        },
+        {
+          "query": "site:cubxxw.com/engineering",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "site-maintenance",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 26
+        },
+        {
+          "query": "what does go generate do",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/": [
+        {
+          "query": "site:cubxxw.com/zh/engineering",
+          "page": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "site-maintenance",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 24
+        }
+      ],
+      "https://cubxxw.com/engineering/posts/go-release-tools/": [
+        {
+          "query": "goreleaser/goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 31,
+          "ctr": 0,
+          "position": 6.838709677419355
+        },
+        {
+          "query": "goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 6.833333333333333
+        },
+        {
+          "query": "gorelease",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 7.181818181818182
+        },
+        {
+          "query": "goreleaser action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 7.7
+        },
+        {
+          "query": "goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "goreleaser github",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 6.333333333333333
+        },
+        {
+          "query": "goreleaser changelog",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "query": "site:cubxxw.com/engineering",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "site-maintenance",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "query": "github goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "query": "goreleaser github action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "query": "only this file",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "query": "site:cubxxw.com/engineering/posts",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "site-maintenance",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/go-release-tools/": [
+        {
+          "query": "site:cubxxw.com/zh/engineering",
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "label": "site-maintenance",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 7
+        }
+      ],
+      "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 1,
+          "impressions": 21,
+          "ctr": 0.047619047619047616,
+          "position": 11.380952380952381
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": []
+    },
+    "current": {
+      "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/": [
+        {
+          "query": "golang directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 14,
+          "ctr": 0,
+          "position": 3
+        },
+        {
+          "query": "go directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 3.8333333333333335
+        },
+        {
+          "query": "go compiler directives",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "query": "go directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.8
+        },
+        {
+          "query": "go:build directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 3.6
+        },
+        {
+          "query": "go tool directive",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 9.75
+        },
+        {
+          "query": "directive go",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "go build tags",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 41.666666666666664
+        },
+        {
+          "query": "golang macros",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 32.5
+        },
+        {
+          "query": "go build tool",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "query": "nosplit",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "query": "what does go generate do",
+          "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 11
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/": [],
+      "https://cubxxw.com/engineering/posts/go-release-tools/": [
+        {
+          "query": "gorelease",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "query": "goreleaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 14.333333333333334
+        },
+        {
+          "query": "goreleaser/goreleaser-action",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 9.833333333333334
+        },
+        {
+          "query": "goreleaser github",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8.666666666666666
+        },
+        {
+          "query": "ghr_ settings.yaml",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 16.5
+        },
+        {
+          "query": "go releaser",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49
+        },
+        {
+          "query": "goreleaser changelog",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 12
+        },
+        {
+          "query": "not allowed",
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 3
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/go-release-tools/": [],
+      "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 194,
+          "ctr": 0,
+          "position": 6.304123711340206
+        }
+      ],
+      "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": [
+        {
+          "query": "figwright",
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "label": "nonbrand",
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 10.636363636363637
+        }
+      ]
+    }
+  },
+  "fragmentPages": {
+    "previous": [
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "clicks": 0,
+        "impressions": 88,
+        "ctr": 0,
+        "position": 5.8522727272727275
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "clicks": 0,
+        "impressions": 83,
+        "ctr": 0,
+        "position": 5.783132530120482
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "clicks": 0,
+        "impressions": 61,
+        "ctr": 0,
+        "position": 5.934426229508197
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "clicks": 0,
+        "impressions": 55,
+        "ctr": 0,
+        "position": 5.636363636363637
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "clicks": 0,
+        "impressions": 42,
+        "ctr": 0,
+        "position": 5.928571428571429
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "clicks": 0,
+        "impressions": 28,
+        "ctr": 0,
+        "position": 5.392857142857143
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "clicks": 0,
+        "impressions": 24,
+        "ctr": 0,
+        "position": 5.583333333333333
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#-detailed-introduction-use-in-combination-with-build-tags",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonoescape",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 4.625
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#challenges-and-skills-in-practice",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 10
+      }
+    ],
+    "current": [
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "clicks": 0,
+        "impressions": 80,
+        "ctr": 0,
+        "position": 6.25
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "clicks": 0,
+        "impressions": 77,
+        "ctr": 0,
+        "position": 6.142857142857143
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "clicks": 0,
+        "impressions": 57,
+        "ctr": 0,
+        "position": 6.315789473684211
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "clicks": 0,
+        "impressions": 43,
+        "ctr": 0,
+        "position": 5.558139534883721
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "clicks": 0,
+        "impressions": 43,
+        "ctr": 0,
+        "position": 7.255813953488372
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "clicks": 0,
+        "impressions": 25,
+        "ctr": 0,
+        "position": 6.52
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "clicks": 0,
+        "impressions": 22,
+        "ctr": 0,
+        "position": 6.181818181818182
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonoescape",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 6.555555555555555
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#-detailed-introduction-use-in-combination-with-build-tags",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.333333333333333
+      },
+      {
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#challenges-and-skills-in-practice",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 10
+      }
+    ]
+  },
+  "fragmentQueries": {
+    "previous": [
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 15,
+        "ctr": 0,
+        "position": 5.133333333333334
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 15,
+        "ctr": 0,
+        "position": 5.133333333333334
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 4.846153846153846
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 4.846153846153846
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 4.285714285714286
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 4.285714285714286
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 4.285714285714286
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 4.285714285714286
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 5.333333333333333
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 5.333333333333333
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 5.166666666666667
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 5.166666666666667
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 4.8
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 4.8
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 4.25
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#-detailed-introduction-use-in-combination-with-build-tags",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 6.5
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonoescape",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "golang directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#challenges-and-skills-in-practice",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      },
+      {
+        "query": "golang directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      },
+      {
+        "query": "golang directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      },
+      {
+        "query": "golang directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      }
+    ],
+    "current": [
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 4.8
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 4.8
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 4.75
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 4.75
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 3.6
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 3.6
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 3.6
+      },
+      {
+        "query": "go:build directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 3.6
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 9.75
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 9.75
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 9.75
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 9.75
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 5.666666666666667
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonoescape",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "go directives",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      },
+      {
+        "query": "go tool directive",
+        "page": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit",
+        "label": "nonbrand",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      }
+    ]
+  },
+  "displayProof": {
+    "previous": {
+      "pageCount": 478,
+      "displayedPages": 478,
+      "queryPairCount": 1085,
+      "displayedQueryPairs": 1085,
+      "pairLimit": 5000,
+      "truncated": false
+    },
+    "current": {
+      "pageCount": 434,
+      "displayedPages": 434,
+      "queryPairCount": 622,
+      "displayedQueryPairs": 622,
+      "pairLimit": 5000,
+      "truncated": false
+    }
+  },
+  "dayProvenance": {
+    "page": {
+      "2026-09-20": {
+        "state": "complete",
+        "rows": 299,
+        "metrics": {
+          "clicks": 6,
+          "impressions": 2196,
+          "ctr": 0.00273224043715847,
+          "position": 9.861566484517304
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 6
+        }
+      },
+      "2026-09-21": {
+        "state": "complete",
+        "rows": 191,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1260,
+          "ctr": 0.0031746031746031746,
+          "position": 10.266666666666667
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 6
+        }
+      },
+      "2026-09-22": {
+        "state": "complete",
+        "rows": 175,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1304,
+          "ctr": 0.003067484662576687,
+          "position": 8.482361963190185
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-23": {
+        "state": "complete",
+        "rows": 182,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1388,
+          "ctr": 0.0036023054755043226,
+          "position": 8.882564841498558
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-24": {
+        "state": "complete",
+        "rows": 181,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 1393,
+          "ctr": 0.0021536252692031586,
+          "position": 8.40775305096913
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-25": {
+        "state": "complete",
+        "rows": 165,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1520,
+          "ctr": 0.002631578947368421,
+          "position": 8.063815789473685
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-26": {
+        "state": "complete",
+        "rows": 153,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1243,
+          "ctr": 0.004022526146419952,
+          "position": 8.107803700724055
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-27": {
+        "state": "complete",
+        "rows": 177,
+        "metrics": {
+          "clicks": 11,
+          "impressions": 1461,
+          "ctr": 0.007529089664613279,
+          "position": 8.456536618754278
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-28": {
+        "state": "complete",
+        "rows": 170,
+        "metrics": {
+          "clicks": 8,
+          "impressions": 1757,
+          "ctr": 0.004553215708594195,
+          "position": 7.892999430848036
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-29": {
+        "state": "complete",
+        "rows": 181,
+        "metrics": {
+          "clicks": 9,
+          "impressions": 1801,
+          "ctr": 0.004997223764575236,
+          "position": 7.975569128262077
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-30": {
+        "state": "complete",
+        "rows": 168,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 1517,
+          "ctr": 0.001977587343441002,
+          "position": 8.21753460777851
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-01": {
+        "state": "complete",
+        "rows": 139,
+        "metrics": {
+          "clicks": 7,
+          "impressions": 914,
+          "ctr": 0.007658643326039387,
+          "position": 9.87636761487965
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-02": {
+        "state": "complete",
+        "rows": 152,
+        "metrics": {
+          "clicks": 8,
+          "impressions": 1304,
+          "ctr": 0.006134969325153374,
+          "position": 9.537576687116564
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-03": {
+        "state": "complete",
+        "rows": 150,
+        "metrics": {
+          "clicks": 6,
+          "impressions": 1376,
+          "ctr": 0.00436046511627907,
+          "position": 8.787063953488373
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-04": {
+        "state": "complete",
+        "rows": 146,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 1099,
+          "ctr": 0.0009099181073703367,
+          "position": 9.151046405823475
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-05": {
+        "state": "complete",
+        "rows": 175,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 1175,
+          "ctr": 0.000851063829787234,
+          "position": 9.233191489361703
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-06": {
+        "state": "complete",
+        "rows": 189,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1310,
+          "ctr": 0.0030534351145038168,
+          "position": 8.724427480916031
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-07": {
+        "state": "complete",
+        "rows": 172,
+        "metrics": {
+          "clicks": 9,
+          "impressions": 1319,
+          "ctr": 0.006823351023502654,
+          "position": 9.12054586808188
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-08": {
+        "state": "complete",
+        "rows": 173,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 1273,
+          "ctr": 0.0007855459544383347,
+          "position": 8.477611940298507
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-09": {
+        "state": "complete",
+        "rows": 184,
+        "metrics": {
+          "clicks": 6,
+          "impressions": 1280,
+          "ctr": 0.0046875,
+          "position": 8.353125
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-10": {
+        "state": "complete",
+        "rows": 147,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 970,
+          "ctr": 0.003092783505154639,
+          "position": 9.19381443298969
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-11": {
+        "state": "complete",
+        "rows": 160,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 1041,
+          "ctr": 0.002881844380403458,
+          "position": 9.159462055715657
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-12": {
+        "state": "complete",
+        "rows": 177,
+        "metrics": {
+          "clicks": 7,
+          "impressions": 1195,
+          "ctr": 0.005857740585774059,
+          "position": 9.502092050209205
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-13": {
+        "state": "complete",
+        "rows": 196,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1331,
+          "ctr": 0.003756574004507889,
+          "position": 8.839969947407964
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-14": {
+        "state": "complete",
+        "rows": 194,
+        "metrics": {
+          "clicks": 8,
+          "impressions": 1319,
+          "ctr": 0.006065200909780136,
+          "position": 8.8316906747536
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-15": {
+        "state": "complete",
+        "rows": 165,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1201,
+          "ctr": 0.004163197335553705,
+          "position": 8.5736885928393
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-16": {
+        "state": "complete",
+        "rows": 166,
+        "metrics": {
+          "clicks": 8,
+          "impressions": 1068,
+          "ctr": 0.00749063670411985,
+          "position": 10.794007490636703
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-17": {
+        "state": "complete",
+        "rows": 144,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 934,
+          "ctr": 0.0021413276231263384,
+          "position": 10.461456102783727
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-18": {
+        "state": "complete",
+        "rows": 168,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 1007,
+          "ctr": 0.0019860973187686196,
+          "position": 10.516385302879842
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-19": {
+        "state": "complete",
+        "rows": 171,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1160,
+          "ctr": 0.0034482758620689655,
+          "position": 11.622413793103448
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-20": {
+        "state": "complete",
+        "rows": 165,
+        "metrics": {
+          "clicks": 9,
+          "impressions": 1042,
+          "ctr": 0.008637236084452975,
+          "position": 9.769673704414588
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-21": {
+        "state": "complete",
+        "rows": 191,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 1097,
+          "ctr": 0.0018231540565177757,
+          "position": 9.671832269826801
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-22": {
+        "state": "complete",
+        "rows": 168,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1146,
+          "ctr": 0.004363001745200698,
+          "position": 11.368237347294938
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-23": {
+        "state": "complete",
+        "rows": 188,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 5816,
+          "ctr": 0.0005158184319119669,
+          "position": 7.3051925722145805
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-24": {
+        "state": "complete",
+        "rows": 149,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 928,
+          "ctr": 0.0010775862068965517,
+          "position": 9.637931034482758
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-25": {
+        "state": "complete",
+        "rows": 176,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1044,
+          "ctr": 0.004789272030651341,
+          "position": 9.813218390804598
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-26": {
+        "state": "complete",
+        "rows": 174,
+        "metrics": {
+          "clicks": 10,
+          "impressions": 1220,
+          "ctr": 0.00819672131147541,
+          "position": 8.336065573770492
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-27": {
+        "state": "complete",
+        "rows": 210,
+        "metrics": {
+          "clicks": 7,
+          "impressions": 1664,
+          "ctr": 0.004206730769230769,
+          "position": 6.311298076923077
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-28": {
+        "state": "complete",
+        "rows": 207,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1461,
+          "ctr": 0.0027378507871321013,
+          "position": 7.121149897330596
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-29": {
+        "state": "complete",
+        "rows": 224,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 1336,
+          "ctr": 0.002245508982035928,
+          "position": 8.105538922155688
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-30": {
+        "state": "complete",
+        "rows": 208,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 1566,
+          "ctr": 0.0006385696040868455,
+          "position": 7.718390804597701
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-31": {
+        "state": "complete",
+        "rows": 177,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 1019,
+          "ctr": 0.001962708537782139,
+          "position": 8.795878312070657
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-01": {
+        "state": "complete",
+        "rows": 190,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 879,
+          "ctr": 0.0022753128555176336,
+          "position": 8.902161547212742
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-02": {
+        "state": "complete",
+        "rows": 190,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1279,
+          "ctr": 0.003127443315089914,
+          "position": 8.054730258014073
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-03": {
+        "state": "complete",
+        "rows": 173,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 1514,
+          "ctr": 0.0033025099075297227,
+          "position": 8.2556142668428
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-04": {
+        "state": "complete",
+        "rows": 179,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 1498,
+          "ctr": 0.0020026702269692926,
+          "position": 7.542056074766355
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-05": {
+        "state": "complete",
+        "rows": 155,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 1187,
+          "ctr": 0.0008424599831508003,
+          "position": 10.194608256107834
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-10.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-10T14:00:01.624Z",
+          "runDate": "2026-11-10",
+          "requestWindow": {
+            "start": "2026-11-05",
+            "end": "2026-11-07"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-06": {
+        "state": "complete",
+        "rows": 165,
+        "metrics": {
+          "clicks": 7,
+          "impressions": 888,
+          "ctr": 0.007882882882882882,
+          "position": 8.692567567567568
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-11.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-11T13:16:29.318Z",
+          "runDate": "2026-11-11",
+          "requestWindow": {
+            "start": "2026-11-06",
+            "end": "2026-11-08"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-07": {
+        "state": "complete",
+        "rows": 125,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 604,
+          "ctr": 0.006622516556291391,
+          "position": 10.17384105960265
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-12.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-12T14:19:39.817Z",
+          "runDate": "2026-11-12",
+          "requestWindow": {
+            "start": "2026-11-07",
+            "end": "2026-11-09"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-08": {
+        "state": "complete",
+        "rows": 157,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 747,
+          "ctr": 0.006693440428380187,
+          "position": 10.36144578313253
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-13.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-13T13:41:00.595Z",
+          "runDate": "2026-11-13",
+          "requestWindow": {
+            "start": "2026-11-08",
+            "end": "2026-11-10"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-09": {
+        "state": "complete",
+        "rows": 158,
+        "metrics": {
+          "clicks": 29,
+          "impressions": 1046,
+          "ctr": 0.027724665391969407,
+          "position": 9.859464627151052
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-14.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-14T12:45:06.201Z",
+          "runDate": "2026-11-14",
+          "requestWindow": {
+            "start": "2026-11-09",
+            "end": "2026-11-11"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-10": {
+        "state": "complete",
+        "rows": 221,
+        "metrics": {
+          "clicks": 8,
+          "impressions": 1535,
+          "ctr": 0.005211726384364821,
+          "position": 7.557654723127036
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-15.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-15T13:12:56.315Z",
+          "runDate": "2026-11-15",
+          "requestWindow": {
+            "start": "2026-11-10",
+            "end": "2026-11-12"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-11": {
+        "state": "complete",
+        "rows": 150,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 942,
+          "ctr": 0.004246284501061571,
+          "position": 8.751592356687897
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-16.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-16T14:22:01.785Z",
+          "runDate": "2026-11-16",
+          "requestWindow": {
+            "start": "2026-11-11",
+            "end": "2026-11-13"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-12": {
+        "state": "complete",
+        "rows": 158,
+        "metrics": {
+          "clicks": 5,
+          "impressions": 900,
+          "ctr": 0.005555555555555556,
+          "position": 9.205555555555556
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-13": {
+        "state": "complete",
+        "rows": 185,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 1040,
+          "ctr": 0.0038461538461538464,
+          "position": 8.778846153846153
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 2
+        }
+      },
+      "2026-11-14": {
+        "state": "complete",
+        "rows": 127,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 729,
+          "ctr": 0.0013717421124828531,
+          "position": 10.753086419753087
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 1
+        }
+      }
+    },
+    "query": {
+      "2026-09-20": {
+        "state": "complete",
+        "rows": 391,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 772,
+          "ctr": 0,
+          "position": 13.867875647668393
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-09-21": {
+        "state": "complete",
+        "rows": 52,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 71,
+          "ctr": 0,
+          "position": 23.239436619718308
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-22": {
+        "state": "complete",
+        "rows": 66,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 87,
+          "ctr": 0,
+          "position": 22.28735632183908
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-23": {
+        "state": "complete",
+        "rows": 51,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 80,
+          "ctr": 0.0375,
+          "position": 18.8125
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-24": {
+        "state": "complete",
+        "rows": 50,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 89,
+          "ctr": 0.011235955056179775,
+          "position": 17.651685393258425
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-25": {
+        "state": "complete",
+        "rows": 79,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 150,
+          "ctr": 0,
+          "position": 13.08
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-26": {
+        "state": "complete",
+        "rows": 73,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 118,
+          "ctr": 0,
+          "position": 17.83050847457627
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-27": {
+        "state": "complete",
+        "rows": 55,
+        "metrics": {
+          "clicks": 6,
+          "impressions": 113,
+          "ctr": 0.05309734513274336,
+          "position": 15.20353982300885
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-28": {
+        "state": "complete",
+        "rows": 84,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 174,
+          "ctr": 0,
+          "position": 10.867816091954023
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-29": {
+        "state": "complete",
+        "rows": 74,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 122,
+          "ctr": 0.02459016393442623,
+          "position": 16.10655737704918
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-09-30": {
+        "state": "complete",
+        "rows": 69,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 129,
+          "ctr": 0.007751937984496124,
+          "position": 15.976744186046512
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-01": {
+        "state": "complete",
+        "rows": 74,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 103,
+          "ctr": 0.038834951456310676,
+          "position": 19.601941747572816
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-02": {
+        "state": "complete",
+        "rows": 92,
+        "metrics": {
+          "clicks": 4,
+          "impressions": 154,
+          "ctr": 0.025974025974025976,
+          "position": 16.441558441558442
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-03": {
+        "state": "complete",
+        "rows": 75,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 116,
+          "ctr": 0.008620689655172414,
+          "position": 18.82758620689655
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-04": {
+        "state": "complete",
+        "rows": 62,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 97,
+          "ctr": 0,
+          "position": 16.690721649484537
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-05": {
+        "state": "complete",
+        "rows": 80,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 144,
+          "ctr": 0,
+          "position": 14.708333333333334
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-06": {
+        "state": "complete",
+        "rows": 86,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 130,
+          "ctr": 0,
+          "position": 15.069230769230769
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-07": {
+        "state": "complete",
+        "rows": 92,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 153,
+          "ctr": 0.0196078431372549,
+          "position": 14.437908496732026
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-08": {
+        "state": "complete",
+        "rows": 70,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 156,
+          "ctr": 0,
+          "position": 11.801282051282051
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-09": {
+        "state": "complete",
+        "rows": 66,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 100,
+          "ctr": 0.01,
+          "position": 13.44
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-10": {
+        "state": "complete",
+        "rows": 44,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 56,
+          "ctr": 0.017857142857142856,
+          "position": 22.053571428571427
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-11": {
+        "state": "complete",
+        "rows": 48,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 77,
+          "ctr": 0,
+          "position": 23.77922077922078
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-12": {
+        "state": "complete",
+        "rows": 55,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 70,
+          "ctr": 0.04285714285714286,
+          "position": 23.37142857142857
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-13": {
+        "state": "complete",
+        "rows": 56,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 73,
+          "ctr": 0.0136986301369863,
+          "position": 18.63013698630137
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-14": {
+        "state": "complete",
+        "rows": 70,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 104,
+          "ctr": 0.028846153846153848,
+          "position": 12.413461538461538
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-15": {
+        "state": "complete",
+        "rows": 68,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 81,
+          "ctr": 0,
+          "position": 17.679012345679013
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-16": {
+        "state": "complete",
+        "rows": 67,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 89,
+          "ctr": 0,
+          "position": 25.573033707865168
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-17": {
+        "state": "complete",
+        "rows": 53,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 66,
+          "ctr": 0,
+          "position": 22.272727272727273
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-18": {
+        "state": "complete",
+        "rows": 78,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 107,
+          "ctr": 0,
+          "position": 17.80373831775701
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-19": {
+        "state": "complete",
+        "rows": 79,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 119,
+          "ctr": 0.008403361344537815,
+          "position": 23.201680672268907
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-20": {
+        "state": "complete",
+        "rows": 68,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 101,
+          "ctr": 0.009900990099009901,
+          "position": 18.712871287128714
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-21": {
+        "state": "complete",
+        "rows": 69,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 102,
+          "ctr": 0,
+          "position": 23.49019607843137
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-22": {
+        "state": "complete",
+        "rows": 73,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 164,
+          "ctr": 0.012195121951219513,
+          "position": 20.152439024390244
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-23": {
+        "state": "complete",
+        "rows": 86,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 173,
+          "ctr": 0.011560693641618497,
+          "position": 17.08670520231214
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-24": {
+        "state": "complete",
+        "rows": 70,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 111,
+          "ctr": 0,
+          "position": 25.675675675675677
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-25": {
+        "state": "complete",
+        "rows": 82,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 112,
+          "ctr": 0.017857142857142856,
+          "position": 22.544642857142858
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-26": {
+        "state": "complete",
+        "rows": 51,
+        "metrics": {
+          "clicks": 3,
+          "impressions": 88,
+          "ctr": 0.03409090909090909,
+          "position": 21.147727272727273
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 5
+        }
+      },
+      "2026-10-27": {
+        "state": "complete",
+        "rows": 52,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 80,
+          "ctr": 0,
+          "position": 25.45
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-28": {
+        "state": "complete",
+        "rows": 60,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 74,
+          "ctr": 0,
+          "position": 18.27027027027027
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-29": {
+        "state": "complete",
+        "rows": 38,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 58,
+          "ctr": 0,
+          "position": 23.03448275862069
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-30": {
+        "state": "complete",
+        "rows": 49,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 76,
+          "ctr": 0,
+          "position": 20.86842105263158
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-10-31": {
+        "state": "complete",
+        "rows": 49,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 76,
+          "ctr": 0,
+          "position": 28.763157894736842
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-01": {
+        "state": "complete",
+        "rows": 61,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 91,
+          "ctr": 0,
+          "position": 22.64835164835165
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-02": {
+        "state": "complete",
+        "rows": 54,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 95,
+          "ctr": 0.010526315789473684,
+          "position": 21.568421052631578
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-03": {
+        "state": "complete",
+        "rows": 75,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 127,
+          "ctr": 0.015748031496062992,
+          "position": 22.866141732283463
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-04": {
+        "state": "complete",
+        "rows": 81,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 110,
+          "ctr": 0.00909090909090909,
+          "position": 16.954545454545453
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-09-203137940Z-b3360c.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-09T20:31:38.020Z",
+          "runDate": "2026-11-09",
+          "requestWindow": {
+            "start": "2026-09-12",
+            "end": "2026-11-06"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-05": {
+        "state": "complete",
+        "rows": 61,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 91,
+          "ctr": 0,
+          "position": 36.86813186813187
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-10.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-10T14:00:01.624Z",
+          "runDate": "2026-11-10",
+          "requestWindow": {
+            "start": "2026-11-05",
+            "end": "2026-11-07"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-06": {
+        "state": "complete",
+        "rows": 68,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 115,
+          "ctr": 0.008695652173913044,
+          "position": 16.408695652173915
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-11.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-11T13:16:29.318Z",
+          "runDate": "2026-11-11",
+          "requestWindow": {
+            "start": "2026-11-06",
+            "end": "2026-11-08"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 4
+        }
+      },
+      "2026-11-07": {
+        "state": "complete",
+        "rows": 41,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 61,
+          "ctr": 0.03278688524590164,
+          "position": 25.81967213114754
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-12.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-12T14:19:39.817Z",
+          "runDate": "2026-11-12",
+          "requestWindow": {
+            "start": "2026-11-07",
+            "end": "2026-11-09"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-08": {
+        "state": "complete",
+        "rows": 44,
+        "metrics": {
+          "clicks": 2,
+          "impressions": 67,
+          "ctr": 0.029850746268656716,
+          "position": 27.83582089552239
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-13.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-13T13:41:00.595Z",
+          "runDate": "2026-11-13",
+          "requestWindow": {
+            "start": "2026-11-08",
+            "end": "2026-11-10"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-09": {
+        "state": "complete",
+        "rows": 46,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 80,
+          "ctr": 0,
+          "position": 20.4875
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-14.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-14T12:45:06.201Z",
+          "runDate": "2026-11-14",
+          "requestWindow": {
+            "start": "2026-11-09",
+            "end": "2026-11-11"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-10": {
+        "state": "complete",
+        "rows": 92,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 145,
+          "ctr": 0.006896551724137931,
+          "position": 15.537931034482758
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-15.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-15T13:12:56.315Z",
+          "runDate": "2026-11-15",
+          "requestWindow": {
+            "start": "2026-11-10",
+            "end": "2026-11-12"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-11": {
+        "state": "complete",
+        "rows": 51,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 67,
+          "ctr": 0.014925373134328358,
+          "position": 23.55223880597015
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-16.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-16T14:22:01.785Z",
+          "runDate": "2026-11-16",
+          "requestWindow": {
+            "start": "2026-11-11",
+            "end": "2026-11-13"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-12": {
+        "state": "complete",
+        "rows": 66,
+        "metrics": {
+          "clicks": 1,
+          "impressions": 79,
+          "ctr": 0.012658227848101266,
+          "position": 24.31645569620253
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 3
+        }
+      },
+      "2026-11-13": {
+        "state": "complete",
+        "rows": 53,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 191,
+          "ctr": 0,
+          "position": 14.214659685863875
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 2
+        }
+      },
+      "2026-11-14": {
+        "state": "complete",
+        "rows": 72,
+        "metrics": {
+          "clicks": 0,
+          "impressions": 104,
+          "ctr": 0,
+          "position": 28
+        },
+        "responseAggregationType": "byPage",
+        "provenance": {
+          "file": "gsc-2026-11-17.json",
+          "schema": "gsc-snapshot/2",
+          "fetchedAt": "2026-11-17T15:14:22.789Z",
+          "runDate": "2026-11-17",
+          "requestWindow": {
+            "start": "2026-11-12",
+            "end": "2026-11-14"
+          },
+          "status": "complete",
+          "availability": "available",
+          "truncated": false,
+          "conflict": null,
+          "warnings": [],
+          "error": null,
+          "runStatus": "ok",
+          "tieBreak": false,
+          "uncertainRefresh": null,
+          "laterFailure": null,
+          "candidateCount": 1
+        }
+      }
+    }
+  },
+  "limits": [
+    "anonymous/internal query coverage unknown",
+    "missing canonical page or query is null/unknown, not zero",
+    "fragments retained independently",
+    "device/country cuts not used as unfiltered denominator",
+    "planned complete dates do not certify all internal Google rows"
+  ]
+}

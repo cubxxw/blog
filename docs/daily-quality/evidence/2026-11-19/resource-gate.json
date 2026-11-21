@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-19T09:30:50.420535+08:00",
+  "freeBytes": 9492373504,
+  "freeGiB": 8.840461730957031,
+  "newHeavyJobs": 0,
+  "newCIBuildBrowserReviewPushMerge": 0,
+  "actualCleanupBytes": 0,
+  "growthRootCause": "unknown; APFS shared volume available capacity differs from Data used bytes",
+  "pauseExists": true,
+  "pauseReason": "disk_below_10GiB",
+  "maintenanceOwnerHandling": true,
+  "source": "fresh statvfs and active SRE incident; no capacity inferred from historical JSON"
+}
