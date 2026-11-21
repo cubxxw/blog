@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-22T04:16:54.735163+08:00",
+  "pauseExists": false,
+  "freeBytes": 21823287296,
+  "operating10GiBMet": true,
+  "strict40GBMet": false,
+  "kernelPressure": 2,
+  "cleanupBytesThisRound": 0,
+  "newDeviceServiceOperations": 0,
+  "storageIssueSeparate": "GET564 remains In Progress; no repeated cleanup this search round"
+}

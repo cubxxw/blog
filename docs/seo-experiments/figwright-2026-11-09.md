@@ -89,3 +89,18 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 新只读[44302901347](https://github.com/cubxxw/blog/actions/runs/44302901347)已核6URL原件，Fig双页仍PASS/允许索引/自canonical，EN crawl仍9月26日、ZH仍11月1日，早于11月9日部署。没有索引重提，首个效果完整日/T14/T28未知。[结果](../daily-quality/evidence/2026-11-18/inspection-summary.json)
 
 完整10月18日—11月14日页面窗口，EN253曝光/1点击/CTR0.40%，ZH32/1/3.13%；前窗9月20日—10月17日EN87/1，ZH未返回保持未知。窗口跨部署、缺新版crawl，不据1点击宣称试点有效，也不覆盖原冻结基线。[配对](../daily-quality/evidence/2026-11-18/search-evidence.json)
+
+## 2026-11-22：已出现部署后抓取，效果数据尚未到期
+
+只读[44944360194](https://github.com/cubxxw/blog/actions/runs/44944360194)在精确源码`ea840a57a48d1d9e732a4e16433e3385a6098ff9`的attempt1成功。6个目标逐项核对，Fig双页均PASS、允许抓取/索引、Google与页面canonical一致；没有重复提交索引请求。[原件归属](../daily-quality/evidence/2026-11-22/inspection-artifact-receipt.json)、[结果](../daily-quality/evidence/2026-11-22/inspection-summary.json)
+
+| 语言 | Google最近抓取（UTC） | 首个完整GSC日期候选（洛杉矶） | T14数据窗 | T28数据窗 |
+| --- | --- | --- | --- | --- |
+| EN | 11月21日05:08:02Z | 11月21日 | 11月21日—12月4日 | 11月21日—12月18日 |
+| ZH | 11月20日00:59:57Z | 11月20日 | 11月20日—12月3日 | 11月20日—12月17日 |
+
+两次抓取均晚于11月9日02:42:28.419Z试点部署。原部署与当前生产`d2b572b9`的Fig双语Markdown blob相同，本轮没有再次改文章。[源码绑定](../daily-quality/evidence/2026-11-22/fig-content-source-binding.json)
+
+上述日期仅依据部署后抓取记录推定观察起点。[Google官方接口](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect)只返回索引版本状态，不做实时页面测试；`lastCrawlTime`是[最近抓取时间](https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult#IndexStatusInspectionResult)。接口不返回Google保存的正文，不能据此证明其已采用具体HTML字节、搜索标题或摘要。T14仅观察，T28待完整数据覆盖及对应对照窗口后判读，小样本不作因果结论。
+
+最新既有快照只完整覆盖至11月18日，早于上述抓取。当前10月22日—11月18日EN页面225曝光/1点击，精确figwright165/0；ZH页面26/0，精确词9/0。前窗9月24日—10月21日EN121/1、ZH6/1。它们是背景窗口，不能作为此次抓取后的效果，也不覆盖原冻结基线。[完整窗口与配对](../daily-quality/evidence/2026-11-22/search-summary.json)。GET-463继续In Progress，等待数据到期，不提前Done或再重提索引。

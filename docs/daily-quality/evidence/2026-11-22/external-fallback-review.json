@@ -1,0 +1,8 @@
+{
+  "reviewer": "/root/review_daily_quality",
+  "approvedConditionalFallback": true,
+  "noConfirmedNewP0P1P2": true,
+  "conditions": "complete original audit0/2; fresh pause/free/pressure/resources/fixed-volume/private gates; native new-artifact; reuse actual upstream child_environment; original test adapter and mutex; keep prior wrapper failure",
+  "notAGateBypass": true,
+  "auditReceiptSHA256": "9c9bd44dca25680d4cab423484c9c9fa262edea178f94265f24e17f9f1e74488"
+}

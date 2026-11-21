@@ -1,0 +1,47 @@
+[
+  {
+    "operation": "inline search extraction",
+    "exit": 1,
+    "reason": "SyntaxError before execution; no summary written; subsequent standalone extractor exit0",
+    "productBrowserExecuted": 0
+  },
+  {
+    "operation": "gh run metadata query",
+    "exit": 1,
+    "reason": "unsupported CLI JSON field runAttempt; corrected to attempt; no workflow redispatched",
+    "productBrowserExecuted": 0
+  },
+  {
+    "operation": "production daily adapter independent review",
+    "priority": "P2",
+    "reason": "inherited SITE_DAILY_BASE_URL could point to preview while platform readback bound production",
+    "fix": "explicit production baseURL and recorded receipt before any browser execution",
+    "productBrowserExecuted": 0
+  },
+  {
+    "operation": "PSI selected-row display",
+    "exit": 1,
+    "reason": "KeyError comparisonProvenance on failed measurement; corrected to optional access, summary uses raw failed status and missing stays unknown",
+    "browserExecuted": 0
+  },
+  {
+    "operation": "dev-external-run resource guard",
+    "exit": 1,
+    "reason": "dev-storage-guard audit subprocess exceeded60s; wrapper refused before new-artifact/Popen browser",
+    "browserExecuted": 0,
+    "resourceThresholdsUnchanged": true
+  },
+  {
+    "operation": "document patch anchors",
+    "failedAttempts": 2,
+    "reason": "expected historical heading differed; patch refused without changing files; retried after exact heading read",
+    "productBrowserExecuted": 0
+  },
+  {
+    "operation": "lab attachment extraction",
+    "exit": 0,
+    "initialDerivedMetrics": "null because wrapper sample was not selected",
+    "fix": "read actual attachment sample object with finite-number assertions; re-extracted same raw; original initial-missing-wrapper summary retained",
+    "newBrowserExecuted": 0
+  }
+]

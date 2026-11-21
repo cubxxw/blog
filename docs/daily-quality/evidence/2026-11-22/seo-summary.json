@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-21T20:10:36.501626+00:00",
+  "before": {
+    "id": "6b015f24c2762bf0d4f0f4e9",
+    "commit_ref": "d2b572b961b0a9248c4db41319d1d347a5e37ce9",
+    "state": "ready",
+    "published_at": "2026-11-21T09:09:54.806Z"
+  },
+  "after": {
+    "id": "6b015f24c2762bf0d4f0f4e9",
+    "commit_ref": "d2b572b961b0a9248c4db41319d1d347a5e37ce9",
+    "state": "ready",
+    "published_at": "2026-11-21T09:09:54.806Z"
+  },
+  "pageCount": 20,
+  "issues": 0,
+  "reciprocityUnknown": 0,
+  "sitemap": {
+    "status": 200,
+    "pageLocs": 442,
+    "uniquePages": 442,
+    "imageLocs": 249,
+    "uniqueImages": 143,
+    "allEntries": 691
+  },
+  "bootstrap": [
+    {
+      "url": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "status": 200,
+      "bodyBytes": 4299,
+      "sha256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "integrity": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "contentEncoding": "identity"
+    }
+  ],
+  "bootstrapDeclaredSRIHashMatches": true,
+  "controllerSRI": "not newly sampled",
+  "limits": "HTTP/html sample and JSON parse only; no Google indexing or all-site link-health claim"
+}

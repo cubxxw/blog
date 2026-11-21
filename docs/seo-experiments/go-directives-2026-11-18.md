@@ -40,3 +40,11 @@
 候选未部署，Google采用新版抓取、首个完整效果日和T14/T28均未知。部署后也须先观察新版crawl，再按洛杉矶日期冻结完整效果窗口；不反复索引提交，不因预览或测试通过宣称点击增长。回滚只撤本次命令、相邻说明/引用及lastmod，不回退并行内容。
 
 日检另有较早一次同输出目录日志但raw缺失，两次运行重叠；只认证选定raw中的36项attempt0结果，不称整轮唯一首次或受控性能环境。[原件归属](../daily-quality/evidence/2026-11-18/daily-run-provenance.json)
+
+## 2026-11-22 续查
+
+原PR533仍为同一`46c2d83e`草稿；11月19日最终回复已正式询问该页发布许可，此后没有该页批准，不重复催问。本次只交付报告和观察登记，不发布文章，不因文档合并关闭GET-563。以上“当前62b”属于18日执行时点；22日实际生产已为其他已发布内容的`d2b572b9`，不能把旧日检认证转给新版本。
+
+最新完整28+28背景窗口为9月24日—10月21日与10月22日—11月18日：EN217曝光/1点击→224/2（CTR0.89%），ZH18/0→7/0。EN实际配对`golang directives`14/0、`go directives`11/0、`go compiler directives`10/0、`what does go generate do`1/0，返回查询点击和仍为0；不能把页面2点击分配给这些词，也不能归因未上线候选。[新原数](../daily-quality/evidence/2026-11-22/search-summary.json)
+
+新只读[44944360194](https://github.com/cubxxw/blog/actions/runs/44944360194)中EN crawl为11月20日09:40:09Z、ZH仍11月7日00:55:01Z，均PASS/自canonical；这是生产旧教程的抓取，不是PR533已发布的证据。[结果](../daily-quality/evidence/2026-11-22/inspection-summary.json)。候选效果起点仍未知，原Go真实生成、不可变预览与失败证据保持，不重复构建候选。

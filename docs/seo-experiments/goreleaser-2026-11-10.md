@@ -58,4 +58,10 @@ GET-477实施范围在本轮文档交付和最终平台验收后结案；搜索�
 
 新完整10月18日—11月14日窗口，EN1352曝光/3点击/CTR0.22%，ZH23/0；前窗9月20日—10月17日EN1047/0、ZH58/0。当前窗跨部署且无新版crawl，不作采用新版后的完整效果窗，也不归因3点击。原冻结基线保留。[原数](../daily-quality/evidence/2026-11-18/search-evidence.json)
 
+## 2026-11-22 续查
+
+只读[44944360194](https://github.com/cubxxw/blog/actions/runs/44944360194)逐项读回，Go双页仍PASS/允许索引/自canonical，EN最近抓取11月7日10:21:48Z、ZH10月29日22:55:22Z，仍早于11月13日发布；没有重复索引提交，首个完整效果日/T14/T28仍未知。[原件](../daily-quality/evidence/2026-11-22/inspection-summary.json)
+
+最新完整10月22日—11月18日背景窗EN1536曝光/3点击、CTR0.20%，ZH18/0；前窗9月24日—10月21日EN889/0、ZH22/0。实际`goreleaser/goreleaser-action`5曝光/0点击、`goreleaser`4/0；精确`goreleaser action`本窗未返回，保持未知。当前窗不是采用新版后的效果窗，不归因3点击，不覆盖原冻结基线。[新配对](../daily-quality/evidence/2026-11-22/search-summary.json)。原实施GET-477保持已Done，效果继续在本登记观察。
+
 GET-477保持Done。新的[Go指令教程GET-563](go-directives-2026-11-18.md)属于另一个候选，PR522的单次授权不扩大到该页，不能据此合并PR533。

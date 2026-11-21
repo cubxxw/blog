@@ -1,0 +1,46 @@
+{
+  "snapshot": "data/seo/psi-2026-11-21.json",
+  "fetchedAt": "2026-11-21T14:05:37.954Z",
+  "planned": 26,
+  "success": 22,
+  "failed": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "attempts": 1,
+      "reasonCategory": "psi-api-failure",
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "attempts": 1,
+      "reasonCategory": "psi-api-failure",
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "attempts": 1,
+      "reasonCategory": "psi-api-failure",
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "attempts": 3,
+      "reasonCategory": "psi-api-failure",
+      "psiHttpStatus": 500,
+      "lighthouseRuntimeError": null
+    }
+  ],
+  "CrUX": "PHONE/DESKTOP insufficient sample",
+  "fieldINP": "unknown",
+  "sourceSHA": "unknown",
+  "comparisonProvenance": "incomplete; no causal comparison",
+  "newPaidCollection": false,
+  "newPSICollection": false
+}

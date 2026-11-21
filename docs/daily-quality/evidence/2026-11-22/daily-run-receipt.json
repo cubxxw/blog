@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-11-21T20:16:29.005215+00:00",
+  "command": [
+    "node",
+    "/Users/cubxxw/.codex/worktrees/blog-quality-resume-20261031/blog/node_modules/@playwright/test/cli.js",
+    "test",
+    "--config",
+    "/Volumes/DataSSD/BuildArtifacts/managed/ai-test-blog-daily-get563-20261122.o67kjllt/playwright.daily.live.config.ts"
+  ],
+  "exit": 0,
+  "elapsedSeconds": 127.20247208408546,
+  "before": {
+    "id": "6b015f24c2762bf0d4f0f4e9",
+    "commit_ref": "d2b572b961b0a9248c4db41319d1d347a5e37ce9",
+    "state": "ready",
+    "published_at": "2026-11-21T09:09:54.806Z"
+  },
+  "baseURL": "https://cubxxw.com",
+  "sourceFilesSHA256": {
+    "playwright.daily.config.ts": "b9b38cfa4aac659c00f48e39ea65184c72d0faea84a41d9ebafb4794be5db36d",
+    "tests/daily/live-quality.spec.ts": "5a90b7b3203cc5b620a742e4aa28fa0bbb1d2ae942772509aee391e2b419c11e",
+    "tests/daily/reader-navigation.spec.ts": "e78e162c2a11858e9409588da7ed6e31f7ce97d12d06990b5dbc70790a116358"
+  },
+  "artifact": "/Volumes/DataSSD/BuildArtifacts/managed/ai-test-blog-daily-get563-20261122.o67kjllt",
+  "adapterChanges": [
+    "absolute testDir",
+    "output paths through original environment variables",
+    "system Chrome channel"
+  ],
+  "workers": 1,
+  "retries": 0,
+  "thresholdsAndTraceUnchanged": true,
+  "after": {
+    "id": "6b015f24c2762bf0d4f0f4e9",
+    "commit_ref": "d2b572b961b0a9248c4db41319d1d347a5e37ce9",
+    "state": "ready",
+    "published_at": "2026-11-21T09:09:54.806Z"
+  },
+  "versionStable": true
+}

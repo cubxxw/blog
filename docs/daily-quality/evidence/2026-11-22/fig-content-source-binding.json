@@ -1,0 +1,16 @@
+{
+  "bindings": {
+    "content/en/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md": {
+      "5a0673739f6732696a661da65fabb06fca58aa70": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+      "d2b572b961b0a9248c4db41319d1d347a5e37ce9": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+      "HEAD": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed"
+    },
+    "content/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md": {
+      "5a0673739f6732696a661da65fabb06fca58aa70": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+      "d2b572b961b0a9248c4db41319d1d347a5e37ce9": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+      "HEAD": "c1f82ad405a10d205759cd53f6bb5f59ca039555"
+    }
+  },
+  "GoogleStoredHTMLBytes": "unknown; inspection only reports indexed status/crawl metadata",
+  "currentLiveSEOSample": "seo-summary.json"
+}

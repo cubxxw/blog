@@ -1,0 +1,13 @@
+{
+  "run": 44944360194,
+  "attempt": 1,
+  "artifactId": 14722753359,
+  "artifactSizeBytes": 1371,
+  "source": "ea840a57a48d1d9e732a4e16433e3385a6098ff9",
+  "zipSHA256": "c1d7017df7016f81c577b7e54eaf696516589b92ea37cddfa8e9d7f0f2508a51",
+  "allCRC": true,
+  "entriesSHA256": {
+    "inspection-44944360194-1.json": "7d39a6c3f5f29836c2ce40f86b3e7efbea4527f1e01f7622a83c40461060a0e3",
+    "inspection-process-44944360194-1.json": "731187985d15dcc914d577a328ac041772a487e95fc4d126e2a3a8346a8ade2f"
+  }
+}

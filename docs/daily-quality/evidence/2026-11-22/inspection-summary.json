@@ -1,0 +1,110 @@
+{
+  "run": 44944360194,
+  "attempt": 1,
+  "source": "ea840a57a48d1d9e732a4e16433e3385a6098ff9",
+  "processExit": 0,
+  "counts": {
+    "planned": 6,
+    "inspected": 6,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "fetchedAt": "2026-11-21T20:05:18.803Z",
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "userCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "lastCrawlTime": "2026-11-07T10:21:48Z"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "userCanonical": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+      "lastCrawlTime": "2026-10-29T22:55:22Z"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "userCanonical": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "lastCrawlTime": "2026-11-21T05:08:02Z",
+      "firstFullGSCDateCandidate": "2026-11-21",
+      "T14": {
+        "start": "2026-11-21",
+        "end": "2026-12-04"
+      },
+      "T28": {
+        "start": "2026-11-21",
+        "end": "2026-12-18"
+      },
+      "bodyBytesInGoogleIndex": "unknown; API does not return stored HTML"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "userCanonical": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "lastCrawlTime": "2026-11-20T00:59:57Z",
+      "firstFullGSCDateCandidate": "2026-11-20",
+      "T14": {
+        "start": "2026-11-20",
+        "end": "2026-12-03"
+      },
+      "T28": {
+        "start": "2026-11-20",
+        "end": "2026-12-17"
+      },
+      "bodyBytesInGoogleIndex": "unknown; API does not return stored HTML"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "userCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "lastCrawlTime": "2026-11-20T09:40:09Z"
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "userCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "lastCrawlTime": "2026-11-07T00:55:01Z"
+    }
+  ],
+  "indexRequestSubmitted": false,
+  "basis": "Google indexed version only; separate from current HTTP/HTML, not a live test or indexing request",
+  "httpRetryCount": "unknown; workflow attempt1 is not HTTP0retry",
+  "interpretation": "post-deployment crawls now reported for Figwright; clicks through18Nov cannot assess those crawls; stored indexed body bytes unavailable",
+  "officialMeaning": {
+    "api": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect",
+    "fields": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult#IndexStatusInspectionResult",
+    "meaning": "indexed-version metadata; no live-URL test or stored indexed HTML bytes returned; first-full dates inferred from the reported crawl in America/Los_Angeles"
+  }
+}
