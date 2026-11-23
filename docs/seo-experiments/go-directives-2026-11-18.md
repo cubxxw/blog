@@ -57,6 +57,6 @@
 
 实际生产`1f89780016c61290571a751d9f85872715537b8d` / Netlify `6b03e55d1ab3b7f8ee076701`于23日07:06:45.264Z ready。双语文章blob与原审查head46c及merge8f精确一致；实际EN29/ZH30全部pre、标题摘要、旧ID、自canonical和语言映射通过。原36日检实际首过36、0失败/重试/跳过，前后同一部署；22页HTTP SEO抽样无问题。完整范围、CI、原失败和性能限制见[24日日报](../daily-quality/2026-11-24.md)，不借旧预览或旧生产绿灯认证新版本。
 
-新完整28+28窗口9月26日—10月23日→10月24日—11月20日，EN页面217/1→218/3（CTR0.46%→1.38%），ZH18/0→7/0；英文12个可见查询配对合计51曝光/0点击，中文查询未返回保持unknown。`go directives`11/0、`go compiler directives`9/0、`go directive`6/0；不能把页面3点击归给缺失查询。[页面与真实配对](../daily-quality/evidence/2026-11-24/search-summary.json)
+新完整28+28窗口9月26日—10月23日→10月24日—11月20日，EN页面217/1→218/3（CTR0.46%→1.38%），ZH17/0→7/0；英文12个可见查询配对合计51曝光/0点击，中文查询未返回保持unknown。`go directives`11/0、`go compiler directives`9/0、`go directive`6/0；不能把页面3点击归给缺失查询。[页面与真实配对](../daily-quality/evidence/2026-11-24/search-summary.json)
 
 只读[45257992438](https://github.com/cubxxw/blog/actions/runs/45257992438)精确35f/attempt1成功，原ZIP/CRC/SHA和2个响应身份已核。EN crawl仍20日09:40:09Z、ZH仍7日00:55:01Z，均早于23日部署；没有重提索引，首个新版抓取、完整效果日、T14/T28保持unknown。该API仅索引版本状态，不提供Google保存正文或搜索标题采用证明。[实际结果](../daily-quality/evidence/2026-11-24/inspection-summary.json)
