@@ -1,0 +1,18 @@
+{
+  "files": {
+    "daily-run-receipt.json": "70679196c2997e9739cb16c89ccc9f8d7b7602a8f278e14c8317f66256b005ef",
+    "daily-counts.json": "3be9f771a40a14f928ccaf4b23bd6aba0045b8f2a8b2f27522929220851ce3e5",
+    "observer-review.json": "fe4b515425cedebc430da8d941b0682a291a18072c4503a73a8ca6239eedf6a4",
+    "http-seo.json": "f8c7b8cf2bea13dc495bee1bca0a579570dfd7d4721549562b6a163aa5d4fd07",
+    "psi-summary.json": "793de459949b540636bdd09c96c69a987f4793b8bde130ca146e03dbdf2e8de2",
+    "inspection-summary.json": "09a45d87cb45fd83f415e18f5ebc648f3cb2e2538681da422196d31e5486430e",
+    "search-summary.json": "78261fa59554aea248fc3a53dab3cc7b8cf2ebddc50a62fd6677fa571704672f",
+    "article-http.json": "4306a633dd7405ab938fac8e993f440cc3376a33030d90408d25378188b919cf",
+    "lab-summary.json": "40a0ec2e3abb6d7744e34aef6c0f86cf5b1ff6b6922b5c00822d6e9a5d76d680",
+    "publication-input-digests.json": "e190cda65a68d89a4630aa68b82d0d11a5036fafb4323f23005b807d7d0f8334",
+    "bootstrap-sri.json": "8669a96877b5b789395a92fabbca09a6de3f56748d4f3ad81cbfb93584a37a06",
+    "article-source-binding.json": "42f70e0ef352da90cf13b561364b918e55c9840481a9306742185569b25f718c"
+  },
+  "fullRawAndOriginalLogs": "Preserved in the local encrypted evidence store; public files are scoped portable observations.",
+  "noNewProductCodeByThisAcceptanceRound": true
+}

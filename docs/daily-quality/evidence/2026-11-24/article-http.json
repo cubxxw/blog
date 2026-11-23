@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-23T20:16:34.450422+00:00",
+  "source": "1f89780016c61290571a751d9f85872715537b8d",
+  "deploy": "6b03e55d1ab3b7f8ee076701",
+  "results": {
+    "en": {
+      "url": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "httpStatus": 200,
+      "bodySHA256": "02727dbfe10c388a2401aaf9595f711c2e26b92216307ba071722dc516c50b54",
+      "articleGitBlob": "391e5799188ee703ddc044f6a181b4cf4b74a9f5",
+      "allPreCount": 29,
+      "allPreExactlyMatchReviewedFrozenCandidate": true,
+      "allOldIdsRetained": true,
+      "titleDescriptionPreserved": true,
+      "canonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "officialReferencesPresent": true
+    },
+    "zh": {
+      "url": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "httpStatus": 200,
+      "bodySHA256": "968096d9c087df8fa670a74028e550983db5a87e7b6f4aedfea0da2206b3a425",
+      "articleGitBlob": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743",
+      "allPreCount": 30,
+      "allPreExactlyMatchReviewedFrozenCandidate": true,
+      "allOldIdsRetained": true,
+      "titleDescriptionPreserved": true,
+      "canonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "x-default": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      },
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "officialReferencesPresent": true
+    }
+  },
+  "scope": "two HTTP language cases and exact code/metadata/anchor fidelity; browser0; no Google stored-body claim",
+  "before": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "context": "production",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "after": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "context": "production",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "status": "passed"
+}

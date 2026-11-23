@@ -1,0 +1,40 @@
+{
+  "approved": true,
+  "reviewedAt": "2026-11-23T20:15:53.143922+00:00",
+  "noConfirmedOpenP0P1P2": true,
+  "closedFindings": [
+    {
+      "priority": "P2",
+      "problem": "Duplicate or Googlebot-specific robots meta declarations could be lost; none alias inconsistent.",
+      "fix": "New per-run helper token-matches noindex/none; actual article parser subclass and SEO parser retain all robots/googlebot/googlebot-news meta values, combined with every duplicate X-Robots-Tag. November18 frozen parser unchanged.",
+      "existingTestEvidence": {
+        "unittestMethods": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "reviewerReran": false,
+        "cases": "both duplicate orders, mixedcase/none, Googlebot, all duplicate headers, none with generic index, non-substring token"
+      }
+    },
+    {
+      "priority": "P2",
+      "problem": "Collector falsely described an initial wrapper failure for this run.",
+      "fix": "Scope now records separately completed original audit with180s bound and explicitly makes no wrapper-timeout claim for this run."
+    }
+  ],
+  "helperSHA256": {
+    "verify-article-production.py": "66f55fd271062512a5439af43674cd740c5795781cce692067d40b33f2603365",
+    "run-daily.py": "30d9b0d8a1f6a3afba1dbd94ffd4e5c477385e3c3196d1d9c251a36bef1f0319",
+    "launch-reviewed-daily.py": "b0e1fa83c1458a610b09fa6b8afaeaf26d84f4fbfec99086bcf3bf171494d941",
+    "collect-daily.py": "ed7f01390d9379d2759c7c2d7ea7b0cbeca54b0fc37cd12bc15c10aa443068e7",
+    "live-seo.py": "6537f9be8d67be03cf795379fb594949cb9d06739f54bb48ab810fa4aed2c4b4",
+    "robots_contract.py": "04bac3083c43b1c4a89e8f0fe2457b98e3a7406c1d9bff2da72c30e079472b6f",
+    "test_robots_contract.py": "9c205b69d1a77a0c3f5701a08fa9c5e8cbdeae5f3219e4bbfe1dc84465446ecb",
+    "robots-contract-tests.log": "02f5d3efd472b2262a27ddaac36fe1d93c32804b18e1bcac47f5129b48369d04",
+    "audit-completed.json": "eeca028860e4674cd52d24f67229f31937d622b392a649a3899e02f2d3931b8b"
+  },
+  "scope": "One source-bound read-only current-production HTTP article verification plus SEO HTML sample, and one original36 daily browser execution. No product publication, article rewriting, source changes, indexing request, credentials expansion, model/paid-service call, storage migration/deletion, service restart or native-pilot slot takeover.",
+  "testMethodsPassed": 7,
+  "oldFrozenObserverUnchanged": true,
+  "originalFailuresKept": true
+}

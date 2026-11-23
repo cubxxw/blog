@@ -1,0 +1,54 @@
+{
+  "runId": 45257992438,
+  "attempt": 1,
+  "source": "35f31dd1ad5edb8fae00a4ebeaddaaaba98e099f",
+  "status": "success",
+  "artifactId": 14860035254,
+  "zipBytes": 1210,
+  "zipSha256": "861aa7a66080eaf409e12933b566fd0fff39cd637eb09c488b35ce392cc9625f",
+  "allCRCVerified": true,
+  "counts": {
+    "planned": 2,
+    "inspected": 2,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "lastCrawlTime": "2026-11-20T09:40:09Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "userCanonical": "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/",
+        "lastCrawlTime": "2026-11-07T00:55:01Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "indexingSubmitted": false,
+  "scope": "Google indexed-version metadata, not live test or stored page body adoption"
+}
