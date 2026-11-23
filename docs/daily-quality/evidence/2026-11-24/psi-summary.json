@@ -1,0 +1,48 @@
+{
+  "total": 26,
+  "usable": 21,
+  "failed": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "status": "failed",
+      "attempts": 1,
+      "reason": "psi-api-failure",
+      "error": "psi-api-failure: PSI API HTTP 400"
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "status": "failed",
+      "attempts": 1,
+      "reason": "psi-api-failure",
+      "error": "psi-api-failure: PSI API HTTP 400"
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "status": "failed",
+      "attempts": 3,
+      "reason": "psi-api-failure",
+      "error": "psi-api-failure: PSI API HTTP 500"
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "status": "failed",
+      "attempts": 1,
+      "reason": "psi-api-failure",
+      "error": "psi-api-failure: PSI API HTTP 400"
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "status": "failed",
+      "attempts": 3,
+      "reason": "psi-api-failure",
+      "error": "psi-api-failure: PSI API HTTP 500"
+    }
+  ],
+  "sourceAndEnvironmentBinding": "incomplete; no causal attribution",
+  "fieldINP": "unknown; CrUX insufficient samples"
+}

@@ -1,0 +1,35 @@
+{
+  "before": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "context": "production",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "after": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "context": "production",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "versionStable": true,
+  "rows": [
+    {
+      "lang": "en",
+      "url": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "bodyBytes": 4299,
+      "sha256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "declaredIntegrity": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "allDeclaredSRIValuesValid": true
+    },
+    {
+      "lang": "zh",
+      "url": "https://cubxxw.com/js/search-bootstrap.96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3.js",
+      "bodyBytes": 4299,
+      "sha256": "96ea1051faf01bb7cba23914e4acc09495c0481c80c0489f4d3cc2f0334231b3",
+      "declaredIntegrity": "sha256-luoQUfrwG7fLojkU5KzAlJXASByAwEifTTzC8DNCMbM=",
+      "allDeclaredSRIValuesValid": true
+    }
+  ]
+}

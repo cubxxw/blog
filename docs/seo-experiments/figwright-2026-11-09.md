@@ -104,3 +104,9 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 上述日期仅依据部署后抓取记录推定观察起点。[Google官方接口](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect)只返回索引版本状态，不做实时页面测试；`lastCrawlTime`是[最近抓取时间](https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult#IndexStatusInspectionResult)。接口不返回Google保存的正文，不能据此证明其已采用具体HTML字节、搜索标题或摘要。T14仅观察，T28待完整数据覆盖及对应对照窗口后判读，小样本不作因果结论。
 
 最新既有快照只完整覆盖至11月18日，早于上述抓取。当前10月22日—11月18日EN页面225曝光/1点击，精确figwright165/0；ZH页面26/0，精确词9/0。前窗9月24日—10月21日EN121/1、ZH6/1。它们是背景窗口，不能作为此次抓取后的效果，也不覆盖原冻结基线。[完整窗口与配对](../daily-quality/evidence/2026-11-22/search-summary.json)。GET-463继续In Progress，等待数据到期，不提前Done或再重提索引。
+
+## 2026-11-24：新数据仅触及中文观察起点
+
+复用既有23日快照，完整28+28为9月26日—10月23日→10月24日—11月20日。EN页面158/1→191/1，当前精确figwright133/0；ZH页面16/1→16/0，精确词4/0。页面与查询配对分列，缺行unknown，不覆盖上文冻结基线。[新窗口原数](../daily-quality/evidence/2026-11-24/search-summary.json)
+
+继续沿用22日已核的部署后crawl及候选观察日期，不重复索引或同一矩阵。最新完整请求只到20日，availability探针的21日不作完整页面/查询证据；因此只触及ZH候选起点一天，尚未覆盖EN候选首日，更没有T14/T28。GET-463继续In Progress，不据窗口总数或一个点击判断效果。[本轮验收与限制](../daily-quality/2026-11-24.md)

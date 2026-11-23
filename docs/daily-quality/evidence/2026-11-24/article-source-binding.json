@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-24T04:11:48.087725+08:00",
+  "reviewedHead": "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40",
+  "externalMerge": "8f1e502b1b1d56d91ce8bd481b511a32c821abd2",
+  "currentProduction": "1f89780016c61290571a751d9f85872715537b8d",
+  "main": "35f31dd1ad5edb8fae00a4ebeaddaaaba98e099f",
+  "exactArticleBlobsUnchanged": true,
+  "files": [
+    {
+      "file": "content/en/engineering/posts/directives-and-the-use-of-automation-tools.md",
+      "blobs": {
+        "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40": "391e5799188ee703ddc044f6a181b4cf4b74a9f5",
+        "8f1e502b1b1d56d91ce8bd481b511a32c821abd2": "391e5799188ee703ddc044f6a181b4cf4b74a9f5",
+        "1f89780016c61290571a751d9f85872715537b8d": "391e5799188ee703ddc044f6a181b4cf4b74a9f5",
+        "35f31dd1ad5edb8fae00a4ebeaddaaaba98e099f": "391e5799188ee703ddc044f6a181b4cf4b74a9f5"
+      }
+    },
+    {
+      "file": "content/zh/engineering/posts/directives-and-the-use-of-automation-tools.md",
+      "blobs": {
+        "46c2d83ee7b492fd1e4a23138f0d958edd9b2a40": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743",
+        "8f1e502b1b1d56d91ce8bd481b511a32c821abd2": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743",
+        "1f89780016c61290571a751d9f85872715537b8d": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743",
+        "35f31dd1ad5edb8fae00a4ebeaddaaaba98e099f": "6bb36f181d7fe285d263d88ef65c23cbe3d8b743"
+      }
+    }
+  ]
+}

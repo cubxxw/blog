@@ -1,5 +1,7 @@
 # Go 指令教程：修复可复现的命令错误
 
+> 11月24日状态：PR533已在外部合并并进入生产，本轮补齐真实验收。下文草稿/待许可属于历史事实，最新版本和Google效果边界见文末续验，不能继续把旧pending当当前状态。
+
 [GET-563](https://linear.app/getyak/issue/GET-563/fix-the-mockgen-commands-in-the-go-directives-tutorial)复用原候选，关联[草稿PR533](https://github.com/cubxxw/blog/pull/533)。主要页面为[英文Go指令教程](https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/)，同时修正中文既有页。**源码、真实Go回归、CI和不可变预览已通过；尚未获得这两页的文章发布许可，未合并或上线。**
 
 ## 页面与查询基线
@@ -48,3 +50,13 @@
 最新完整28+28背景窗口为9月24日—10月21日与10月22日—11月18日：EN217曝光/1点击→224/2（CTR0.89%），ZH18/0→7/0。EN实际配对`golang directives`14/0、`go directives`11/0、`go compiler directives`10/0、`what does go generate do`1/0，返回查询点击和仍为0；不能把页面2点击分配给这些词，也不能归因未上线候选。[新原数](../daily-quality/evidence/2026-11-22/search-summary.json)
 
 新只读[44944360194](https://github.com/cubxxw/blog/actions/runs/44944360194)中EN crawl为11月20日09:40:09Z、ZH仍11月7日00:55:01Z，均PASS/自canonical；这是生产旧教程的抓取，不是PR533已发布的证据。[结果](../daily-quality/evidence/2026-11-22/inspection-summary.json)。候选效果起点仍未知，原Go真实生成、不可变预览与失败证据保持，不重复构建候选。
+
+## 2026-11-24：已部署修复的生产验收
+
+原[PR533](https://github.com/cubxxw/blog/pull/533)于11月23日06:11:14Z由外部账号kubbot合并，真实merge为`8f1e502b1b1d56d91ce8bd481b511a32c821abd2`。本轮只验收已发布内容，没有再次改写或发布，也不把外部动作追认为本轮新增作者批准。历史授权问题不再阻止读回已存在的生产版本，但不扩大未来内容授权。
+
+实际生产`1f89780016c61290571a751d9f85872715537b8d` / Netlify `6b03e55d1ab3b7f8ee076701`于23日07:06:45.264Z ready。双语文章blob与原审查head46c及merge8f精确一致；实际EN29/ZH30全部pre、标题摘要、旧ID、自canonical和语言映射通过。原36日检实际首过36、0失败/重试/跳过，前后同一部署；22页HTTP SEO抽样无问题。完整范围、CI、原失败和性能限制见[24日日报](../daily-quality/2026-11-24.md)，不借旧预览或旧生产绿灯认证新版本。
+
+新完整28+28窗口9月26日—10月23日→10月24日—11月20日，EN页面217/1→218/3（CTR0.46%→1.38%），ZH17/0→7/0；英文12个可见查询配对合计51曝光/0点击，中文查询未返回保持unknown。`go directives`11/0、`go compiler directives`9/0、`go directive`6/0；不能把页面3点击归给缺失查询。[页面与真实配对](../daily-quality/evidence/2026-11-24/search-summary.json)
+
+只读[45257992438](https://github.com/cubxxw/blog/actions/runs/45257992438)精确35f/attempt1成功，原ZIP/CRC/SHA和2个响应身份已核。EN crawl仍20日09:40:09Z、ZH仍7日00:55:01Z，均早于23日部署；没有重提索引，首个新版抓取、完整效果日、T14/T28保持unknown。该API仅索引版本状态，不提供Google保存正文或搜索标题采用证明。[实际结果](../daily-quality/evidence/2026-11-24/inspection-summary.json)
