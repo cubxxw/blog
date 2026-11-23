@@ -2,6 +2,7 @@
 title: 'Go Directives & Automation Tools Deep Dive'
 ShowRssButtonInSectionTermList: true
 date: 2024-01-25T15:22:36+08:00
+lastmod: '2026-11-16T13:00:00+08:00'
 showtoc: true
 tocopen: false
 type: posts
@@ -67,11 +68,14 @@ This also applies to building modules; go generate will not run generators that 
 
      1. **Install Mockgen**:
 
-         - First, make sure you have the **`mockgen`** tool installed. It can be installed using the following command:
+         - Run this example in a project that already has a `go.mod` file. Since Go 1.18, `go get` only manages module dependencies: install command-line tools with a versioned `go install`, and use `go get` to add the `gomock` dependency needed by the generated code. [Go's official explanation](https://go.dev/doc/go-get-install-deprecation)
 
-             ```arduino
-             go get github.com/golang/mock/mockgen
+             ```sh
+             go install github.com/golang/mock/mockgen@v1.6.0
+             go get github.com/golang/mock/gomock@v1.6.0
              ```
+
+         - Make sure the installation directory is on `PATH`: use `GOBIN` if it is set, or the default `$(go env GOPATH)/bin` otherwise. This example keeps the original `golang/mock` library pinned to v1.6.0. Its repository is now archived; this is not an actively maintained library recommendation or a migration to another library. [Original repository and installation instructions](https://github.com/golang/mock)
 
      2. **Write your interface**:
 
@@ -101,7 +105,7 @@ This also applies to building modules; go generate will not run generators that 
          - Now, when you run the **`go generate`** command in a directory containing **`myinterface.go`**, it will read the comment at the top of the file and execute the **`mockgen`** command To generate mock implementation.
 
              ```go
-             gogenerex
+             go generate
              ```
 
      5. **Use the generated Mock**:
@@ -593,6 +597,8 @@ funcgcFlushBgCredit(scanWorkint64) {
 - samplegentool: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/samplegentool](https://github.com/eliben/code-for-blog /tree/master/2021/go-generate-guide/samplegentool)
 - mymod: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/mymod](https://github.com/eliben/code-for-blog /tree/master/2021/go-generate-guide/mymod)
 - Official documentation: [https://pkg.go.dev/cmd/go#hdr-Generate_Go_files_by_processing_source](https://pkg.go.dev/cmd/go#hdr-Generate_Go_files_by_processing_source)
+- [Go: deprecation of go get for installing executables](https://go.dev/doc/go-get-install-deprecation)
+- [golang/mock: original repository, archive status and Mockgen installation](https://github.com/golang/mock)
 - stringer: [https://pkg.go.dev/golang.org/x/tools/cmd/stringer](https://pkg.go.dev/golang.org/x/tools/cmd/stringer)
 - RoundingMode: [https://pkg.go.dev/math/big#RoundingMode](https://pkg.go.dev/math/big#RoundingMode)
 - In the small example module: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/stringerusage](https://github.com/eliben/code- for-blog/tree/master/2021/go-generate-guide/stringerusage)

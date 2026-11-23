@@ -2,6 +2,7 @@
 title: 'Go 源码里的这些 go: 指令 && go 自动化工具'
 ShowRssButtonInSectionTermList: true
 date: '2024-01-25T15:22:36+08:00'
+lastmod: '2026-11-16T13:00:00+08:00'
 showtoc: true
 tocopen: false
 type: posts
@@ -62,11 +63,14 @@ tldr:
 
     1. **安装 Mockgen**:
 
-        - 首先，确保你已经安装了 **`mockgen`** 工具。可以使用以下命令安装：
+        - 以下示例在已有 `go.mod` 的项目中执行。Go 1.18 起，`go get` 只管理模块依赖，安装命令行工具应使用带版本的 `go install`；生成代码所需的 `gomock` 依赖则仍用 `go get` 添加。[Go 官方说明](https://go.dev/doc/go-get-install-deprecation)
 
-            ```arduino
-            go get github.com/golang/mock/mockgen
+            ```sh
+            go install github.com/golang/mock/mockgen@v1.6.0
+            go get github.com/golang/mock/gomock@v1.6.0
             ```
+
+        - 确保安装目录在 `PATH` 中：设置了 `GOBIN` 时使用该目录，否则默认是 `$(go env GOPATH)/bin`。本文保留原示例使用的 `golang/mock` 并固定为 v1.6.0；该仓库现已归档，不代表仍在维护，也不在这里迁移到其他库。[原仓库与安装说明](https://github.com/golang/mock)
 
     2. **编写你的接口**:
 
@@ -96,7 +100,7 @@ tldr:
         - 现在，当你在包含 **`myinterface.go`** 的目录中运行 **`go generate`** 命令时，它将读取文件顶部的注释，并执行 **`mockgen`** 命令来生成 mock 实现。
 
             ```go
-            go generatex
+            go generate
             ```
 
     5. **使用生成的 Mock**:
@@ -590,6 +594,8 @@ funcgcFlushBgCredit(scanWorkint64) {
 - samplegentool: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/samplegentool](https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/samplegentool)
 - mymod: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/mymod](https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/mymod)
 - 官方文档: [https://pkg.go.dev/cmd/go#hdr-Generate_Go_files_by_processing_source](https://pkg.go.dev/cmd/go#hdr-Generate_Go_files_by_processing_source)
+- [Go：安装可执行文件不再使用 go get](https://go.dev/doc/go-get-install-deprecation)
+- [golang/mock：原仓库、归档状态与 Mockgen 安装说明](https://github.com/golang/mock)
 - stringer: [https://pkg.go.dev/golang.org/x/tools/cmd/stringer](https://pkg.go.dev/golang.org/x/tools/cmd/stringer)
 - RoundingMode: [https://pkg.go.dev/math/big#RoundingMode](https://pkg.go.dev/math/big#RoundingMode)
 - 小示例模块中: [https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/stringerusage](https://github.com/eliben/code-for-blog/tree/master/2021/go-generate-guide/stringerusage)
