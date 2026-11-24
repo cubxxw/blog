@@ -4940,6 +4940,14 @@
       "mode": "draft",
       "providerId": "em_6508hrd5xn83c9x3c1939nfzk5",
       "completedAt": "2026-11-21T19:52:23.772Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/agent-eval-from-failures/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/agent-eval-from-failures/",
+      "status": "pending",
+      "attemptId": "8f916878-5737-4053-8b09-d433ef874319",
+      "at": "2026-11-24T00:27:50.147Z",
+      "mode": "draft"
     }
   }
 }
