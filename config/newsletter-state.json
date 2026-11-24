@@ -1553,6 +1553,11 @@
       "at": "2026-11-21T19:52:23.772Z",
       "id": "em_6508hrd5xn83c9x3c1939nfzk5",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/agent-eval-from-failures/": {
+      "at": "2026-11-24T00:27:50.147Z",
+      "id": "em_29653ax5gn87r9hpybh5xt8e0d",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4944,10 +4949,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/agent-eval-from-failures/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/ai-agent/posts/agent-eval-from-failures/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "8f916878-5737-4053-8b09-d433ef874319",
       "at": "2026-11-24T00:27:50.147Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_29653ax5gn87r9hpybh5xt8e0d",
+      "completedAt": "2026-11-24T00:27:50.147Z"
     }
   }
 }
