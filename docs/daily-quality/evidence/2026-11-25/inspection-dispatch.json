@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-25T01:15:42.023831+00:00",
+  "exit": 1,
+  "sourceSha": "340c8d4b2c876644bd9bc6573b692ccb37a42f53",
+  "urls": [
+    "https://cubxxw.com/engineering/posts/go-release-tools/",
+    "https://cubxxw.com/projects/langgraph/",
+    "https://cubxxw.com/zh/projects/langgraph/"
+  ],
+  "scope": "one bounded read-only inspection; existing canary authorized and previously successful; no indexing submission or model",
+  "output": "",
+  "stderr": "could not create workflow dispatch event: HTTP 422: No ref found for: 340c8d4b2c876644bd9bc6573b692ccb37a42f53 (https://api.github.com/repos/cubxxw/blog/actions/workflows/381787523/dispatches)"
+}
