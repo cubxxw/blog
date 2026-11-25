@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-26T05:35:29.822199+08:00",
+  "scope": "bounded reviewed roots only, not whole-disk exhaustive",
+  "items": [
+    {
+      "path": "~/.codex/thread_history_1.sqlite; sessions; archived_sessions",
+      "decision": "retain",
+      "reason": "active conversation/history explicitly protected; not a cache",
+      "allocatedKnownBytes": 24749584384
+    },
+    {
+      "path": "~/.codex/worktrees",
+      "decision": "retain",
+      "reason": "shared source workspaces; completion/ownership not proven for all; current primary native archive refuses",
+      "KiB": 34079552
+    },
+    {
+      "path": "~/.codex/visualizations",
+      "decision": "retain",
+      "reason": "user artifacts and workspaces including current shared chat root; no per-task completion proof",
+      "KiB": 6470524
+    },
+    {
+      "path": "~/.codex/outputs/tormie-agent-continuity-deploy-20261112",
+      "decision": "retain",
+      "reason": "same production-release epoch and no independent retirement proof; possible rollback dependency",
+      "KiB": 1470268
+    },
+    {
+      "path": "~/Services/Leafhour/releases",
+      "decision": "retain",
+      "reason": "current/previous/recovery pointers protected; inspected older candidate linked GET-276 and GET-314 still In Progress",
+      "KiB": 13243184
+    },
+    {
+      "path": "~/Services/tormie",
+      "decision": "retain remainder",
+      "reason": "latest five shared originals, all restore drills, active runtime, root backups and unproven operations protected; only exact11 approved snapshots archived"
+    },
+    {
+      "path": "~/.local/state/stripsearch-runtime",
+      "decision": "retain",
+      "reason": "live PID maps native dependency; current/recovery and backup retention need separate native verification",
+      "KiB": 7215108
+    },
+    {
+      "path": "~/.local/state/pi-delegate/tasks",
+      "decision": "retain",
+      "reason": "cancelled metadata alone insufficient; worktrees source + shared node_modules aliases + sessions protected; no model invoked",
+      "KiB": 3893000
+    },
+    {
+      "path": "~/data/daypage",
+      "decision": "retain source and data",
+      "reason": "prior named local stack retirement does not prove all source/worktrees/reports/private-imports disposable; shared dependency installs preserved",
+      "KiB": 5028320
+    },
+    {
+      "path": "~/ops/runs/code-sync-20261107 and related raw archives",
+      "decision": "retain",
+      "reason": "GET-440/444/451 actual native status In Progress; raw records and task outputs protected",
+      "KiB": 1790000
+    },
+    {
+      "path": "~/Library/Caches",
+      "decision": "retain shared/unknown caches",
+      "reason": "browser runtime/current updater roles and shared unfinished build dependencies not proven closed; no blanket purge",
+      "KiB": 4587628
+    },
+    {
+      "path": "~/Library/Logs",
+      "decision": "retain",
+      "reason": "active or raw simulator/app diagnostics; not proven disposable",
+      "KiB": 773432
+    },
+    {
+      "path": "~/.cache/codex-runtimes",
+      "decision": "retain",
+      "reason": "shared agent runtime; not expendable package download cache",
+      "KiB": 1323944
+    },
+    {
+      "path": "registered internal task artifacts",
+      "decision": "no existing safe payload",
+      "reason": "registry readback:0 existing internal temporary roots"
+    },
+    {
+      "path": "/cores; internal node-compile-cache",
+      "decision": "no payload",
+      "reason": "controlled size readings0KiB"
+    },
+    {
+      "path": "Data local APFS snapshots",
+      "decision": "retain",
+      "reason": "three OS-update/MSU system rollback snapshots; no ordinary expired TimeMachine candidate"
+    },
+    {
+      "path": "Colima default/get9 browser/study",
+      "decision": "retain",
+      "reason": "two engines running; stopped study shared-home mount and persistent ownership unknown; no VM/container/volume retirement authorization borrowed"
+    }
+  ]
+}

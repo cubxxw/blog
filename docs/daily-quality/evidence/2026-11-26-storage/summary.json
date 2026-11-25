@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "task": "GET-564 renewed storage cleanup 2026-11-26",
+  "baselineDataAvailableBytes": 29105172480,
+  "measurement": {
+    "at": "2026-11-26T05:44:27.276499+08:00",
+    "statvfsAvailableBytes": 29485338624,
+    "dfAvailableBytes": 29485338624,
+    "strictTargetBytes": 40000000000,
+    "passed": false,
+    "requiredAdditionalBytes": 10514661377
+  },
+  "cleanupTargetPassed": false,
+  "archivedBackups": {
+    "count": 11,
+    "ordinaryFiles": 3679,
+    "originalAllocatedFileBlocksBytes": 5604352000,
+    "nativeIsolatedRestoresPassed": 11,
+    "hostCompatibility": "manual full-directory rehydration required; no guest symlink promise"
+  },
+  "archivedHistoricalEvidence": {
+    "roots": 2,
+    "ordinaryFiles": 2889,
+    "originalAllocatedFileBlocksBytes": 596754432,
+    "terminalStatuses": [
+      "cold-evidence-alias-complete",
+      "cold-evidence-alias-complete"
+    ],
+    "compatibility": "current host old logical file reads fully hashed; archived executors/VM environments not certified"
+  },
+  "totalOriginalAllocatedFileBlocksBytes": 6201106432,
+  "exclusivePhysicalReclaimBytes": null,
+  "tests": {
+    "finalHostMethods": 40,
+    "browser": 0,
+    "notFirstAttemptAllGreen": true,
+    "nativeRestoresSeparate": 11
+  },
+  "existingRuntimeMetadata": {
+    "containers": 10,
+    "volumes": 37,
+    "hostProcesses": 4,
+    "lastReceipt": "runtime-after-evidence-1-receipt.json",
+    "baselineFieldsSame": true,
+    "allBusinessServicesHealthy": "not certified; pre-existing502/404 preserved"
+  },
+  "externalRunProbe": {
+    "exit": 1,
+    "reason": "audit60s timeout before child",
+    "childExecuted": 0,
+    "newArtifactCreated": false,
+    "bypassed": false
+  },
+  "formalEvidence": "/Volumes/AgentColdStore/Evidence/TaskRuns/mac-data-deep-clean-20261126",
+  "localRecoveryIndex": "/Users/cubxxw/ops/runs/mac-data-deep-clean-20261126/index.json",
+  "issueMustRemain": "In Progress while40GB unmet",
+  "limits": [
+    "bounded audited scope, not whole-disk exhaustive",
+    "active history/sessions/worktrees/shared dependencies/current and rollback state/unfinished or unknown task originals retained",
+    "source allocated blocks are not exclusive physical or df net reclaim",
+    "no site build/deploy or search-performance benefit claimed"
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "command": [
+      "npm",
+      "config",
+      "get",
+      "cache"
+    ],
+    "exit": 0,
+    "paths": [
+      "/Volumes/DataSSD/Caches/npm"
+    ]
+  },
+  {
+    "command": [
+      "pnpm",
+      "store",
+      "path"
+    ],
+    "exit": 0,
+    "paths": [
+      "/Volumes/DataSSD/Caches/pnpm-store/v11"
+    ]
+  },
+  {
+    "command": [
+      "uv",
+      "cache",
+      "dir"
+    ],
+    "exit": 0,
+    "paths": [
+      "/Volumes/DataSSD/Caches/uv"
+    ]
+  },
+  {
+    "command": [
+      "python3",
+      "-m",
+      "pip",
+      "cache",
+      "dir"
+    ],
+    "exit": 0,
+    "paths": [
+      "/Volumes/AgentColdStore/Caches/pip"
+    ]
+  },
+  {
+    "command": [
+      "/Users/cubxxw/.local/bin/go",
+      "env",
+      "GOCACHE",
+      "GOMODCACHE"
+    ],
+    "exit": 0,
+    "paths": [
+      "/Volumes/AgentColdStore/Caches/go-build",
+      "/Volumes/AgentColdStore/Caches/go-mod"
+    ]
+  },
+  {
+    "symlink": "/Volumes/DataSSD/VMs/colima",
+    "electronCache": "/Volumes/AgentColdStore/Caches/electron"
+  }
+]
