@@ -1,0 +1,29 @@
+{
+  "workflowDispatchAttempt1": {
+    "exit": 1,
+    "HTTP": 422,
+    "createdWorkflow": false,
+    "cause": "GitHub dispatch ref uses branch/tag, not raw SHA",
+    "receipt": "inspection-dispatch.json"
+  },
+  "summaryAttempt1": {
+    "exit": 1,
+    "exception": "TypeError",
+    "cause": "mainHostPages also has metadata fields; corrected enumeration selects previous/current explicitly",
+    "claimedResult": false
+  },
+  "anchorObservationAttempt1": {
+    "emptyListWasParserLimitation": true,
+    "cause": "regex omitted minified unquoted id attributes",
+    "correction": "HTMLParser attribute parsing on exact saved HTML",
+    "productFailureClaimed": false
+  },
+  "artifactReaderAttempt1": {
+    "exit": 1,
+    "reason": "expected run/ archive prefix; actual upload has two root filenames",
+    "ZIPBytesRetained": true,
+    "CRCValid": true,
+    "correctedByExactFilenameAllowlist": true,
+    "workflowFailureClaimed": false
+  }
+}

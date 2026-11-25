@@ -1,0 +1,89 @@
+{
+  "runId": 45524560003,
+  "attempt": 1,
+  "sourceSha": "340c8d4b2c876644bd9bc6573b692ccb37a42f53",
+  "artifactId": 14980434918,
+  "ZIPBytes": 1240,
+  "sha256": "d8bf7b7801a8af0070bb797fc1d32675025bfe10ac24d095c1c9b59c2e831960",
+  "allCRCValid": true,
+  "entrySHA256": {
+    "inspection-process-45524560003-1.json": "d777524babc080603c9d68f7e201e86758d4ca3c6b1d3975b2c43c668b615f67",
+    "inspection-45524560003-1.json": "62a9e9449a8caa120ffcb2c60656664c99703d07f42af8ca5d1cfd8030735431"
+  },
+  "processExit": 0,
+  "meta": {
+    "sourceSha": "340c8d4b2c876644bd9bc6573b692ccb37a42f53",
+    "fetchedAt": "2026-11-25T01:17:10.349Z",
+    "property": "sc-domain:cubxxw.com",
+    "languageCode": "en-US",
+    "basis": "Google indexed version only; separate from current HTTP/HTML, not a live test or indexing request",
+    "maxUrls": 25,
+    "maxAttemptsPerRequest": 2,
+    "timeoutMs": 30000,
+    "canaryUrl": "https://cubxxw.com/engineering/posts/go-release-tools/",
+    "runStatus": "complete",
+    "processError": null
+  },
+  "counts": {
+    "planned": 3,
+    "inspected": 3,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "userCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+        "lastCrawlTime": "2026-11-07T10:21:48Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/langgraph/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/projects/langgraph/",
+        "userCanonical": "https://cubxxw.com/projects/langgraph/",
+        "lastCrawlTime": "2026-11-18T02:16:46Z"
+      },
+      "error": null,
+      "blockedBy": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/projects/langgraph/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/projects/langgraph/",
+        "userCanonical": "https://cubxxw.com/zh/projects/langgraph/",
+        "lastCrawlTime": "2026-11-23T10:24:37Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "noIndexRequestSubmitted": true,
+  "initialReaderPathAssumptionRejectedBeforeResults": true,
+  "ZIPRootFilenamesVerifiedExactly": true
+}

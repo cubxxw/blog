@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-25T01:18:42.450820+00:00",
+  "sources": [
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "supports": "LangGraph is a low-level stateful orchestration runtime; its official introduction includes a minimal graph and recommends choosing the appropriate higher-level layer."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "supports": "Interrupts use persisted state and a thread_id; resume values use Command. Side effects before an interrupt may be replayed."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "supports": "Checkpointers scope state by thread; stores hold cross-thread data. In-memory examples are distinct from durable production persistence."
+    }
+  ],
+  "inference": "The current article already addresses observed definition/architecture/example intents; tiny visible query samples do not establish a missing-answer or title-causality claim.",
+  "authorPermission": "No new LangGraph article publication authorization; no article change proposed as a confirmed fix or applied."
+}
