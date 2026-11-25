@@ -1,0 +1,230 @@
+{
+  "at": "2026-11-25T01:16:55.719650+00:00",
+  "before": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "after": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "sameVersion": true,
+  "rows": [
+    {
+      "language": "en",
+      "url": "https://cubxxw.com/projects/langgraph/",
+      "status": 200,
+      "title": "LangGraph Architecture in 2026: StateGraph, Persis… | cubxxw",
+      "description": "A practical 2026 guide to LangGraph architecture: choose the right agent layer, build checkpointed StateGraphs, and recover safely from production failure.\n",
+      "canonical": [
+        "https://cubxxw.com/projects/langgraph/"
+      ],
+      "hreflang": {
+        "null": "/data/personal-timeline-2019-2026.md",
+        "en": "https://cubxxw.com/projects/langgraph/",
+        "zh": "https://cubxxw.com/zh/projects/langgraph/",
+        "x-default": "https://cubxxw.com/projects/langgraph/"
+      },
+      "robotsMeta": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "JSONLDCount": 5,
+      "bodySHA256": "7c127dde3fa161a071a3459cca5dceb421ab0d3d92f63ad2f27657f08912e6a8",
+      "ids": [
+        "3-stategraph-state-nodes-and-edges",
+        "4-persistence-is-a-recovery-contract"
+      ],
+      "containsModelFreeExample": true,
+      "issues": [],
+      "allIds": [
+        "top",
+        "menu",
+        "theme-toggle",
+        "moon",
+        "sun",
+        "main-content",
+        "article-marginalia",
+        "1-what-langgraph-actually-solves",
+        "2-choose-the-layer-before-choosing-langgraph",
+        "3-stategraph-state-nodes-and-edges",
+        "4-persistence-is-a-recovery-contract",
+        "5-a-production-failure-path",
+        "langgraph-fault-path",
+        "6-engineering-trade-offs",
+        "7-current-verdict",
+        "references",
+        "related-articles",
+        "asel-config",
+        "article-faq-title",
+        "share-webshare-btn",
+        "share-more-btn",
+        "share-secondary",
+        "share-sheet-backdrop",
+        "share-sheet",
+        "share-sheet-grid",
+        "post-comments-body",
+        "article-tools-content",
+        "rc-tab-toc",
+        "rc-tab-ai",
+        "rc-panel-toc",
+        "rc-panel-ai",
+        "rc-quick-actions",
+        "article-sheet-overlay",
+        "article-fab",
+        "article-bottom-sheet",
+        "abs-tab-toc",
+        "abs-tab-ai",
+        "abs-tab-share",
+        "abs-panel-toc",
+        "abs-panel-ai",
+        "abs-panel-share",
+        "fsub-status-en",
+        "top-link",
+        "reading-progress-bar",
+        "search-command-palette",
+        "search-palette-title",
+        "search-ai-btn",
+        "search-palette-keyboard-help",
+        "search-ai-box",
+        "search-ai-stop",
+        "search-ai-close",
+        "search-ai-content",
+        "search-ai-suggestions",
+        "search-result-summary",
+        "search-result-count",
+        "search-full-link",
+        "search-results-list",
+        "search-empty",
+        "search-index-retry"
+      ]
+    },
+    {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/projects/langgraph/",
+      "status": 200,
+      "title": "2026 LangGraph 架构指南：StateGraph、持久化与故障恢复 | cubxxw",
+      "description": "面向 2026 年生产实践的 LangGraph 架构指南：解释 StateGraph 的状态、节点与边，演示检查点、thread_id、interrupt 与 Command 恢复流程，并用退款审批故障路径说明幂等副作用、重试边界和持久化责任，帮助团队判断何时从 create_agent 下沉到 LangGraph。\n",
+      "canonical": [
+        "https://cubxxw.com/zh/projects/langgraph/"
+      ],
+      "hreflang": {
+        "null": "/data/personal-timeline-2019-2026.md",
+        "en": "https://cubxxw.com/projects/langgraph/",
+        "zh": "https://cubxxw.com/zh/projects/langgraph/",
+        "x-default": "https://cubxxw.com/projects/langgraph/"
+      },
+      "robotsMeta": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "JSONLDCount": 5,
+      "bodySHA256": "be08ed1dc85d4e5f73e0d9ec0f5cd3887f04049f3cea06e227dfa932aa148b08",
+      "ids": [
+        "3-stategraph状态节点与边",
+        "4-持久化是一份恢复契约"
+      ],
+      "containsModelFreeExample": true,
+      "issues": [],
+      "allIds": [
+        "zh-prose-fonts",
+        "top",
+        "menu",
+        "theme-toggle",
+        "moon",
+        "sun",
+        "main-content",
+        "article-marginalia",
+        "1-langgraph-真正解决的是什么",
+        "2-先选择抽象层再选择-langgraph",
+        "3-stategraph状态节点与边",
+        "4-持久化是一份恢复契约",
+        "5-沿着一条真实故障路径思考",
+        "langgraph-fault-path",
+        "6-生产工程中的取舍",
+        "7-当前结论",
+        "参考资料",
+        "相关文章",
+        "asel-config",
+        "article-faq-title",
+        "share-webshare-btn",
+        "share-more-btn",
+        "share-secondary",
+        "share-sheet-backdrop",
+        "share-sheet",
+        "share-sheet-grid",
+        "post-comments-body",
+        "article-tools-content",
+        "rc-tab-toc",
+        "rc-tab-ai",
+        "rc-panel-toc",
+        "rc-panel-ai",
+        "rc-quick-actions",
+        "article-sheet-overlay",
+        "article-fab",
+        "article-bottom-sheet",
+        "abs-tab-toc",
+        "abs-tab-ai",
+        "abs-tab-share",
+        "abs-panel-toc",
+        "abs-panel-ai",
+        "abs-panel-share",
+        "fsub-status-zh",
+        "top-link",
+        "reading-progress-bar",
+        "search-command-palette",
+        "search-palette-title",
+        "search-ai-btn",
+        "search-palette-keyboard-help",
+        "search-ai-box",
+        "search-ai-stop",
+        "search-ai-close",
+        "search-ai-content",
+        "search-ai-suggestions",
+        "search-result-summary",
+        "search-result-count",
+        "search-full-link",
+        "search-results-list",
+        "search-empty",
+        "search-index-retry"
+      ]
+    }
+  ],
+  "legacyAliases": [
+    {
+      "url": "https://cubxxw.com/posts/ai-projects/langgraph/",
+      "finalURL": "https://cubxxw.com/projects/langgraph/",
+      "status": 200,
+      "chain": [
+        {
+          "from": "https://cubxxw.com/posts/ai-projects/langgraph/",
+          "status": 301,
+          "to": "https://cubxxw.com/projects/langgraph/"
+        }
+      ],
+      "reachesExpectedCanonical": true,
+      "bytes": 146594
+    },
+    {
+      "url": "https://cubxxw.com/zh/posts/ai-projects/langgraph/",
+      "finalURL": "https://cubxxw.com/zh/projects/langgraph/",
+      "status": 200,
+      "chain": [
+        {
+          "from": "https://cubxxw.com/zh/posts/ai-projects/langgraph/",
+          "status": 301,
+          "to": "https://cubxxw.com/zh/projects/langgraph/"
+        }
+      ],
+      "reachesExpectedCanonical": true,
+      "bytes": 154870
+    }
+  ],
+  "frozenParserSHA256": "6537f9be8d67be03cf795379fb594949cb9d06739f54bb48ab810fa4aed2c4b4",
+  "parserLogicChanged": false,
+  "scope": "two canonical HTML responses and two legacy redirect journeys; no browser or Google stored-body claim"
+}
