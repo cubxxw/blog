@@ -1,0 +1,58 @@
+{
+  "sourceContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "query",
+      "page"
+    ],
+    "filters": [
+      {
+        "groupType": "and",
+        "filters": [
+          {
+            "dimension": "page",
+            "operator": "includingRegex",
+            "expression": "^https?://cubxxw\\.com/"
+          }
+        ]
+      }
+    ],
+    "requestAggregationType": "byPage",
+    "slice": "blog_date_query_page"
+  },
+  "currentDates": {
+    "other": {
+      "dates": [
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-15",
+        "2026-11-15"
+      ],
+      "impressions": 5,
+      "clicks": 0
+    },
+    "physical-psychological-time": {
+      "dates": [
+        "2026-11-15",
+        "2026-11-16"
+      ],
+      "impressions": 4,
+      "clicks": 0
+    },
+    "possibility-metaphor": {
+      "dates": [
+        "2026-11-16"
+      ],
+      "impressions": 1,
+      "clicks": 0
+    }
+  },
+  "rawExactPairsPrivate": {
+    "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127/monthly-query-daily-raw.json",
+    "sha256": "c3b71a4c6f5f8d95895d0cc859ef2b9624c890d7445f8231a41f76e388d67b20"
+  },
+  "limits": "labels are not literal queries; private exact strings and source request/response kept; all current returned target pairs predateUTCNov20crawl; missing notzero; no denominator replacement"
+}

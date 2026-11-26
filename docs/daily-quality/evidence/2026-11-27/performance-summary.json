@@ -1,0 +1,104 @@
+{
+  "source": "data/seo/psi-2026-11-26.json",
+  "fetchedAt": "2026-11-26T16:18:10.683Z",
+  "counts": {
+    "planned": 26,
+    "succeeded": 21,
+    "partial": 0,
+    "failed": 5,
+    "missing": 0,
+    "usable": 21,
+    "duplicate": 0,
+    "unplanned": 0,
+    "byStrategy": {
+      "mobile": {
+        "planned": 13,
+        "succeeded": 11,
+        "partial": 0,
+        "failed": 2,
+        "missing": 0,
+        "usable": 11
+      },
+      "desktop": {
+        "planned": 13,
+        "succeeded": 10,
+        "partial": 0,
+        "failed": 3,
+        "missing": 0,
+        "usable": 10
+      }
+    }
+  },
+  "failed": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "reasonCategory": "psi-api-failure",
+      "attempts": 1,
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "reasonCategory": "psi-api-failure",
+      "attempts": 3,
+      "psiHttpStatus": 500,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "reasonCategory": "psi-api-failure",
+      "attempts": 3,
+      "psiHttpStatus": 500,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "reasonCategory": "psi-api-failure",
+      "attempts": 1,
+      "psiHttpStatus": 400,
+      "lighthouseRuntimeError": null
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "reasonCategory": "psi-api-failure",
+      "attempts": 3,
+      "psiHttpStatus": 500,
+      "lighthouseRuntimeError": null
+    }
+  ],
+  "home": [
+    {
+      "strategy": "mobile",
+      "LCPms": 1117.0022470758138,
+      "CLS": 0,
+      "TBTms": 498.5000000000002,
+      "comparisonComplete": false
+    },
+    {
+      "strategy": "desktop",
+      "LCPms": 794.697257835069,
+      "CLS": 0.002310618628041122,
+      "TBTms": 49,
+      "comparisonComplete": false
+    }
+  ],
+  "Products": "both latest PSI slots failed; no last-good substitution",
+  "monthlyPage": "not in configured PSI plan; no fresh LCP/CLS/bytes/long-task sample",
+  "CrUX": "DESKTOP andPHONE no-sample; fieldINPunknown",
+  "sourceSHA": "unknown",
+  "screenAndThrottlingBinding": "incomplete",
+  "transportBytesAndLongTasks": "not measured this round",
+  "newAPIOrModelCalls": false,
+  "reportExit": 2,
+  "noFullPerformanceCheck": "no current full generated inventory; no Hugo rebuild"
+}

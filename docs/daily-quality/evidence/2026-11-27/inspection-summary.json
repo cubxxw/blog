@@ -1,0 +1,51 @@
+{
+  "runID": 45889337539,
+  "attempt": 1,
+  "workflowStatus": "success",
+  "sourceSha": "d90bbed892c5af18ae7a7ff8dd939d395aa1a696",
+  "counts": {
+    "planned": 1,
+    "inspected": 1,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+      "status": "inspected",
+      "httpStatus": 200,
+      "indexStatus": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+        "userCanonical": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+        "lastCrawlTime": "2026-11-20T01:57:35Z"
+      },
+      "error": null,
+      "blockedBy": null
+    }
+  ],
+  "artifact": {
+    "artifactID": 15150682984,
+    "run": 45889337539,
+    "attempt": 1,
+    "source": "d90bbed892c5af18ae7a7ff8dd939d395aa1a696",
+    "zipBytes": 1165,
+    "zipSHA256": "6c8d0f317b603654f6a6ed070b66ad2cbef6d5c46c58ed5705d10b3e70e23b98",
+    "allCRC": true,
+    "rootFiles": [
+      {
+        "name": "inspection-45889337539-1.json",
+        "sha256": "ff2a3b60ca10276fb407e5634768469f7f51320573d0fc73b8a60a419655f29c"
+      },
+      {
+        "name": "inspection-process-45889337539-1.json",
+        "sha256": "9b8289e7a8f21466d04f9d66c4c654ab6ab7d2510138a65b014e6c2c4f8c616f"
+      }
+    ]
+  },
+  "limits": "one read-only new monthly target; no submission, Google stored HTML, title or actual HTTP transport retry count certified"
+}
