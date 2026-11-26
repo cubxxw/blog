@@ -31,7 +31,19 @@
     "corrected": "typed selected schema + original provenance; final outputs validated against underlying report/snapshot"
   },
   "pretestAudit": {
-    "first": {
+    "independentlyRetainedObservations": 1,
+    "receiptFiles": [
+      {
+        "path": "audit-first-receipt.json",
+        "sha256": "1a259aa771ed3324d3df333226a0724737b656548ba8ddb831e963f78a14ab3b"
+      },
+      {
+        "path": "audit-receipt.json",
+        "sha256": "1a259aa771ed3324d3df333226a0724737b656548ba8ddb831e963f78a14ab3b"
+      }
+    ],
+    "receiptsByteIdentical": true,
+    "observedAudit": {
       "exit": null,
       "timeout": true,
       "limitSeconds": 60,
@@ -39,16 +51,11 @@
       "elapsedSeconds": 60.020302874967456,
       "log": "audit-before-tests.log"
     },
-    "second": {
-      "exit": null,
-      "timeout": true,
-      "limitSeconds": 60,
-      "at": "2026-11-27T04:08:48.821987+08:00",
-      "elapsedSeconds": 60.020302874967456,
-      "log": "audit-before-tests.log"
-    },
+    "otherInvocation": "original independent receipt not preserved; unknown, not counted as second observation",
     "browserExecuted": 0,
-    "note": "both bounded60s timeouts; repeated audit did not produce a pass; no browser, no raised deadline or bypass"
+    "gateBypassed": false,
+    "reviewFinding": "P2 duplicate receipts cannot prove two independent audits; original files retained unchanged",
+    "correctedAt": "2026-11-27T04:31:22.888327+08:00"
   },
   "testDaily": {
     "expectedEntry": 36,
