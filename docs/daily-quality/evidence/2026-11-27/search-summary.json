@@ -1,0 +1,249 @@
+{
+  "params": {
+    "dir": "data/seo",
+    "start": "2026-09-29",
+    "end": "2026-11-23",
+    "host": "cubxxw.com",
+    "includeQueryRows": true,
+    "asOf": "2026-11-26T20:06:47.308Z",
+    "summaryResponseAggregation": "byPage",
+    "windows": {
+      "previous": {
+        "start": "2026-09-29",
+        "end": "2026-10-26",
+        "days": 28
+      },
+      "current": {
+        "start": "2026-10-27",
+        "end": "2026-11-23",
+        "days": 28
+      }
+    }
+  },
+  "windows": {
+    "previous": {
+      "start": "2026-09-29",
+      "end": "2026-10-26",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-27",
+      "end": "2026-11-23",
+      "days": 28
+    }
+  },
+  "site": {
+    "previous": {
+      "metrics": {
+        "clicks": 137,
+        "impressions": 37781,
+        "ctr": 0.003626161298006935,
+        "position": 8.999391228395226
+      },
+      "plannedDays": 28,
+      "countedDates": 28,
+      "internalAllRows": "unknown"
+    },
+    "current": {
+      "metrics": {
+        "clicks": 141,
+        "impressions": 28705,
+        "ctr": 0.004912036230621843,
+        "position": 8.582024037624107
+      },
+      "plannedDays": 28,
+      "countedDates": 28,
+      "internalAllRows": "unknown"
+    }
+  },
+  "targets": {
+    "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+          "clicks": 1,
+          "impressions": 2931,
+          "ctr": 0.000341180484476288,
+          "position": 6.969634936881611
+        },
+        "visiblePairCount": 9,
+        "visibleQueryImpressions": 44,
+        "visibleQueryClicks": 0
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+          "clicks": 2,
+          "impressions": 2178,
+          "ctr": 0.0009182736455463728,
+          "position": 7.1005509641873275
+        },
+        "visiblePairCount": 5,
+        "visibleQueryImpressions": 10,
+        "visibleQueryClicks": 0
+      }
+    },
+    "https://cubxxw.com/growth/posts/2026-02-thought-notes/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/growth/posts/2026-02-thought-notes/",
+          "clicks": 3,
+          "impressions": 839,
+          "ctr": 0.003575685339690107,
+          "position": 7.466030989272944
+        },
+        "visiblePairCount": 8,
+        "visibleQueryImpressions": 56,
+        "visibleQueryClicks": 0
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/growth/posts/2026-02-thought-notes/",
+          "clicks": 3,
+          "impressions": 606,
+          "ctr": 0.0049504950495049506,
+          "position": 7.353135313531353
+        },
+        "visiblePairCount": 3,
+        "visibleQueryImpressions": 3,
+        "visibleQueryClicks": 0
+      }
+    },
+    "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 173,
+          "ctr": 0.005780346820809248,
+          "position": 6.630057803468208
+        },
+        "visiblePairCount": 1,
+        "visibleQueryImpressions": 107,
+        "visibleQueryClicks": 1
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 244,
+          "ctr": 0.004098360655737705,
+          "position": 6.163934426229508
+        },
+        "visiblePairCount": 3,
+        "visibleQueryImpressions": 178,
+        "visibleQueryClicks": 0
+      }
+    },
+    "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 20,
+          "ctr": 0.05,
+          "position": 6.85
+        },
+        "visiblePairCount": 1,
+        "visibleQueryImpressions": 10,
+        "visibleQueryClicks": 0
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 0,
+          "impressions": 13,
+          "ctr": 0,
+          "position": 12
+        },
+        "visiblePairCount": 1,
+        "visibleQueryImpressions": 2,
+        "visibleQueryClicks": 0
+      }
+    },
+    "https://cubxxw.com/engineering/posts/go-release-tools/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 915,
+          "ctr": 0,
+          "position": 7.549726775956284
+        },
+        "visiblePairCount": 9,
+        "visibleQueryImpressions": 63,
+        "visibleQueryClicks": 0
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 3,
+          "impressions": 1621,
+          "ctr": 0.001850709438618137,
+          "position": 7.497840838988279
+        },
+        "visiblePairCount": 8,
+        "visibleQueryImpressions": 20,
+        "visibleQueryClicks": 0
+      }
+    },
+    "https://cubxxw.com/zh/engineering/posts/go-release-tools/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 21,
+          "ctr": 0,
+          "position": 6.857142857142857
+        },
+        "visiblePairCount": 0,
+        "visibleQueryImpressions": 0,
+        "visibleQueryClicks": 0
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 20,
+          "ctr": 0,
+          "position": 6.85
+        },
+        "visiblePairCount": 0,
+        "visibleQueryImpressions": 0,
+        "visibleQueryClicks": 0
+      }
+    }
+  },
+  "queryContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "query",
+      "page"
+    ],
+    "filters": [
+      {
+        "groupType": "and",
+        "filters": [
+          {
+            "dimension": "page",
+            "operator": "includingRegex",
+            "expression": "^https?://cubxxw\\.com/"
+          }
+        ]
+      }
+    ],
+    "requestAggregationType": "byPage",
+    "slice": "blog_date_query_page"
+  },
+  "limits": "raw exact query×page kept in owner-private encrypted evidence; no public copying of removed/private/unrelated prose; missing notzero; no filtered/unfiltered denominator mixing",
+  "fullPairsDisplay": {
+    "previous": 759,
+    "current": 595,
+    "pairsLimit": 5000,
+    "pagesLimit": 5000,
+    "APICollectorLimitsChanged": false
+  }
+}

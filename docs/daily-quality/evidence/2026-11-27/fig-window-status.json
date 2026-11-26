@@ -1,0 +1,30 @@
+{
+  "contentBindings": {
+    "content/en/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md": {
+      "5a0673739f6732696a661da65fabb06fca58aa70": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+      "1f89780016c61290571a751d9f85872715537b8d": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+      "d90bbed892c5af18ae7a7ff8dd939d395aa1a696": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed"
+    },
+    "content/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md": {
+      "5a0673739f6732696a661da65fabb06fca58aa70": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+      "1f89780016c61290571a751d9f85872715537b8d": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+      "d90bbed892c5af18ae7a7ff8dd939d395aa1a696": "c1f82ad405a10d205759cd53f6bb5f59ca039555"
+    }
+  },
+  "crawlEvidence": "docs/daily-quality/evidence/2026-11-22/inspection-summary.json reused, not a new inspection",
+  "latestCompleteRequestedDate": "2026-11-23",
+  "EN": {
+    "firstCompleteDateCandidate": "2026-11-21",
+    "plannedEffectDatesCovered": 3,
+    "T14End": "2026-12-04",
+    "T28End": "2026-12-18"
+  },
+  "ZH": {
+    "firstCompleteDateCandidate": "2026-11-20",
+    "plannedEffectDatesCovered": 4,
+    "T14End": "2026-12-03",
+    "T28End": "2026-12-17"
+  },
+  "full14or28EffectWindow": false,
+  "GoogleStoredBytesOrSearchTitleVerified": false
+}

@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "formalRoot": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127",
+  "scope": "small public observations only; raw snapshots/HTML/ZIP/exact query strings remain encrypted",
+  "payloads": [
+    {
+      "path": "fig-window-status.json",
+      "sha256": "3d7568eed60673ae8b320e121279d7f21f1484a3e2e4b0995ab3088189343024",
+      "bytes": 1343
+    },
+    {
+      "path": "inspection-summary.json",
+      "sha256": "dbfd9846ec180b4ca3c093cdc7744dda9fe6a551eb8c68c247025cfc338669f5",
+      "bytes": 1633
+    },
+    {
+      "path": "monthly-http.json",
+      "sha256": "4a735b49c003bcfae08a3458506fe5d835654380a8230f443282d6239967d847",
+      "bytes": 4145
+    },
+    {
+      "path": "observation-errors.json",
+      "sha256": "851f9a4d4f50fd01999b8ad26b0389b31d3bf1b89c9e5f93df10127abe50a2a8",
+      "bytes": 2286
+    },
+    {
+      "path": "performance-summary.json",
+      "sha256": "6133cfd90cd4a16f9b207a03e44fdeefcd5c505253fa7a465bd0f217c4ba7e38",
+      "bytes": 2675
+    },
+    {
+      "path": "query-date-summary.json",
+      "sha256": "36aefd971392238ee7b3ec16937a568f59d6cd42540f45d72d336dc95647cf64",
+      "bytes": 1429
+    },
+    {
+      "path": "search-summary.json",
+      "sha256": "0261a5795d2e0cf48ecdb65279471640bcb19f3e47608926a19bfc7be413fc50",
+      "bytes": 7038
+    },
+    {
+      "path": "source-binding.json",
+      "sha256": "5ee4ac17af299cf7c38bea007d196fddef432b0ce8676dd52a71de7cd5cdf261",
+      "bytes": 1379
+    }
+  ],
+  "formalInputs": [
+    {
+      "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127/gsc-report-full-pairs.json",
+      "sha256": "debcf8a83271447b1a162b8ccad4a73cb6d307715f20c477dd64c76f812c3718"
+    },
+    {
+      "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127/monthly-query-daily-raw.json",
+      "sha256": "c3b71a4c6f5f8d95895d0cc859ef2b9624c890d7445f8231a41f76e388d67b20"
+    },
+    {
+      "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127/inspection-artifact.zip",
+      "sha256": "6c8d0f317b603654f6a6ed070b66ad2cbef6d5c46c58ed5705d10b3e70e23b98"
+    },
+    {
+      "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261127/parser-extraction.json",
+      "sha256": "6419f60db255275cebdff19fdf7de9829f77c24fe111f639efdcb70653084c4e"
+    }
+  ]
+}

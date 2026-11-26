@@ -1,0 +1,72 @@
+{
+  "firstAsOfCLI": {
+    "exit": 1,
+    "reason": "six fractional digits rejected by strict milliseconds UTC parser",
+    "rawLogs": [
+      "first-invalid-asof-gsc-report.log",
+      "first-invalid-asof-seo-report.log"
+    ],
+    "corrected": "same existing snapshots, strict .mmmZ; GSC0/SEO2partial"
+  },
+  "displayLimit": {
+    "original": {
+      "pagesLimit": 50,
+      "pairsLimit": 500
+    },
+    "corrected": {
+      "pagesLimit": 5000,
+      "pairsLimit": 5000
+    },
+    "scope": "report display only; API filters/limits not changed; absent from displayed top50 not calledmissing"
+  },
+  "adHocMetadataExtraction": {
+    "source": "actual tool-history receipts; normalized summary here, not reconstructed raw logs",
+    "errors": [
+      "wrong map/list indexing",
+      "summary annotation string treated as window",
+      "daily rows count treated as row collection",
+      "normalized row wrongly expected keys",
+      "PSI status instead of finalStatus/usable"
+    ],
+    "corrected": "typed selected schema + original provenance; final outputs validated against underlying report/snapshot"
+  },
+  "pretestAudit": {
+    "first": {
+      "exit": null,
+      "timeout": true,
+      "limitSeconds": 60,
+      "at": "2026-11-27T04:08:48.821987+08:00",
+      "elapsedSeconds": 60.020302874967456,
+      "log": "audit-before-tests.log"
+    },
+    "second": {
+      "exit": null,
+      "timeout": true,
+      "limitSeconds": 60,
+      "at": "2026-11-27T04:08:48.821987+08:00",
+      "elapsedSeconds": 60.020302874967456,
+      "log": "audit-before-tests.log"
+    },
+    "browserExecuted": 0,
+    "note": "both bounded60s timeouts; repeated audit did not produce a pass; no browser, no raised deadline or bypass"
+  },
+  "testDaily": {
+    "expectedEntry": 36,
+    "launched": 0,
+    "executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "retries": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "status": "not run; guard blocked before launch; no fresh list denominator claimed"
+  },
+  "sourceVersions": {
+    "at": "2026-11-27T04:26:58.746236+08:00",
+    "installedPW": "1.63.0",
+    "declaredPW": "1.65.1",
+    "installedChromeNotUsed": "158.0.8127.37",
+    "browserExecuted": 0,
+    "source": "package JSON and installed module metadata + Chrome Info.plist; no browser launch"
+  }
+}

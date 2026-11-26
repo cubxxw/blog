@@ -1,0 +1,104 @@
+{
+  "at": "2026-11-26T20:15:38.390+00:00",
+  "before": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "after": {
+    "id": "6b03e55d1ab3b7f8ee076701",
+    "commit_ref": "1f89780016c61290571a751d9f85872715537b8d",
+    "state": "ready",
+    "published_at": "2026-11-23T07:06:45.264Z"
+  },
+  "samePublishedVersion": true,
+  "rows": [
+    {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+      "status": 200,
+      "title": "2026年2月思考笔记：思想与历史、日常与其他、AI 与 Agent 系统 | cubxxw",
+      "description": "2026 年 2 月的公开思考笔记，共 335 条，记录阅读与历史、AI 与 Agent、旅行城市和日常生活里的想法。欲望、秩序、美感与接纳自己，是这个月反复出现的问题。按主题整理并保留原始时间戳，校正错配标题、转写错误和明显矛盾；私人及政治敏感内容已删改，涉及健康和技术的解释补足必要限定，留下当时仍未想清楚的部分。\n",
+      "canonical": [
+        "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2026-02-thought-notes/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+        "x-default": "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      },
+      "robotsMetaAll": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "JSONLDCount": 4,
+      "bodyBytes": 626948,
+      "bodySHA256": "27af200d70887bf15c8ea1b7f86db23dd51dcc42f7781f0cab22628a6db6eb48",
+      "postVisibleCharacters": 105853,
+      "postH3Count": 340,
+      "samePageAnchorOccurrences": 362,
+      "uniqueSamePageAnchors": 352,
+      "missingSamePageAnchors": [],
+      "containsDiagnosticLiterals": {
+        "物理时间": false,
+        "心理时间": false,
+        "可能性坍缩": false
+      },
+      "has335Count": true,
+      "issues": []
+    },
+    {
+      "language": "en",
+      "url": "https://cubxxw.com/growth/posts/2026-02-thought-notes/",
+      "status": 200,
+      "title": "February 2026 Thought Notes | cubxxw",
+      "description": "February 2026: 335 edited notes on reading, AI, cities, desire and self-acceptance. Dates remain; mismatched headings are fixed and private material removed.\n",
+      "canonical": [
+        "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/growth/posts/2026-02-thought-notes/",
+        "zh": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+        "x-default": "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      },
+      "robotsMetaAll": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "JSONLDCount": 4,
+      "bodyBytes": 655785,
+      "bodySHA256": "af72aa9b7ba0ffe619027ab8f00a6546704cac8907ebb504a87cec424c5736a3",
+      "postVisibleCharacters": 336022,
+      "postH3Count": 340,
+      "samePageAnchorOccurrences": 362,
+      "uniqueSamePageAnchors": 352,
+      "missingSamePageAnchors": [],
+      "containsDiagnosticLiterals": {
+        "物理时间": false,
+        "心理时间": false,
+        "可能性坍缩": false
+      },
+      "has335Count": true,
+      "issues": []
+    }
+  ],
+  "robots": {
+    "status": 200,
+    "GooglebotAllowed": {
+      "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/": true,
+      "https://cubxxw.com/growth/posts/2026-02-thought-notes/": true
+    }
+  },
+  "sitemap": {
+    "status": 200,
+    "pageLocs": 444,
+    "uniquePages": 444,
+    "imageLocs": 249,
+    "uniqueImages": 143,
+    "allLocEntries": 693,
+    "targetURLsPresent": true
+  },
+  "parserSource": "parser-extraction.json",
+  "scope": "two canonical HTML and same-page fragment targets/robots/sitemap; no browser, all external link test, Google stored-text proof or performance pass"
+}

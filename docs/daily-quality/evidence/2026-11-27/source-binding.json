@@ -1,0 +1,25 @@
+{
+  "sourceBaseline": "d90bbed892c5af18ae7a7ff8dd939d395aa1a696",
+  "publishedSource": "1f89780016c61290571a751d9f85872715537b8d",
+  "paths": {
+    "content/zh/growth/posts/2026-02-thought-notes.md": {
+      "cb28b629c29dc3ade16a71e7b61c5cca1a2e04ed": "0b226744e43befca044915ae1d61e7e58e2c41da",
+      "1f89780016c61290571a751d9f85872715537b8d": "0b226744e43befca044915ae1d61e7e58e2c41da",
+      "d90bbed892c5af18ae7a7ff8dd939d395aa1a696": "0b226744e43befca044915ae1d61e7e58e2c41da"
+    },
+    "content/en/growth/posts/2026-02-thought-notes.md": {
+      "cb28b629c29dc3ade16a71e7b61c5cca1a2e04ed": "2b1d0df8d71342d913ea8a49d81dde2ccd0c0856",
+      "1f89780016c61290571a751d9f85872715537b8d": "2b1d0df8d71342d913ea8a49d81dde2ccd0c0856",
+      "d90bbed892c5af18ae7a7ff8dd939d395aa1a696": "2b1d0df8d71342d913ea8a49d81dde2ccd0c0856"
+    }
+  },
+  "sourceLastChangeCommit": "cb28b629c29dc3ade16a71e7b61c5cca1a2e04ed",
+  "sourceLastChangeTime": "2026-11-01T10:48:30+08:00",
+  "GitChangeDateIsNotDeployDate": true,
+  "currentSourceAndPublishedInputSame": true,
+  "GoogleStoredBytesVerified": false,
+  "diagnosticLiteralResult": {
+    "currentMarkdownAndLiveVisibleText": "the3 inspected literal strings absent; no claimGoogle retained oldtext or that semantics absent",
+    "oldParentBeforeNov1": "also absent literal strings; current query mismatch cannot be assigned toNov1edit"
+  }
+}
