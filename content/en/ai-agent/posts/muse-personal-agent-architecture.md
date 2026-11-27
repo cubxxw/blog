@@ -29,8 +29,6 @@ Meta tested the base model and separately tested the deployed product. I wanted 
 
 My own agent already has 29 Goals. If I open a new chat and ask, “What's left on the eval article?”, how does it know which article I mean? If I ask it to wait for my editor's reply, who keeps checking after I close my laptop? Later, when I open the publishing page, how would it know to suggest cutting the abstract down to 60 characters?
 
-I'll use that example of waiting for an editor's reply. Some behavior is visible in the desktop app. As we go, I'll point out what the available material can establish and where I'm describing how I'd build it.
-
 ## One reminder, three places to find it
 
 On my Mac I pulled up a haircut reminder I'd already set. I'd added my haircut preferences in chat and asked Muse to remind me in four weeks. It gave me a confirmation card. I then looked for the same reminder in Goals and Scheduled tasks. Each screen told me something different.
@@ -47,7 +45,7 @@ From the confirmation card, I found the haircut reminder under Tracking on the G
 
 There was a small hiccup in that chat. Muse initially got my preference wrong. I supplied it, and Muse corrected itself on the spot and said it had saved it. That establishes the correction in the current chat. I'd need to ask about a haircut in a fresh chat to see whether it can retrieve the new information.
 
-I looked at Muse for Mac 14.1 on November 27, 2026. The run states I describe came from the interface. I treat Muse's own account of what it read on a given turn as a clue.
+Both run records above came from Muse for Mac 14.1 on November 27, 2026.
 
 ## Picking up where you left off: context and memory
 
@@ -63,13 +61,13 @@ If I only ask, “What's left on the eval article?”, knowing that I've written
 | Runtime context | User messages and background handoffs can carry the local time and IANA time zone. Parts of the people and group indexes can enter context directly | Interpret “tonight” against the right time zone and know which people and groups are available to look up |
 | On-demand reads | When the index matches, read the person's page. After older chats are compacted, memory, files, and chat history can recover details | Open the original comment, the previous decision, and the draft revision once the right draft is found |
 
-A person index can be as short as a name, aliases, and a pointer. Once that person comes up, open their page. Some tools work similarly. Muse can load tool namespaces lazily and read the parameter definitions when it needs them. The material I saw only partly explains which files are read automatically on each turn, in what order, and at what token cost.
+A person index can be as short as a name, aliases, and a pointer. Once that person comes up, open their page. Some tools work similarly. Muse can load tool namespaces lazily and read the parameter definitions when it needs them.
 
 #### Which of the 29 Goals make it into context?
 
 If I built this entry point, `@Eval article` would refer directly to a stable Goal ID. When I say “that article,” the agent would first see whether a draft is already linked to the chat, then search by title, alias, or project. If two look right, it can ask which one I mean. Once it has the right one, it reads the summary, the latest decision, and the next step, opening the evidence when necessary. Muse supports searching Goals by name and content, and each Goal has its own workspace.
 
-I also asked Muse how it loads that many Goals. It said it included summaries for 15 of the 26 items in Tracking for that turn and would use the list or search for the rest. That's Muse's own account. I don't have the request log for that turn. The desktop UI collapses some Tracking items too, but the number shown on screen tells you little about how many the model actually read.
+I asked Muse how many Goals it had loaded. It replied that 15 of the 26 Tracking summaries had entered context and that the others were available through listing or search. The desktop app also collapses some Tracking entries. To verify what the model received, I'd inspect the request for that turn.
 
 A chat message that says “that article” needs a lookup. A scheduled job for the draft can save its Goal ID when it's created and open the same record when it wakes up. It can do that even as the number of Goals grows.
 
@@ -269,10 +267,10 @@ I've selected WeChat and the draft still has a long abstract. The 60-character r
 | --- | --- | --- |
 | Memory upkeep and Relationships | Memory is consolidated hourly when new signals arrive. People and groups also receive hourly updates | Memory files and pages for people and groups |
 | Ideas and Studying | Ideas are generated daily. Studying runs nightly | Suggestion cards, Goal research briefs, and progress notes |
-| Dreaming | Nightly. The material gives no exact hour or time zone | Reflections on recent chats, interactions to repair, and guidance for working together |
+| Dreaming | Nightly | Reflections on recent chats, interactions to repair, and guidance for working together |
 | Skill review | Daily | Skills drawn from repeated work, or updates to existing skills |
 
-A changed preference goes back into memory. New material goes into its Goal. A step that works repeatedly might deserve a skill. The tables expose background objectives, phases, and calibration records, with events showing whether learned guidance was adopted. They leave the actual evidence window and scoring method open.
+A changed preference goes back into memory. New material goes into its Goal. A step that works repeatedly might deserve a skill. The tables expose background objectives, phases, and calibration records, with events showing whether learned guidance was adopted.
 
 ## Runtime, durable state, and evaluation
 
@@ -292,7 +290,7 @@ flowchart TD
     H --> R["Goal updates and results"]
 ```
 
-In an earlier chat, Muse reported seeing a separate home volume mounted inside its VM. That is consistent with the material describing a home directory that survives VM replacement. My direct checks were of the desktop app and its version. The mount detail is Muse's own account of its earlier check. Storage quotas per account would need separate product evidence.
+In an earlier chat, Muse reported that its VM's home volume was mounted separately.
 
 #### Where do the Mac, Chrome extension, and cloud browser run?
 
@@ -312,7 +310,7 @@ The Muse Mac app embeds the Muse web interface. The Mac can also be paired as a 
 | PostgreSQL inspection layer | Memory entries, conversation context, Goals, jobs, runs, and delivery records | Trace the steps a task went through and find where progress stopped |
 | Product tools | Search Goals, read memory, inspect scheduled jobs, and use connectors | Read or write under the product's permissions and rules |
 
-Markdown is a good fit for an article I want to open. The scheduler has different queries: which checks are due tonight, and which run produced this result? Muse uses `muse.db` for bounded, read-only diagnostics. Ordinary reads and writes go through product tools. The inspection layer establishes the use of PostgreSQL. Its deployment and replication details are still unclear.
+Markdown is a good fit for an article I want to open. The scheduler has different queries: which checks are due tonight, and which run produced this result? Muse uses `muse.db` for bounded, read-only diagnostics. Ordinary reads and writes go through product tools.
 
 ### Evaluation: did it remember, do the work, and tell me?
 
