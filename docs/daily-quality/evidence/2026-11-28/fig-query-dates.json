@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "date": "2026-11-19",
+      "query": "figwright plugin",
+      "impressions": 1,
+      "clicks": 0,
+      "position": 8,
+      "sourceFile": "data/seo/gsc-2026-11-24.json",
+      "sourceFetchedAt": "2026-11-24T16:45:15.734Z",
+      "sourceSHA256": "2058cbd3c7998730a06a7d0b9ff4345f27518515fd7639ead1a023c8cbb0df56"
+    },
+    {
+      "date": "2026-11-22",
+      "query": "figwright mcp",
+      "impressions": 4,
+      "clicks": 0,
+      "position": 8.25,
+      "sourceFile": "data/seo/gsc-2026-11-27.json",
+      "sourceFetchedAt": "2026-11-27T15:53:17.999Z",
+      "sourceSHA256": "2e0b8c6c300fccda49fe0ee852e477c542d2eec180b072e63f197fca1bea6374"
+    },
+    {
+      "date": "2026-11-23",
+      "query": "figwright mcp",
+      "impressions": 6,
+      "clicks": 0,
+      "position": 7.5,
+      "sourceFile": "data/seo/gsc-2026-11-27.json",
+      "sourceFetchedAt": "2026-11-27T15:53:17.999Z",
+      "sourceSHA256": "2e0b8c6c300fccda49fe0ee852e477c542d2eec180b072e63f197fca1bea6374"
+    },
+    {
+      "date": "2026-11-23",
+      "query": "figwright plugin",
+      "impressions": 1,
+      "clicks": 0,
+      "position": 7,
+      "sourceFile": "data/seo/gsc-2026-11-27.json",
+      "sourceFetchedAt": "2026-11-27T15:53:17.999Z",
+      "sourceSHA256": "2e0b8c6c300fccda49fe0ee852e477c542d2eec180b072e63f197fca1bea6374"
+    },
+    {
+      "date": "2026-11-24",
+      "query": "figwright mcp",
+      "impressions": 4,
+      "clicks": 0,
+      "position": 6.75,
+      "sourceFile": "data/seo/gsc-2026-11-27.json",
+      "sourceFetchedAt": "2026-11-27T15:53:17.999Z",
+      "sourceSHA256": "2e0b8c6c300fccda49fe0ee852e477c542d2eec180b072e63f197fca1bea6374"
+    }
+  ],
+  "MCPImpressions": 14,
+  "MCPAllAfterCandidateENCrawlStart": true,
+  "pluginPriorAndPostCandidateDatesSeparated": true,
+  "unknownInternalOrAnonymousRows": true
+}

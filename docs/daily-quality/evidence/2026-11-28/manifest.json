@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "formalRoot": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128",
+  "scope": "small sanitized evidence; full raw requests/HTML/ZIP remain encrypted",
+  "payloads": [
+    {
+      "file": "fig-http.json",
+      "bytes": 4637,
+      "sha256": "0c8897435fc2742cbd345614f3863aaf38f15e5951e01cf14cabdfd2bdc98fa7"
+    },
+    {
+      "file": "fig-query-dates.json",
+      "bytes": 1851,
+      "sha256": "d7ef2aa7c622ac5b7ec87911548e86622dc482e6194314e29e3c71ab74e8b4a4"
+    },
+    {
+      "file": "fig-window-status.json",
+      "bytes": 1379,
+      "sha256": "ce9bd416949d79f24773e0783ec8266c173860ddf8476051d49fe88bf8fd004c"
+    },
+    {
+      "file": "inspection-summary.json",
+      "bytes": 1115,
+      "sha256": "c36400c50d90c30679921bc8a835f1b3a9770202986eb83be8ac01e81e448bed"
+    },
+    {
+      "file": "performance-summary.json",
+      "bytes": 1909,
+      "sha256": "a5edfbfede4c2aaa19b3c3da5bcb6da1a54d67a846f8b2b44d43098d94f7904b"
+    },
+    {
+      "file": "search-summary.json",
+      "bytes": 7599,
+      "sha256": "f065fc1c0d553bba8b18d78a33df667a59294ccf50cfb8d045edd84a87545b34"
+    },
+    {
+      "file": "source-binding.json",
+      "bytes": 1113,
+      "sha256": "7961bcdc54abf11548825f98c2ebe6b5bd2dc2fd3598eb48fbde385a182598e8"
+    },
+    {
+      "file": "validation-summary.json",
+      "bytes": 2396,
+      "sha256": "4deeb53729aaa9be8e22de1d14d2a176b15db54aaf0abbe2f8d226f43e61cf1c"
+    }
+  ],
+  "formalInputs": [
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/gsc-report-full.json",
+      "sha256": "328616675e5c5b630f8d4ca915d2132831096674efa640b3f444564c497f5f6f"
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/fig-query-days-raw.json",
+      "sha256": "74e8dce0ac5e47854fc09016640c9589aeef4356614835d52d7f11b99acfc60a"
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/fig-early-window-raw.json",
+      "sha256": "9a851d3c0d6ce26788f939e5002e23def0d0fdcbf48ff49396af14631e2776e3"
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/inspection-artifact.zip",
+      "sha256": "b2a2c302c3ae6d10cbde2e505b5b3242f6dea0991181c109efe93dd322f328fa"
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/official-evidence.json",
+      "sha256": "77affee0cabec643cd89c883d0c9447fa0fe24f5e409163620db2257c0aeb0c1"
+    }
+  ]
+}

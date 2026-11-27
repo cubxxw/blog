@@ -116,3 +116,9 @@ Google Search Console，`sc-domain:cubxxw.com`，主站精确 hostname，Web / f
 复用既有26日快照，完整28+28窗口为9月29日—10月26日→10月27日—11月23日。EN页面173/1→244/1，ZH20/1→13/0；本窗精确`figwright`为EN166/0、ZH2/0。页面与查询各自保留请求上下文；这些滚动总数不是新版的完整效果窗，也不覆盖原冻结基线。[本轮原数](../daily-quality/evidence/2026-11-27/search-summary.json)
 
 当前只覆盖EN候选首日11月21日起3个、ZH11月20日起4个完整计划日期，T14仍分别到12月4日/12月3日，T28到12月18日/12月17日。availability探针的24日不代替完整请求数据。沿用22日的抓取记录，不重复索引或同一矩阵；原试点、当前实际生产及本轮源码的双语文章blob一致，不当Google保存正文的字节证明。GET-463继续In Progress，等待到期数据，不从一个点击提前判定增长。[本轮调查与边界](../daily-quality/2026-11-27.md)
+
+## 2026-11-28：核对MCP查询，窗口尚未到期
+
+既有27日快照的完整本窗10月28日—11月24日，EN258曝光/1点击、ZH12/0；前窗9月30日—10月27日EN180/1、ZH22/1。EN精确figwright175/0、figwright mcp14/0、figwright plugin2/0，ZH精确词2/0。MCP查询的14曝光在22—24日；[具体调查](figwright-mcp-2026-11-28.md)核对已有固定版本步骤与真实双语HTML，没有新增确认缺口，未改文章或重复Fig索引。
+
+候选起点后仅EN4个、ZH5个完整计划日期。EN4天均返回页面行、合计117/0；ZH只有2天返回页面行、返回行合计2/0，其余3天unknown，不填零。T14/T28截止日保持上表，不据早期观测判定效果。原5a、实际生产3a、本轮7076的文章blob相同，非Google保存字节证明；GET-463继续In Progress。[日期与来源](../daily-quality/evidence/2026-11-28/fig-window-status.json)

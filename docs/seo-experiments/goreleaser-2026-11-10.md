@@ -65,3 +65,9 @@ GET-477实施范围在本轮文档交付和最终平台验收后结案；搜索�
 最新完整10月22日—11月18日背景窗EN1536曝光/3点击、CTR0.20%，ZH18/0；前窗9月24日—10月21日EN889/0、ZH22/0。实际`goreleaser/goreleaser-action`5曝光/0点击、`goreleaser`4/0；精确`goreleaser action`本窗未返回，保持未知。当前窗不是采用新版后的效果窗，不归因3点击，不覆盖原冻结基线。[新配对](../daily-quality/evidence/2026-11-22/search-summary.json)。原实施GET-477保持已Done，效果继续在本登记观察。
 
 GET-477保持Done。新的[Go指令教程GET-563](go-directives-2026-11-18.md)属于另一个候选，PR522的单次授权不扩大到该页，不能据此合并PR533。
+
+## 2026-11-28：单独续查英文抓取
+
+只读单URL[46063880154](https://github.com/cubxxw/blog/actions/runs/46063880154)精确7076/attempt1 success，原ZIP的digest/CRC、两根文件与source/process0已核。Go EN仍PASS/允许索引/自canonical一致，最近crawl仍11月7日10:21:48Z，早于13日发布；没有索引重提。ZH没有在本轮重查，不借旧观察写成今日结果。[原件归属](../daily-quality/evidence/2026-11-28/inspection-summary.json)
+
+新完整10月28日—11月24日EN1687曝光/3点击、ZH19/0；前窗9月30日—10月27日EN884/0、ZH22/0。EN本窗真实goreleaser6/0、goreleaser/goreleaser-action5/0、goreleaser-action1/0；goreleaser action未返回保持unknown，不搬旧数。仍不作采用新版后的完整效果或点击收益，实施GET-477/GET-563不重开。[本轮数据](../daily-quality/evidence/2026-11-28/search-summary.json)
