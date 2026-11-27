@@ -56,7 +56,17 @@
     "run": false,
     "reason": "no current complete generated inventory; no Hugo/new Lighthouse"
   },
-  "manualHostFix": "GET-564 separately delivered audit fix; not this SEO repair or browser pass",
+  "manualHostFix": {
+    "task": "GET-564",
+    "scope": "separate author-directed storage maintenance; not SEO repair/browser certification",
+    "internalAllocatedFileBytesHandled": 979877888,
+    "exclusivePhysicalReclaim": null,
+    "capacitySampleSG": "2026-11-28T05:44:10+08:00",
+    "DataAvailableBytes": 16657801216,
+    "strict40GBMet": false,
+    "status": "In Progress",
+    "privateRawPublished": false
+  },
   "docsFirstPatch": {
     "outcome": "context mismatch rejected before any docs were written",
     "corrected": "read actual README heading, then narrow patch",
