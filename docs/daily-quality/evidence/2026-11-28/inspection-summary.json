@@ -31,5 +31,11 @@
   "workflowAttemptNotTransportRetryCount": true,
   "GoogleStoredHTMLReturned": false,
   "firstDispatchRejected422WrongField": true,
-  "artifactReceipt": "inspection-artifact-receipt.json"
+  "artifactReceipt": {
+    "storage": "private encrypted external evidence; not included in portable repository payloads",
+    "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/inspection-artifact-receipt.json",
+    "bytes": 760,
+    "sha256": "d8e00b1f2d07d07a3bba1715f2dbf850d415a48be2fb647595cb5be34a2c22b4",
+    "retained": true
+  }
 }
