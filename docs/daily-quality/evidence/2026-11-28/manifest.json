@@ -40,8 +40,8 @@
     },
     {
       "file": "validation-summary.json",
-      "bytes": 2396,
-      "sha256": "4deeb53729aaa9be8e22de1d14d2a176b15db54aaf0abbe2f8d226f43e61cf1c"
+      "bytes": 3481,
+      "sha256": "b0ba843647c37ec2a3843069307e87cdac423d85827144eb1c979961ad37ac4e"
     }
   ],
   "formalInputs": [

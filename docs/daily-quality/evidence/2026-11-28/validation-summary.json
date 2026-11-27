@@ -61,5 +61,31 @@
     "outcome": "context mismatch rejected before any docs were written",
     "corrected": "read actual README heading, then narrow patch",
     "evidence": "normalized tool-history summary, not reconstructed raw log"
+  },
+  "localSourceCheck": {
+    "first": {
+      "head": "be46775d6a5143bd5493c772692130b2f09162cb",
+      "watchdogSeconds": 30,
+      "command": "node scripts/ci-light.mjs",
+      "result": "subprocess.TimeoutExpired",
+      "childExitCode": null,
+      "wrapperExit": 1,
+      "processPID": "not recorded",
+      "partialOutput": "not independently preserved; no fabricated original log",
+      "notHostedGateResult": true
+    },
+    "scopedDraft": {
+      "exit": 0,
+      "elapsed": 0.5101413750089705,
+      "head": "be46775d6a5143bd5493c772692130b2f09162cb",
+      "localManualBranchContext": true,
+      "scopeBase": "7076b09f6be80014f8a8e26e26d4789a9025b2ae",
+      "notHostedCI": true,
+      "timeout": false,
+      "originalUnscopedAttempt": "local-source-first-timeout.json"
+    },
+    "reason": "unscoped local CLI uses full inventory fallback; existing explicit manual non-main context selected proven origin/main ancestor",
+    "sourceCodeOrGateChanged": false,
+    "latestHeadChecks": "recorded separately in private final delivery; draft pass is not final hosted CI"
   }
 }
