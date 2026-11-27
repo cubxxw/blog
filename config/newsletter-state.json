@@ -4985,6 +4985,14 @@
       "mode": "draft",
       "providerId": "em_4p3vyx3wct893a48be2q58rpx6",
       "completedAt": "2026-11-27T07:16:57.637Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/muse-personal-agent-architecture/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/muse-personal-agent-architecture/",
+      "status": "pending",
+      "attemptId": "cc05991e-bf37-46e4-b9eb-822947d5ef20",
+      "at": "2026-11-27T07:16:57.637Z",
+      "mode": "draft"
     }
   }
 }
