@@ -4970,6 +4970,14 @@
       "mode": "draft",
       "providerId": "em_729n4ez8dk9zxb5e40pg3way7b",
       "completedAt": "2026-11-24T00:27:50.147Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/muse-personal-agent-architecture/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/muse-personal-agent-architecture/",
+      "status": "pending",
+      "attemptId": "81687185-a966-4f19-aab4-d7813546a3f0",
+      "at": "2026-11-27T07:16:57.637Z",
+      "mode": "draft"
     }
   }
 }
