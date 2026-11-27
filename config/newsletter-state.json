@@ -1563,6 +1563,11 @@
       "at": "2026-11-24T00:27:50.147Z",
       "id": "em_729n4ez8dk9zxb5e40pg3way7b",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/muse-personal-agent-architecture/": {
+      "at": "2026-11-27T07:16:57.637Z",
+      "id": "em_4p3vyx3wct893a48be2q58rpx6",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4974,10 +4979,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/muse-personal-agent-architecture/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/ai-agent/posts/muse-personal-agent-architecture/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "81687185-a966-4f19-aab4-d7813546a3f0",
       "at": "2026-11-27T07:16:57.637Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_4p3vyx3wct893a48be2q58rpx6",
+      "completedAt": "2026-11-27T07:16:57.637Z"
     }
   }
 }
