@@ -21,11 +21,9 @@ cover:
   alt: Muse Personal Agent Architecture 技术封面，标出 Memory、Goals、Scheduling 与 Subagents。
 ---
 
-家人们，最近我一直在看 Personal Agent，今天想聊聊 Meta 的 Muse。它有一台独立的云电脑，可以开浏览器、连账户、处理文件。你把事情交给它，关掉 App，它还可以继续推进。有了变化，或者到了需要你做决定的地方，它再回来找你。[Meta 产品发布](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+家人们，最近在看 Meta 的 Personal Agent Muse。我最感兴趣的是关掉电脑以后会发生什么。你把电脑合上，它还在自己的云电脑上做事。等到有进展，或者要你点头，它再回来找你。[Meta 产品发布](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
 
-我看了几篇媒体实测。有位试用者接入邮箱和日历后，Muse 找到一笔遗忘的账单，还根据即将到货的食材推荐了菜谱。另一位让它挑运动上衣，它在结账前发现购物车里还有原先的商品，先问怎么处理。同一篇实测里，试用者也说，有些被它翻出来的个人信息让自己感到不安。惊喜和不安来得很近。它看到了什么？为什么偏偏在这个时候提起来？[Mint 实测](https://www.livemint.com/ai/i-tried-meta-s-muse-ai-agent-it-s-helpful-and-scary-at-the-same-time-11790645582639.html) · [The Verge 实测](https://www.theverge.com/tech/993391/meta-muse-ai-hands-on)
-
-Meta 测过基础模型，也单独测部署后的产品。我想试一件日常的事。隔天再打开，它还记得我在做什么吗？该它来找我的时候，它会回来吗？
+一位试用者接入邮箱和日历后，Muse 找到一笔遗忘的账单，还根据即将到货的食材推荐了菜谱。另一位让它挑运动上衣，它在结账前发现购物车里还有原先的商品，先问怎么处理。同一篇实测里，试用者也说，有些被它翻出来的个人信息让自己感到不安。惊喜和不安来得很近。它看到了什么？为什么偏偏在这个时候提起来？[Mint 实测](https://www.livemint.com/ai/i-tried-meta-s-muse-ai-agent-it-s-helpful-and-scary-at-the-same-time-11790645582639.html) · [The Verge 实测](https://www.theverge.com/tech/993391/meta-muse-ai-hands-on)
 
 我自己的 Agent 里已经有 29 个 Goal。换个对话问一句「评测那篇还差什么」，它要怎么知道我在说哪篇？如果我让它等编辑回复，电脑合上以后，谁记得去看？再往后，我打开发布页，它又凭什么建议我把摘要缩到 60 字以内？
 
@@ -43,7 +41,7 @@ flowchart TD
 
 从确认卡往下找，剪发提醒在 Goals 页的 Tracking 里。打开右侧 Activity，再进 Scheduled tasks，就能看到预约时间、Run history 和 View permissions。新提醒写着 `Scheduled`，展开运行记录是 `Has not run yet`。我又点了另一条日常提醒，里面已经有几次 `Succeeded`。以后 Muse 跟我说「安排好了」，我知道去哪里看它究竟跑过没有。
 
-这段聊天还有一处小插曲。Muse 一开始没有用上我后来补充的偏好，判断错了。我把偏好补给它，它当场更正，说已经存好。做到这里，只能看出它当场改了。等换一个对话，再问一次剪发的事，才知道它能不能把那份资料找回来。
+Muse 一开始说错了我的剪发偏好。我补充之后，它当场改口，说存好了。要验记忆，可以新开一个对话问「我适合什么发型？」看它还能不能找回刚才那条偏好。
 
 上面两条运行记录都来自 2026 年 11 月 27 日的 Muse Mac 14.1。
 
@@ -67,9 +65,7 @@ flowchart TD
 
 如果我做这个入口，`@评测文章` 会直接指向一个稳定的 Goal ID。只说「那篇」，先看这段对话有没有关联稿件，再用标题、别名或项目找。两篇都像，就问我是哪一篇。选中后先读简述、当前决定和下一步，有疑问再展开证据。Muse 支持按名称和内容搜 Goal，也给 Goal 留了自己的工作区。
 
-我问过 Muse 当时加载了几个 Goal。它在聊天里答，26 项 Tracking 中有 15 项摘要进了上下文，其余用列表或搜索找。桌面端也会折叠 Tracking 项。要验证模型实际读到多少，得看那一轮发给模型的请求。
-
-聊天里的「那篇」要先查指的是谁。跟稿的定时任务在创建时就能记住所属的 Goal ID，到点直接打开同一份记录。界面上多几个 Goal，也不需要它挨个翻。
+定时任务可以在创建时绑定 Goal ID。后台到点，直接拿这个 ID 打开同一篇稿。
 
 ```mermaid
 flowchart TD
@@ -82,7 +78,7 @@ flowchart TD
     G --> F["按需读决定与当前进展"]
 ```
 
-真要排查「它怎么找错了」，我会先看这一轮喂给模型的内容。Muse 的表里有按顺序记录的 `agent.context_items`、恢复用的上下文投影，以及记着版本和源水位的 `runtime.context_snapshots`。拿这些区分历史、恢复时所需的信息和已经过时的视图，才好判断是资料根本没找回来，还是模型看到了却理解错了。
+如果 Agent 找错了稿，我会先在 `agent.context_items` 里查那一轮有没有正确的 Goal，再看 `runtime.context_snapshots` 里的版本和源水位，判断任务是不是从旧状态恢复的。上下文里已经有正确的稿件，才轮到查模型为什么选错。
 
 #### Prompt、Tools 和 Skill 分别该写什么？
 
@@ -98,7 +94,7 @@ flowchart TD
 
 #### 写入时保留证据，读取时拿当前版本
 
-偏好写进文件后，也得找得到原话。`MEMORY.md` 存长期理解，记忆库还把事实、经历和偏好分别放进 `world.md`、`experience.md`、`opinions.md`。数据库里的 `memory.entries` 记来源位置，`memory.claims` 还记说话者、证据、`supersedes_claim_id` 和 `valid_until`。我改过一条偏好，系统仍然能说明之前为什么那样记、现在是哪条生效。表里也有 embeddings，单凭这一点还看不出实际检索怎么混合、怎么排序。
+偏好写进文件后，也得找得到原话。`MEMORY.md` 存长期理解，记忆库还把事实、经历和偏好分别放进 `world.md`、`experience.md`、`opinions.md`。数据库里的 `memory.entries` 记来源位置，`memory.claims` 还记说话者、证据、`supersedes_claim_id` 和 `valid_until`。我改过一条偏好，系统仍然能说明之前为什么那样记、现在是哪条生效。
 
 ```mermaid
 flowchart TD
@@ -142,7 +138,7 @@ Muse 的 Subgoal 只往下嵌一层。我一般用一个问题来判断要不要
 
 #### 下一次提醒从哪一天算？
 
-回到剪发这件小事。如果我提前剪了，下一次应该从我实际剪完的日期算四周。按这个规则，每次我确认剪完，就更新记录，再换一条单次提醒。到了提醒日，系统只知道自己提醒过，我到底剪没剪还得等我说。这次在桌面端看到的是已安排的一条提醒，后面的顺延是我的做法。
+回到剪发这件小事。如果我提前剪了，下一次应该从我实际剪完的日期算四周。按这个规则，每次我确认剪完，就更新记录，再换一条单次提醒。到了提醒日，系统只知道自己提醒过，我到底剪没剪还得等我说。
 
 ### 后台调度：Cron、Hook 和常驻服务怎么选？
 
@@ -184,7 +180,7 @@ flowchart TD
 
 #### 盯四张同区球票，什么时候才算命中？
 
-我会把「便宜了叫我」写成具体条件。四张票要能在同一区域一次买齐，四张含手续费的总价不超过约定上限。只找到四张分在不同区，这次没有命中。区域符合但手续费未知，状态是「待核对」。全部满足才发一次提醒，附检查时间、含费价格和原页面。每次查询失败也留在运行记录。这个例子能看出，Cron 负责再次检查，条件决定是否提醒。收到提醒后，是否下单仍由用户决定。[案例库 · 降价盯梢](https://github.com/cubxxw/awesome-personal-agent-use-cases/blob/9eef2015df83f912c11c4c59cf72f260160c4dca/zh-CN/scenes/price-watch.md)
+我会把「便宜了叫我」写成具体条件。四张票要能在同一区域一次买齐，四张含手续费的总价不超过约定上限。只找到四张分在不同区，这次没有命中。区域符合但手续费未知，状态是「待核对」。全部满足才发一次提醒，附检查时间、含费价格和原页面。每次查询失败也留在运行记录。收到提醒后，是否下单仍由用户决定。[案例库 · 降价盯梢](https://github.com/cubxxw/awesome-personal-agent-use-cases/blob/9eef2015df83f912c11c4c59cf72f260160c4dca/zh-CN/scenes/price-watch.md)
 
 ### Subagent 和 Sidechat：谁并行做事，谁负责把结果交回来？
 
@@ -249,7 +245,7 @@ stateDiagram-v2
 
 ### 哪些内容值得在对话之外触达用户？
 
-Activity 可以翻执行过程，Goals 留长期进展，得当场决定的动作会弹审批卡。Feed 新帖则留在 Feed。Muse 允许普通主动消息合并几件事，按清醒时段和对话空档安排，文档给的预算是每天最多两次。任务回报和审批有各自的规则。审批会请求推送，定时或主动消息在 App 没打开时才触发手机推送。Agent 能查消息去了哪里，要确认用户手机端有没有收到，现有工具还做不到。 [Muse 产品设计说明](https://muse.ai/blog/how-we-designed-muse)
+Muse 可以把几件值得说的事合进一条消息，等用户醒着、对话有空档时再发。普通主动消息每天最多两次。任务回报和审批有各自的规则。审批会请求推送，定时或主动消息在 App 没打开时才触发手机推送。Agent 能查消息去了哪里，要确认用户手机端有没有收到，现有工具还做不到。 [Muse 产品设计说明](https://muse.ai/blog/how-we-designed-muse)
 
 如果我正好打开页面，顺手能处理的事就在页上给我。快到期限、必须我做决定的，再用我允许的渠道提醒。说「我已经做了」，就把本次关掉。说「这类提醒以后只放页面」，以后才按这个偏好来。证据不足就先留着缘由，不急着叫我。
 
@@ -290,8 +286,6 @@ flowchart TD
     H --> R["Goal 更新与结果回报"]
 ```
 
-Muse 曾在对话里报告，VM 的 home 卷是独立挂载的。
-
 #### 本地 Mac、Chrome 扩展和云浏览器各自在哪执行？
 
 | 路径 | 执行在哪 | 我会拿来做什么 |
@@ -314,7 +308,7 @@ Mac 客户端的聊天窗口里是内嵌的 Muse 网页，Mac 也可以另外配
 
 ### Evaluation：怎么测它真的记得、做到了、说到了？
 
-Meta 的评测有的题给基础模型做，有的直接测部署后的系统。想知道是模型、Harness 还是工具权限带来的变化，可以拆开对照。我想试的很简单，把同一件事交给它，从聊天交代之后一路跟到后台执行，再看回复真的有没有回来。[Meta 的评测报告](https://research.meta.ai/static/muse-spark-1-3-evaluation-report)
+等 Worker 读到编辑评论，就停掉它。重启后，同一条评论只应产生一份处理结果，原来的对话还得收得到。这一题要跑部署后的整套系统。Meta 的评测也把基础模型和部署后的产品分开测。[Meta 的评测报告](https://research.meta.ai/static/muse-spark-1-3-evaluation-report)
 
 | 场景 | 怎样构造 | 通过条件 |
 | --- | --- | --- |

@@ -21,11 +21,9 @@ cover:
   alt: Muse Personal Agent Architecture cover with Memory, Goals, Scheduling, and Subagents.
 ---
 
-Hey folks. I've been looking at personal agents lately, and today I want to talk about Meta's Muse. It has a cloud computer of its own. It can open a browser, connect to accounts, and work with files. Give it something to do and it can keep going after you close the app. When something changes or it needs you to make a decision, it comes back to you. [Meta's launch announcement](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
+I've been looking at Meta's personal agent, Muse. Here's the part that got my attention. You can close your laptop while Muse keeps working on its own cloud computer. It comes back when there's progress or a decision for you to make. [Meta's launch announcement](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/)
 
-I read a few hands-on reviews. One reviewer connected their email and calendar. Muse found a forgotten bill and suggested a recipe for ingredients that were about to arrive. Another asked it to pick out workout tops. At checkout, it noticed items already in the cart and asked what to do with them. That reviewer also found some of the personal information Muse surfaced unsettling. The surprise and the unease arrived together. What did it see? Why bring it up right then? [Mint hands-on](https://www.livemint.com/ai/i-tried-meta-s-muse-ai-agent-it-s-helpful-and-scary-at-the-same-time-11790645582639.html) · [The Verge hands-on](https://www.theverge.com/tech/993391/meta-muse-ai-hands-on)
-
-Meta tested the base model and separately tested the deployed product. I wanted to try something more ordinary. If I open it the next day, does it remember what I'm doing? Will it come back to me when it's supposed to?
+After one reviewer connected their email and calendar, Muse found a forgotten bill and suggested a recipe for ingredients that were about to arrive. Another asked it to pick out workout tops. At checkout, it noticed items already in the cart and asked what to do with them. That reviewer also found some of the personal information Muse surfaced unsettling. The surprise and the unease arrived together. What did it see? Why bring it up right then? [Mint hands-on](https://www.livemint.com/ai/i-tried-meta-s-muse-ai-agent-it-s-helpful-and-scary-at-the-same-time-11790645582639.html) · [The Verge hands-on](https://www.theverge.com/tech/993391/meta-muse-ai-hands-on)
 
 My own agent already has 29 Goals. If I open a new chat and ask, “What's left on the eval article?”, how does it know which article I mean? If I ask it to wait for my editor's reply, who keeps checking after I close my laptop? Later, when I open the publishing page, how would it know to suggest cutting the abstract down to 60 characters?
 
@@ -43,7 +41,7 @@ flowchart TD
 
 From the confirmation card, I found the haircut reminder under Tracking on the Goals page. I opened Activity on the right and went to Scheduled tasks, where I could see the planned time, Run history, and View permissions. The new reminder said `Scheduled`. Its run history said `Has not run yet`. I opened another daily reminder and found several `Succeeded` runs. The next time Muse tells me something is scheduled, I know where to check whether it actually ran.
 
-There was a small hiccup in that chat. Muse initially got my preference wrong. I supplied it, and Muse corrected itself on the spot and said it had saved it. That establishes the correction in the current chat. I'd need to ask about a haircut in a fresh chat to see whether it can retrieve the new information.
+Muse got my haircut preference wrong at first. I corrected it, and it said it had saved the change. To test memory, I'd open a new chat and ask, “What haircut suits me?” Then I'd see whether it could find the preference I'd just given it.
 
 Both run records above came from Muse for Mac 14.1 on November 27, 2026.
 
@@ -67,9 +65,7 @@ A person index can be as short as a name, aliases, and a pointer. Once that pers
 
 If I built this entry point, `@Eval article` would refer directly to a stable Goal ID. When I say “that article,” the agent would first see whether a draft is already linked to the chat, then search by title, alias, or project. If two look right, it can ask which one I mean. Once it has the right one, it reads the summary, the latest decision, and the next step, opening the evidence when necessary. Muse supports searching Goals by name and content, and each Goal has its own workspace.
 
-I asked Muse how many Goals it had loaded. It replied that 15 of the 26 Tracking summaries had entered context and that the others were available through listing or search. The desktop app also collapses some Tracking entries. To verify what the model received, I'd inspect the request for that turn.
-
-A chat message that says “that article” needs a lookup. A scheduled job for the draft can save its Goal ID when it's created and open the same record when it wakes up. It can do that even as the number of Goals grows.
+A scheduled job can store the Goal ID when it's created. When the job wakes up, it can use that ID to open the same draft directly.
 
 ```mermaid
 flowchart TD
@@ -82,7 +78,7 @@ flowchart TD
     G --> F["Read decisions and current progress as needed"]
 ```
 
-When it picks the wrong draft, I'd start by looking at what the model actually received. Muse's tables include ordered records in `agent.context_items`, a projection used for resuming, and `runtime.context_snapshots` with versions and source watermarks. Separating what happened, what a resumed run needs, and which view is stale helps diagnose whether retrieval missed the material or the model misread it.
+If the agent picks the wrong draft, I'd check `agent.context_items` for the right Goal on that turn. I'd use the version and source watermarks in `runtime.context_snapshots` to see whether the job resumed from stale state. If the right draft was already in context, I'd investigate why the model picked another one.
 
 #### What goes into a prompt, a tool, or a skill?
 
@@ -98,7 +94,7 @@ The prompt for following a draft can be short. It only needs to say how to asses
 
 #### Keep the evidence and retrieve the current version
 
-A preference saved to a file still needs a trail back to the original words. `MEMORY.md` stores long-term understanding, and the memory bank separates facts, experiences, and preferences into `world.md`, `experience.md`, and `opinions.md`. In the database, `memory.entries` records source locations. `memory.claims` also tracks the speaker and evidence, along with `supersedes_claim_id` and `valid_until`. After I change a preference, the system has enough to explain why the old one was recorded and which one now applies. The tables include embeddings. That alone leaves the retrieval mix and ranking open.
+A preference saved to a file still needs a trail back to the original words. `MEMORY.md` stores long-term understanding, and the memory bank separates facts, experiences, and preferences into `world.md`, `experience.md`, and `opinions.md`. In the database, `memory.entries` records source locations. `memory.claims` also tracks the speaker and evidence, along with `supersedes_claim_id` and `valid_until`. After I change a preference, the system has enough to explain why the old one was recorded and which one now applies.
 
 ```mermaid
 flowchart TD
@@ -142,7 +138,7 @@ A `GOAL.md` written a week ago can still explain why I'm writing the piece. This
 
 #### What date should the next reminder count from?
 
-Back to the haircut. If I get it cut early, the next four weeks should start on the day I actually got it cut. On that design, every time I confirm a haircut, update the record and replace the next one-off reminder. On reminder day, the system knows it reminded me. It still needs me to confirm whether I went. In the desktop app I checked one scheduled reminder. The rule for rescheduling is how I'd build it.
+Back to the haircut. If I get it cut early, the next four weeks should start on the day I actually got it cut. On that design, every time I confirm a haircut, update the record and replace the next one-off reminder. On reminder day, the system knows it reminded me. It still needs me to confirm whether I went.
 
 ### Background scheduling: cron, hooks, or a long-running service?
 
@@ -184,7 +180,7 @@ If I ask the next day, “Why didn't you remind me?”, you can work back from t
 
 #### What counts as a match for four tickets in the same section?
 
-I'd give “tell me when it gets cheaper” concrete conditions. All four tickets must be available to buy together in the same section, and their total including fees must be within the agreed limit. Four tickets scattered across sections don't qualify. If the section is right but fees are unknown, mark it as pending verification. Send one alert when all the conditions are met, with the checked time, total including fees, and listing. Failed checks belong in the run history too. Cron decides when to look again. The condition decides whether to notify. The user still decides whether to buy. [Use case: price watch](https://github.com/cubxxw/awesome-personal-agent-use-cases/blob/9eef2015df83f912c11c4c59cf72f260160c4dca/zh-CN/scenes/price-watch.md)
+I'd give “tell me when it gets cheaper” concrete conditions. All four tickets must be available to buy together in the same section, and their total including fees must be within the agreed limit. Four tickets scattered across sections don't qualify. If the section is right but fees are unknown, mark it as pending verification. Send one alert when all the conditions are met, with the checked time, total including fees, and listing. Failed checks belong in the run history too. The condition decides whether to notify. The user still decides whether to buy. [Use case: price watch](https://github.com/cubxxw/awesome-personal-agent-use-cases/blob/9eef2015df83f912c11c4c59cf72f260160c4dca/zh-CN/scenes/price-watch.md)
 
 ### Subagents and side chats: who does the work, and who brings it back?
 
@@ -249,7 +245,7 @@ stateDiagram-v2
 
 ### What is worth reaching out about beyond the conversation?
 
-Activity shows the execution history. Goals shows long-term progress. An action that needs a decision can surface an approval card. New Feed posts stay in Feed. Muse can group ordinary proactive updates and time them for waking hours and gaps in the conversation, with a documented cap of two a day. Task reports and approvals have their own rules. An approval requests a push notification. Scheduled or proactive messages trigger a mobile push only when the app is closed. The agent can trace where it sent a message, but the tools can't confirm whether the user's phone actually received the push. [How Muse was designed](https://muse.ai/blog/how-we-designed-muse)
+Muse can group several updates into one message and wait for a gap in the conversation during waking hours. Ordinary proactive messages are capped at two a day. Task reports and approvals have their own rules. An approval requests a push notification. Scheduled or proactive messages trigger a mobile push only when the app is closed. The agent can trace where it sent a message, but the tools can't confirm whether the user's phone actually received the push. [How Muse was designed](https://muse.ai/blog/how-we-designed-muse)
 
 If I'm already on the page, put anything I can handle right there. When a deadline is near or I need to decide, use a channel I've approved. “I already did it” clears this instance. “Keep reminders like this on the page from now on” changes the preference. When evidence is thin, keep the note and hold the interruption.
 
@@ -290,8 +286,6 @@ flowchart TD
     H --> R["Goal updates and results"]
 ```
 
-In an earlier chat, Muse reported that its VM's home volume was mounted separately.
-
 #### Where do the Mac, Chrome extension, and cloud browser run?
 
 | Path | Where it runs | What I'd use it for |
@@ -314,7 +308,7 @@ Markdown is a good fit for an article I want to open. The scheduler has differen
 
 ### Evaluation: did it remember, do the work, and tell me?
 
-Meta's evaluation gives some tests to the base model and runs others against the deployed system. To isolate the effect of the model, harness, or tool permissions, you can vary them separately. The test I want is simple. Give the agent one task, follow it from the chat request through background execution, and see whether a reply actually gets back. [Meta's evaluation report](https://research.meta.ai/static/muse-spark-1-3-evaluation-report)
+Stop the worker just after it reads the editor's comment. After a restart, that comment should produce exactly one result, and the original conversation should still receive it. This takes a test of the deployed system. Meta also evaluates the base model and the deployed product separately. [Meta's evaluation report](https://research.meta.ai/static/muse-spark-1-3-evaluation-report)
 
 | Scenario | How to set it up | What passing looks like |
 | --- | --- | --- |
