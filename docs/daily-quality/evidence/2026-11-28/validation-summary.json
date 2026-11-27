@@ -27,7 +27,13 @@
   },
   "HTTPFirst": {
     "scope": "initial response lacked final-URL binding; strict GET re-read passed",
-    "originalJSON": "fig-http-initial.json",
+    "originalJSON": {
+      "storage": "private encrypted external evidence; not included in portable repository payloads",
+      "path": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/fig-http-initial.json",
+      "bytes": 4594,
+      "sha256": "0c5be8bccc893bd061313ca3c5fe5e500fda26e8e46bced172cfb35a04bbb0ab",
+      "retained": true
+    },
     "final": "fig-http.json"
   },
   "portableFirst": {

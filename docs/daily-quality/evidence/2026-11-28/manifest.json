@@ -20,8 +20,8 @@
     },
     {
       "file": "inspection-summary.json",
-      "bytes": 1115,
-      "sha256": "c36400c50d90c30679921bc8a835f1b3a9770202986eb83be8ac01e81e448bed"
+      "bytes": 1426,
+      "sha256": "81de763c3a10139ca34dfb9e0d5ce5d960d2f7ae339df439b18bcdf08f154586"
     },
     {
       "file": "performance-summary.json",
@@ -40,8 +40,8 @@
     },
     {
       "file": "validation-summary.json",
-      "bytes": 3803,
-      "sha256": "27eb98302259f4f702fa60f47d47e5fe7dc0aeb85ae4f16f564b8e792cc48f9e"
+      "bytes": 4127,
+      "sha256": "94a2dbd7ac457cb74a26bfda36d1611b51bba9c95af9caf17c7e4586bcae79a3"
     }
   ],
   "formalInputs": [
@@ -64,6 +64,18 @@
     {
       "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/official-evidence.json",
       "sha256": "77affee0cabec643cd89c883d0c9447fa0fe24f5e409163620db2257c0aeb0c1"
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/inspection-artifact-receipt.json",
+      "sha256": "d8e00b1f2d07d07a3bba1715f2dbf850d415a48be2fb647595cb5be34a2c22b4",
+      "bytes": 760,
+      "publicPayload": false
+    },
+    {
+      "file": "/Volumes/AgentColdStore/Evidence/TaskRuns/blog-search-quality-20261128/fig-http-initial.json",
+      "sha256": "0c5be8bccc893bd061313ca3c5fe5e500fda26e8e46bced172cfb35a04bbb0ab",
+      "bytes": 4594,
+      "publicPayload": false
     }
   ]
 }
