@@ -169,7 +169,7 @@ timezone: Asia/Singapore
 delivery: Original conversation
 ```
 
-When the job wakes up, read new comments. Save the comments and their source IDs before advancing the checkpoint. If the run crashes halfway through, the next one can continue. If the same comment arrives again, its ID identifies it. Write back changes that affect the next step, with a link to the source. In Muse, a background worker can hand results that affect the user to the main agent, which decides how to report back. Stop checking at the deadline and still deliver messages already produced.
+When the job wakes up, read new comments. Save each new comment as pending under its source ID before advancing the checkpoint. After a restart, process any saved pending comments before looking for new ones. Write changes that affect the next step back to the Goal, with a link to the source. Mark a comment complete only after its outcome is saved. A retry with the same source ID reuses the existing record. In Muse, a background worker can hand results that affect the user to the main agent, which decides how to report back. Stop checking at the deadline and still deliver messages already produced.
 
 ```mermaid
 flowchart TD
