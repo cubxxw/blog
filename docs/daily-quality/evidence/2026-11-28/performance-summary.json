@@ -1,0 +1,72 @@
+{
+  "source": "data/seo/psi-2026-11-27.json",
+  "fetchedAt": "2026-11-27T16:08:04.987Z",
+  "usable": 21,
+  "planned": 26,
+  "failed": [
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "attempts": 1,
+      "reason": "psi-api-failure",
+      "http": 400
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "attempts": 3,
+      "reason": "psi-api-failure",
+      "http": 500
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "attempts": 2,
+      "reason": "psi-api-failure",
+      "http": 400
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "attempts": 1,
+      "reason": "psi-api-failure",
+      "http": 400
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "attempts": 3,
+      "reason": "psi-api-failure",
+      "http": 500
+    }
+  ],
+  "sourceSHA": "unknown",
+  "CrUX": {
+    "source": "data/seo/crux-2026-11-27.json",
+    "fetchedAt": "2026-11-27T16:08:05.661Z",
+    "results": [
+      {
+        "formFactor": "PHONE",
+        "notEligible": true
+      },
+      {
+        "formFactor": "DESKTOP",
+        "notEligible": true
+      }
+    ],
+    "qualifiedSamples": "none proven; notEligible snapshot does not provide field INP"
+  },
+  "fieldINP": "unknown",
+  "noLastGoodSubstitution": true,
+  "newPSICalls": 0,
+  "LCPandCLS": "no new browser sample; selected Figwright article not in latest PSI plan",
+  "TBTLongTasksNotINP": true,
+  "fullPerformanceCheck": "not run; no full current generated site inventory and no rebuild",
+  "screenAndThrottling": "latest observations comparisonProvenance.complete false",
+  "HTMLBodyBytesNotWireTransfer": true
+}

@@ -1,0 +1,280 @@
+{
+  "asOf": "2026-11-27T20:25:14.544Z",
+  "windows": {
+    "previous": {
+      "start": "2026-09-30",
+      "end": "2026-10-27",
+      "days": 28
+    },
+    "current": {
+      "start": "2026-10-28",
+      "end": "2026-11-24",
+      "days": 28
+    }
+  },
+  "host": "cubxxw.com",
+  "WebFinal": true,
+  "summaryResponseAggregation": "byPage",
+  "pageContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "page"
+    ],
+    "filters": [],
+    "requestAggregationType": "auto",
+    "slice": "date_page"
+  },
+  "queryContext": {
+    "property": "sc-domain:cubxxw.com",
+    "searchType": "web",
+    "dataState": "final",
+    "dimensions": [
+      "date",
+      "query",
+      "page"
+    ],
+    "filters": [
+      {
+        "groupType": "and",
+        "filters": [
+          {
+            "dimension": "page",
+            "operator": "includingRegex",
+            "expression": "^https?://cubxxw\\.com/"
+          }
+        ]
+      }
+    ],
+    "requestAggregationType": "byPage",
+    "slice": "blog_date_query_page"
+  },
+  "site": {
+    "previous": {
+      "metrics": {
+        "clicks": 135,
+        "impressions": 37643,
+        "ctr": 0.0035863241505724834,
+        "position": 8.929468958372075
+      },
+      "plannedDays": 28,
+      "countedDays": 28
+    },
+    "current": {
+      "metrics": {
+        "clicks": 136,
+        "impressions": 28079,
+        "ctr": 0.004843477331813811,
+        "position": 8.775739876776239
+      },
+      "plannedDays": 28,
+      "countedDays": 28
+    }
+  },
+  "targets": {
+    "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 180,
+          "ctr": 0.005555555555555556,
+          "position": 6.394444444444445
+        },
+        "returnedPairCount": 1,
+        "selectedExactQueries": [
+          {
+            "query": "figwright",
+            "impressions": 112,
+            "clicks": 1,
+            "position": 6.767857142857143
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 258,
+          "ctr": 0.003875968992248062,
+          "position": 6.3565891472868215
+        },
+        "returnedPairCount": 3,
+        "selectedExactQueries": [
+          {
+            "query": "figwright",
+            "impressions": 175,
+            "clicks": 0,
+            "position": 6.537142857142857
+          },
+          {
+            "query": "figwright mcp",
+            "impressions": 14,
+            "clicks": 0,
+            "position": 7.5
+          },
+          {
+            "query": "figwright plugin",
+            "impressions": 2,
+            "clicks": 0,
+            "position": 7.5
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      }
+    },
+    "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 1,
+          "impressions": 22,
+          "ctr": 0.045454545454545456,
+          "position": 7.136363636363637
+        },
+        "returnedPairCount": 1,
+        "selectedExactQueries": [
+          {
+            "query": "figwright",
+            "impressions": 10,
+            "clicks": 0,
+            "position": 7.7
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 11.583333333333334
+        },
+        "returnedPairCount": 1,
+        "selectedExactQueries": [
+          {
+            "query": "figwright",
+            "impressions": 2,
+            "clicks": 0,
+            "position": 23
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      }
+    },
+    "https://cubxxw.com/engineering/posts/go-release-tools/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 884,
+          "ctr": 0,
+          "position": 7.590497737556561
+        },
+        "returnedPairCount": 9,
+        "selectedExactQueries": [
+          {
+            "query": "goreleaser/goreleaser-action",
+            "impressions": 16,
+            "clicks": 0,
+            "position": 6.875
+          },
+          {
+            "query": "goreleaser",
+            "impressions": 11,
+            "clicks": 0,
+            "position": 9.454545454545455
+          },
+          {
+            "query": "goreleaser action",
+            "impressions": 7,
+            "clicks": 0,
+            "position": 8
+          },
+          {
+            "query": "goreleaser-action",
+            "impressions": 4,
+            "clicks": 0,
+            "position": 8.25
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/engineering/posts/go-release-tools/",
+          "clicks": 3,
+          "impressions": 1687,
+          "ctr": 0.0017783046828689982,
+          "position": 7.53764078245406
+        },
+        "returnedPairCount": 8,
+        "selectedExactQueries": [
+          {
+            "query": "goreleaser",
+            "impressions": 6,
+            "clicks": 0,
+            "position": 15.833333333333334
+          },
+          {
+            "query": "goreleaser/goreleaser-action",
+            "impressions": 5,
+            "clicks": 0,
+            "position": 10.6
+          },
+          {
+            "query": "goreleaser-action",
+            "impressions": 1,
+            "clicks": 0,
+            "position": 9
+          }
+        ],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      }
+    },
+    "https://cubxxw.com/zh/engineering/posts/go-release-tools/": {
+      "previous": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 22,
+          "ctr": 0,
+          "position": 6.7727272727272725
+        },
+        "returnedPairCount": 0,
+        "selectedExactQueries": [],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      },
+      "current": {
+        "page": {
+          "page": "https://cubxxw.com/zh/engineering/posts/go-release-tools/",
+          "clicks": 0,
+          "impressions": 19,
+          "ctr": 0,
+          "position": 6.842105263157895
+        },
+        "returnedPairCount": 0,
+        "selectedExactQueries": [],
+        "otherQueryStringsPrivate": true,
+        "missingQueryUnknown": true
+      }
+    }
+  },
+  "reportDisplay": {
+    "pagesLimit": 5000,
+    "pairsLimit": 5000,
+    "collectorLimitsChanged": false
+  },
+  "limits": "complete planned dates do not establish Google internal/anonymous row coverage; page/query contexts distinct; fragments not folded"
+}

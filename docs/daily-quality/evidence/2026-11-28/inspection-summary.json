@@ -1,0 +1,35 @@
+{
+  "run": 46063880154,
+  "url": "https://github.com/cubxxw/blog/actions/runs/46063880154",
+  "attempt": 1,
+  "source": "7076b09f6be80014f8a8e26e26d4789a9025b2ae",
+  "counts": {
+    "planned": 1,
+    "inspected": 1,
+    "unknown": 0,
+    "blocked": 0
+  },
+  "processExit": 0,
+  "indexedObservation": {
+    "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+    "status": "inspected",
+    "httpStatus": 200,
+    "indexStatus": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "userCanonical": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "lastCrawlTime": "2026-11-07T10:21:48Z"
+    },
+    "error": null,
+    "blockedBy": null
+  },
+  "indexingSubmission": false,
+  "workflowAttemptNotTransportRetryCount": true,
+  "GoogleStoredHTMLReturned": false,
+  "firstDispatchRejected422WrongField": true,
+  "artifactReceipt": "inspection-artifact-receipt.json"
+}

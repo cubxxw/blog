@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "content/en/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md",
+      "gitBlobs": {
+        "5a0673739f6732696a661da65fabb06fca58aa70": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+        "3a172bc3a88234e885720763f443adeb5dd5c9ea": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed",
+        "7076b09f6be80014f8a8e26e26d4789a9025b2ae": "6c9b9996a10d35b7fc9b090babb7690dceb5a2ed"
+      },
+      "sha256": "045d165cf86a6b4dddd8eb28e00e3b0647a93505983f7a349753cb5fa29bba60"
+    },
+    {
+      "path": "content/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system.md",
+      "gitBlobs": {
+        "5a0673739f6732696a661da65fabb06fca58aa70": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+        "3a172bc3a88234e885720763f443adeb5dd5c9ea": "c1f82ad405a10d205759cd53f6bb5f59ca039555",
+        "7076b09f6be80014f8a8e26e26d4789a9025b2ae": "c1f82ad405a10d205759cd53f6bb5f59ca039555"
+      },
+      "sha256": "7cb06f83042db926cbb028d90f1f14e9e59d790ae8908c2dd0d19de90290444a"
+    }
+  ],
+  "notGoogleStoredBodyProof": true,
+  "noArticleRuntimeChanges": true
+}

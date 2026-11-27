@@ -1,0 +1,110 @@
+{
+  "at": "2026-11-27T20:34:55.369+00:00",
+  "before": {
+    "id": "6b092ddf28e3a8c67f18d8f9",
+    "commit_ref": "3a172bc3a88234e885720763f443adeb5dd5c9ea",
+    "state": "ready",
+    "published_at": "2026-11-27T07:17:38.981Z"
+  },
+  "after": {
+    "id": "6b092ddf28e3a8c67f18d8f9",
+    "commit_ref": "3a172bc3a88234e885720763f443adeb5dd5c9ea",
+    "state": "ready",
+    "published_at": "2026-11-27T07:17:38.981Z"
+  },
+  "samePublishedVersion": true,
+  "rows": [
+    {
+      "language": "en",
+      "url": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "title": "Figwright MCP: Free Figma Setup and Design Systems | cubxxw",
+      "description": "Set up Figwright MCP with free Figma, Claude Code or Codex, verify the plugin connection, then maintain design tokens and components across Web and iOS.\n",
+      "canonical": [
+        "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "x-default": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      },
+      "robotsMetaAll": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "jsonLDCount": 4,
+      "bodyBytes": 165559,
+      "bodySHA256": "a4a3743a2c4d947683f7d661bc17676371865133622acaac958ae847c0492d53",
+      "postVisibleCharacters": 41675,
+      "setupChecks": {
+        "pinnedServerCommand": true,
+        "codexLaunch": true,
+        "pluginManifest": true,
+        "connected": true,
+        "ping": true,
+        "v070ReleaseLink": true
+      },
+      "uniqueLocalAnchorTargets": 21,
+      "missingLocalTargets": [],
+      "entryHeadingIDs": [
+        "figwright-setup",
+        "design-system-workflow",
+        "before-changing-the-interface-know-where-to-make-the-change"
+      ],
+      "issues": []
+    },
+    {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+      "status": 200,
+      "title": "Figwright MCP 上手：连接免费 Figma，维护自己的设计系统 | cubxxw",
+      "description": "Figwright 是连接 AI 编程助手与 Figma 的开源双向 MCP。本文给出免费 Figma 的边界、Claude Code 与 Codex 连接、插件安装和读取检查，再以日志卡片说明怎样维护设计说明、token、组件与画布，接续 Web 与 iOS 界面修改。安装按 v0.7.0 核对，源码分析保留原版本。\n",
+      "canonical": [
+        "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      ],
+      "hreflang": {
+        "en": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "zh": "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/",
+        "x-default": "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/"
+      },
+      "robotsMetaAll": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobotsTagAll": [],
+      "jsonLDCount": 4,
+      "bodyBytes": 172683,
+      "bodySHA256": "2ba1638423aa56ef172571ca6b20a9441e35787de8106f697b9f907cbbd457d2",
+      "postVisibleCharacters": 15166,
+      "setupChecks": {
+        "pinnedServerCommand": true,
+        "codexLaunch": true,
+        "pluginManifest": true,
+        "connected": true,
+        "ping": true,
+        "v070ReleaseLink": true
+      },
+      "uniqueLocalAnchorTargets": 21,
+      "missingLocalTargets": [],
+      "entryHeadingIDs": [
+        "figwright-setup",
+        "design-system-workflow",
+        "想改一处界面先知道去哪里改"
+      ],
+      "issues": []
+    }
+  ],
+  "robotsAllowed": {
+    "https://cubxxw.com/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": true,
+    "https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/": true
+  },
+  "sitemap": {
+    "pageLocs": 446,
+    "uniquePages": 446,
+    "imageLocs": 251,
+    "uniqueImages": 144,
+    "allLocEntries": 697,
+    "targetsPresent": true
+  },
+  "scope": "two canonical pages, existing setup text and same-page fragments only; no browser/Figma connection/all external-link or Google stored-byte proof",
+  "reciprocalLanguageValuesChecked": true
+}

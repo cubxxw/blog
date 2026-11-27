@@ -1,0 +1,55 @@
+{
+  "priorInspectionRun": 44944360194,
+  "newFigInspectionRun": null,
+  "lastKnownCrawlUTC": {
+    "en": "2026-11-21T05:08:02Z",
+    "zh": "2026-11-20T00:59:57Z"
+  },
+  "candidateWindows": {
+    "en": {
+      "candidateStart": "2026-11-21",
+      "lastRequestedCompleteDay": "2026-11-24",
+      "completePlannedDates": 4,
+      "dates": [
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24"
+      ],
+      "returnedPageDays": 4,
+      "returnedPageOnlyMetrics": {
+        "impressions": 117,
+        "clicks": 0
+      },
+      "effect": "candidate only, not14/28 complete; missing rows unknown; Google stored HTML not returned"
+    },
+    "zh": {
+      "candidateStart": "2026-11-20",
+      "lastRequestedCompleteDay": "2026-11-24",
+      "completePlannedDates": 5,
+      "dates": [
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24"
+      ],
+      "returnedPageDays": 2,
+      "returnedPageOnlyMetrics": {
+        "impressions": 2,
+        "clicks": 0
+      },
+      "effect": "candidate only, not14/28 complete; missing rows unknown; Google stored HTML not returned"
+    }
+  },
+  "T14End": {
+    "en": "2026-12-04",
+    "zh": "2026-12-03"
+  },
+  "T28End": {
+    "en": "2026-12-18",
+    "zh": "2026-12-17"
+  },
+  "GoogleStoredBodyNotReturned": true,
+  "issue": "GET-463 In Progress"
+}

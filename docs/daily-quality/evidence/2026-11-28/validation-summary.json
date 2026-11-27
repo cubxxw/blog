@@ -1,0 +1,101 @@
+{
+  "SEOReportFirst": {
+    "exit": 1,
+    "reason": "wrong composite CLI flag; corrected --gsc-response-aggregation",
+    "raw": "seo-report.log",
+    "correctedExit": 2,
+    "correctedRaw": "seo-report-corrected.log",
+    "sameExistingInputs": true
+  },
+  "inspectionDispatchFirst": {
+    "exit": 1,
+    "HTTP": 422,
+    "reason": "urls is not workflow input; corrected inspection_urls",
+    "workflowCreatedByFailedCall": false,
+    "raw": "go-inspection-dispatch.log",
+    "successfulRun": 46063880154
+  },
+  "PSIAdHocExtraction": {
+    "type": "TypeError",
+    "reason": "attempts is numeric; corrected typed fields",
+    "evidence": "normalized tool-history summary, not reconstructed raw log",
+    "notSourceFailure": true
+  },
+  "nativePRSearchFirst": {
+    "reason": "extra per_page rejected; minimal query succeeded",
+    "noRemoteMutation": true
+  },
+  "HTTPFirst": {
+    "scope": "initial response lacked final-URL binding; strict GET re-read passed",
+    "originalJSON": "fig-http-initial.json",
+    "final": "fig-http.json"
+  },
+  "portableFirst": {
+    "reason": "9809-byte first summary rejected by 8192-byte local output bound; compacted repeated URL/labels, no metric/collector limits relaxed",
+    "raw": "normalized tool-history summary; no original external log"
+  },
+  "daily": {
+    "at": "2026-11-28T04:34:29.716351+08:00",
+    "browserLaunched": false,
+    "expectedCurrentSourceEntry": 36,
+    "actualExecuted": 0,
+    "retry": 0,
+    "skipped": 0,
+    "notRun": true,
+    "reason": "native heavy slot and already queued tasks protected; generic blog external wrapper does not join that pilot",
+    "nativeQueueActive": true,
+    "queued": 1,
+    "doNotUseOtherProjectIdentity": true,
+    "actualPWInstalled": "1.63.0",
+    "declaredPW": "1.65.1",
+    "ChromeInstalledNotExecuted": "158.0.8127.37",
+    "sourceIdentity": "daily-source-binding.json",
+    "noAuditCalledWithoutTestStart": true
+  },
+  "fullPerformanceCheck": {
+    "run": false,
+    "reason": "no current complete generated inventory; no Hugo/new Lighthouse"
+  },
+  "manualHostFix": {
+    "task": "GET-564",
+    "scope": "separate author-directed storage maintenance; not SEO repair/browser certification",
+    "internalAllocatedFileBytesHandled": 979877888,
+    "exclusivePhysicalReclaim": null,
+    "capacitySampleSG": "2026-11-28T05:44:10+08:00",
+    "DataAvailableBytes": 16657801216,
+    "strict40GBMet": false,
+    "status": "In Progress",
+    "privateRawPublished": false
+  },
+  "docsFirstPatch": {
+    "outcome": "context mismatch rejected before any docs were written",
+    "corrected": "read actual README heading, then narrow patch",
+    "evidence": "normalized tool-history summary, not reconstructed raw log"
+  },
+  "localSourceCheck": {
+    "first": {
+      "head": "be46775d6a5143bd5493c772692130b2f09162cb",
+      "watchdogSeconds": 30,
+      "command": "node scripts/ci-light.mjs",
+      "result": "subprocess.TimeoutExpired",
+      "childExitCode": null,
+      "wrapperExit": 1,
+      "processPID": "not recorded",
+      "partialOutput": "not independently preserved; no fabricated original log",
+      "notHostedGateResult": true
+    },
+    "scopedDraft": {
+      "exit": 0,
+      "elapsed": 0.5101413750089705,
+      "head": "be46775d6a5143bd5493c772692130b2f09162cb",
+      "localManualBranchContext": true,
+      "scopeBase": "7076b09f6be80014f8a8e26e26d4789a9025b2ae",
+      "notHostedCI": true,
+      "timeout": false,
+      "originalUnscopedAttempt": "local-source-first-timeout.json"
+    },
+    "reason": "unscoped local CLI uses full inventory fallback; existing explicit manual non-main context selected proven origin/main ancestor",
+    "sourceCodeOrGateChanged": false,
+    "latestHeadChecks": "recorded separately in private final delivery; draft pass is not final hosted CI"
+  }
+}
